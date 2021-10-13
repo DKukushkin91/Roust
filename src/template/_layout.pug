@@ -1,0 +1,37 @@
+block pageVar
+	-
+		page = '';
+
+block path
+	-
+		var baseDir = '';
+
+doctype html
+html(lang='ru')
+	head
+		meta(http-equiv='X-UA-Compatible' content='IE=edge')
+		meta(http-equiv='Content-Type' content='text/html;charset=UTF-8')
+		meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
+
+		link(href=`${baseDir}/f/css/main.css` type="text/css" rel="stylesheet")
+
+	body(lang='ru-RU')
+		if (page != 'index')
+			.box
+				.box__content
+					include ./_header
+
+					main.main
+						block page
+
+				include ./_footer
+
+		if (page == 'index')
+			.box.box__index
+				.box__content
+
+					main.main
+						block page
+
+		script(src=`${baseDir}/f/scripts/vendor.js` type="text/javascript")
+		script(src=`${baseDir}/f/scripts/main.js` type="text/javascript")

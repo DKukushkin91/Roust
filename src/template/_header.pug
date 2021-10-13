@@ -1,0 +1,15 @@
+header.header
+	.container
+		.header__wrap
+			.header__logo-wrap
+				img(src=`/f/img/roust-logo.svg`)
+			.header__search
+				input(type="search" placeholder="Search" readonly).header__input
+				button.header__search-btn
+					svg(width="16" height="16").header__search-icon
+						use(href="/f/img/sprite.svg#search")
+		nav.nav
+			ul.nav__list
+				each val in ['About us', 'Brands', 'Investors', 'Partnership', 'Social projects', 'Media Center', 'Career', 'Contacts']
+					li.nav__item
+						a.nav__link(href="http://")=val

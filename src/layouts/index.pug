@@ -1,0 +1,14 @@
+extends ../template/_layout
+
+block pageVar
+	-
+		page = 'index';
+
+block page
+	section.sub
+		.container
+			h1.sub__title
+				img(src=`/f/img/roust-logo.svg`)
+			ul.sub__list
+				li.sub__item
+					a(href="main-page/main-page.html").sub__link Главная страница
