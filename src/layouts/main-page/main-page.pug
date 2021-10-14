@@ -4,7 +4,119 @@ block pageVar
 	-
 		page = 'main-page';
 
+block path
+	-
+		baseDir = '/f';
+
 block page
 	section.main-page
-		.container
-			h1 test
+		.container.main-page__container
+			.main-page__wrap
+				.main-page__screen.screen
+					.screen__video-wrap
+						.screen__video
+							video.screen__video-item(src=`${baseDir}/video/bg-video.mp4` preload="auto" autoplay muted loop)
+						.screen__video-img
+							+picture('bg-video', '', baseDir)
+				.main-page__screen.screen.swiper.js-main-slider
+					.swiper-wrapper
+						.swiper-slide
+							.screen__img-wrap
+								+picture('rs-banner', '', baseDir)
+							.screen__icon-wrap
+								svg(width="14" height="9").screen__icon
+									use(href="/f/img/sprite.svg#arrow-b")
+							.screen__content
+								.screen__inner
+									h2.screen__title Russian Standard
+									p.screen__text A vodka of exceptional quality, born from our pursuit for perfection and Russia's rich vodka heritage.
+									a.screen__link(href="#") More
+						.swiper-slide
+							.screen__img-wrap
+								+picture('gancia-banner', '', baseDir)
+							.screen__icon-wrap
+								svg(width="14" height="9").screen__icon
+									use(href="/f/img/sprite.svg#arrow-b")
+							.screen__content
+								.screen__inner
+									h2.screen__title Gancia
+									p.screen__text The first Italian sparkling wine. Its cellars are reckoned world heritage and are protected by UNESCO.
+									a.screen__link(href="#") More
+						.swiper-slide
+							.screen__img-wrap
+								+picture('zubrowka-banner', '', baseDir)
+							.screen__icon-wrap
+								svg(width="14" height="9").screen__icon
+									use(href="/f/img/sprite.svg#arrow-b")
+							.screen__content
+								.screen__inner
+									h2.screen__title Żubrówka
+									p.screen__text A world-famous Polish vodka infused with bison grass and made using a 500-year-old recipe. Each bottle contains a handpicked bison grass blade, which we place manually at our factory.
+									a.screen__link(href="#") More
+						.swiper-slide
+							.screen__img-wrap
+								+picture('soplica-banner', '', baseDir)
+							.screen__icon-wrap
+								svg(width="14" height="9").screen__icon
+									use(href="/f/img/sprite.svg#arrow-b")
+							.screen__content
+								.screen__inner
+									h2.screen__title Soplica
+									p.screen__text The first bottle of Soplica was produced in 1891. The clear variant of Soplica is made from a high-quality rye spirit.
+									a.screen__link(href="#") More
+						.swiper-slide
+							.screen__img-wrap
+								+picture('gm-banner', '', baseDir)
+							.screen__icon-wrap
+								svg(width="14" height="9").screen__icon
+									use(href="/f/img/sprite.svg#arrow-b")
+							.screen__content
+								.screen__inner
+									h2.screen__title GreenMark
+									p.screen__text One of the most popular brands in Russia. Green Mark is a classic vodka with a long history steeped in the very best traditions of Russian vodka production.
+									a.screen__link(href="#") More
+						.swiper-slide
+							.screen__img-wrap
+								+picture('pm-banner', '', baseDir)
+							.screen__icon-wrap
+								svg(width="14" height="9").screen__icon
+									use(href="/f/img/sprite.svg#arrow-b")
+							.screen__content
+								.screen__inner
+									h2.screen__title Parliament
+									p.screen__text Parliament vodka is one of the oldest Russian brands in the segment. This classic vodka is crafted according to a traditional Russian vodka recipe - using alcohol and water only - and is complemented by unparalleled purification with milk.
+									a.screen__link(href="#") More
+					.screen__pagination
+						ol.screen__p-list
+							li.screen__p-item
+								button.screen__p-btn.screen__p-btn--active
+									+picture('rs-logo', 'Russian Standard', baseDir)
+							li.screen__p-item
+								button.screen__p-btn
+									+picture('gancia-logo', 'Gancia', baseDir)
+							li.screen__p-item
+								button.screen__p-btn
+									+picture('zubrowka-logo', 'Zubrowka', baseDir)
+							li.screen__p-item
+								button.screen__p-btn
+									+picture('soplica-logo', 'Soplica', baseDir)
+							li.screen__p-item
+								button.screen__p-btn
+									+picture('zm-logo', 'Green Mark', baseDir)
+							li.screen__p-item
+								button.screen__p-btn
+									+picture('parlament-logo', 'Parliament vodka', baseDir)
+				.main-page__screen.screen
+					.screen__icon-wrap
+						svg(width="14" height="9").screen__icon
+							use(href="/f/img/sprite.svg#arrow-b")
+					.screen__imgs-wrap
+						.screen__img-wrap
+							+picture('brands-banner', '', baseDir)
+						.screen__img-wrap.screen__img-wrap--center
+							+picture('bottles', '', baseDir)
+					.screen__content
+						.screen__inner
+							h2.screen__title.screen__title--fonts Brands
+							p.screen__text.screen__text--padding We produce and supply world-famous alcohol brands to 86 countries.
+							a.screen__link(href="#") More

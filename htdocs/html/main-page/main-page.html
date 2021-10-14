@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <link href="/f/css/main.css" type="text/css" rel="stylesheet">
+    <link href="/f/css/vendor.css" type="text/css" rel="stylesheet">
   </head>
   <body lang="ru-RU">
     <div class="box">
@@ -12,7 +13,7 @@
         <header class="header">
           <div class="container">
             <div class="header__wrap">
-              <div class="header__logo-wrap"><img src="/f/img/roust-logo.svg"></div>
+              <div class="header__logo-wrap"><a class="header__link" href="#"><img src="/f/img/roust-logo.svg"></a></div>
               <div class="header__search">
                 <input class="header__input" type="search" placeholder="Search" readonly>
                 <button class="header__search-btn">
@@ -38,15 +39,286 @@
         </header>
         <main class="main">
           <section class="main-page">
-            <div class="container">
-              <h1>test</h1>
+            <div class="container main-page__container">
+              <div class="main-page__wrap">
+                <div class="main-page__screen screen">
+                  <div class="screen__video-wrap">
+                    <div class="screen__video">
+                      <video class="screen__video-item" src="/f/video/bg-video.mp4" preload="auto" autoplay muted loop></video>
+                    </div>
+                    <div class="screen__video-img">
+                      <picture>
+                        <source srcset="/f/img/responsive/m-bg-video@1x.webp 1x, /f/img/responsive/m-bg-video@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                        <source srcset="/f/img/responsive/m-bg-video@1x.png 1x, /f/img/responsive/bg-video@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                        <source srcset="/f/img/responsive/bg-video@1x.webp 1x, /f/img/responsive/bg-video@2x.webp 2x" type="image/webp"/>
+                        <source srcset="/f/img/responsive/bg-video@1x.png 1x, /f/img/responsive/bg-video@2x.png 2x" type="image/png"/><img src="/f/img/responsive/bg-video@1x.png" alt=""/>
+                      </picture>
+                    </div>
+                  </div>
+                </div>
+                <div class="main-page__screen screen swiper js-main-slider">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <div class="screen__img-wrap">
+                        <picture>
+                          <source srcset="/f/img/responsive/m-rs-banner@1x.webp 1x, /f/img/responsive/m-rs-banner@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                          <source srcset="/f/img/responsive/m-rs-banner@1x.png 1x, /f/img/responsive/rs-banner@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                          <source srcset="/f/img/responsive/rs-banner@1x.webp 1x, /f/img/responsive/rs-banner@2x.webp 2x" type="image/webp"/>
+                          <source srcset="/f/img/responsive/rs-banner@1x.png 1x, /f/img/responsive/rs-banner@2x.png 2x" type="image/png"/><img src="/f/img/responsive/rs-banner@1x.png" alt=""/>
+                        </picture>
+                      </div>
+                      <div class="screen__icon-wrap">
+                        <svg class="screen__icon" width="14" height="9">
+                          <use href="/f/img/sprite.svg#arrow-b"></use>
+                        </svg>
+                      </div>
+                      <div class="screen__content">
+                        <div class="screen__inner">
+                          <h2 class="screen__title">Russian Standard</h2>
+                          <p class="screen__text">A vodka of exceptional quality, born from our pursuit for perfection and Russia's rich vodka heritage.</p><a class="screen__link" href="#">More</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="screen__img-wrap">
+                        <picture>
+                          <source srcset="/f/img/responsive/m-gancia-banner@1x.webp 1x, /f/img/responsive/m-gancia-banner@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                          <source srcset="/f/img/responsive/m-gancia-banner@1x.png 1x, /f/img/responsive/gancia-banner@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                          <source srcset="/f/img/responsive/gancia-banner@1x.webp 1x, /f/img/responsive/gancia-banner@2x.webp 2x" type="image/webp"/>
+                          <source srcset="/f/img/responsive/gancia-banner@1x.png 1x, /f/img/responsive/gancia-banner@2x.png 2x" type="image/png"/><img src="/f/img/responsive/gancia-banner@1x.png" alt=""/>
+                        </picture>
+                      </div>
+                      <div class="screen__icon-wrap">
+                        <svg class="screen__icon" width="14" height="9">
+                          <use href="/f/img/sprite.svg#arrow-b"></use>
+                        </svg>
+                      </div>
+                      <div class="screen__content">
+                        <div class="screen__inner">
+                          <h2 class="screen__title">Gancia</h2>
+                          <p class="screen__text">The first Italian sparkling wine. Its cellars are reckoned world heritage and are protected by UNESCO.</p><a class="screen__link" href="#">More</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="screen__img-wrap">
+                        <picture>
+                          <source srcset="/f/img/responsive/m-zubrowka-banner@1x.webp 1x, /f/img/responsive/m-zubrowka-banner@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                          <source srcset="/f/img/responsive/m-zubrowka-banner@1x.png 1x, /f/img/responsive/zubrowka-banner@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                          <source srcset="/f/img/responsive/zubrowka-banner@1x.webp 1x, /f/img/responsive/zubrowka-banner@2x.webp 2x" type="image/webp"/>
+                          <source srcset="/f/img/responsive/zubrowka-banner@1x.png 1x, /f/img/responsive/zubrowka-banner@2x.png 2x" type="image/png"/><img src="/f/img/responsive/zubrowka-banner@1x.png" alt=""/>
+                        </picture>
+                      </div>
+                      <div class="screen__icon-wrap">
+                        <svg class="screen__icon" width="14" height="9">
+                          <use href="/f/img/sprite.svg#arrow-b"></use>
+                        </svg>
+                      </div>
+                      <div class="screen__content">
+                        <div class="screen__inner">
+                          <h2 class="screen__title">Żubrówka</h2>
+                          <p class="screen__text">A world-famous Polish vodka infused with bison grass and made using a 500-year-old recipe. Each bottle contains a handpicked bison grass blade, which we place manually at our factory.</p><a class="screen__link" href="#">More</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="screen__img-wrap">
+                        <picture>
+                          <source srcset="/f/img/responsive/m-soplica-banner@1x.webp 1x, /f/img/responsive/m-soplica-banner@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                          <source srcset="/f/img/responsive/m-soplica-banner@1x.png 1x, /f/img/responsive/soplica-banner@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                          <source srcset="/f/img/responsive/soplica-banner@1x.webp 1x, /f/img/responsive/soplica-banner@2x.webp 2x" type="image/webp"/>
+                          <source srcset="/f/img/responsive/soplica-banner@1x.png 1x, /f/img/responsive/soplica-banner@2x.png 2x" type="image/png"/><img src="/f/img/responsive/soplica-banner@1x.png" alt=""/>
+                        </picture>
+                      </div>
+                      <div class="screen__icon-wrap">
+                        <svg class="screen__icon" width="14" height="9">
+                          <use href="/f/img/sprite.svg#arrow-b"></use>
+                        </svg>
+                      </div>
+                      <div class="screen__content">
+                        <div class="screen__inner">
+                          <h2 class="screen__title">Soplica</h2>
+                          <p class="screen__text">The first bottle of Soplica was produced in 1891. The clear variant of Soplica is made from a high-quality rye spirit.</p><a class="screen__link" href="#">More</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="screen__img-wrap">
+                        <picture>
+                          <source srcset="/f/img/responsive/m-gm-banner@1x.webp 1x, /f/img/responsive/m-gm-banner@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                          <source srcset="/f/img/responsive/m-gm-banner@1x.png 1x, /f/img/responsive/gm-banner@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                          <source srcset="/f/img/responsive/gm-banner@1x.webp 1x, /f/img/responsive/gm-banner@2x.webp 2x" type="image/webp"/>
+                          <source srcset="/f/img/responsive/gm-banner@1x.png 1x, /f/img/responsive/gm-banner@2x.png 2x" type="image/png"/><img src="/f/img/responsive/gm-banner@1x.png" alt=""/>
+                        </picture>
+                      </div>
+                      <div class="screen__icon-wrap">
+                        <svg class="screen__icon" width="14" height="9">
+                          <use href="/f/img/sprite.svg#arrow-b"></use>
+                        </svg>
+                      </div>
+                      <div class="screen__content">
+                        <div class="screen__inner">
+                          <h2 class="screen__title">GreenMark</h2>
+                          <p class="screen__text">One of the most popular brands in Russia. Green Mark is a classic vodka with a long history steeped in the very best traditions of Russian vodka production.</p><a class="screen__link" href="#">More</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="screen__img-wrap">
+                        <picture>
+                          <source srcset="/f/img/responsive/m-pm-banner@1x.webp 1x, /f/img/responsive/m-pm-banner@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                          <source srcset="/f/img/responsive/m-pm-banner@1x.png 1x, /f/img/responsive/pm-banner@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                          <source srcset="/f/img/responsive/pm-banner@1x.webp 1x, /f/img/responsive/pm-banner@2x.webp 2x" type="image/webp"/>
+                          <source srcset="/f/img/responsive/pm-banner@1x.png 1x, /f/img/responsive/pm-banner@2x.png 2x" type="image/png"/><img src="/f/img/responsive/pm-banner@1x.png" alt=""/>
+                        </picture>
+                      </div>
+                      <div class="screen__icon-wrap">
+                        <svg class="screen__icon" width="14" height="9">
+                          <use href="/f/img/sprite.svg#arrow-b"></use>
+                        </svg>
+                      </div>
+                      <div class="screen__content">
+                        <div class="screen__inner">
+                          <h2 class="screen__title">Parliament</h2>
+                          <p class="screen__text">Parliament vodka is one of the oldest Russian brands in the segment. This classic vodka is crafted according to a traditional Russian vodka recipe - using alcohol and water only - and is complemented by unparalleled purification with milk.</p><a class="screen__link" href="#">More</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="screen__pagination">
+                    <ol class="screen__p-list">
+                      <li class="screen__p-item">
+                        <button class="screen__p-btn screen__p-btn--active">
+                          <picture>
+                            <source srcset="/f/img/responsive/m-rs-logo@1x.webp 1x, /f/img/responsive/m-rs-logo@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                            <source srcset="/f/img/responsive/m-rs-logo@1x.png 1x, /f/img/responsive/rs-logo@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                            <source srcset="/f/img/responsive/rs-logo@1x.webp 1x, /f/img/responsive/rs-logo@2x.webp 2x" type="image/webp"/>
+                            <source srcset="/f/img/responsive/rs-logo@1x.png 1x, /f/img/responsive/rs-logo@2x.png 2x" type="image/png"/><img src="/f/img/responsive/rs-logo@1x.png" alt="Russian Standard"/>
+                          </picture>
+                        </button>
+                      </li>
+                      <li class="screen__p-item">
+                        <button class="screen__p-btn">
+                          <picture>
+                            <source srcset="/f/img/responsive/m-gancia-logo@1x.webp 1x, /f/img/responsive/m-gancia-logo@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                            <source srcset="/f/img/responsive/m-gancia-logo@1x.png 1x, /f/img/responsive/gancia-logo@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                            <source srcset="/f/img/responsive/gancia-logo@1x.webp 1x, /f/img/responsive/gancia-logo@2x.webp 2x" type="image/webp"/>
+                            <source srcset="/f/img/responsive/gancia-logo@1x.png 1x, /f/img/responsive/gancia-logo@2x.png 2x" type="image/png"/><img src="/f/img/responsive/gancia-logo@1x.png" alt="Gancia"/>
+                          </picture>
+                        </button>
+                      </li>
+                      <li class="screen__p-item">
+                        <button class="screen__p-btn">
+                          <picture>
+                            <source srcset="/f/img/responsive/m-zubrowka-logo@1x.webp 1x, /f/img/responsive/m-zubrowka-logo@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                            <source srcset="/f/img/responsive/m-zubrowka-logo@1x.png 1x, /f/img/responsive/zubrowka-logo@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                            <source srcset="/f/img/responsive/zubrowka-logo@1x.webp 1x, /f/img/responsive/zubrowka-logo@2x.webp 2x" type="image/webp"/>
+                            <source srcset="/f/img/responsive/zubrowka-logo@1x.png 1x, /f/img/responsive/zubrowka-logo@2x.png 2x" type="image/png"/><img src="/f/img/responsive/zubrowka-logo@1x.png" alt="Zubrowka"/>
+                          </picture>
+                        </button>
+                      </li>
+                      <li class="screen__p-item">
+                        <button class="screen__p-btn">
+                          <picture>
+                            <source srcset="/f/img/responsive/m-soplica-logo@1x.webp 1x, /f/img/responsive/m-soplica-logo@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                            <source srcset="/f/img/responsive/m-soplica-logo@1x.png 1x, /f/img/responsive/soplica-logo@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                            <source srcset="/f/img/responsive/soplica-logo@1x.webp 1x, /f/img/responsive/soplica-logo@2x.webp 2x" type="image/webp"/>
+                            <source srcset="/f/img/responsive/soplica-logo@1x.png 1x, /f/img/responsive/soplica-logo@2x.png 2x" type="image/png"/><img src="/f/img/responsive/soplica-logo@1x.png" alt="Soplica"/>
+                          </picture>
+                        </button>
+                      </li>
+                      <li class="screen__p-item">
+                        <button class="screen__p-btn">
+                          <picture>
+                            <source srcset="/f/img/responsive/m-zm-logo@1x.webp 1x, /f/img/responsive/m-zm-logo@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                            <source srcset="/f/img/responsive/m-zm-logo@1x.png 1x, /f/img/responsive/zm-logo@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                            <source srcset="/f/img/responsive/zm-logo@1x.webp 1x, /f/img/responsive/zm-logo@2x.webp 2x" type="image/webp"/>
+                            <source srcset="/f/img/responsive/zm-logo@1x.png 1x, /f/img/responsive/zm-logo@2x.png 2x" type="image/png"/><img src="/f/img/responsive/zm-logo@1x.png" alt="Green Mark"/>
+                          </picture>
+                        </button>
+                      </li>
+                      <li class="screen__p-item">
+                        <button class="screen__p-btn">
+                          <picture>
+                            <source srcset="/f/img/responsive/m-parlament-logo@1x.webp 1x, /f/img/responsive/m-parlament-logo@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                            <source srcset="/f/img/responsive/m-parlament-logo@1x.png 1x, /f/img/responsive/parlament-logo@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                            <source srcset="/f/img/responsive/parlament-logo@1x.webp 1x, /f/img/responsive/parlament-logo@2x.webp 2x" type="image/webp"/>
+                            <source srcset="/f/img/responsive/parlament-logo@1x.png 1x, /f/img/responsive/parlament-logo@2x.png 2x" type="image/png"/><img src="/f/img/responsive/parlament-logo@1x.png" alt="Parliament vodka"/>
+                          </picture>
+                        </button>
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+                <div class="main-page__screen screen">
+                  <div class="screen__icon-wrap">
+                    <svg class="screen__icon" width="14" height="9">
+                      <use href="/f/img/sprite.svg#arrow-b"></use>
+                    </svg>
+                  </div>
+                  <div class="screen__imgs-wrap">
+                    <div class="screen__img-wrap">
+                      <picture>
+                        <source srcset="/f/img/responsive/m-brands-banner@1x.webp 1x, /f/img/responsive/m-brands-banner@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                        <source srcset="/f/img/responsive/m-brands-banner@1x.png 1x, /f/img/responsive/brands-banner@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                        <source srcset="/f/img/responsive/brands-banner@1x.webp 1x, /f/img/responsive/brands-banner@2x.webp 2x" type="image/webp"/>
+                        <source srcset="/f/img/responsive/brands-banner@1x.png 1x, /f/img/responsive/brands-banner@2x.png 2x" type="image/png"/><img src="/f/img/responsive/brands-banner@1x.png" alt=""/>
+                      </picture>
+                    </div>
+                    <div class="screen__img-wrap screen__img-wrap--center">
+                      <picture>
+                        <source srcset="/f/img/responsive/m-bottles@1x.webp 1x, /f/img/responsive/m-bottles@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                        <source srcset="/f/img/responsive/m-bottles@1x.png 1x, /f/img/responsive/bottles@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                        <source srcset="/f/img/responsive/bottles@1x.webp 1x, /f/img/responsive/bottles@2x.webp 2x" type="image/webp"/>
+                        <source srcset="/f/img/responsive/bottles@1x.png 1x, /f/img/responsive/bottles@2x.png 2x" type="image/png"/><img src="/f/img/responsive/bottles@1x.png" alt=""/>
+                      </picture>
+                    </div>
+                  </div>
+                  <div class="screen__content">
+                    <div class="screen__inner">
+                      <h2 class="screen__title screen__title--fonts">Brands</h2>
+                      <p class="screen__text screen__text--padding">We produce and supply world-famous alcohol brands to 86 countries.</p><a class="screen__link" href="#">More</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
         </main>
       </div>
       <footer class="footer">
         <div class="container">
-          <p>footer</p>
+          <div class="footer__wrap">
+            <div class="footer__content">
+              <div class="footer__social">
+                <ul class="footer__social-list">
+                  <li class="footer__social-item footer__social-item--fb"><a class="footer__social-link" href="#"></a></li>
+                  <li class="footer__social-item footer__social-item--inst"><a class="footer__social-link" href="#"></a></li>
+                  <li class="footer__social-item footer__social-item--vk"><a class="footer__social-link" href="#"></a></li>
+                </ul>
+              </div>
+              <div class="footer__copyright">
+                <p class="footer__copyright-text">&copy;&nbsp;&laquo;Roust&raquo; 2021</p>
+              </div>
+            </div>
+            <ul class="footer__list">
+              <li class="footer__item"><a class="footer__link" href="#">About us</a></li>
+              <li class="footer__item"><a class="footer__link" href="#">Brands</a></li>
+              <li class="footer__item"><a class="footer__link" href="#">Investors</a></li>
+              <li class="footer__item"><a class="footer__link" href="#">Partners</a></li>
+            </ul>
+            <ul class="footer__list">
+              <li class="footer__item"><a class="footer__link" href="#">Social projects</a></li>
+              <li class="footer__item"><a class="footer__link" href="#">Press center</a></li>
+              <li class="footer__item"><a class="footer__link" href="#">Career</a></li>
+              <li class="footer__item"><a class="footer__link" href="#">Contacts</a></li>
+            </ul>
+            <button class="footer__btn js-btn-top">
+              <svg class="footer__icon" width="14" height="9">
+                <use href="/f/img/sprite.svg#arrow-b"></use>
+              </svg>
+            </button>
+          </div>
         </div>
       </footer>
     </div>

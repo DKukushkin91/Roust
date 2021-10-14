@@ -6,6 +6,8 @@ block path
 	-
 		var baseDir = '';
 
+include ./_mixins
+
 doctype html
 html(lang='ru')
 	head
@@ -13,7 +15,8 @@ html(lang='ru')
 		meta(http-equiv='Content-Type' content='text/html;charset=UTF-8')
 		meta(name='viewport' content='width=device-width, initial-scale=1, user-scalable=no')
 
-		link(href=`${baseDir}/f/css/main.css` type="text/css" rel="stylesheet")
+		link(href=`${baseDir}/css/main.css` type="text/css" rel="stylesheet")
+		link(href=`${baseDir}/css/vendor.css` type="text/css" rel="stylesheet")
 
 	body(lang='ru-RU')
 		if (page != 'index')
@@ -28,10 +31,9 @@ html(lang='ru')
 
 		if (page == 'index')
 			.box.box__index
-				.box__content
-
+				.box__content-index
 					main.main
 						block page
 
-		script(src=`${baseDir}/f/scripts/vendor.js` type="text/javascript")
-		script(src=`${baseDir}/f/scripts/main.js` type="text/javascript")
+		script(src=`${baseDir}/scripts/vendor.js` type="text/javascript")
+		script(src=`${baseDir}/scripts/main.js` type="text/javascript")

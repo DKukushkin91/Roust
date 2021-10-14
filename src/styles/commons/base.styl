@@ -35,7 +35,7 @@ a:not([class])
 // Make images easier to work with
 img,
 picture
-  max-width 100%
+  width 100%
   display block
 
 // Inherit fonts for inputs and buttons
@@ -60,6 +60,7 @@ button
 input::placeholder
 	opacity: 1
 
+// fix footer
 .box
 	display flex
 	flex-direction column
@@ -67,7 +68,6 @@ input::placeholder
 
 	&__content
 		flex 1 0 auto
-		background: gray //WIP
 
 	// breeding
 	&__index
@@ -75,6 +75,10 @@ input::placeholder
 		background-repeat no-repeat
 		background-position 50% 0
 		background-size 600% 300%
+
+	&__content-index
+		flex 1 0 auto
+		background-color: none
 
 .footer
 	flex 0 0 auto

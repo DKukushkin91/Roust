@@ -14,6 +14,7 @@ const source = require('vinyl-source-stream');
 const terser = require('gulp-terser');
 const concat = require('gulp-concat');
 const del = require('del');
+const responsive = require('gulp-responsive');
 
 /* Paths variables */
 let basepath = {
@@ -65,6 +66,13 @@ const styles = () => {
 		.pipe(browserSync.stream())
 }
 
+const vendorCss = () => {
+	return src(`${basepath.src}/styles/vendor/*.css`)
+		.pipe(cleanCSS({compatibility: 'ie8'}))
+		.pipe(concat('vendor.css'))
+    .pipe(dest(path.build.css))
+}
+
 /* JS */
 const vendorJs = () => {
 	return src(`${path.src.js}vendor/*.js`)
@@ -111,6 +119,65 @@ const serv = (cb) => {
 /* images */
 const images = () => src(`${basepath.src}img/**/*.*`).pipe(dest(`${basepath.dest}f/img`));
 
+/* png convert to webp */
+const responsivePng = () => {
+	return src(`${basepath.src}img/responsive/**/*.*`)
+		.pipe(responsive({
+				'*.png': [
+					{
+						// x1 png
+						width: '50%',
+						rename: { suffix: '@1x' }
+					},
+					{
+						// x2 png (original)
+						rename: { suffix: '@2x' }
+					},
+					{
+						// x1 webp
+						width: '50%',
+						format: 'webp',
+						rename: { suffix: '@1x' }
+					},
+					{
+						// x2 webp
+						format: 'webp',
+						rename: { suffix: '@2x' }
+					},
+					{
+						// x2 mobile png
+						width: '50%',
+						rename: { prefix: 'm-', suffix: '@2x' }
+					},
+					{
+						// x1 mobile png
+						width: '25%',
+						rename: { prefix: 'm-', suffix: '@1x' }
+					},
+					{
+						// x2 mobile webp
+						width: '50%',
+						format: 'webp',
+						rename: { prefix: 'm-', suffix: '@2x' }
+					},
+					{
+						// x1 mobile webp
+						format: 'webp',
+						rename: { prefix: 'm-', suffix: '@1x' }
+					},
+				]
+			},
+			{
+				progressive: true,
+				withMetadata: false
+			}
+		))
+		.pipe(dest(`${basepath.dest}f/img/responsive`))
+}
+
+/* video */
+const video = () => src(`${basepath.src}video/**/*.*`).pipe(dest(`${basepath.dest}f/video`));
+
 /* fonts */
 const fonts = () => src(`${basepath.src}fonts/**/*.*`).pipe(dest(`${basepath.dest}f/fonts`));
 
@@ -120,9 +187,17 @@ exports.styles = styles;
 exports.vendorJs = vendorJs;
 exports.userJs = userJs;
 exports.serv = serv;
+exports.clean = clean;
+exports.responsivePng = responsivePng;
+exports.fonts = fonts;
+exports.video = video;
+exports.vendorCss = vendorCss;
 
 /* default actions */
-const build = series(clean, images, fonts, pug2html, styles, vendorJs, userJs);
+const img = series(images, responsivePng);
+const vendor = series(vendorCss, vendorJs)
+
+const build = series(clean, img, video, fonts, pug2html, styles, vendor, userJs);
 
 exports.build = build;
 exports.default = series(serv);

@@ -1,0 +1,142 @@
+.screen
+	min-height: 100vh
+	flex 1 1 auto
+	position: relative
+	overflow: hidden
+
+	&:first-child
+		margin-bottom -76px
+
+	&:not(:first-child)
+		margin-bottom: -40px
+
+	&:not(:last-child, &:first-child)
+		margin-bottom -40px
+
+	&__video-wrap
+		width: 100%
+		position relative
+
+	&__video
+		width: 100%
+
+	&__video-item
+		width: 100%
+		display: block
+
+	&__video-img
+		position absolute
+		width: 100%
+		height 100%
+		top 0
+		left 0
+		overflow hidden
+
+	&__icon-wrap
+		position: absolute
+		display: block
+		text-align: center
+		z-index 1
+		top: 46px
+		left: 0
+		right: 0
+
+	&__icon
+		width: 14px
+		height: 9px
+		fill: $white
+
+	&__imgs-wrap
+		display: flex
+		justify-content: center
+		align-items: flex-start
+
+	&__img-wrap
+		position absolute
+		width: 100%
+		height 100%
+		top: 0
+		left 0
+
+	&__img-wrap--center
+		width: 60%
+		top unset
+		bottom -35%
+		left unset
+
+	&__content
+		padding: 149px 25px 20px 25px
+		max-width: 1150px
+		position: relative
+		z-index: 1
+		margin: 0 auto
+
+	&__inner
+		max-width: 27%
+		padding-bottom: 169px
+
+	&__title
+		fz-75()
+		color: $white
+		font-family: $Georgia
+		font-weight: bold
+		line-height 100%
+		padding-bottom: 50px
+
+	&__title--fonts
+		fz-60()
+		padding-bottom: 35px
+		font-weight: 900
+		font-family: $Inter
+		text-transform: uppercase
+
+	&__text
+		fz-15()
+		font-weight: 500
+		font-family: $Inter
+		color: $white
+		line-height 24px
+		padding-bottom: 72px
+
+	&__text--padding
+		padding-bottom 55px
+
+	&__link
+		fz-15()
+		text-decoration: none
+		padding: 14px 60px
+		border: 1px solid $white
+		font-weight bold
+		color: $white
+
+	&__pagination
+		position relative
+		z-index 99999999999999
+		margin: 0 auto
+		max-width: 1150px
+		padding: 0 25px
+
+	&__p-list
+		max-width: 655px
+		list-style: none
+		padding: 0
+		margin 0
+		display: flex
+		align-items: center
+		justify-content: space-between
+
+	&__p-item
+		&:not(:last-child)
+			margin-right: 30px
+
+	&__p-btn
+		opacity: 0.5
+		background: 0
+		border 0
+		cursor: pointer
+		display: block
+		width: 100%
+		height: 100%
+
+	&__p-btn--active
+		opacity: 1
