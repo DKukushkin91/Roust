@@ -86,30 +86,37 @@ block page
 									h2.screen__title Parliament
 									p.screen__text Parliament vodka is one of the oldest Russian brands in the segment. This classic vodka is crafted according to a traditional Russian vodka recipe - using alcohol and water only - and is complemented by unparalleled purification with milk.
 									a.screen__link(href="#") More
+					button.screen__nav-btn.screen__nav-btn--next.js-main-slider-next
+						svg(width="51" height="12").screen__nav-icon
+							use(href="/f/img/sprite.svg#arrow-nav")
+					button.screen__nav-btn.js-main-slider-prev
+						svg(width="51" height="12").screen__nav-icon
+							use(href="/f/img/sprite.svg#arrow-nav")
 					.screen__pagination
-						ol.screen__p-list
-							li.screen__p-item
-								button.screen__p-btn.screen__p-btn--active
-									+picture('rs-logo', 'Russian Standard', baseDir)
-							li.screen__p-item
-								button.screen__p-btn
-									+picture('gancia-logo', 'Gancia', baseDir)
-							li.screen__p-item
-								button.screen__p-btn
-									+picture('zubrowka-logo', 'Zubrowka', baseDir)
-							li.screen__p-item
-								button.screen__p-btn
-									+picture('soplica-logo', 'Soplica', baseDir)
-							li.screen__p-item
-								button.screen__p-btn
-									+picture('zm-logo', 'Green Mark', baseDir)
-							li.screen__p-item
-								button.screen__p-btn
-									+picture('parlament-logo', 'Parliament vodka', baseDir)
+						.screen__p-container.js-preview-slider(thumbsSlider="")
+							ol.screen__p-list.swiper-wrapper
+								li.screen__p-item.swiper-slide
+									button.screen__p-btn
+										+picture('rs-logo', 'Russian Standard', baseDir)
+								li.screen__p-item.swiper-slide
+									button.screen__p-btn
+										+picture('gancia-logo', 'Gancia', baseDir)
+								li.screen__p-item.swiper-slide
+									button.screen__p-btn
+										+picture('zubrowka-logo', 'Zubrowka', baseDir)
+								li.screen__p-item.swiper-slide
+									button.screen__p-btn
+										+picture('soplica-logo', 'Soplica', baseDir)
+								li.screen__p-item.swiper-slide
+									button.screen__p-btn
+										+picture('zm-logo', 'Green Mark', baseDir)
+								li.screen__p-item.swiper-slide
+									button.screen__p-btn
+										+picture('parlament-logo', 'Parliament vodka', baseDir)
 				.main-page__screen.screen
 					.screen__icon-wrap
 						svg(width="14" height="9").screen__icon
-							use(href="/f/img/sprite.svg#arrow-b")
+							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
 					.screen__imgs-wrap
 						.screen__img-wrap
 							+picture('brands-banner', '', baseDir)
@@ -120,3 +127,130 @@ block page
 							h2.screen__title.screen__title--fonts Brands
 							p.screen__text.screen__text--padding We produce and supply world-famous alcohol brands to 86 countries.
 							a.screen__link(href="#") More
+				.main-page__screen.screen
+					.screen__icon-wrap
+						svg(width="14" height="9").screen__icon
+							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
+					.screen__imgs-wrap
+						.screen__img-wrap
+							+picture('partnership-bg', '', baseDir)
+					.screen__content
+						.screen__inner
+							h2.screen__title.screen__title--fonts Partnership
+							p.screen__text.screen__text--padding We have an extensive portfolio of leading brands across diverse categories that offer considerable advantages for co-operation.
+							.screen__in-box
+								h3.screen__sub-title How to become a business partner?
+								ol.screen__o-list
+									li.screen__o-item
+										p.screen__o-text Complete <span class="screen__o-text screen__o-text--color">the form</span>
+									li.screen__o-item
+										p.screen__o-text We will contact you to discuss the details
+									li.screen__o-item
+										p.screen__o-text Let’s start earning together
+							a.screen__link(href="#") More
+				.main-page__screen.screen
+					.screen__icon-wrap
+						svg(width="14" height="9").screen__icon.screen__icon--color
+							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
+					.screen__img-wrap
+						img(src=`${baseDir}/img/bg.svg`)
+					.screen__content
+						.screen__title-wrap
+							h2.screen__title.screen__title--fonts.screen__title--color News
+							a.screen__title-link(href="#") More news
+						.screen__list-wrap.js-news-slider
+							ul.screen__list-slide.swiper-wrapper
+								li.screen__item-slide.swiper-slide
+									a.screen__item-link(href="#")
+									.screen__item-img
+										img(src=`${baseDir}/img/bg-vodka.jpg`, alt="")
+									.screen__item-content
+										p.screen__item-date 04 june 2020
+										p.screen__item-text 8 Roust Vodkas Amongst the Best-Selling Spirits Brands
+								li.screen__item-slide.swiper-slide
+									a.screen__item-link(href="#")
+									.screen__item-img
+										img(src=`${baseDir}/img/bg-rt.jpg`, alt="")
+									.screen__item-content
+										p.screen__item-date 13 june 2020
+										p.screen__item-text Russian Standard Vodka Malachite in Travel Retail
+								li.screen__item-slide.swiper-slide
+									a.screen__item-link(href="#")
+									.screen__item-img
+										img(src=`${baseDir}/img/bg-rt2.jpg`, alt="")
+									.screen__item-content
+										p.screen__item-date 11 may 2020
+										p.screen__item-text Global Relaunch of the World’s #1 Premium Russian Vodka
+								li.screen__item-slide.swiper-slide
+									a.screen__item-link(href="#")
+									.screen__item-img
+										img(src=`${baseDir}/img/bg-rt2.jpg`, alt="")
+									.screen__item-content
+										p.screen__item-date 11 may 2020
+										p.screen__item-text Global Relaunch of the World’s #1 Premium Russian Vodka
+								li.screen__item-slide.swiper-slide
+									a.screen__item-link(href="#")
+									.screen__item-img
+										img(src=`${baseDir}/img/bg-rt2.jpg`, alt="")
+									.screen__item-content
+										p.screen__item-date 11 may 2020
+										p.screen__item-text Global Relaunch of the World’s #1 Premium Russian Vodka
+							button.screen__nav-btn.screen__nav-btn--position-r.screen__nav-btn--next.js-news-slider-next
+								svg(width="51" height="12").screen__nav-icon.screen__nav-icon--color
+									use(href="/f/img/sprite.svg#arrow-nav")
+							button.screen__nav-btn.screen__nav-btn--position-l.js-news-slider-prev
+								svg(width="51" height="12").screen__nav-icon.screen__nav-icon--color
+									use(href="/f/img/sprite.svg#arrow-nav")
+				.main-page__screen.screen
+					.screen__icon-wrap
+						svg(width="14" height="9").screen__icon
+							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
+					.screen__imgs-wrap
+						.screen__img-wrap
+							+picture('bg-investors', '', baseDir)
+					.screen__content.screen__content--flex
+						.screen__inner.screen__inner--column
+							h2.screen__title.screen__title--fonts
+								|	Investors
+							a.screen__link(href="#") More
+						dl.screen__dl
+							.screen__d-wrap
+								dt.screen__dt 60
+								dd.screen__dd brands in the portfolio
+							.screen__d-wrap
+								dt.screen__dt 4 000
+								dd.screen__dd people in our team
+							.screen__d-wrap
+								dt.screen__dt $ 2 300 000 000
+								dd.screen__dd is the turnover in 2019
+				.main-page__screen.screen
+					.screen__icon-wrap
+						svg(width="14" height="9").screen__icon
+							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
+					.screen__img-wrap
+						+picture('bg-career', '', baseDir)
+					.screen__content
+						.screen__inner.screen__inner--bg
+							h2.screen__title.screen__title--fonts.screen__title--color Career
+							p.screen__text.screen__text--padding.screen__text--color We give our employees opportunities to fulfill their dreams.
+							p.screen__text.screen__text--fz.screen__text--color Join our international team of professionals who achieve their ambitions with us.
+							a.screen__link.screen__link--color(href="#") More
+				.main-page__screen.screen
+					.screen__icon-wrap
+						svg(width="14" height="9").screen__icon
+							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
+					.screen__img-wrap
+						+picture('bg-contacts', '', baseDir)
+					.screen__content
+						.screen__inner
+							h2.screen__title.screen__title--fonts.screen__title--padding Contacts
+							p.screen__prev-text Russia
+							.screen__contacts
+								p.screen__text-title Roust Global Headquarters
+								ul.screen__contacts-list
+									li.screen__contacts-item Novoorlovskaya Street 5 Moscow 119633 Russia
+									li.screen__contacts-item
+										a.screen__contacts-link(href="tel:84957771777" target="_blank") +7 (495) 777-1-777
+									li.screen__contacts-item
+										a.screen__contacts-link(href="mailto:info@rust.com") info@roust.com
+							button.screen__contacts-btn Send message

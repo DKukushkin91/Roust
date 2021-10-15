@@ -1,8 +1,10 @@
 .screen
-	min-height: 100vh
-	flex 1 1 auto
+	flex 1 1 105vh
 	position: relative
 	overflow: hidden
+
+	@media $xl
+		min-height: 909px
 
 	&:first-child
 		margin-bottom -76px
@@ -46,6 +48,9 @@
 		height: 9px
 		fill: $white
 
+	&__icon--color
+		fill: $d-gray
+
 	&__imgs-wrap
 		display: flex
 		justify-content: center
@@ -59,9 +64,9 @@
 		left 0
 
 	&__img-wrap--center
-		width: 60%
+		max-width: 1087px
 		top unset
-		bottom -35%
+		bottom -40%
 		left unset
 
 	&__content
@@ -71,9 +76,32 @@
 		z-index: 1
 		margin: 0 auto
 
+	&__content--flex
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+		justify-content: space-between
+		height: 100%
+		padding-bottom: 120px
+
 	&__inner
-		max-width: 27%
+		max-width: 639px
 		padding-bottom: 169px
+
+	&__inner--bg
+		background-color: $white
+		padding 49px 62px
+		max-width: 455px
+
+		& .screen__title
+			padding-bottom: 31px
+
+	&__inner--column
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+		justify-content: flex-end
+		padding: 0;
 
 	&__title
 		fz-75()
@@ -90,6 +118,13 @@
 		font-family: $Inter
 		text-transform: uppercase
 
+	&__title--color
+		color: $d-gray
+		padding: 0
+
+	&__title--padding
+		padding-bottom 66px
+
 	&__text
 		fz-15()
 		font-weight: 500
@@ -99,25 +134,95 @@
 		padding-bottom: 72px
 
 	&__text--padding
+		fz-21()
 		padding-bottom 55px
+		max-width: 556px
+
+	&__text--fz
+		fz-15()
+
+	&__text--color
+		color: $d-gray
+		padding-bottom 30px
 
 	&__link
 		fz-15()
+		line-height 18px
 		text-decoration: none
-		padding: 14px 60px
+		padding: 12px 58px
 		border: 1px solid $white
 		font-weight bold
 		color: $white
 
+	&__link--color
+		color: $d-gray
+		border-color: $d-gray
+
+	&__nav-btn
+		border: 0
+		background: 0
+		cursor pointer
+		display: block
+		position absolute
+		left: 90px
+		top: 50%
+		transform: translate(0, -50%)
+		z-index 99999
+		opacity: 0.5
+
+		&:disabled
+			opacity: 0.5
+
+		&:not(:disabled)
+			opacity: 1
+
+		&--next
+			transform: translate(0, -50%) rotate(-180deg)
+			left: unset
+			right: 90px
+
+	&__nav-btn--position-r
+		right: -10%
+
+		&:disabled
+			opacity: 0.3
+
+		&:not(:disabled)
+			opacity: 0.5
+
+	&__nav-btn--position-l
+		left: -10%
+
+		&:disabled
+			opacity: 0.3
+
+		&:not(:disabled)
+			opacity: 0.5
+
+	&__nav-icon
+		width: 51px
+		height: 12px
+		fill: $white
+
+	.screen__nav-icon--color
+		fill: $d-gray
+
 	&__pagination
-		position relative
+		position absolute
 		z-index 99999999999999
 		margin: 0 auto
 		max-width: 1150px
 		padding: 0 25px
+		bottom: 20%
+		left: 0
+		right: 0
+
+	&__p-container
+		max-width: 655px
+		height: 60px
 
 	&__p-list
-		max-width: 655px
+		width 100%
 		list-style: none
 		padding: 0
 		margin 0
@@ -126,11 +231,9 @@
 		justify-content: space-between
 
 	&__p-item
-		&:not(:last-child)
-			margin-right: 30px
+		opacity: 0.5
 
 	&__p-btn
-		opacity: 0.5
 		background: 0
 		border 0
 		cursor: pointer
@@ -140,3 +243,216 @@
 
 	&__p-btn--active
 		opacity: 1
+
+	&__in-box
+		display: flex
+		flex-direction: column
+		justify-content: flex-start
+
+		&:not(:last-child)
+			padding-bottom 70px
+
+	&__sub-title
+		fz-24()
+		line-height 32px
+		color: $white
+		font-weight bold
+		padding-bottom 101px
+
+	&__o-list
+		list-style: none
+		display: flex
+		flex-direction: row
+		justify-content: space-between
+		align-items: flex-start
+		margin 0
+		padding 0
+		counter-reset: itemCounter
+
+	&__o-item
+		flex: 1
+		position relative
+
+		&:before
+			fz-15()
+			line-height 24px
+			counter-increment: itemCounter
+			content: counter(itemCounter)
+			color: $white
+			width: 40px
+			height: 40px
+			display: flex
+			align-items: center
+			justify-content: center
+			border: 2px solid $orange
+			border-radius: 50%
+			position: absolute
+			top: -@height - 15px
+			left: 0
+
+		&:not(:last-child)
+			margin-right 60px
+
+			&:after
+				position: absolute
+				left 50px
+				top -38px
+				content: ''
+				width 100%
+				height 2px
+				background-color rgba(255,255,255,0.2);
+
+	&__o-text
+		fz-15()
+		line-height 24px
+		color: $white
+		font-weight 500
+		text-align: left
+
+	&__o-text--color
+		color: $orange
+
+	&__title-wrap
+		display: flex
+		flex-direction: row
+		justify-content: space-between
+		align-items: center
+		padding-bottom: 90px
+
+	&__title-link
+		fz-15()
+		line-height 18px
+		color: $black
+		font-weight: 700
+		text-decoration: none
+
+	&__list-wrap
+		width: 100%
+		overflow: hidden
+
+	&__list-slide
+		width: 100%
+		list-style: none
+		padding: 0
+		margin: 0
+		display: flex
+		flex-direction: row
+
+	&__item-slide
+		max-width: 340px
+		position: relative
+
+	&__item-link
+		position: absolute
+		top: 0
+		left 0
+		width 100%
+		height 100%
+		z-index 1
+
+	&__item-img
+		width: 100%
+		height: 210px
+		margin-bottom: 30px
+
+		& img
+			height: 100%
+			object-fit: cover
+
+	&__item-content
+		display: flex
+		flex-direction: column
+		justify-content: flex-start
+		align-items flex-start
+		padding: 0 50px 73px 0
+
+	&__item-date
+		fz-14()
+		line-height 29px
+		color: $orange
+		font-family $Georgia
+		font-weight bold
+		padding-bottom 5px
+
+	&__item-text
+		fz-21()
+		color: $black
+		font-weight 500
+
+	&__dl
+		width: 45%
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+		justify-content: space-between
+
+	&__d-wrap
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+
+		&:not(:last-child)
+			padding-bottom: 40px
+
+	&__dt
+		fz-56()
+		font-family $Georgia
+		font-weight bold
+		line-height 63px
+		color: $cian
+		padding-bottom: 5px
+
+	&__dd
+		fz-24()
+		line-height 32px
+		color: $white
+		font-weight bold
+
+	&__prev-text
+		fz-21()
+		font-weight 500
+		line-height 29px
+		color: $cian
+		padding-bottom 30px
+
+	&__contacts
+		padding-bottom 54px
+		max-width: 363px
+
+	&__text-title
+		fz-21()
+		font-weight 500
+		line-height 29px
+		padding-bottom 25px
+		color: $white
+
+	&__contacts-list
+		list-style: none
+		padding 0
+		margin 0
+		display: flex
+		flex-direction: column
+
+	&__contacts-item
+		fz-15()
+		line-height 24px
+		color: $white
+
+		&:not(:last-child)
+			padding-bottom 15px
+
+	&__contacts-link
+		fz-15()
+		line-height 24px
+		text-decoration: none
+		color: $white
+
+	&__contacts-btn
+		fz-15()
+		line-height 18px
+		color: $white
+		background: 0
+		border-radius: 0
+		border: 1px solid $white
+		padding: 11px 60px
+		cursor pointer
