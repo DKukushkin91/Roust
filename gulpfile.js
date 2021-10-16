@@ -15,6 +15,7 @@ const terser = require('gulp-terser');
 const concat = require('gulp-concat');
 const del = require('del');
 const responsive = require('gulp-responsive');
+const imagemin = require('gulp-imagemin');
 
 /* Paths variables */
 let basepath = {
@@ -116,8 +117,19 @@ const serv = (cb) => {
 	cb();
 };
 
-/* images */
-const images = () => src(`${basepath.src}img/**/*.*`).pipe(dest(`${basepath.dest}f/img`));
+/* optimization images */
+const imgOptimization = () => {
+	return src(`${basepath.src}img/*.*`)
+		.pipe(imagemin([
+			imagemin.gifsicle({interlaced: true}),
+			imagemin.mozjpeg({quality: 80, progressive: true}),
+			imagemin.optipng({optimizationLevel: 5, interlaced: true}),
+			imagemin.svgo({
+				plugins: [{removeViewBox: false }, { cleanupIDs: false}],
+			}),
+		]))
+		.pipe(dest(`${basepath.dest}f/img`))
+}
 
 /* png convert to webp */
 const responsivePng = () => {
@@ -168,6 +180,7 @@ const responsivePng = () => {
 				]
 			},
 			{
+				quality: 80,
 				progressive: true,
 				withMetadata: false
 			}
@@ -192,10 +205,11 @@ exports.responsivePng = responsivePng;
 exports.fonts = fonts;
 exports.video = video;
 exports.vendorCss = vendorCss;
+exports.imgOptimization = imgOptimization;
 
 /* default actions */
-const img = series(images, responsivePng);
-const vendor = series(vendorCss, vendorJs)
+const img = series(imgOptimization, responsivePng);
+const vendor = series(vendorCss, vendorJs);
 
 const build = series(clean, parallel(img, video, fonts, pug2html, styles, vendor, userJs));
 
