@@ -1,6 +1,6 @@
 'use-strict'
 
-const {src, dest, watch, series}= require('gulp');
+const {src, dest, watch, series, parallel}= require('gulp');
 const	browserSync = require('browser-sync').create();
 const	pug = require('gulp-pug');
 const	plumber = require('gulp-plumber');
@@ -61,7 +61,7 @@ const styles = () => {
 		}))
 		.pipe(concat('main.css'))
     .pipe(autoprefixer())
-    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(cleanCSS({compatibility: 'ie11'}))
     .pipe(dest(path.build.css))
 		.pipe(browserSync.stream())
 }
@@ -197,7 +197,7 @@ exports.vendorCss = vendorCss;
 const img = series(images, responsivePng);
 const vendor = series(vendorCss, vendorJs)
 
-const build = series(clean, img, video, fonts, pug2html, styles, vendor, userJs);
+const build = series(clean, parallel(img, video, fonts, pug2html, styles, vendor, userJs));
 
 exports.build = build;
 exports.default = series(serv);
