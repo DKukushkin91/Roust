@@ -17,7 +17,9 @@
 
 	&__video-wrap
 		width: 100%
-		position relative
+		position fixed
+		top: 0
+		left: 0
 		height: 100%
 
 	&__video
@@ -78,8 +80,8 @@
 	&__img-wrap--center
 		max-width: 1087px
 		top unset
-		bottom 50%
-		transform: translateY(105%)
+		bottom get-vw(-160, $width-xl)
+		transform: translateY(-@bottom)
 		left unset
 
 	&__img-wrap--center picture,

@@ -61,7 +61,7 @@ const styles = () => {
 			compress: true
 		}))
 		.pipe(concat('main.css'))
-    .pipe(autoprefixer())
+    .pipe(autoprefixer({ overrideBrowserslist: ['last 8 versions'], grid: true }))
     .pipe(cleanCSS({compatibility: 'ie11'}))
     .pipe(dest(path.build.css))
 		.pipe(browserSync.stream())
