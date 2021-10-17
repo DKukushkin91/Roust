@@ -6,6 +6,10 @@ block path
 	-
 		var baseDir = '';
 
+block text
+	-
+		var topText = '';
+
 include ./_mixins
 
 doctype html
@@ -24,6 +28,9 @@ html(lang='ru')
 				.box__content
 					include ./_header
 
+					if (page != 'main-page')
+						include ./_top
+
 					main.main
 						block page
 
@@ -35,5 +42,7 @@ html(lang='ru')
 					main.main
 						block page
 
-		script(src=`${baseDir}/scripts/vendor.js` type="text/javascript")
-		script(src=`${baseDir}/scripts/main.js` type="text/javascript")
+	include ./_templates
+
+	script(src=`${baseDir}/scripts/vendor.js` type="text/javascript")
+	script(src=`${baseDir}/scripts/main.js` type="text/javascript")
