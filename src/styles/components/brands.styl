@@ -1,0 +1,127 @@
+.brands
+	position relative
+	background-color: $white
+	width: 100%
+	padding: 48px 0 25px 0
+
+	&__btns-wrap
+		padding-bottom 47px
+
+	&__btn
+		border: 0
+		background: 0
+		border-radius: 0
+		cursor pointer
+		color: $black
+		border-bottom: 2px solid transparent
+
+		&:not(:last-child)
+			margin-right: 44px
+
+	&__btn--active
+		color: $orange
+		border-color: $orange
+
+	&__btn-text
+		fz-21()
+		font-family $Inter
+		font-weight 500
+		color: inherit
+		line-height 29px
+		padding: 4px 2px
+
+	&__wrap
+		width: 100%
+
+	&__list
+		padding: 0
+		margin 0
+		display grid
+		grid-template-columns: repeat(3, 33.033%)
+		grid-template-rows: repeat(3, minmax(310px, auto))
+		column-gap: 5px
+		row-gap: 5px
+		padding-bottom 48px
+
+	&__item
+		width: 100%
+		height: 100%
+		display flex
+		flex-direction: row
+		flex-wrap: wrap
+		padding 30px 40px
+		background-repeat: no-repeat
+		background-size: cover
+		justify-content space-between
+		position relative
+		overflow hidden
+
+		&:first-child
+			grid-column: 1
+			grid-row: 1 / 3
+
+		&:nth-child(4)
+			grid-column: 2 / 4
+			grid-row: 2
+
+		&:not(:first-child) .brands__item-content
+			width: 70%
+
+		&:not(:first-child) .brands__item-content
+			display: flex
+			flex-direction: column
+			height: 100%
+
+		&:not(:first-child) .brands__item-text
+			flex: 1
+
+		&:first-child .brands__item-text,
+		&:nth-child(4) .brands__item-text
+			padding-bottom: 30px
+
+	&__item-content
+		width: 100%
+		position relative
+		z-index 1
+
+	&__item-title
+		fz-24()
+		line-height 32px
+		padding-bottom 15px
+		color $white
+		font-family: $Inter
+		font-weight bold
+
+	&__item-text
+		fz-14()
+		line-height 24px
+		color: $white
+		padding-bottom 15px
+		font-family $Inter
+		font-weight 500
+
+	&__link
+		fz-14()
+		color: $white
+		text-decoration: none
+		border: 1px solid $white
+		padding: 14px 50px
+		display: block
+		max-width: 138px
+
+	&__img
+		position: absolute
+		width: 100%
+		height: 100%
+		top: 0
+		left 0
+		z-index 0
+
+	&__img img
+		height 100%
+		object-fit: cover
+
+	&__sub-text
+		fz-13()
+		line-height 20px
+		color: #596876

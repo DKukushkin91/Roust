@@ -1,6 +1,4 @@
-/*   --------------------------------------------------------------*/
-/*  Функция для прокрутки с контролем скорости
-/*  --------------------------------------------------------------*/
+// Функция прокрутки с контролем скорости
 export const scrollTo = (to, duration = 700) => {
 	const
 			element = document.scrollingElement || document.documentElement,
@@ -29,4 +27,14 @@ export const scrollTo = (to, duration = 700) => {
 					}
 			};
 	animateScroll();
+}
+
+//создание елемента из template
+export const createElement = (element, fragment) => element.appendChild(fragment);
+
+//удаление всех дочерних элементов
+export const removeChilds = (parent) => {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
 }

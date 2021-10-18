@@ -1,9 +1,6 @@
 "use strict";
 
-/*   --------------------------------------------------------------*/
-
-/*  Функция для прокрутки с контролем скорости
-/*  --------------------------------------------------------------*/
+// Функция прокрутки с контролем скорости
 var scrollTo = function scrollTo(to) {
   var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 700;
 
@@ -34,6 +31,18 @@ var scrollTo = function scrollTo(to) {
   };
 
   animateScroll();
+}; //создание елемента из template
+
+
+var createElement = function createElement(element, fragment) {
+  return element.appendChild(fragment);
+}; //удаление всех дочерних элементов
+
+
+var removeChilds = function removeChilds(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
 };
 
 var getTop = function getTop() {
@@ -84,8 +93,52 @@ var getNewsSlider = function getNewsSlider() {
   }
 };
 
+var getBrandsList = function getBrandsList() {
+  var btnsWrapper = document.querySelector('.js-btns-wrap');
+  var listWrapper = document.querySelector('.js-list-wrap');
+  var buttons = btnsWrapper.querySelectorAll('.js-brands-btn');
+
+  if (btnsWrapper) {
+    var list = document.querySelector('.js-brands-template').content.querySelectorAll('.js-brands-list');
+
+    var getItems = function getItems(template) {
+      return template.cloneNode(true);
+    };
+
+    var createItemsList = function createItemsList(template, i) {
+      var fragment = document.createDocumentFragment();
+      template.forEach(function (e, index) {
+        if (i === index) {
+          var element = getItems(e);
+          fragment.appendChild(element);
+        }
+      });
+      createElement(listWrapper, fragment);
+    };
+
+    buttons.forEach(function (e, index) {
+      e.addEventListener('click', function (evt) {
+        evt.preventDefault();
+        buttons.forEach(function (e) {
+          return e.classList.remove('brands__btn--active');
+        });
+        e.classList.add('brands__btn--active');
+        removeChilds(listWrapper);
+        createItemsList(list, index);
+      });
+    });
+    buttons.forEach(function (e, index) {
+      if (index === 0) {
+        e.classList.add('brands__btn--active');
+      }
+    });
+    createItemsList(list, 0);
+  }
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   getTop();
   getMainSlider();
   getNewsSlider();
+  getBrandsList();
 });
