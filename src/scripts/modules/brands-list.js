@@ -1,11 +1,10 @@
 import {createElement, removeChilds} from '../utils/utils.js';
 
 export const getBrandsList = () => {
-	const btnsWrapper = document.querySelector('.js-btns-wrap');
-	const listWrapper = document.querySelector('.js-list-wrap');
-	const buttons = btnsWrapper.querySelectorAll('.js-brands-btn')
-
-	if(btnsWrapper) {
+	if(document.querySelector('.js-btns-wrap')) {
+		const btnsWrapper = document.querySelector('.js-btns-wrap');
+		const listWrapper = document.querySelector('.js-list-wrap');
+		const buttons = btnsWrapper.querySelectorAll('.js-brands-btn')
 		const list = document.querySelector('.js-brands-template')
 			.content
 			.querySelectorAll('.js-brands-list');

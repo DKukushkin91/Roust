@@ -94,11 +94,10 @@ var getNewsSlider = function getNewsSlider() {
 };
 
 var getBrandsList = function getBrandsList() {
-  var btnsWrapper = document.querySelector('.js-btns-wrap');
-  var listWrapper = document.querySelector('.js-list-wrap');
-  var buttons = btnsWrapper.querySelectorAll('.js-brands-btn');
-
-  if (btnsWrapper) {
+  if (document.querySelector('.js-btns-wrap')) {
+    var btnsWrapper = document.querySelector('.js-btns-wrap');
+    var listWrapper = document.querySelector('.js-list-wrap');
+    var buttons = btnsWrapper.querySelectorAll('.js-brands-btn');
     var list = document.querySelector('.js-brands-template').content.querySelectorAll('.js-brands-list');
 
     var getItems = function getItems(template) {
