@@ -1,4 +1,20 @@
-section.top(class=`top--${page}`)
+section.top
 	.container
-		h1.top__title=page
-		p.top__text=topText
+		h1.top__title(class=`top__title--${page}`)=page
+		p.top__text(class=`top__text--${page}`)=topText
+		if (page == 'partnership')
+			h2.top__sub-title How to become a business partner
+			ul.top__list
+				li.top__item
+					svg(width="57" height="64").top__icon
+							use(href="/f/img/sprite.svg#form")
+					button.top__btn
+						span.top__btn-text Complete the form
+				li.top__item
+					svg(width="63" height="64").top__icon
+							use(href="/f/img/sprite.svg#chat")
+					p.top__item-text We will contact you to discuss all the details
+				li.top__item
+					svg(width="67" height="64").top__icon
+							use(href="/f/img/sprite.svg#pay")
+					p.top__item-text Let’s start earning together

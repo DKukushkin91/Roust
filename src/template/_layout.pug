@@ -26,10 +26,11 @@ html(lang='ru')
 		if (page != 'index')
 			.box
 				.box__content
-					include ./_header
+					.box__top(class=`box__top--${page}`)
+						include ./_header
 
-					if (page != 'main-page')
-						include ./_top
+						if (page != 'main-page')
+							include ./_top
 
 					main.main
 						block page

@@ -1,0 +1,36 @@
+extends ../../template/_layout
+
+block pageVar
+	-
+		page = 'partnership';
+
+block path
+	-
+		baseDir = '/f';
+
+block text
+	-
+		var topText = 'We have an extensive portfolio of leading brands from different categories and offer advantageous conditions for cooperation.';
+
+block page
+	section.partnership
+		.container.partnership__container
+			.partnership__wrap
+				h2.partnership__title Contact manager
+				h3.partnership__sub-title For distributors and outlets all over the world
+				p.partnership__text We are represented worlwide. The list of regional contacts:
+				ul.partnership__list
+					li.partnership__item
+						h4.partnership__item-title Russia
+						ul.partnership__s-list
+							li.partnership__s-item
+								span.partnership__s-text John Smith
+								a.partnership__link(href="mailto:hello@roust.com" target="_blank") hello@roust.com
+								a.partnership__phone(href="tel:78124493111") +7 (812) 449-3111
+						each val in ['Europe', 'USA', 'Africa']
+							li.partnership__item
+								h4.partnership__item-title=val
+								ul.partnership__s-list
+									li.partnership__s-item
+										span.partnership__s-text John Smith
+										a.partnership__link(href="mailto:hello@roust.com" target="_blank") hello@roust.com
