@@ -1,0 +1,108 @@
+.partnership
+	width: 100%
+	background: url('/f/img/bg-manager.jpg');
+	background-position: 0 0
+	background-size: cover
+	background-repeat: no-repeat
+	position relative
+	z-index: 1
+
+	&__container
+		padding-top 87px
+		padding-bottom 89px
+
+	&__wrap
+		width: 55%
+
+	&__title
+		fz-60()
+		line-height 72px
+		font-weight 900
+		text-transform uppercase
+		color: $d-grey
+		padding-bottom 70px
+		font-family $Inter
+
+	&__sub-title
+		fz-33()
+		line-height 39px
+		font-family $Inter
+		color: $d-grey
+		font-weight 900
+		max-width: 319px
+		padding-bottom 33px
+
+	&__text
+		fz-15()
+		line-height 24px
+		font-weight 500
+		font-family $Inter
+		padding-bottom 50px
+		color: $d-grey
+
+	&__list
+		width: 100%
+		list-style: none
+		padding 0
+		margin 0
+		display flex
+		flex-direction: row
+		flex-wrap: wrap
+		justify-content space-between
+		margin: -20px
+
+	&__item
+		text-align: left
+		flex: 0 0 40%
+		margin: 20px
+
+	&__item-title
+		fz-15()
+		color: $d-grey
+		font-family $Inter
+		font-weight 900
+		line-height 24px
+		padding-bottom 22px
+
+	&__s-list
+		list-style: none
+		margin 0
+		padding 0
+
+	&__s-item
+		display flex
+		flex-direction: column
+		align-items: flex-start
+
+	&__s-text
+		fz-21()
+		font-family $Inter
+		line-height 29px
+		color: $d-grey
+		font-weight 500
+		display: block
+		text-align: left
+
+	&__link
+		fz-15()
+		color: $orange
+		font-weight 500
+		font-family $Inter
+		text-decoration: none
+		text-align: left
+		display: block
+
+	&__phone
+		fz-15()
+		color: $d-grey
+		font-weight 500
+		font-family $Inter
+		text-decoration: none
+		text-align: left
+		display: block
+
+	&__s-text,
+	&__link,
+	&__phone
+		&:not(:last-child)
+			padding-bottom 6px

@@ -11,3 +11,12 @@ yarn-error.log
 *.ntvs*
 *.njsproj
 *.sln
+
+htdocs/.htaccess
+htdocs/bitrix*
+htdocs/upload/*
+htdocs/robots.txt
+htdocs/web.config
+
+sitemap.xml
+sitemap.xml.gz

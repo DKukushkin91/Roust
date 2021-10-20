@@ -1,0 +1,50 @@
+extends ../../template/_layout
+
+block pageVar
+	-
+		page = 'partnership';
+
+block path
+	-
+		baseDir = '/f';
+
+block text
+	-
+		var topText = 'We have an extensive portfolio of leading brands from different categories and offer advantageous conditions for cooperation.';
+
+block page
+	section.partnership
+		.container.partnership__container
+			.partnership__wrap
+				h2.partnership__title Contact manager
+				h3.partnership__sub-title For distributors and outlets all over the world
+				p.partnership__text We are represented worlwide. The list of regional contacts:
+				ul.partnership__list
+					li.partnership__item
+						h4.partnership__item-title Russia
+						ul.partnership__s-list
+							li.partnership__s-item
+								span.partnership__s-text John Smith
+								a.partnership__link(href="mailto:hello@roust.com" target="_blank") hello@roust.com
+								a.partnership__phone(href="tel:78124493111") +7 (812) 449-3111
+						each val in ['Europe', 'USA', 'Africa']
+							li.partnership__item
+								h4.partnership__item-title=val
+								ul.partnership__s-list
+									li.partnership__s-item
+										span.partnership__s-text John Smith
+										a.partnership__link(href="mailto:hello@roust.com" target="_blank") hello@roust.com
+	section.price
+		.container.price__container
+			.price__wrap
+				h2.price__title For international distributors and customers
+				.price__inner
+					p.price__text Roust Group's extensive portfolio of brands is sold in 86 countries, and we are constantly expanding. We provide distributors with comprehensive support in promoting our brands internationally.
+					button.price__btn
+						span.price__btn-text Request a price list
+	section.answer
+		.container.answer__container
+			.answer__wrap
+				p.answer__text If you still have questions, complete the form, we will contact you and discuss the details.
+				button.answer__btn
+					span.answer__btn-text Complete the form
