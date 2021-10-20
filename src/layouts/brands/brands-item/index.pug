@@ -1,0 +1,50 @@
+extends ../../../template/_layout
+
+block pageVar
+	-
+		page = 'brands-item';
+
+block path
+	-
+		baseDir = '/f';
+
+block title
+	-
+		title = 'Russian Standard Vodka'
+
+block text
+	-
+		topText = 'An incredible convergence of state-of-the-art technologies with a traditional recipe and finest ingredients allowed to create the benchmark for excellence in the homeland of vodka, ultra-clean and delicious.';
+
+block page
+	section.brands-item
+		.container.brands-item__container
+			.brands-item__wrap.js-anim-items
+				.brands-item__content
+					.brands-item__img
+						img(src="/f/img/bg-slide.jpg", alt="")
+					.brands-item__text-block
+						h2.brands-item__title Russian Standard <span class="brands-item__title--color">Original</span>
+						p.brands-item__text At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.
+	section.brands-item.brands-item--color
+		.container.brands-item__container--padding
+			.brands-item__inner
+				.brands-item__box
+					h3.brands-item__s-title Collection
+					span.brands-item__text 2 flavours
+				.brands-item__slide
+					ul.brands-item__list
+						li.brands-item__item
+							button.brands-item__btn
+								span.brands-item__text-box
+									p.brands-item__text Russian Standart
+									p.brands-item__text.brands-item__text--fz Original
+								span.brands-item__picture
+									+picture('rs-b', '', baseDir)
+						li.brands-item__item
+							button.brands-item__btn
+								span.brands-item__text-box
+									p.brands-item__text Russian Standart
+									p.brands-item__text.brands-item__text--fz Special Edition
+								span.brands-item__picture
+									+picture('se-b', '', baseDir)

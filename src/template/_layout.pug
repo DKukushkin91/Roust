@@ -6,6 +6,10 @@ block path
 	-
 		var baseDir = '';
 
+block title
+	-
+		var title = '';
+
 block text
 	-
 		var topText = '';
@@ -27,6 +31,8 @@ html(lang='ru')
 			.box
 				.box__content
 					.box__top(class=`box__top--${page}`)
+						if (page == 'brands-item')
+							img.box__img(src="/f/img/rs-bg.jpg" alt="")
 						include ./_header
 
 						if (page != 'main-page')

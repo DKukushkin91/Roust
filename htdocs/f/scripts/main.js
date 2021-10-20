@@ -43,6 +43,17 @@ var removeChilds = function removeChilds(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
+}; //вычесление позиции относительно верха страницы
+
+
+var getOffset = function getOffset(el) {
+  var rect = el.getBoundingClientRect();
+  var scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+  var scrollTop = window.scrollY || document.documentElement.scrollTop;
+  return {
+    top: rect.top + scrollTop,
+    left: rect.left + scrollLeft
+  };
 };
 
 var getTop = function getTop() {
@@ -135,9 +146,49 @@ var getBrandsList = function getBrandsList() {
   }
 };
 
+var getScrollItem = function getScrollItem() {
+  if (document.querySelector('.js-anim-items')) {
+    var animItems = document.querySelectorAll('.js-anim-items');
+    var header = document.querySelector('.js-animate-header');
+    var opacityItems = document.querySelectorAll('.js-opacity');
+
+    var onScrollAnim = function onScrollAnim() {
+      animItems.forEach(function (i) {
+        var animItem = i;
+        var animItemHeight = animItem.offsetHeight;
+        var animItemOffset = getOffset(animItem).top;
+        var main = document.querySelector('main');
+        var animStart = 4;
+        var animItemPoint = window.innerHeight - animItemHeight / animStart;
+
+        if (animItemHeight > window.innerHeight) {
+          animItemPoint = window.innerHeight - window.innerHeight / animStart;
+        }
+
+        if (scrollY > animItemOffset - animItemPoint || scrollY > 0) {
+          opacityItems.forEach(function (e) {
+            return e.classList.add('animate__opacity');
+          });
+          animItem.classList.add('brands-item__wrap--active');
+          header.classList.add('header__active');
+        } else {
+          opacityItems.forEach(function (e) {
+            return e.classList.remove('animate__opacity');
+          });
+          animItem.classList.remove('brands-item__wrap--active');
+          header.classList.remove('header__active');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', onScrollAnim);
+  }
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   getTop();
   getMainSlider();
   getNewsSlider();
   getBrandsList();
+  getScrollItem();
 });

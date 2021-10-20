@@ -1,20 +1,47 @@
-section.top
+section.top.js-opacity
 	.container
-		h1.top__title(class=`top__title--${page}`)=page
-		p.top__text(class=`top__text--${page}`)=topText
-		if (page == 'partnership')
-			h2.top__sub-title How to become a business partner
-			ul.top__list
-				li.top__item
-					svg(width="57" height="64").top__icon
-							use(href="/f/img/sprite.svg#form")
-					button.top__btn
-						span.top__btn-text Complete the form
-				li.top__item
-					svg(width="63" height="64").top__icon
-							use(href="/f/img/sprite.svg#chat")
-					p.top__item-text We will contact you to discuss all the details
-				li.top__item
-					svg(width="67" height="64").top__icon
-							use(href="/f/img/sprite.svg#pay")
-					p.top__item-text Let’s start earning together
+		.top__wrap(class=`top__wrap--${page}`)
+			if (page == 'brands-item')
+				nav.breadcrumbs
+					ul.breadcrumbs__list
+						li.breadcrumbs__item
+							a.breadcrumbs__link(href="#") Home page
+						li.breadcrumbs__item
+							a.breadcrumbs__link(href="#") Brands
+						li.breadcrumbs__item
+							a.breadcrumbs__link(href="#") Russian vodka
+						li.breadcrumbs__item
+							a.breadcrumbs__link(href="#") Russian Standard Vodka
+			.top__content(class=`top__content--${page}`)
+				h1.top__title(class=`top__title--${page}`)=title
+				p.top__text(class=`top__text--${page}`)=topText
+				if (page == 'partnership')
+					h2.top__sub-title How to become a business partner
+					ul.top__list
+						li.top__item
+							svg(width="57" height="64").top__icon
+									use(href="/f/img/sprite.svg#form")
+							button.top__btn
+								span.top__btn-text Complete the form
+						li.top__item
+							svg(width="63" height="64").top__icon
+									use(href="/f/img/sprite.svg#chat")
+							p.top__item-text We will contact you to discuss all the details
+						li.top__item
+							svg(width="67" height="64").top__icon
+									use(href="/f/img/sprite.svg#pay")
+							p.top__item-text Let’s start earning together
+				if (page == 'brands-item')
+					a.top__link(href="") Visit brand site
+			if (page == 'brands-item')
+				ul.top__list-awards
+					li.top__item-awards
+						p.top__text-awards World's
+						p.top__text-awards.top__text-awards--fz №1
+						p.top__text-awards.top__text-awards--fw Russian premium<br>vodka&nbsp;<sup>1
+					li.top__item-awards
+						p.top__text-awards Russia's&nbsp;<sup>2
+						p.top__text-awards.top__text-awards--fz №1
+						p.top__text-awards.top__text-awards--fw Premium<br>vodka&nbsp;<sup>2
+				.top__picture
+					+picture('rs-bottle', '', baseDir)

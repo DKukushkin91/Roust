@@ -80,6 +80,32 @@ input::placeholder
 		flex 1 0 auto
 		background-color: none
 
+	//bg-pages
+	&__top
+		width: 100%
+		position: relative
+
+		&--brands
+			background-image: url('/f/img/bg-brands.jpg')
+			background-repeat: no-repeat
+			background-size: cover
+
+		&--partnership
+			background-image url('/f/img/bg-partnership.jpg')
+			background-repeat: no-repeat
+			background-size: cover
+
+	&__img
+		position: fixed
+		top: 0
+		left: 0
+		width: 100%
+
+		& img,
+		& picture
+			object-fit: contain
+			height: 100%
+
 .footer
 	flex 0 0 auto
 
@@ -88,3 +114,7 @@ input::placeholder
 	max-width 1150px
 	padding 0 25px
 	margin 0 auto
+
+// for animation
+.animate__opacity
+	opacity: 0
