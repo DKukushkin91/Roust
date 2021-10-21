@@ -9,8 +9,9 @@
   </head>
   <body lang="ru-RU">
     <div class="box">
-      <div class="box__content">
-        <div class="box__top box__top--brands-item"><img class="box__img" src="/f/img/rs-bg.jpg" alt="">
+      <div class="box__content box__content--brands-item">
+        <div class="box__img"><img src="/f/img/rs-bg.jpg" alt=""></div>
+        <div class="box__top box__top--brands-item">
           <header class="header js-animate-header">
             <div class="container">
               <div class="header__wrap">
@@ -39,10 +40,10 @@
               </nav>
             </div>
           </header>
-          <section class="top js-opacity">
+          <section class="top">
             <div class="container">
               <div class="top__wrap top__wrap--brands-item">
-                <nav class="breadcrumbs">
+                <nav class="breadcrumbs js-opacity">
                   <ul class="breadcrumbs__list">
                     <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Home page</a></li>
                     <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Brands</a></li>
@@ -50,11 +51,11 @@
                     <li class="breadcrumbs__item"><a class="breadcrumbs__link" href="#">Russian Standard Vodka</a></li>
                   </ul>
                 </nav>
-                <div class="top__content top__content--brands-item">
+                <div class="top__content top__content--brands-item js-opacity">
                   <h1 class="top__title top__title--brands-item">Russian Standard Vodka</h1>
-                  <p class="top__text top__text--brands-item">An incredible convergence of state-of-the-art technologies with a traditional recipe and finest ingredients allowed to create the benchmark for excellence in the homeland of vodka, ultra-clean and delicious.</p><a class="top__link" href="">Visit brand site</a>
+                  <p class="top__text top__text--brands-item">An incredible convergence of state-of-the-art technologies with a traditional recipe and finest ingredients allowed to create the benchmark for excellence in the homeland of vodka, ultra-clean and delicious.</p><a class="top__link" href=""><span class="top__link-text">Visit brand site</span></a>
                 </div>
-                <ul class="top__list-awards">
+                <ul class="top__list-awards js-opacity">
                   <li class="top__item-awards">
                     <p class="top__text-awards">World's</p>
                     <p class="top__text-awards top__text-awards--fz">№1</p>
@@ -66,27 +67,57 @@
                     <p class="top__text-awards top__text-awards--fw">Premium<br>vodka&nbsp;<sup>2</p>
                   </li>
                 </ul>
-                <div class="top__picture">
-                  <picture>
-                    <source srcset="/f/img/responsive/m-rs-bottle@1x.webp 1x, /f/img/responsive/m-rs-bottle@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
-                    <source srcset="/f/img/responsive/m-rs-bottle@1x.png 1x, /f/img/responsive/rs-bottle@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
-                    <source srcset="/f/img/responsive/rs-bottle@1x.webp 1x, /f/img/responsive/rs-bottle@2x.webp 2x" type="image/webp"/>
-                    <source srcset="/f/img/responsive/rs-bottle@1x.png 1x, /f/img/responsive/rs-bottle@2x.png 2x" type="image/png"/><img src="/f/img/responsive/rs-bottle@1x.png" alt=""/>
-                  </picture>
+                <div class="top__img-slider swiper js-top-slider js-anim-size">
+                  <div class="top__img-wrapper swiper-wrapper">
+                    <div class="top__picture swiper-slide">
+                      <picture>
+                        <source srcset="/f/img/responsive/m-rs-bottle@1x.webp 1x, /f/img/responsive/m-rs-bottle@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                        <source srcset="/f/img/responsive/m-rs-bottle@1x.png 1x, /f/img/responsive/rs-bottle@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                        <source srcset="/f/img/responsive/rs-bottle@1x.webp 1x, /f/img/responsive/rs-bottle@2x.webp 2x" type="image/webp"/>
+                        <source srcset="/f/img/responsive/rs-bottle@1x.png 1x, /f/img/responsive/rs-bottle@2x.png 2x" type="image/png"/><img src="/f/img/responsive/rs-bottle@1x.png" alt=""/>
+                      </picture>
+                    </div>
+                    <div class="top__picture swiper-slide">
+                      <picture>
+                        <source srcset="/f/img/responsive/m-rs-test@1x.webp 1x, /f/img/responsive/m-rs-test@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                        <source srcset="/f/img/responsive/m-rs-test@1x.png 1x, /f/img/responsive/rs-test@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                        <source srcset="/f/img/responsive/rs-test@1x.webp 1x, /f/img/responsive/rs-test@2x.webp 2x" type="image/webp"/>
+                        <source srcset="/f/img/responsive/rs-test@1x.png 1x, /f/img/responsive/rs-test@2x.png 2x" type="image/png"/><img src="/f/img/responsive/rs-test@1x.png" alt=""/>
+                      </picture>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            <button class="top__scroll-btn js-scroll-btn">
+              <svg class="top__scroll-icon" width="144" height="50">
+                <use href="/f/img/sprite.svg#flag"></use>
+              </svg>
+            </button>
           </section>
         </div>
-        <main class="main">
+        <main class="main main--brands-item">
           <section class="brands-item">
             <div class="container brands-item__container">
               <div class="brands-item__wrap js-anim-items">
                 <div class="brands-item__content">
-                  <div class="brands-item__img"><img src="/f/img/bg-slide.jpg" alt=""></div>
-                  <div class="brands-item__text-block">
-                    <h2 class="brands-item__title">Russian Standard <span class="brands-item__title--color">Original</span></h2>
-                    <p class="brands-item__text">At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.</p>
+                  <div class="brands-item__img-slider swiper js-img-slider">
+                    <div class="brands-item__img-wrapper swiper-wrapper">
+                      <div class="brands-item__img swiper-slide"><img src="/f/img/bg-slide.jpg" alt=""></div>
+                      <div class="brands-item__img swiper-slide"><img src="/f/img/bg-brands.jpg" alt=""></div>
+                    </div>
+                  </div>
+                  <div class="brands-item__text-slider swiper js-text-slider">
+                    <div class="brands-item__text-wrapper swiper-wrapper">
+                      <div class="brands-item__text-block js-anim-text swiper-slide">
+                        <h2 class="brands-item__title">Russian Standard <span class="brands-item__title--color">Original</span></h2>
+                        <p class="brands-item__text">At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.</p>
+                      </div>
+                      <div class="brands-item__text-block js-anim-text swiper-slide">
+                        <h2 class="brands-item__title">Russian Standard <span class="brands-item__title--color">Special Edition</span></h2>
+                        <p class="brands-item__text">At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -98,9 +129,9 @@
                 <div class="brands-item__box">
                   <h3 class="brands-item__s-title">Collection</h3><span class="brands-item__text">2 flavours</span>
                 </div>
-                <div class="brands-item__slide">
-                  <ul class="brands-item__list">
-                    <li class="brands-item__item">
+                <div class="brands-item__slide swiper js-thumbs-slider">
+                  <ul class="brands-item__list swiper-wrapper">
+                    <li class="brands-item__item swiper-slide">
                       <button class="brands-item__btn"><span class="brands-item__text-box">
                           <p class="brands-item__text">Russian Standart</p>
                           <p class="brands-item__text brands-item__text--fz">Original</p></span><span class="brands-item__picture">
@@ -111,7 +142,7 @@
                             <source srcset="/f/img/responsive/rs-b@1x.png 1x, /f/img/responsive/rs-b@2x.png 2x" type="image/png"/><img src="/f/img/responsive/rs-b@1x.png" alt=""/>
                           </picture></span></button>
                     </li>
-                    <li class="brands-item__item">
+                    <li class="brands-item__item swiper-slide">
                       <button class="brands-item__btn"><span class="brands-item__text-box">
                           <p class="brands-item__text">Russian Standart</p>
                           <p class="brands-item__text brands-item__text--fz">Special Edition</p></span><span class="brands-item__picture">

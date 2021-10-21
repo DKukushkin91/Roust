@@ -21,27 +21,36 @@ block page
 		.container.brands-item__container
 			.brands-item__wrap.js-anim-items
 				.brands-item__content
-					.brands-item__img
-						img(src="/f/img/bg-slide.jpg", alt="")
-					.brands-item__text-block
-						h2.brands-item__title Russian Standard <span class="brands-item__title--color">Original</span>
-						p.brands-item__text At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.
+					.brands-item__img-slider.swiper.js-img-slider
+						.brands-item__img-wrapper.swiper-wrapper
+							.brands-item__img.swiper-slide
+								img(src="/f/img/bg-slide.jpg", alt="")
+							.brands-item__img.swiper-slide
+								img(src="/f/img/bg-brands.jpg", alt="")
+					.brands-item__text-slider.swiper.js-text-slider
+						.brands-item__text-wrapper.swiper-wrapper
+							.brands-item__text-block.js-anim-text.swiper-slide
+								h2.brands-item__title Russian Standard <span class="brands-item__title--color">Original</span>
+								p.brands-item__text At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.
+							.brands-item__text-block.js-anim-text.swiper-slide
+								h2.brands-item__title Russian Standard <span class="brands-item__title--color">Special Edition</span>
+								p.brands-item__text At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.
 	section.brands-item.brands-item--color
 		.container.brands-item__container--padding
 			.brands-item__inner
 				.brands-item__box
 					h3.brands-item__s-title Collection
 					span.brands-item__text 2 flavours
-				.brands-item__slide
-					ul.brands-item__list
-						li.brands-item__item
+				.brands-item__slide.swiper.js-thumbs-slider
+					ul.brands-item__list.swiper-wrapper
+						li.brands-item__item.swiper-slide
 							button.brands-item__btn
 								span.brands-item__text-box
 									p.brands-item__text Russian Standart
 									p.brands-item__text.brands-item__text--fz Original
 								span.brands-item__picture
 									+picture('rs-b', '', baseDir)
-						li.brands-item__item
+						li.brands-item__item.swiper-slide
 							button.brands-item__btn
 								span.brands-item__text-box
 									p.brands-item__text Russian Standart

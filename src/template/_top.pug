@@ -1,8 +1,9 @@
-section.top.js-opacity
+section.top
 	.container
 		.top__wrap(class=`top__wrap--${page}`)
+
 			if (page == 'brands-item')
-				nav.breadcrumbs
+				nav.breadcrumbs.js-opacity
 					ul.breadcrumbs__list
 						li.breadcrumbs__item
 							a.breadcrumbs__link(href="#") Home page
@@ -12,9 +13,11 @@ section.top.js-opacity
 							a.breadcrumbs__link(href="#") Russian vodka
 						li.breadcrumbs__item
 							a.breadcrumbs__link(href="#") Russian Standard Vodka
-			.top__content(class=`top__content--${page}`)
+
+			.top__content(class=`top__content--${page}`).js-opacity
 				h1.top__title(class=`top__title--${page}`)=title
 				p.top__text(class=`top__text--${page}`)=topText
+
 				if (page == 'partnership')
 					h2.top__sub-title How to become a business partner
 					ul.top__list
@@ -31,10 +34,13 @@ section.top.js-opacity
 							svg(width="67" height="64").top__icon
 									use(href="/f/img/sprite.svg#pay")
 							p.top__item-text Let’s start earning together
+
 				if (page == 'brands-item')
-					a.top__link(href="") Visit brand site
+					a.top__link(href="")
+						span.top__link-text Visit brand site
+
 			if (page == 'brands-item')
-				ul.top__list-awards
+				ul.top__list-awards.js-opacity
 					li.top__item-awards
 						p.top__text-awards World's
 						p.top__text-awards.top__text-awards--fz №1
@@ -43,5 +49,14 @@ section.top.js-opacity
 						p.top__text-awards Russia's&nbsp;<sup>2
 						p.top__text-awards.top__text-awards--fz №1
 						p.top__text-awards.top__text-awards--fw Premium<br>vodka&nbsp;<sup>2
-				.top__picture
-					+picture('rs-bottle', '', baseDir)
+				.top__img-slider.swiper.js-top-slider.js-anim-size
+					.top__img-wrapper.swiper-wrapper
+						.top__picture.swiper-slide
+							+picture('rs-bottle', '', baseDir)
+						.top__picture.swiper-slide
+							+picture('rs-test', '', baseDir)
+
+	if (page == 'brands-item')
+		button.top__scroll-btn.js-scroll-btn
+			svg(width="144" height="50").top__scroll-icon
+				use(href="/f/img/sprite.svg#flag")
