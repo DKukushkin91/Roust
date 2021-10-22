@@ -121,7 +121,7 @@
 			line-height 29px
 
 	&__slide
-		flex: 1
+		// flex: 1
 
 	&__list
 		list-style: none
@@ -131,7 +131,7 @@
 		margin 0
 
 	&__item
-		flex: 1
+		// flex: 1
 		max-width: 360px
 		border-left: 1px solid #e6e8ea
 
@@ -157,3 +157,16 @@
 		position: absolute
 		right: 0
 		bottom: 0
+
+	&__scroll-wrap
+		width: 100%
+		position relative
+
+	&__scroll
+		position: absolute
+		bottom: 0
+		left: 0
+		background: $orange
+		height: 5px
+		z-index 1
+		transition: all 0.3s ease 0s

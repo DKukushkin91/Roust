@@ -41,19 +41,23 @@ block page
 				.brands-item__box
 					h3.brands-item__s-title Collection
 					span.brands-item__text 2 flavours
-				.brands-item__slide.swiper.js-thumbs-slider
-					ul.brands-item__list.swiper-wrapper
-						li.brands-item__item.swiper-slide
-							button.brands-item__btn
-								span.brands-item__text-box
-									p.brands-item__text Russian Standart
-									p.brands-item__text.brands-item__text--fz Original
-								span.brands-item__picture
-									+picture('rs-b', '', baseDir)
-						li.brands-item__item.swiper-slide
-							button.brands-item__btn
-								span.brands-item__text-box
-									p.brands-item__text Russian Standart
-									p.brands-item__text.brands-item__text--fz Special Edition
-								span.brands-item__picture
-									+picture('se-b', '', baseDir)
+				.brands-item__scroll-wrap
+					.brands-item__slide.swiper.js-thumbs-slider
+						ul.brands-item__list.swiper-wrapper
+							li.brands-item__item.swiper-slide.js-scroll-item
+								button.brands-item__btn
+									span.brands-item__text-box
+										p.brands-item__text Russian Standart
+										p.brands-item__text.brands-item__text--fz Original
+									span.brands-item__picture
+										+picture('rs-b', '', baseDir)
+							li.brands-item__item.swiper-slide.js-scroll-item
+								button.brands-item__btn
+									span.brands-item__text-box
+										p.brands-item__text Russian Standart
+										p.brands-item__text.brands-item__text--fz Special Edition
+									span.brands-item__picture
+										+picture('se-b', '', baseDir)
+					.brands-item__scroll.js-scroll
+
+	include ../../../template/_news

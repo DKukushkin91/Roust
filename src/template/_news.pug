@@ -1,0 +1,46 @@
+block news
+	section.news
+		.container(class=`container--${page}`)
+			.news__list-wrap.js-news-slider
+				ul.news__list-slide.swiper-wrapper
+					li.news__item-slide.swiper-slide
+						a.news__item-link(href="#")
+						.news__item-img
+							img(src=`${baseDir}/img/bg-vodka.jpg`, alt="")
+						.news__item-content
+							p.news__item-date 04 june 2020
+							p.news__item-text 8 Roust Vodkas Amongst the Best-Selling Spirits Brands
+					li.news__item-slide.swiper-slide
+						a.news__item-link(href="#")
+						.news__item-img
+							img(src=`${baseDir}/img/bg-rt.jpg`, alt="")
+						.news__item-content
+							p.news__item-date 13 june 2020
+							p.news__item-text Russian Standard Vodka Malachite in Travel Retail
+					li.news__item-slide.swiper-slide
+						a.news__item-link(href="#")
+						.news__item-img
+							img(src=`${baseDir}/img/bg-rt2.jpg`, alt="")
+						.news__item-content
+							p.news__item-date 11 may 2020
+							p.news__item-text Global Relaunch of the World’s #1 Premium Russian Vodka
+					li.news__item-slide.swiper-slide
+						a.news__item-link(href="#")
+						.news__item-img
+							img(src=`${baseDir}/img/bg-rt2.jpg`, alt="")
+						.news__item-content
+							p.news__item-date 11 may 2020
+							p.news__item-text Global Relaunch of the World’s #1 Premium Russian Vodka
+					li.news__item-slide.swiper-slide
+						a.news__item-link(href="#")
+						.news__item-img
+							img(src=`${baseDir}/img/bg-rt2.jpg`, alt="")
+						.news__item-content
+							p.news__item-date 11 may 2020
+							p.news__item-text Global Relaunch of the World’s #1 Premium Russian Vodka
+				button.news__nav-btn.news__nav-btn--position-r.news__nav-btn--next.js-news-slider-next
+					svg(width="51" height="12").news__nav-icon.news__nav-icon--color
+						use(href="/f/img/sprite.svg#arrow-nav")
+				button.news__nav-btn.news__nav-btn--position-l.js-news-slider-prev
+					svg(width="51" height="12").news__nav-icon.news__nav-icon--color
+						use(href="/f/img/sprite.svg#arrow-nav")

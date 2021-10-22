@@ -37,3 +37,20 @@ export const getSliders = () => {
 		});
 	}
 }
+
+export const getScrollElement = () => {
+	if(document.querySelector('.js-scroll')) {
+		const scrollItems = document.querySelectorAll('.js-scroll-item');
+		const scroll = document.querySelector('.js-scroll');
+		const targetRectX = (evt) => evt.currentTarget.getBoundingClientRect().x;
+		const parrentRectLeft = (evt) => evt.currentTarget.parentNode.getBoundingClientRect().left;
+
+		scroll.style.width = `${scrollItems[0].offsetWidth}px`
+
+		scrollItems.forEach(item => {
+			item.addEventListener('click', (evt) => {
+				scroll.style.left = `${targetRectX(evt) - parrentRectLeft(evt)}px`;
+			})
+		})
+	}
+}

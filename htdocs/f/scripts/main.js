@@ -246,6 +246,28 @@ var getSliders = function getSliders() {
   }
 };
 
+var getScrollElement = function getScrollElement() {
+  if (document.querySelector('.js-scroll')) {
+    var scrollItems = document.querySelectorAll('.js-scroll-item');
+    var scroll = document.querySelector('.js-scroll');
+
+    var targetRectX = function targetRectX(evt) {
+      return evt.currentTarget.getBoundingClientRect().x;
+    };
+
+    var parrentRectLeft = function parrentRectLeft(evt) {
+      return evt.currentTarget.parentNode.getBoundingClientRect().left;
+    };
+
+    scroll.style.width = "".concat(scrollItems[0].offsetWidth, "px");
+    scrollItems.forEach(function (item) {
+      item.addEventListener('click', function (evt) {
+        scroll.style.left = "".concat(targetRectX(evt) - parrentRectLeft(evt), "px");
+      });
+    });
+  }
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   getTop();
   getMainSlider();
@@ -253,4 +275,5 @@ document.addEventListener('DOMContentLoaded', function () {
   getBrandsList();
   getScrollItem();
   getSliders();
+  getScrollElement();
 });

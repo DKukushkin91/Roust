@@ -3,7 +3,7 @@ import {getMainSlider} from './modules/main-slider';
 import {getNewsSlider} from './modules/news-slider';
 import {getBrandsList} from './modules/brands-list';
 import {getScrollItem} from './modules/brands-item';
-import {getSliders} from './modules/brands-item-slider';
+import {getSliders, getScrollElement} from './modules/brands-item-slider';
 
 document.addEventListener('DOMContentLoaded', () => {
 	getTop();
@@ -12,4 +12,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	getBrandsList();
 	getScrollItem();
 	getSliders();
+	getScrollElement();
 });
