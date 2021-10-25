@@ -3,6 +3,11 @@
 	padding: 60px 0;
 	position relative
 	z-index 1
+	transition: all 0.8s ease 0s;
+	transform: translate(0px, 0px)
+
+	&__active
+		transform: translate(0px, -120%);
 
 	&__wrap
 		display: flex

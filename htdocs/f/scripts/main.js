@@ -43,6 +43,17 @@ var removeChilds = function removeChilds(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
+}; //вычесление позиции относительно верха страницы
+
+
+var getOffset = function getOffset(el) {
+  var rect = el.getBoundingClientRect();
+  var scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+  var scrollTop = window.scrollY || document.documentElement.scrollTop;
+  return {
+    top: rect.top + scrollTop,
+    left: rect.left + scrollLeft
+  };
 };
 
 var getTop = function getTop() {
@@ -159,12 +170,137 @@ var getCatalogList = function getCatalogList() {
   }
 };
 
+var getScrollItem = function getScrollItem() {
+  if (document.querySelector('.js-anim-items')) {
+    var animItems = document.querySelectorAll('.js-anim-items');
+    var header = document.querySelector('.js-animate-header');
+    var opacityItems = document.querySelectorAll('.js-opacity');
+    var imgSize = document.querySelector('.js-anim-size');
+    var scrollBtn = document.querySelector('.js-scroll-btn');
+    var main = document.querySelector('.main');
+    var animText = document.querySelectorAll('.js-anim-text');
+
+    var onScrollAnim = function onScrollAnim() {
+      animItems.forEach(function (i) {
+        var animItem = i;
+        var animItemHeight = animItem.offsetHeight;
+        var animItemOffset = getOffset(animItem).top;
+        var animStart = 4;
+        var animItemPoint = window.innerHeight - animItemHeight / animStart;
+
+        if (animItemHeight > window.innerHeight) {
+          animItemPoint = window.innerHeight - window.innerHeight / animStart;
+        }
+
+        if (scrollY > animItemOffset - animItemPoint || scrollY < animItemOffset + animItemHeight) {
+          opacityItems.forEach(function (e) {
+            return e.classList.add('animate__opacity');
+          });
+          animItem.classList.add('brands-item__wrap--active');
+          header.classList.add('header__active');
+          imgSize.classList.add('top__picture--animate');
+          scrollBtn.classList.add('top__scroll-btn--animate');
+          main.classList.add('main--animate');
+          animText.forEach(function (e) {
+            return e.classList.add('brands-item__text-block--animate');
+          });
+        }
+
+        if (scrollY == 0) {
+          main.classList.remove('main--animate');
+          opacityItems.forEach(function (e) {
+            return e.classList.remove('animate__opacity');
+          });
+          animItem.classList.remove('brands-item__wrap--active');
+          header.classList.remove('header__active');
+          imgSize.classList.remove('top__picture--animate');
+          scrollBtn.classList.remove('top__scroll-btn--animate');
+          animText.forEach(function (e) {
+            return e.classList.remove('brands-item__text-block--animate');
+          });
+        }
+      });
+    };
+
+    var scrollToMain = function scrollToMain() {
+      return window.scrollBy(0, 80);
+    };
+
+    scrollBtn.addEventListener('click', scrollToMain);
+    window.addEventListener('scroll', onScrollAnim);
+  }
+};
+
+var getSliders = function getSliders() {
+  if (document.querySelector('.brands-item__wrap')) {
+    var imgSlider = document.querySelector('.js-img-slider');
+    var textSlider = document.querySelector('.js-text-slider');
+    var imgItemSlider = document.querySelector('.js-top-slider');
+    var thumbSlider = document.querySelector('.js-thumbs-slider');
+    var sliderArray = [imgSlider, textSlider, imgItemSlider];
+    var gThumbSlider = new Swiper(thumbSlider, {
+      slidesPerView: 1,
+      watchSlidesProgress: true
+    });
+    var sliders = sliderArray.map(function (el) {
+      var slider = new Swiper(el, {
+        slidesPerView: 1,
+        allowTouchMove: false,
+        // navigation: {
+        // 	nextEl: el.querySelector('.swiper-button-next'),
+        // 	prevEl: el.querySelector('.swiper-button-prev'),
+        // },
+        on: {
+          slideChange: function slideChange() {
+            var _this = this;
+
+            sliders.filter(function (n) {
+              return n !== slider;
+            }).forEach(function (n) {
+              return n.slideToLoop(_this.realIndex);
+            });
+          }
+        },
+        thumbs: {
+          swiper: gThumbSlider
+        }
+      });
+      return slider;
+    });
+  }
+};
+
+var getScrollElement = function getScrollElement() {
+  if (document.querySelector('.js-scroll')) {
+    var scrollItems = document.querySelectorAll('.js-scroll-item');
+    var scroll = document.querySelector('.js-scroll');
+
+    var targetRectX = function targetRectX(evt) {
+      return evt.currentTarget.getBoundingClientRect().x;
+    };
+
+    var parrentRectLeft = function parrentRectLeft(evt) {
+      return evt.currentTarget.parentNode.getBoundingClientRect().left;
+    };
+
+    scroll.style.width = "".concat(scrollItems[0].offsetWidth, "px");
+    scrollItems.forEach(function (item) {
+      item.addEventListener('click', function (evt) {
+        scroll.style.left = "".concat(targetRectX(evt) - parrentRectLeft(evt), "px");
+      });
+    });
+  }
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   getTop();
   getMainSlider();
   getNewsSlider();
   getBrandsList();
   getCatalogList();
+  getScrollItem();
+  getSliders();
+  getScrollElement();
 });
 "use strict";
 

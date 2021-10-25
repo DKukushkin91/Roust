@@ -158,49 +158,9 @@ block page
 						.screen__title-wrap
 							h2.screen__title.screen__title--fonts.screen__title--color News
 							a.screen__title-link(href="#") More news
-						.screen__list-wrap.js-news-slider
-							ul.screen__list-slide.swiper-wrapper
-								li.screen__item-slide.swiper-slide
-									a.screen__item-link(href="#")
-									.screen__item-img
-										img(src=`${baseDir}/img/bg-vodka.jpg`, alt="")
-									.screen__item-content
-										p.screen__item-date 04 june 2020
-										p.screen__item-text 8 Roust Vodkas Amongst the Best-Selling Spirits Brands
-								li.screen__item-slide.swiper-slide
-									a.screen__item-link(href="#")
-									.screen__item-img
-										img(src=`${baseDir}/img/bg-rt.jpg`, alt="")
-									.screen__item-content
-										p.screen__item-date 13 june 2020
-										p.screen__item-text Russian Standard Vodka Malachite in Travel Retail
-								li.screen__item-slide.swiper-slide
-									a.screen__item-link(href="#")
-									.screen__item-img
-										img(src=`${baseDir}/img/bg-rt2.jpg`, alt="")
-									.screen__item-content
-										p.screen__item-date 11 may 2020
-										p.screen__item-text Global Relaunch of the World’s #1 Premium Russian Vodka
-								li.screen__item-slide.swiper-slide
-									a.screen__item-link(href="#")
-									.screen__item-img
-										img(src=`${baseDir}/img/bg-rt2.jpg`, alt="")
-									.screen__item-content
-										p.screen__item-date 11 may 2020
-										p.screen__item-text Global Relaunch of the World’s #1 Premium Russian Vodka
-								li.screen__item-slide.swiper-slide
-									a.screen__item-link(href="#")
-									.screen__item-img
-										img(src=`${baseDir}/img/bg-rt2.jpg`, alt="")
-									.screen__item-content
-										p.screen__item-date 11 may 2020
-										p.screen__item-text Global Relaunch of the World’s #1 Premium Russian Vodka
-							button.screen__nav-btn.screen__nav-btn--position-r.screen__nav-btn--next.js-news-slider-next
-								svg(width="51" height="12").screen__nav-icon.screen__nav-icon--color
-									use(href="/f/img/sprite.svg#arrow-nav")
-							button.screen__nav-btn.screen__nav-btn--position-l.js-news-slider-prev
-								svg(width="51" height="12").screen__nav-icon.screen__nav-icon--color
-									use(href="/f/img/sprite.svg#arrow-nav")
+
+					include ../../template/_news
+
 				.main-page__screen.screen
 					.screen__icon-wrap
 						svg(width="14" height="9").screen__icon

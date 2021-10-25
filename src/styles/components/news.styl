@@ -1,0 +1,110 @@
+.container--brands-item
+	padding-top: 123px
+	padding-bottom 28px
+
+.news
+	width: 100%
+	background: $white
+	position relative
+
+	&__list-wrap
+		width: 100%
+		overflow: hidden
+
+	&__list-slide
+		width: 100%
+		list-style: none
+		padding: 0
+		margin: 0
+		display: flex
+		flex-direction: row
+
+	&__item-slide
+		max-width: 340px
+		position: relative
+
+	&__item-link
+		position: absolute
+		top: 0
+		left 0
+		width 100%
+		height 100%
+		z-index 1
+
+	&__item-img
+		width: 100%
+		height: 210px
+		margin-bottom: 30px
+
+		& img
+			height: 100%
+			object-fit: cover
+
+	&__item-content
+		display: flex
+		flex-direction: column
+		justify-content: flex-start
+		align-items flex-start
+		padding: 0 50px 73px 0
+
+	&__item-date
+		fz-14()
+		line-height 29px
+		color: $orange
+		font-family $Georgia
+		font-weight bold
+		padding-bottom 5px
+
+	&__item-text
+		fz-21()
+		color: $black
+		font-weight 500
+
+	&__nav-btn
+		border: 0
+		background: 0
+		cursor pointer
+		display: block
+		position absolute
+		left: 90px
+		top: 50%
+		transform: translate(0, -50%)
+		z-index 99999
+		opacity: 0.5
+
+		&:disabled
+			opacity: 0.5
+
+		&:not(:disabled)
+			opacity: 1
+
+		&--next
+			transform: translate(0, -50%) rotate(-180deg)
+			left: unset
+			right: 90px
+
+	&__nav-btn--position-r
+		right: 5%
+
+		&:disabled
+			opacity: 0.3
+
+		&:not(:disabled)
+			opacity: 0.5
+
+	&__nav-btn--position-l
+		left: 5%
+
+		&:disabled
+			opacity: 0.3
+
+		&:not(:disabled)
+			opacity: 0.5
+
+	&__nav-icon
+		width: 51px
+		height: 12px
+		fill: $white
+
+	&__nav-icon--color
+		fill: $d-grey

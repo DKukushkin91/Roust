@@ -60,26 +60,6 @@ button
 input::placeholder
 	opacity: 1
 
-// fix footer
-.box
-	display flex
-	flex-direction column
-	height 100%
-
-	&__content
-		flex 1 0 auto
-
-	// breeding
-	&__index
-		background radial-gradient(rgba(19,24,32,0) 26.04%,rgba(15,20,28,.85) 60.81%)
-		background-repeat no-repeat
-		background-position 50% 0
-		background-size 600% 300%
-
-	&__content-index
-		flex 1 0 auto
-		background-color: none
-
 .footer
 	flex 0 0 auto
 
@@ -88,3 +68,21 @@ input::placeholder
 	max-width 1150px
 	padding 0 25px
 	margin 0 auto
+
+// for animation
+.animate__opacity
+	opacity: 0
+	transform: translate(0px, -120%)
+
+.main
+	&--brands-item
+		grid-area: 1 / -1
+		transform: translate(0, 120%)
+		transition: all 0.5s ease 0s
+		display: flex
+		flex-direction: column
+		justify-content: flex-start
+
+	&--animate
+		transform: translate(0, 0)
+		margin-top: 4vw
