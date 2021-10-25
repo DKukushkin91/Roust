@@ -8,18 +8,18 @@ export const getSliders = () => {
 		const sliderArray = [imgSlider, textSlider, imgItemSlider];
 
 		const gThumbSlider = new Swiper(thumbSlider, {
-			slidesPerView: 1,
+			slidesPerView: 'auto',
 			watchSlidesProgress: true,
+			navigation: {
+				nextEl: document.querySelector('.js-item-next'),
+				prevEl: document.querySelector('.js-item-prev'),
+			},
 		})
 
 		const sliders = sliderArray.map(el => {
 			const slider = new Swiper(el, {
 				slidesPerView: 1,
 				allowTouchMove: false,
-				// navigation: {
-				// 	nextEl: el.querySelector('.swiper-button-next'),
-				// 	prevEl: el.querySelector('.swiper-button-prev'),
-				// },
 				on: {
 					slideChange() {
 						sliders
@@ -27,9 +27,13 @@ export const getSliders = () => {
 							.forEach(n => n.slideToLoop(this.realIndex));
 					},
 				},
-
+				navigation: {
+					nextEl: document.querySelector('.js-item-next'),
+					prevEl: document.querySelector('.js-item-prev'),
+				},
 				thumbs: {
 					swiper: gThumbSlider,
+					watchSlidesProgress: true,
 				},
 			});
 
@@ -44,12 +48,23 @@ export const getScrollElement = () => {
 		const scroll = document.querySelector('.js-scroll');
 		const targetRectX = (evt) => evt.currentTarget.getBoundingClientRect().x;
 		const parrentRectLeft = (evt) => evt.currentTarget.parentNode.getBoundingClientRect().left;
+		const slideBtns = document.querySelectorAll('.js-slide-btn');
 
 		scroll.style.width = `${scrollItems[0].offsetWidth}px`
 
 		scrollItems.forEach(item => {
 			item.addEventListener('click', (evt) => {
 				scroll.style.left = `${targetRectX(evt) - parrentRectLeft(evt)}px`;
+			})
+		})
+
+		slideBtns.forEach(e => {
+			e.addEventListener('click', () => {
+				for(let item of scrollItems) {
+					if(item.classList.contains('swiper-slide-thumb-active')){
+						scroll.style.left = `${item.getBoundingClientRect().x - item.parentNode.getBoundingClientRect().left}px`;
+					}
+				}
 			})
 		})
 	}

@@ -47,6 +47,33 @@
 			height: 100%
 			object-fit: cover
 
+	&__nav-btn
+		border: 0
+		border-radius: 50%
+		background: $m-grey
+		position: absolute
+		top: 50%
+		z-index 99
+		transform: rotate(90deg)
+		width: 65px
+		height 65px
+		cursor pointer
+
+		&:disabled
+			opacity: 0.5
+
+	&__nav-btn--next
+		right: 40px
+		transform: rotate(-90deg)
+
+	&__nav-btn--prev
+		left: 40px
+
+	&__icon
+		fill: $white
+		width: 14px
+		height: 9px
+
 	&__text-slider.swiper
 		grid-area: 1 / -1
 		margin auto 190px auto auto
@@ -121,7 +148,7 @@
 			line-height 29px
 
 	&__slide
-		// flex: 1
+		flex: 1
 
 	&__list
 		list-style: none
@@ -131,7 +158,7 @@
 		margin 0
 
 	&__item
-		// flex: 1
+		flex: 1
 		max-width: 360px
 		border-left: 1px solid #e6e8ea
 
