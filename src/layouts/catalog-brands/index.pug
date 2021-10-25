@@ -13,12 +13,36 @@ block text
 		var topText = 'We produce and supply world-famous spirits to 86 countries. We are a key manufacturer of vodka in the domestic market* and the largest manufacturer of premium Russian vodka in the world**';
 
 block page
-	section.brands
+	section.catalog-brands.brands
 		.container
-			.brands__btns-wrap.js-btns-wrap
-				button.brands__btn.js-brands-btn
-					span.brands__btn-text Owned brands
-				button.brands__btn.js-brands-btn
-					span.brands__btn-text Distributed brands
-			.brands__wrap.js-list-wrap
+			//- .brands__btns-wrap.js-btns-wrap
+			//- 	button.brands__btn.js-brands-btn
+			//- 		span.brands__btn-text Owned brands
+			//- 	button.brands__btn.js-brands-btn
+			//- 		span.brands__btn-text Distributed brands
+			.catalog-brands__filter.filter
+				.filter__spirit.spirit
+					.spirit__title.filter-title Spirit
+					select.spirit__select.select.filter-select
+						option(disabled) Russian Vodka 
+						option Russian Vodka 
+						option Polish vodka
+						option Wines
+						option Sparkling wines
+						option Ready-to-Drink
+						option Whisky
+						option Vermouth
+				.filter__countries
+					.countries__title.filter-title Countries
+					select.countries__select.select.filter-select
+						option(disabled) All countries
+						option All countries
+						option Russian
+						option Polish
+				.filter__search
+					.filter__search-title.filter-title Searh for brand
+					input(type="text" placeholder="Brand name").filter__search-input
+					button(type="submit").filter__search-btn Search
+			h2.catalog-brands__title Russian Vodka
+			.catalog-brands__wrap.brands__wrap.js-list-wrap
 			p.brands__sub-text *EGAIS, 2019 **IMPACT, 2020
