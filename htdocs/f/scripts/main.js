@@ -326,86 +326,78 @@ var getScrollElement = function getScrollElement() {
 
 var getGallery = function getGallery() {
   if (document.querySelector('.js-open-gallery')) {
-    (function () {
-      var body = document.querySelector('body');
-      var buttons = document.querySelectorAll('.js-open-gallery');
-      var elementTemplate = document.querySelector('.js-gallery-template').content.querySelector('.js-gallery-container');
-      var listElementsTemplate = document.querySelector('.js-g-list-template').content.querySelector('.js-g-list');
+    var body = document.querySelector('body');
+    var buttons = document.querySelectorAll('.js-open-gallery');
+    var elementTemplate = document.querySelector('.js-gallery-template').content.querySelector('.js-gallery-container');
+    var listElementsTemplate = document.querySelector('.js-g-list-template').content.querySelectorAll('.js-g-list');
 
-      var getSlider = function getSlider(element, next, prev) {
-        return new Swiper(element, {
-          slidesPerView: 1,
-          navigation: {
-            nextEl: next,
-            prevEl: prev
-          }
-        });
-      };
-
-      var escPressHandler = function escPressHandler(evt) {
-        if (evt.key === 'Escape') {
-          evt.preventDefault();
-          elementRemoveHandler();
+    var getSlider = function getSlider(element, next, prev) {
+      return new Swiper(element, {
+        slidesPerView: 1,
+        navigation: {
+          nextEl: next,
+          prevEl: prev
         }
-      };
+      });
+    };
 
-      var elementRemoveHandler = function elementRemoveHandler() {
-        var galleryContainer = document.querySelector('.js-gallery-container');
-
-        if (galleryContainer) {
-          galleryContainer.remove();
-          document.removeEventListener('keydown', escPressHandler);
-        }
-      };
-
-      var getElements = function getElements() {
-        return listElementsTemplate.cloneNode(true);
-      };
-
-      var appendElements = function appendElements(container) {
-        var fragment = document.createDocumentFragment();
-        var element = getElements();
-        fragment.appendChild(element);
-        createElement(container, fragment);
-      };
-
-      var getElement = function getElement() {
-        var template = elementTemplate.cloneNode(true);
-        var closeBtn = template.querySelector('.js-close-btn');
-        var sliderWrap = template.querySelector('.js-gallery-slider');
-        var prevBtn = template.querySelector('.js-g-btn-prev');
-        var nextBtn = template.querySelector('.js-g-btn-next');
-        appendElements(sliderWrap);
-        getSlider(sliderWrap, nextBtn, prevBtn);
-        closeBtn.addEventListener('click', elementRemoveHandler);
-        return template;
-      };
-
-      var appendElement = function appendElement() {
-        var fragment = document.createDocumentFragment();
-        var element = getElement();
-        fragment.appendChild(element);
-        document.addEventListener('keydown', escPressHandler);
-        createElement(body, fragment);
-      };
-
-      var _iterator2 = _createForOfIteratorHelper(buttons),
-          _step2;
-
-      try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var button = _step2.value;
-          button.addEventListener('click', function (evt) {
-            evt.preventDefault();
-            appendElement();
-          });
-        }
-      } catch (err) {
-        _iterator2.e(err);
-      } finally {
-        _iterator2.f();
+    var escPressHandler = function escPressHandler(evt) {
+      if (evt.key === 'Escape') {
+        evt.preventDefault();
+        elementRemoveHandler();
       }
-    })();
+    };
+
+    var elementRemoveHandler = function elementRemoveHandler() {
+      var galleryContainer = document.querySelector('.js-gallery-container');
+
+      if (galleryContainer) {
+        galleryContainer.remove();
+        document.removeEventListener('keydown', escPressHandler);
+      }
+    };
+
+    var getElements = function getElements(template) {
+      return template.cloneNode(true);
+    };
+
+    var appendElements = function appendElements(container, template, i) {
+      var fragment = document.createDocumentFragment();
+      template.forEach(function (e, index) {
+        if (index === i) {
+          var element = getElements(e);
+          fragment.appendChild(element);
+        }
+      });
+      createElement(container, fragment);
+    };
+
+    var getElement = function getElement(index) {
+      var template = elementTemplate.cloneNode(true);
+      var closeBtn = template.querySelector('.js-close-btn');
+      var sliderWrap = template.querySelector('.js-gallery-slider');
+      var prevBtn = template.querySelector('.js-g-btn-prev');
+      var nextBtn = template.querySelector('.js-g-btn-next');
+      appendElements(sliderWrap, listElementsTemplate, index);
+      getSlider(sliderWrap, nextBtn, prevBtn);
+      closeBtn.addEventListener('click', elementRemoveHandler);
+      return template;
+    };
+
+    var appendElement = function appendElement(index) {
+      var fragment = document.createDocumentFragment();
+      var element = getElement(index);
+      fragment.appendChild(element);
+      document.addEventListener('keydown', escPressHandler);
+      createElement(body, fragment);
+    };
+
+    buttons.forEach(function (button, index) {
+      button.addEventListener('click', function (evt) {
+        evt.preventDefault();
+        appendElement(index);
+      });
+    });
   }
 };
 

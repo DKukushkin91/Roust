@@ -115,14 +115,14 @@ block templates
 					use(href=`${baseDir}/img/sprite.svg#arrow-g`)
 
 	template.g-template.js-g-list-template
-		ul.g-template__list.swiper-wrapper.js-g-list(data-id="1")
+		ul.g-template__list.swiper-wrapper.js-g-list
 			each item in [`The world's second largest vodka producer`, 'The second largest vodka producer, second largest vodka producer', 'The second vodka producer, second largest vodka']
 				li.g-template__item.swiper-slide
 					.g-template__img
 						img(src=`${baseDir}/img/g-photo.jpg`, alt="")
 					p.g-template__title Topaz distillery.
 					p.g-template__text=item
-		ul.g-template__list.swiper-wrapper.js-g-list(data-id="2")
+		ul.g-template__list.swiper-wrapper.js-g-list
 			each item in [`Test`, 'test1', 'test2']
 				li.g-template__item.swiper-slide
 					.g-template__img

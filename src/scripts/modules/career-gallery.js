@@ -9,7 +9,7 @@ export const getGallery = () => {
 			.querySelector('.js-gallery-container');
 		const listElementsTemplate = document.querySelector('.js-g-list-template')
 			.content
-			.querySelector('.js-g-list')
+			.querySelectorAll('.js-g-list')
 
 		const getSlider = (element, next, prev) => new Swiper(element, {
 				slidesPerView: 1,
@@ -35,43 +35,48 @@ export const getGallery = () => {
 			}
 		};
 
-		const getElements = () => listElementsTemplate.cloneNode(true);
+		const getElements = (template) => template.cloneNode(true);
 
-		const appendElements = (container) => {
+		const appendElements = (container, template, i) => {
 			const fragment = document.createDocumentFragment();
-			const element = getElements();
 
-			fragment.appendChild(element);
+			template.forEach((e, index) => {
+				if(index === i){
+					const element = getElements(e);
+					fragment.appendChild(element);
+				}
+			})
+
 			createElement(container, fragment);
 		}
 
-		const getElement = () => {
+		const getElement = (index) => {
 			const template = elementTemplate.cloneNode(true);
 			const closeBtn = template.querySelector('.js-close-btn');
 			const sliderWrap = template.querySelector('.js-gallery-slider');
 			const prevBtn = template.querySelector('.js-g-btn-prev');
 			const nextBtn = template.querySelector('.js-g-btn-next');
 
-			appendElements(sliderWrap);
+			appendElements(sliderWrap, listElementsTemplate, index);
 			getSlider(sliderWrap, nextBtn, prevBtn);
 			closeBtn.addEventListener('click', elementRemoveHandler);
 			return template;
 		}
 
-		const appendElement = () => {
+		const appendElement = (index) => {
 			const fragment = document.createDocumentFragment();
-			const element = getElement();
+			const element = getElement(index);
 
 			fragment.appendChild(element);
 			document.addEventListener('keydown', escPressHandler);
 			createElement(body, fragment);
 		}
 
-		for(let button of buttons){
+		buttons.forEach((button, index) => {
 			button.addEventListener('click', (evt) => {
 				evt.preventDefault();
-				appendElement();
+				appendElement(index);
 			})
-		}
+		})
 	}
 }
