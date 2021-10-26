@@ -24,9 +24,9 @@ block page
 					.brands-item__img-slider.swiper.js-img-slider
 						.brands-item__img-wrapper.swiper-wrapper
 							.brands-item__img.swiper-slide
-								img(src="/f/img/bg-slide.jpg", alt="")
+								img(src=`${baseDir}/img/bg-slide.jpg`, alt="")
 							.brands-item__img.swiper-slide
-								img(src="/f/img/bg-brands.jpg", alt="")
+								img(src=`${baseDir}/img/bg-brands.jpg`, alt="")
 					.brands-item__text-slider.swiper.js-text-slider
 						.brands-item__text-wrapper.swiper-wrapper
 							.brands-item__text-block.js-anim-text.swiper-slide
@@ -37,10 +37,10 @@ block page
 								p.brands-item__text At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.
 		button.brands-item__nav-btn.brands-item__nav-btn--prev.js-item-prev.js-slide-btn
 			svg(width="14" height="9").brands-item__icon
-				use(href="/f/img/sprite.svg#arrow-b")
+				use(href=`${baseDir}/img/sprite.svg#arrow-b`)
 		button.brands-item__nav-btn.brands-item__nav-btn--next.js-item-next.js-slide-btn
 			svg(width="14" height="9").brands-item__icon
-				use(href="/f/img/sprite.svg#arrow-b")
+				use(href=`${baseDir}/img/sprite.svg#arrow-b`)
 	section.brands-item.brands-item--color
 		.container.brands-item__container--padding
 			.brands-item__inner

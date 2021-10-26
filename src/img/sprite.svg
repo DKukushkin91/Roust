@@ -50,4 +50,13 @@
 			</clipPath>
 		</defs>
 	</symbol>
+	<symbol id="email" viewBox="0 0 20 16">
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M20 2C20 0.9 19.1 0 18 0H2C0.9 0 0 0.9 0 2V14C0 15.1 0.9 16 2 16H18C19.1 16 20 15.1 20 14V2ZM18 2L10 6.99L2 2H18ZM10 9L2 4V14H18V4L10 9Z"/>
+	</symbol>
+	<symbol id="cross" viewBox="0 0 26 26">
+		<path d="M24 2L2 24M24 24L2 2" stroke-width="4"/>
+	</symbol>
+	<symbol id="arrow-g" viewBox="0 0 9 15">
+		<path fill-rule="evenodd" clip-rule="evenodd" d="M5.39486 7.20209L-5.37894e-07 1.98478L1.8 0.244018L8.99487 7.20209L1.8 14.1602L-7.69049e-08 12.4194L5.39486 7.20209Z"/>
+	</symbol>
 </svg>

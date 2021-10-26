@@ -100,3 +100,32 @@ block templates
 					a.brands__link(href="#") More
 				.brands__img
 					img(src=`${baseDir}/img/preview-gin.jpg`, alt="")
+
+	template.gallery__template.g-template.js-gallery-template
+		.g-template__container.js-gallery-container
+			.g-template__wrap.swiper.js-gallery-slider
+				button.g-template__btn.js-close-btn
+					svg(width="22" height="22").g-template__icon
+						use(href=`${baseDir}/img/sprite.svg#cross`)
+			button.g-template__nav-btn.g-template__nav-btn--left.js-g-btn-prev
+				svg(width="14" height="9").g-template__nav-icon
+					use(href=`${baseDir}/img/sprite.svg#arrow-g`)
+			button.g-template__nav-btn.g-template__nav-btn--right.js-g-btn-next
+				svg(width="14" height="9").g-template__nav-icon
+					use(href=`${baseDir}/img/sprite.svg#arrow-g`)
+
+	template.g-template.js-g-list-template
+		ul.g-template__list.swiper-wrapper.js-g-list(data-id="1")
+			each item in [`The world's second largest vodka producer`, 'The second largest vodka producer, second largest vodka producer', 'The second vodka producer, second largest vodka']
+				li.g-template__item.swiper-slide
+					.g-template__img
+						img(src=`${baseDir}/img/g-photo.jpg`, alt="")
+					p.g-template__title Topaz distillery.
+					p.g-template__text=item
+		ul.g-template__list.swiper-wrapper.js-g-list(data-id="2")
+			each item in [`Test`, 'test1', 'test2']
+				li.g-template__item.swiper-slide
+					.g-template__img
+						img(src=`${baseDir}/img/g-photo.jpg`, alt="")
+					p.g-template__title Topaz distillery.
+					p.g-template__text=item

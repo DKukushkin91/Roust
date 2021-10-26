@@ -1,0 +1,75 @@
+extends ../../template/_layout
+
+block pageVar
+	-
+		page = 'career';
+
+block path
+	-
+		baseDir = '/f';
+
+block title
+	-
+		title = 'Career'
+
+block text
+	-
+		topText = 'Working at Roust Group, one of the largest alcohol companies, offers numerous opportunities for professional growth.';
+
+block page
+	section.career
+		.container
+			.career__wrap
+				h2.career__title Why Work at Roust
+				ul.career__list
+					li.career__item
+						.career__img
+							img(src=`${baseDir}/img/people-icon.png`, alt="")
+						p.career__sub-title Great career opportunities
+						p.career__text We offer excellent opportunities for motivated professionals focused on results and teamwork.
+					li.career__item
+						.career__img.career__img--width
+							img(src=`${baseDir}/img/world-icon.png`, alt="")
+						p.career__sub-title International status
+						p.career__text We are a leading international company with the most advanced infrastructure, global ambitions, and unique corporate culture.
+					li.career__item
+						.career__img.career__img--m-width
+							img(src=`${baseDir}/img/pins-icon.png`, alt="")
+						p.career__sub-title Wide business geography
+						p.career__text The breadth of our brand portfolio across multiple diverse markets offers significant opportunities for career growth.
+	section.gallery
+		.container.gallery__container
+			.gallery__wrap
+				.gallery__box
+					.gallery__img
+						img(src=`${baseDir}/img/g-preview2.jpg`, alt="")
+					.gallery__content.gallery__content--margin
+						h2.gallery__title Modern factories
+						button.gallery__btn.js-open-gallery(data-id="1")
+							span.gallery__btn-text Watch photo
+				.gallery__box
+					.gallery__img
+						img(src=`${baseDir}/img/g-preview.jpg`, alt="")
+					.gallery__content
+						h2.gallery__title Comfortable offices
+						button.gallery__btn.js-open-gallery(data-id="2")
+							span.gallery__btn-text Watch photo
+	section.contacts
+		.contacts__img
+			img(src=`${baseDir}/img/arrow-bg.jpg`, alt="")
+		.container
+			.contacts__wrap
+				h2.contacts__title HR Team
+				p.contacts__sub-title Roust provides its employees with exciting career opportunities.
+				ul.contacts__list
+
+					each title in ['Russia', 'Poland', 'Hungary', 'USA', 'United Kingdom']
+						li.contacts__item
+							p.contacts__item-title=title
+							a.contacts__link(href="mailto:info@roust.com" target="_blank")
+								svg(width="20" height="16").contacts__icon
+										use(href=`${baseDir}/img/sprite.svg#email`)
+								span.contacts__link-text info@roust.com
+				p.contacts__text For further information on job vacancies at Roust, please contact our HR team.
+				button.top__btn.contacts__btn
+					span.top__btn-text.contacts__btn-text Complete the form

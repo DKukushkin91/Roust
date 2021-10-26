@@ -9,9 +9,9 @@
   </head>
   <body lang="ru-RU">
     <div class="box">
-      <div class="box__content">
+      <div class="box__content box__content--brands">
         <div class="box__top box__top--brands">
-          <header class="header">
+          <header class="header js-animate-header">
             <div class="container">
               <div class="header__wrap">
                 <div class="header__logo-wrap"><a class="header__link" href="../main-page/index.html"><img src="/f/img/roust-logo.svg"></a>
@@ -41,20 +41,24 @@
           </header>
           <section class="top">
             <div class="container">
-              <h1 class="top__title top__title--brands">brands</h1>
-              <p class="top__text top__text--brands">We produce and supply world-famous spirits to 86 countries. We are a key manufacturer of vodka in the domestic market* and the largest manufacturer of premium Russian vodka in the world**</p>
+              <div class="top__wrap top__wrap--brands">
+                <div class="top__content top__content--brands js-opacity">
+                  <h1 class="top__title top__title--brands">Brands</h1>
+                  <p class="top__text top__text--brands">We produce and supply world-famous spirits to 86 countries. We are a key manufacturer of vodka in the domestic market* and the largest manufacturer of premium Russian vodka in the world**</p>
+                </div>
+              </div>
             </div>
           </section>
         </div>
-        <main class="main">
+        <main class="main main--brands">
           <section class="catalog-brands brands">
             <div class="container">
               <div class="catalog-brands__filter filter">
                 <div class="filter__spirit spirit">
                   <div class="spirit__title filter-title">Spirit</div>
                   <select class="spirit__select select filter-select">
-                    <option disabled>Russian Vodka </option>
-                    <option>Russian Vodka </option>
+                    <option disabled>Russian Vodka</option>
+                    <option>Russian Vodka</option>
                     <option>Polish vodka</option>
                     <option>Wines</option>
                     <option>Sparkling wines</option>
@@ -223,6 +227,63 @@
           <p class="brands__item-text">The only gin produced on the island of Islay in Scotland. In addition to the nine classic ingredients, The Botanist also includes 22 native plants.</p><a class="brands__link" href="#">More</a>
         </div>
         <div class="brands__img"><img src="/f/img/preview-gin.jpg" alt=""></div>
+      </li>
+    </ul>
+  </template>
+  <template class="gallery__template g-template js-gallery-template">
+    <div class="g-template__container js-gallery-container">
+      <div class="g-template__wrap swiper js-gallery-slider">
+        <button class="g-template__btn js-close-btn">
+          <svg class="g-template__icon" width="22" height="22">
+            <use href="/f/img/sprite.svg#cross"></use>
+          </svg>
+        </button>
+      </div>
+      <button class="g-template__nav-btn g-template__nav-btn--left js-g-btn-prev">
+        <svg class="g-template__nav-icon" width="14" height="9">
+          <use href="/f/img/sprite.svg#arrow-g"></use>
+        </svg>
+      </button>
+      <button class="g-template__nav-btn g-template__nav-btn--right js-g-btn-next">
+        <svg class="g-template__nav-icon" width="14" height="9">
+          <use href="/f/img/sprite.svg#arrow-g"></use>
+        </svg>
+      </button>
+    </div>
+  </template>
+  <template class="g-template js-g-list-template">
+    <ul class="g-template__list swiper-wrapper js-g-list" data-id="1">
+      <li class="g-template__item swiper-slide">
+        <div class="g-template__img"><img src="/f/img/g-photo.jpg" alt=""></div>
+        <p class="g-template__title">Topaz distillery.</p>
+        <p class="g-template__text">The world's second largest vodka producer</p>
+      </li>
+      <li class="g-template__item swiper-slide">
+        <div class="g-template__img"><img src="/f/img/g-photo.jpg" alt=""></div>
+        <p class="g-template__title">Topaz distillery.</p>
+        <p class="g-template__text">The second largest vodka producer, second largest vodka producer</p>
+      </li>
+      <li class="g-template__item swiper-slide">
+        <div class="g-template__img"><img src="/f/img/g-photo.jpg" alt=""></div>
+        <p class="g-template__title">Topaz distillery.</p>
+        <p class="g-template__text">The second vodka producer, second largest vodka</p>
+      </li>
+    </ul>
+    <ul class="g-template__list swiper-wrapper js-g-list" data-id="2">
+      <li class="g-template__item swiper-slide">
+        <div class="g-template__img"><img src="/f/img/g-photo.jpg" alt=""></div>
+        <p class="g-template__title">Topaz distillery.</p>
+        <p class="g-template__text">Test</p>
+      </li>
+      <li class="g-template__item swiper-slide">
+        <div class="g-template__img"><img src="/f/img/g-photo.jpg" alt=""></div>
+        <p class="g-template__title">Topaz distillery.</p>
+        <p class="g-template__text">test1</p>
+      </li>
+      <li class="g-template__item swiper-slide">
+        <div class="g-template__img"><img src="/f/img/g-photo.jpg" alt=""></div>
+        <p class="g-template__title">Topaz distillery.</p>
+        <p class="g-template__text">test2</p>
       </li>
     </ul>
   </template>

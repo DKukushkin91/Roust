@@ -5,6 +5,7 @@ import {getBrandsList} from './modules/brands-list';
 import {getCatalogList} from './modules/catalog-list';
 import {getScrollItem} from './modules/brands-item';
 import {getSliders, getScrollElement} from './modules/brands-item-slider';
+import {getGallery} from './modules/career-gallery';
 
 document.addEventListener('DOMContentLoaded', () => {
 	getTop();
@@ -15,4 +16,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	getScrollItem();
 	getSliders();
 	getScrollElement();
+	getGallery();
 });
