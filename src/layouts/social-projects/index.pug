@@ -1,0 +1,48 @@
+extends ../../template/_layout
+
+block pageVar
+	-
+		page = 'social-projects';
+
+block path
+	-
+		baseDir = '/f';
+
+block title
+	-
+		title = 'Social projects';
+
+block text
+	-
+		var topText = 'Roust is committed to a comprehensive program of corporate social responsibility that reflects the mission of our family of businesses.';
+
+block page
+	section.social-projects
+		.container
+			ul.social-projects__list.project
+				li.project__item
+					h2.project__title Russian Standard Foundation
+					.project__block
+						.project__content
+							h3.project__subtitle The Russian Standard Foundation is committed to helping promising students from underprivileged backgrounds reach their full potential.
+							p.project__text The Foundation ensures that Russia’s exceptional youth have the opportunity to receive high-quality education and take advantage of extracurricular activities that further their academic, career and personal development.
+							a(href="#").project__link Visit website
+						.project__img
+							img(src=`${baseDir}/img/sp-content-1.jpg`, alt="")
+				li.project__item
+					h2.project__title Mendeleev Museum
+					.project__block
+						.project__content
+							h3.project__subtitle Roust supports the restoration of the library of Prof. Dmitriy Mendeleev, founder of the Periodic Table of Elements.
+							p.project__text The Mendeleev Museum, located at St. Petersburg State University, houses Prof. Mendeleev’s personal effects, including records of his research into alcoholic spirit equilibrium.
+							a(href="#").project__link Visit website
+						.project__img.project__img-several
+							img(src=`${baseDir}/img/sp-content-2.jpg`, alt="")
+							img(src=`${baseDir}/img/sp-content-3.jpg`, alt="")
+							img(src=`${baseDir}/img/sp-content-4.jpg`, alt="")
+							a(href="#").project__img-link
+								.project__img-text
+									.project__img-number +8 
+									| фотографий 
+								img(src=`${baseDir}/img/sp-content-5.jpg`, alt="")
+					
