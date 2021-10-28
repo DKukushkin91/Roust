@@ -1,13 +1,38 @@
 .catalog-brands
+    &.brands
+        @media $md
+            padding 31px 0 25px 0
+    &.brands .container
+        padding 0
+    & .brands__list
+        @media $md
+            grid-template-columns repeat(2,50%)
+            grid-template-rows repeat(2,minmax(381px,auto))
+            column-gap 6px
+            row-gap 6px
+        @media $sm
+            grid-template-columns repeat(1,100%)
+            grid-template-rows repeat(1,minmax(375px,auto))
+            column-gap 0
     &__filter
         width 100%
         display flex
+        @media $md
+            flex-wrap wrap
+            padding 0 40px
+        @media $sm
+            padding 0 20px
     &__title
         font-weight 900
         font-size 33px
         line-height 40px
         color #323639
         padding 40px 0 34px
+        @media $sm
+            font-size 28px
+            line-height 34px
+            text-align center
+            padding 53px 0 44px
     & .brands__item:first-child
         grid-row 1
     & .brands__item:nth-child(4)
@@ -49,8 +74,23 @@
 .filter
     &__spirit
         margin-right 30px
+        @media $md
+            width 100%
+            max-width 335px
+            margin-right 18px
+            margin-bottom 40px
+        @media screen and (max-width: 767px)
+            margin-right 0
+    &__countries
+        @media $md
+            width 100%
+            max-width 335px
+        @media screen and (max-width: 767px)
+            margin-bottom 40px
     &__search
         margin-left auto
+        @media $md
+            width 100%
     &__search-input
         width 391px
         padding 10px 17px
@@ -61,6 +101,9 @@
         line-height 24px
         color #323639
         outline none
+        @media $md
+            width 100%
+            margin-bottom 40px
     &__search-input::placeholder
         color #BDBDBD
     &__search-btn
@@ -72,3 +115,6 @@
         line-height 18px
         padding 12px 0
         cursor pointer
+        @media $sm
+            display block
+            margin 0 auto

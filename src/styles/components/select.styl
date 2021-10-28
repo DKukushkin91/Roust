@@ -4,6 +4,9 @@
     width 100%
     position relative
 .new-select
+    @media $md
+        max-width 100%
+.new-select
     width 210px
     position relative
     background-color #E3EBF1
@@ -15,6 +18,9 @@
     padding 11px 17px
     cursor pointer
     user-select none
+    &__list
+    @media $md
+        width 100%
     &__list
         position absolute
         top 48px
