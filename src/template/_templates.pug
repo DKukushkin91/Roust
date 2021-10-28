@@ -129,3 +129,38 @@ block templates
 						img(src=`${baseDir}/img/g-photo.jpg`, alt="")
 					p.g-template__title Topaz distillery.
 					p.g-template__text=item
+
+	template.popup-form.js-popup-form
+		.popup-form__wrap.js-popup-wrap
+			form(action="", method="post").popup-form__form
+				button.popup-form__close-btn.js-close-btn
+					svg(width="22" height="22").popup-form__icon
+						use(href=`${baseDir}/img/sprite.svg#cross`)
+				fieldset.popup-form__fieldset
+					h2.popup-form__title Please complete the form
+					.popup-form__input-group
+						input#first-name.popup-form__input(type="text", name="first-name" placeholder="Mark" required)
+						label.popup-form__label(for="first-name") First name
+					.popup-form__input-group
+						input#surname.popup-form__input(type="text", name="surname" placeholder="Webber")
+						label.popup-form__label(for="surname") Surname
+					.popup-form__input-group
+						input#email.popup-form__input(type="email", name="email" placeholder="mark.webber@gmail.com" required)
+						label.popup-form__label(for="email") Email
+					.popup-form__input-group
+						input#c-email.popup-form__input(type="email", name="email" placeholder="mark.webber@gmail.com" required)
+						label.popup-form__label(for="c-email") Confirm email
+
+					+selectHybrid('company', 'Application for company', 'Select company...', ['ABC technologies', 'Roust', 'Test Company'], 'required')
+					+selectHybrid('country', 'Country', 'Select country...', ['United Kingdom', 'USA', 'Russia'], 'required')
+
+					.popup-form__input-group.popup-form__input-group--textarea
+						textarea#textarea.popup-form__textarea(name="cover", required)
+						label.popup-form__label(for="textarea") Cover letter
+
+					p.popup-form__text <span class='popup-form__text popup-form__text--color'>*</span> All fields are required
+
+					.popup-form__inner
+						input#upload.popup-form__upload-input(type="file", name="upload-file" required)
+						label.popup-form__upload-label(for="upload") Upload CV *
+						button.popup-form__btn(type="submit") Submit

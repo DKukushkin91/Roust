@@ -5,3 +5,20 @@ mixin picture(name, altName, baseDir)
 		source(srcset=`${baseDir}/img/responsive/${name}@1x.webp 1x, ${baseDir}/img/responsive/${name}@2x.webp 2x` type="image/webp")
 		source(srcset=`${baseDir}/img/responsive/${name}@1x.png 1x, ${baseDir}/img/responsive/${name}@2x.png 2x` type="image/png")
 		img(src=`${baseDir}/img/responsive/${name}@1x.png` alt=altName)
+
+mixin selectHybrid(id, pseudoLabel, defaultSelect, array, type)
+	.m-select
+		span.m-select__label(id=`${id}`)=pseudoLabel
+		.m-select__wrapper
+			select.m-select__native-wrap.js-select-native(name="", aria-labelledby=`${id}`, required=`${type}`)
+				option(value="select" disabled selected)=defaultSelect
+				each item in array
+					option(value=`${item}`)=item
+			.m-select__custom-wrap.js-select-custom(aria-hidden="true")
+				.m-select__custom-trigger.js-custom-box
+					span.m-select__custom-text=defaultSelect
+				.m-select__custom-options.js-custom-options
+					each item in array
+						.m-select__custom-option.js-custom-option(data-value=`${item}`)=item
+				svg(width="14" height="9").m-select__custom-icon
+					use(href=`${baseDir}/img/sprite.svg#arrow-b`)

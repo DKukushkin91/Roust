@@ -1,0 +1,115 @@
+.m-select
+	width 100%
+	display flex
+	flex-direction row
+	flex-wrap: wrap
+	position relative
+
+	&__label
+		fz-13()
+		line-height 20px
+		font-weight 400
+		font-family $Inter
+		color $m-grey
+		position relative
+		padding-bottom 5px
+		text-align: left
+
+	&__wrapper
+		position relative
+		width 100%
+		text-align: left
+
+	&__native-wrap,
+	&__custom-wrap
+		position relative
+		width 100%
+		padding 11px 17px
+		background-color $h-grey
+		border 0
+		border-radius 4px
+
+	&__native-wrap,
+	&__custom-trigger
+		fz-15()
+		font-family $Inter
+		line-height 24px
+		color $d-grey
+		font-weight 500
+		background-color: $h-grey
+
+	&__native-wrap:focus + .m-select__custom-wrap
+		@media (hover: hover)
+			display: none
+
+	&__native-wrap
+		appearance: none
+		background-image url("data:image/svg+xml,%3Csvg width='14' height='9' viewBox='0 0 14 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6.995 5.39485L12.24 0L13.99 1.8L6.995 8.99485L0 1.8L1.75 0L6.995 5.39485Z' fill='%23323639'/%3E%3C/svg%3E%0A")
+		background-repeat no-repeat
+		background-position-x calc(100% - 17px)
+		background-position-y 20px
+
+	&__custom-wrap
+		position absolute
+		top 0
+		left 0
+		display none
+		padding 0
+
+		@media (hover: hover)
+			display: block
+
+	&__custom-wrap--active .m-select__custom-options
+		display block
+		box-shadow inset 0px -7px 10px -10px $l-grey
+
+	&__custom-trigger
+		display flex
+		flex-direction: row
+		justify-content: space-between
+		align-items: center
+		position relative
+		cursor pointer
+		width 100%
+		padding 11px 17px
+		border-radius: inherit
+
+	&__custom-text
+		display block
+
+	&__custom-icon
+		width 14px
+		height 9px
+		position absolute
+		top: calc(50% - 4.5px)
+		right: 17px
+		z-index 2
+
+	&__custom-options
+		position absolute
+		top calc(100% - 1px)
+		left 0
+		width 100%
+		border-bottom-right-radius: inherit
+		border-bottom-left-radius: inherit
+		z-index 1
+		display none
+		background-color: $h-grey
+		padding 11px 17px
+
+	&__custom-option
+		fz-15()
+		line-height 24px
+		color $d-grey
+		font-family $Inter
+		font-weight 500
+		position relative
+		z-index: 1
+
+		&:not(:last-child)
+			padding-bottom 5px
+
+	&__custom-option&__custom-option--hover,
+	&__custom-option:hover
+		cursor default
+		text-decoration underline
