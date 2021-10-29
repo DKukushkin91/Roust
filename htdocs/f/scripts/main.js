@@ -105,6 +105,17 @@ var getNewsSlider = function getNewsSlider() {
       navigation: {
         nextEl: '.js-news-slider-next',
         prevEl: '.js-news-slider-prev'
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 'auto',
+          pagination: {
+            el: ".swiper-pagination"
+          }
+        },
+        960: {
+          pagination: false
+        }
       }
     });
   }
@@ -602,11 +613,20 @@ var getPopup = function getPopup() {
       }
     })();
   }
-}; // import {selectHandler} from './modules/select';
+};
 
+var burgerMenuHandler = function burgerMenuHandler() {
+  if (document.querySelector('.js-burger-btn')) {
+    var button = document.querySelector('.js-burger-btn');
+    button.addEventListener('click', function () {
+      button.classList.toggle('header__burger-btn--active');
+    });
+  }
+};
 
 document.addEventListener('DOMContentLoaded', function () {
   getTop();
+  burgerMenuHandler();
   getMainSlider();
   getNewsSlider();
   getBrandsList();

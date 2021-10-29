@@ -10,6 +10,13 @@
 	&__list-wrap
 		width: 100%
 		overflow: hidden
+		position static
+
+		@media $md
+			margin-bottom 60px
+
+	&__list-wrap .swiper-pagination-bullet-active
+		background $orange
 
 	&__list-slide
 		width: 100%
@@ -19,9 +26,20 @@
 		display: flex
 		flex-direction: row
 
+	&__list-slide.swiper-wrapper
+		@media $md
+			padding-bottom 60px
+
 	&__item-slide
 		max-width: 340px
 		position: relative
+
+		@media $md
+			flex 1 1 324px
+			max-width: 324px
+
+	&__item-slide.swiper-slide
+		height: auto
 
 	&__item-link
 		position: absolute
@@ -46,6 +64,10 @@
 		justify-content: flex-start
 		align-items flex-start
 		padding: 0 50px 73px 0
+
+		@media $md
+			padding 0
+			padding-right 20px
 
 	&__item-date
 		fz-14()
@@ -72,6 +94,9 @@
 		z-index 99999
 		opacity: 0.5
 
+		@media $lg
+			display: none
+
 		&:disabled
 			opacity: 0.5
 
@@ -84,7 +109,7 @@
 			right: 90px
 
 	&__nav-btn--position-r
-		right: 5%
+		right: calc(5% - 51px)
 
 		&:disabled
 			opacity: 0.3
@@ -93,7 +118,7 @@
 			opacity: 0.5
 
 	&__nav-btn--position-l
-		left: 5%
+		left: calc(5% - 51px)
 
 		&:disabled
 			opacity: 0.3

@@ -9,6 +9,17 @@ export const getNewsSlider = () => {
 				nextEl: '.js-news-slider-next',
 				prevEl: '.js-news-slider-prev',
 			},
+			breakpoints: {
+				768: {
+					slidesPerView: 'auto',
+					pagination: {
+						el: ".swiper-pagination",
+					},
+				},
+				960: {
+					pagination: false
+				}
+			}
 		})
 	}
 }

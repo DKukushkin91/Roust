@@ -6,7 +6,7 @@ mixin picture(name, altName, baseDir)
 		source(srcset=`${baseDir}/img/responsive/${name}@1x.png 1x, ${baseDir}/img/responsive/${name}@2x.png 2x` type="image/png")
 		img(src=`${baseDir}/img/responsive/${name}@1x.png` alt=altName)
 
-mixin selectHybrid(id, pseudoLabel, defaultSelect, array, type)
+mixin selectHybrid(id, pseudoLabel, defaultSelect, array, required)
 	.m-select
 		span.m-select__label(id=`${id}`)=pseudoLabel
 		.m-select__wrapper

@@ -15,74 +15,83 @@ block page
 				.main-page__screen.screen
 					.screen__video-wrap
 						.screen__video
-							video.screen__video-item(src=`${baseDir}/video/bg-video.mp4` preload="auto" autoplay muted loop)
+							video.screen__video-item(preload="auto" autoplay muted loop)
+								source(src=`${baseDir}/video/bg-video.webm`, type="video/webm")
+								source(src=`${baseDir}/video/bg-video.mp4`, type="video/mp4")
 						.screen__video-img
 							+picture('bg-video', '', baseDir)
 				.main-page__screen.screen.swiper.js-main-slider
-					.swiper-wrapper
-						.swiper-slide
+					.screen__slider-wrap.swiper-wrapper
+						.main-page__slide.swiper-slide
 							.screen__img-wrap
-								+picture('rs-banner', '', baseDir)
+									picture
+										source(srcset=`${baseDir}/img/m-rs-slide@1x.webp 1x, ${baseDir}/img/m-rs-slide@2x.webp 2x` media='(max-width: 575px)' type="image/webp")
+										source(srcset=`${baseDir}/img/m-rs-slide@1x.png 1x, ${baseDir}/img/m-rs-slide@2x.png 2x` media='(max-width: 575px)' type="image/png")
+										source(srcset=`${baseDir}/img/t-rs-slide@1x.webp 1x, ${baseDir}/img/t-rs-slide@2x.webp 2x` media='(max-width: 959px)' type="image/webp")
+										source(srcset=`${baseDir}/img/t-rs-slide@1x.png 1x, ${baseDir}/img/t-rs-slide@2x.png 2x` media='(max-width: 959px)' type="image/png")
+										source(srcset=`${baseDir}/img/responsive/rs-banner@1x.webp 1x, ${baseDir}/img/responsive/rs-banner@2x.webp 2x` type="image/webp")
+										source(srcset=`${baseDir}/img/responsive/rs-banner@1x.png 1x, ${baseDir}/img/responsive/rs-banner@2x.png 2x` type="image/png")
+										img(src=`${baseDir}/img/responsive/rs-banner@1x.png` alt=altName)
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
 							.screen__content
-								.screen__inner
+								.screen__inner.screen__inner--slider
 									h2.screen__title Russian Standard
 									p.screen__text A vodka of exceptional quality, born from our pursuit for perfection and Russia's rich vodka heritage.
 									a.screen__link(href="#") More
-						.swiper-slide
+						.screen__slide.swiper-slide
 							.screen__img-wrap
 								+picture('gancia-banner', '', baseDir)
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
 							.screen__content
-								.screen__inner
+								.screen__inner.screen__inner--slider
 									h2.screen__title Gancia
 									p.screen__text The first Italian sparkling wine. Its cellars are reckoned world heritage and are protected by UNESCO.
 									a.screen__link(href="#") More
-						.swiper-slide
+						.screen__slide.swiper-slide
 							.screen__img-wrap
 								+picture('zubrowka-banner', '', baseDir)
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
 							.screen__content
-								.screen__inner
+								.screen__inner.screen__inner--slider
 									h2.screen__title Żubrówka
 									p.screen__text A world-famous Polish vodka infused with bison grass and made using a 500-year-old recipe. Each bottle contains a handpicked bison grass blade, which we place manually at our factory.
 									a.screen__link(href="#") More
-						.swiper-slide
+						.screen__slide.swiper-slide
 							.screen__img-wrap
 								+picture('soplica-banner', '', baseDir)
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
 							.screen__content
-								.screen__inner
+								.screen__inner.screen__inner--slider
 									h2.screen__title Soplica
 									p.screen__text The first bottle of Soplica was produced in 1891. The clear variant of Soplica is made from a high-quality rye spirit.
 									a.screen__link(href="#") More
-						.swiper-slide
+						.screen__slide.swiper-slide
 							.screen__img-wrap
 								+picture('gm-banner', '', baseDir)
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
 							.screen__content
-								.screen__inner
+								.screen__inner.screen__inner--slider
 									h2.screen__title GreenMark
 									p.screen__text One of the most popular brands in Russia. Green Mark is a classic vodka with a long history steeped in the very best traditions of Russian vodka production.
 									a.screen__link(href="#") More
-						.swiper-slide
+						.screen__slide.swiper-slide
 							.screen__img-wrap
 								+picture('pm-banner', '', baseDir)
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
 							.screen__content
-								.screen__inner
+								.screen__inner.screen__inner--slider
 									h2.screen__title Parliament
 									p.screen__text Parliament vodka is one of the oldest Russian brands in the segment. This classic vodka is crafted according to a traditional Russian vodka recipe - using alcohol and water only - and is complemented by unparalleled purification with milk.
 									a.screen__link(href="#") More
@@ -119,7 +128,14 @@ block page
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
 					.screen__imgs-wrap
 						.screen__img-wrap
-							+picture('brands-banner', '', baseDir)
+							picture
+								source(srcset=`${baseDir}/img/responsive/m-brands-banner@1x.webp 1x, ${baseDir}/img/responsive/m-brands-banner@2x.webp 2x` media='(max-width: 575px)' type="image/webp")
+								source(srcset=`${baseDir}/img/responsive/m-brands-banner@1x.png 1x, ${baseDir}/img/responsive/m-brands-banner@2x.png 2x` media='(max-width: 575px)' type="image/png")
+								source(srcset=`${baseDir}/img/t-brands@1x.webp 1x, ${baseDir}/img/t-brands@2x.webp 2x` media='(max-width: 959px)' type="image/webp")
+								source(srcset=`${baseDir}/img/t-brands@1x.png 1x, ${baseDir}/img/t-brands@2x.png 2x` media='(max-width: 959px)' type="image/png")
+								source(srcset=`${baseDir}/img/responsive/brands-banner@1x.webp 1x, ${baseDir}/img/responsive/brands-banner@2x.webp 2x` type="image/webp")
+								source(srcset=`${baseDir}/img/responsive/brands-banner@1x.png 1x, ${baseDir}/img/responsive/brands-banner@2x.png 2x` type="image/png")
+								img(src=`${baseDir}/img/responsive/brands-banner@1x.png` alt=altName)
 						.screen__img-wrap.screen__img-wrap--center
 							+picture('bottles', '', baseDir)
 					.screen__content
@@ -131,9 +147,8 @@ block page
 					.screen__icon-wrap
 						svg(width="14" height="9").screen__icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
-					.screen__imgs-wrap
-						.screen__img-wrap
-							+picture('partnership-bg', '', baseDir)
+					.screen__img-wrap
+						+picture('partnership-bg', '', baseDir)
 					.screen__content
 						.screen__inner
 							h2.screen__title.screen__title--fonts Partnership
@@ -166,21 +181,27 @@ block page
 						svg(width="14" height="9").screen__icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
 					.screen__img-wrap
-						+picture('bg-investors', '', baseDir)
+						picture
+							source(srcset=`${baseDir}/img/m-investors@1x.webp 1x, ${baseDir}/img/m-investors@2x.webp 2x` media='(max-width: 575px)' type="image/webp")
+							source(srcset=`${baseDir}/img/m-investors@1x.png 1x, ${baseDir}/img/m-investors@2x.png 2x` media='(max-width: 575px)' type="image/png")
+							source(srcset=`${baseDir}/img/t-investors@1x.webp 1x, ${baseDir}/img/t-investors@2x.webp 2x` media='(max-width: 959px)' type="image/webp")
+							source(srcset=`${baseDir}/img/t-investors@1x.png 1x, ${baseDir}/img/t-investors@2x.png 2x` media='(max-width: 959px)' type="image/png")
+							source(srcset=`${baseDir}/img/responsive/bg-investors@1x.webp 1x, ${baseDir}/img/responsive/bg-investors@2x.webp 2x` type="image/webp")
+							source(srcset=`${baseDir}/img/responsive/bg-investors@1x.png 1x, ${baseDir}/img/responsive/bg-investors@2x.png 2x` type="image/png")
+							img(src=`${baseDir}/img/responsive/bg-investors@1x.png` alt=altName)
 					.screen__content.screen__content--flex
-						.screen__inner.screen__inner--column
-							h2.screen__title.screen__title--fonts
-								|	Investors
-							a.screen__link(href="#") More
+						h2.screen__title.screen__title--fonts
+							|	Investors
+						a.screen__link(href="#") More
 						dl.screen__dl
 							.screen__d-wrap
 								dt.screen__dt 60
 								dd.screen__dd brands in the portfolio
 							.screen__d-wrap
-								dt.screen__dt 4 000
+								dt.screen__dt 4&nbsp;000
 								dd.screen__dd people in our team
 							.screen__d-wrap
-								dt.screen__dt $ 2 300 000 000
+								dt.screen__dt $&nbsp;2&nbsp;000&nbsp;000&nbsp;000
 								dd.screen__dd is the turnover in 2019
 				.main-page__screen.screen
 					.screen__icon-wrap
@@ -188,10 +209,10 @@ block page
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
 					.screen__img-wrap
 						+picture('bg-career', '', baseDir)
-					.screen__content
+					.screen__content.screen__content--padding
 						.screen__inner.screen__inner--bg
 							h2.screen__title.screen__title--fonts.screen__title--color Career
-							p.screen__text.screen__text--padding.screen__text--color We give our employees opportunities to fulfill their dreams.
+							p.screen__text.screen__text--padding.screen__text--color.screen__text--md We give our employees opportunities to fulfill their dreams.
 							p.screen__text.screen__text--fz.screen__text--color Join our international team of professionals who achieve their ambitions with us.
 							a.screen__link.screen__link--color(href="#") More
 				.main-page__screen.screen

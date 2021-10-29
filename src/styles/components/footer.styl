@@ -5,6 +5,13 @@
 	padding: 40px 20px 56px 20px
 	background: $white
 
+	@media $md
+		padding 47px 40px 34px
+
+	& .container
+		@media $md
+			padding: 0
+
 	&__wrap
 		width: 100%
 		display: flex
@@ -16,6 +23,10 @@
 		padding-bottom 137px
 		overflow: hidden
 
+		@media $md
+			padding 0
+			padding-bottom 79px
+
 		&::before
 			content: ''
 			position: absolute
@@ -26,6 +37,9 @@
 			background-position: -17% 0
 			top: 0
 			left: 0
+
+			@media $lg
+				display none
 
 	&__content
 		display: flex

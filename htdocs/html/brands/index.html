@@ -12,7 +12,7 @@
       <div class="box__content box__content--brands">
         <div class="box__top box__top--brands">
           <header class="header js-animate-header">
-            <div class="container">
+            <div class="container header__container">
               <div class="header__wrap">
                 <div class="header__logo-wrap"><a class="header__link" href="../main-page/index.html"><img src="/f/img/roust-logo.svg"></a>
                 </div>
@@ -24,19 +24,20 @@
                     </svg>
                   </button>
                 </div>
+                <button class="header__burger-btn js-burger-btn"><span class="header__burger-menu"></span></button>
+                <nav class="nav">
+                  <ul class="nav__list">
+                    <li class="nav__item"><a class="nav__link" href="#">About us</a></li>
+                    <li class="nav__item"><a class="nav__link" href="../brands/index.html">Brands</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#">Investors</a></li>
+                    <li class="nav__item"><a class="nav__link" href="../partnership/index.html">Partnership</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#">Social projects</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#">Media Center</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#">Career</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#">Contacts</a></li>
+                  </ul>
+                </nav>
               </div>
-              <nav class="nav">
-                <ul class="nav__list">
-                  <li class="nav__item"><a class="nav__link" href="#">About us</a></li>
-                  <li class="nav__item"><a class="nav__link" href="../brands/index.html">Brands</a></li>
-                  <li class="nav__item"><a class="nav__link" href="#">Investors</a></li>
-                  <li class="nav__item"><a class="nav__link" href="../partnership/index.html">Partnership</a></li>
-                  <li class="nav__item"><a class="nav__link" href="#">Social projects</a></li>
-                  <li class="nav__item"><a class="nav__link" href="#">Media Center</a></li>
-                  <li class="nav__item"><a class="nav__link" href="#">Career</a></li>
-                  <li class="nav__item"><a class="nav__link" href="#">Contacts</a></li>
-                </ul>
-              </nav>
             </div>
           </header>
           <section class="top">
@@ -289,7 +290,7 @@
           </div>
           <div class="m-select"><span class="m-select__label" id="company">Application for company</span>
             <div class="m-select__wrapper">
-              <select class="m-select__native-wrap js-select-native" name="" aria-labelledby="company" required="required">
+              <select class="m-select__native-wrap js-select-native" name="" aria-labelledby="company" required="undefined">
                 <option value="select" disabled="disabled" selected="selected">Select company...</option>
                 <option value="ABC technologies">ABC technologies</option>
                 <option value="Roust">Roust</option>
@@ -310,7 +311,7 @@
           </div>
           <div class="m-select"><span class="m-select__label" id="country">Country</span>
             <div class="m-select__wrapper">
-              <select class="m-select__native-wrap js-select-native" name="" aria-labelledby="country" required="required">
+              <select class="m-select__native-wrap js-select-native" name="" aria-labelledby="country" required="undefined">
                 <option value="select" disabled="disabled" selected="selected">Select country...</option>
                 <option value="United Kingdom">United Kingdom</option>
                 <option value="USA">USA</option>
