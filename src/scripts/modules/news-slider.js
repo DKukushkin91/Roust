@@ -10,7 +10,7 @@ export const getNewsSlider = () => {
 				prevEl: '.js-news-slider-prev',
 			},
 			breakpoints: {
-				768: {
+				320: {
 					slidesPerView: 'auto',
 					pagination: {
 						el: ".swiper-pagination",

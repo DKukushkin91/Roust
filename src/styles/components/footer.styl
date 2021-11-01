@@ -8,6 +8,9 @@
 	@media $md
 		padding 47px 40px 34px
 
+	@media $sm
+		padding: 37px 20px 42px
+
 	& .container
 		@media $md
 			padding: 0
@@ -26,6 +29,10 @@
 		@media $md
 			padding 0
 			padding-bottom 79px
+
+		@media $xs
+			display grid
+			grid-template-columns repeat(auto-fill, minmax(168px, 40%))
 
 		&::before
 			content: ''
@@ -46,8 +53,15 @@
 		flex-direction: column
 		justify-content: space-between
 
+		@media $xs
+			align-items: center
+			grid-column: 1 / -1
+
 	&__social
 		width: 100%
+
+		@media $xs
+			padding-bottom 50px
 
 	&__social-list
 		list-style: none
@@ -59,6 +73,10 @@
 		justify-content: flex-start
 		height: 30px
 		max-width: 171px
+
+		@media $xs
+			justify-content center
+			max-width 100%
 
 	&__social-item
 		width: 100%
@@ -106,6 +124,20 @@
 		padding: 0
 		display: flex
 		flex-direction: column
+
+		@media $xs
+			text-align: center
+			padding-bottom 50px
+
+	&__list--grid-1
+		@media $xs
+			grid-column: 1
+			grid-row: 1
+
+	&__list--grid-2
+		@media $xs
+			grid-column: 2
+			grid-row: 1
 
 	&__item
 		&:not(:last-child)

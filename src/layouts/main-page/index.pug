@@ -22,11 +22,11 @@ block page
 							+picture('bg-video', '', baseDir)
 				.main-page__screen.screen.swiper.js-main-slider
 					.screen__slider-wrap.swiper-wrapper
-						.main-page__slide.swiper-slide
+						.screen__slide.swiper-slide
 							.screen__img-wrap
 									picture
-										source(srcset=`${baseDir}/img/m-rs-slide@1x.webp 1x, ${baseDir}/img/m-rs-slide@2x.webp 2x` media='(max-width: 575px)' type="image/webp")
-										source(srcset=`${baseDir}/img/m-rs-slide@1x.png 1x, ${baseDir}/img/m-rs-slide@2x.png 2x` media='(max-width: 575px)' type="image/png")
+										source(srcset=`${baseDir}/img/m-rs-slide@1x.webp 1x, ${baseDir}/img/m-rs-slide@2x.webp 2x` media='(max-width: 574px)' type="image/webp")
+										source(srcset=`${baseDir}/img/m-rs-slide@1x.png 1x, ${baseDir}/img/m-rs-slide@2x.png 2x` media='(max-width: 574px)' type="image/png")
 										source(srcset=`${baseDir}/img/t-rs-slide@1x.webp 1x, ${baseDir}/img/t-rs-slide@2x.webp 2x` media='(max-width: 959px)' type="image/webp")
 										source(srcset=`${baseDir}/img/t-rs-slide@1x.png 1x, ${baseDir}/img/t-rs-slide@2x.png 2x` media='(max-width: 959px)' type="image/png")
 										source(srcset=`${baseDir}/img/responsive/rs-banner@1x.webp 1x, ${baseDir}/img/responsive/rs-banner@2x.webp 2x` type="image/webp")
@@ -129,8 +129,8 @@ block page
 					.screen__imgs-wrap
 						.screen__img-wrap
 							picture
-								source(srcset=`${baseDir}/img/responsive/m-brands-banner@1x.webp 1x, ${baseDir}/img/responsive/m-brands-banner@2x.webp 2x` media='(max-width: 575px)' type="image/webp")
-								source(srcset=`${baseDir}/img/responsive/m-brands-banner@1x.png 1x, ${baseDir}/img/responsive/m-brands-banner@2x.png 2x` media='(max-width: 575px)' type="image/png")
+								source(srcset=`${baseDir}/img/responsive/m-brands-banner@1x.webp 1x, ${baseDir}/img/responsive/m-brands-banner@2x.webp 2x` media='(max-width: 574px)' type="image/webp")
+								source(srcset=`${baseDir}/img/responsive/m-brands-banner@1x.png 1x, ${baseDir}/img/responsive/m-brands-banner@2x.png 2x` media='(max-width: 574px)' type="image/png")
 								source(srcset=`${baseDir}/img/t-brands@1x.webp 1x, ${baseDir}/img/t-brands@2x.webp 2x` media='(max-width: 959px)' type="image/webp")
 								source(srcset=`${baseDir}/img/t-brands@1x.png 1x, ${baseDir}/img/t-brands@2x.png 2x` media='(max-width: 959px)' type="image/png")
 								source(srcset=`${baseDir}/img/responsive/brands-banner@1x.webp 1x, ${baseDir}/img/responsive/brands-banner@2x.webp 2x` type="image/webp")
@@ -180,16 +180,16 @@ block page
 					.screen__icon-wrap
 						svg(width="14" height="9").screen__icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
-					.screen__img-wrap
+					.screen__img-wrap.screen__img-wrap--height
 						picture
-							source(srcset=`${baseDir}/img/m-investors@1x.webp 1x, ${baseDir}/img/m-investors@2x.webp 2x` media='(max-width: 575px)' type="image/webp")
-							source(srcset=`${baseDir}/img/m-investors@1x.png 1x, ${baseDir}/img/m-investors@2x.png 2x` media='(max-width: 575px)' type="image/png")
+							source(srcset=`${baseDir}/img/m-investors@1x.webp 1x, ${baseDir}/img/m-investors@2x.webp 2x` media='(max-width: 574px)' type="image/webp")
+							source(srcset=`${baseDir}/img/m-investors@1x.png 1x, ${baseDir}/img/m-investors@2x.png 2x` media='(max-width: 574px)' type="image/png")
 							source(srcset=`${baseDir}/img/t-investors@1x.webp 1x, ${baseDir}/img/t-investors@2x.webp 2x` media='(max-width: 959px)' type="image/webp")
 							source(srcset=`${baseDir}/img/t-investors@1x.png 1x, ${baseDir}/img/t-investors@2x.png 2x` media='(max-width: 959px)' type="image/png")
 							source(srcset=`${baseDir}/img/responsive/bg-investors@1x.webp 1x, ${baseDir}/img/responsive/bg-investors@2x.webp 2x` type="image/webp")
 							source(srcset=`${baseDir}/img/responsive/bg-investors@1x.png 1x, ${baseDir}/img/responsive/bg-investors@2x.png 2x` type="image/png")
 							img(src=`${baseDir}/img/responsive/bg-investors@1x.png` alt=altName)
-					.screen__content.screen__content--flex
+					.screen__content.screen__content--grid
 						h2.screen__title.screen__title--fonts
 							|	Investors
 						a.screen__link(href="#") More
@@ -208,7 +208,12 @@ block page
 						svg(width="14" height="9").screen__icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
 					.screen__img-wrap
-						+picture('bg-career', '', baseDir)
+						picture
+							source(srcset=`${baseDir}/img/bg-o-career@1x.webp 1x, ${baseDir}/img/bg-o-career@2x.webp 2x` media='(max-width: 574px)' type="image/webp")
+							source(srcset=`${baseDir}/img/bg-o-career@1x.png 1x, ${baseDir}/img/bg-o-career@2x.png 2x` media='(max-width: 574px)' type="image/png")
+							source(srcset=`${baseDir}/img/responsive/bg-career@1x.webp 1x, ${baseDir}/img/responsive/bg-career@2x.webp 2x` type="image/webp")
+							source(srcset=`${baseDir}/img/responsive/bg-career@1x.png 1x, ${baseDir}/img/responsive/bg-career@2x.png 2x` type="image/png")
+							img(src=`${baseDir}/img/responsive/bg-career@1x.png` alt=altName)
 					.screen__content.screen__content--padding
 						.screen__inner.screen__inner--bg
 							h2.screen__title.screen__title--fonts.screen__title--color Career
@@ -222,7 +227,7 @@ block page
 					.screen__img-wrap
 						+picture('bg-contacts', '', baseDir)
 					.screen__content
-						.screen__inner
+						.screen__inner.screen__inner--last
 							h2.screen__title.screen__title--fonts.screen__title--padding Contacts
 							p.screen__prev-text Russia
 							.screen__contacts

@@ -81,7 +81,20 @@ var getMainSlider = function getMainSlider() {
     var subSwiper = new Swiper(subSlider, {
       slidesPerView: 6,
       watchSlidesProgress: true,
-      spaceBetween: 30
+      spaceBetween: 30,
+      breakpoints: {
+        320: {
+          slidesPerView: 'auto',
+          watchSlidesProgress: true
+        },
+        575: {
+          slidesPerView: 'auto',
+          watchSlidesProgress: true
+        },
+        768: {
+          slidesPerView: 6
+        }
+      }
     });
     var swiper = new Swiper(slider, {
       thumbs: {
@@ -107,7 +120,7 @@ var getNewsSlider = function getNewsSlider() {
         prevEl: '.js-news-slider-prev'
       },
       breakpoints: {
-        768: {
+        320: {
           slidesPerView: 'auto',
           pagination: {
             el: ".swiper-pagination"
