@@ -6,21 +6,42 @@
 	transition: all 0.8s ease 0s;
 	transform: translate(0px, 0px)
 
+	@media $md
+		padding 30px 0
+
+	&__container
+		@media $md
+			display grid
+		@media $xs
+			padding: 0 20px
+
 	&__active
 		transform: translate(0px, -120%);
 
 	&__wrap
 		display: flex
 		flex-direction: row
+		flex-wrap: wrap
 		align-items: center
 		justify-content: center
 		position: relative
 		padding-bottom: 70px
 
+		@media $md
+			justify-content: flex-start
+
+		@media $xs
+			padding-bottom 10px
+
 	&__logo-wrap
 		max-width: 217px
 		margin-left: auto
 		margin-right: auto
+		margin-bottom 70px
+
+		@media $md
+			max-width: 172px
+			margin 0
 
 	&__search
 		display: flex
@@ -29,16 +50,22 @@
 		top: 0
 		right 0
 
+		@media $md
+			display none
+
 	&__input
 		fz-15()
 		line-height: 18px
 		font-weight: bold
-		width: 55px
+		width: 65px
 		border: 0
 		border-radius: 0
 		background: none
 		color: $white
 		outline: none
+
+		&::placeholder
+			color: $white
 
 	&__search-icon
 		max-width: 16px
@@ -53,8 +80,55 @@
 		border: 0
 		cursor pointer
 
+	&__burger-btn
+		display: none
+		background: 0
+		border: 0
+		position relative
+
+		@media $md
+			display: flex
+			align-items: center
+			margin-left: auto
+			width 22px
+			height 14px
+			cursor pointer
+
+	&__burger-btn > span,
+	&__burger-btn > span::before,
+	&__burger-btn > span::after
+		display: block
+		position absolute
+		width: 100%
+		height 3px
+		background $white
+		transition-duration: 0.2s
+
+	&__burger-btn > span::before
+		content: ''
+		top -8px
+
+	&__burger-btn > span::after
+		content: ''
+		top 8px
+
+	&__burger-btn--active > span
+		transform rotate(45deg)
+
+	&__burger-btn--active > span::before
+		top: 0;
+		opacity: 0
+		transform: rotate(0);
+
+	&__burger-btn--active > span::after
+		top: 0;
+		transform: rotate(90deg);
+
 .nav
 	width: 100%
+
+	@media $md
+		display none
 
 	&__list
 		list-style: none
@@ -64,12 +138,16 @@
 		flex-direction: row
 		flex-wrap: wrap
 		align-items: center
+		justify-content space-between
 
 	&__item
 		width: fit-content
 
 		&:not(:last-child)
 			margin-right: 71px
+
+			@media $lg
+				margin-right 2%
 
 	&__link
 		fz-15()

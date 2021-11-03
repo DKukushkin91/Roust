@@ -7,6 +7,19 @@ export const getMainSlider = () => {
 			slidesPerView: 6,
 			watchSlidesProgress: true,
 			spaceBetween: 30,
+			breakpoints: {
+				320: {
+					slidesPerView: 'auto',
+					watchSlidesProgress: true,
+				},
+				575: {
+					slidesPerView: 'auto',
+					watchSlidesProgress: true,
+				},
+				768: {
+					slidesPerView: 6
+				}
+			}
 		})
 
 		const swiper = new Swiper(slider, {

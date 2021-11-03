@@ -3,17 +3,59 @@
 	position: relative
 	overflow: hidden
 
+	@media $xl
+		flex 1 1 100%
+		min-height: 909px
+
+	@media $lg
+		min-height: 572px
+
+	@media $sm
+		min-height 545px
+
 	&:first-child
 		margin-bottom -325px
+
+		@media $lg
+			margin-bottom -360px
+			flex 1 1 100vh
+
+		@media $md
+			margin-bottom -200px
+
+		@media $sm
+			margin-bottom 0
+			flex 1 1 100%
 
 	&:last-child
 		margin-bottom get-vw(-180, $width-xl)
 
+		@media $lg
+			margin-bottom get-vw(-175, $width-lg)
+
+		@media $md
+			margin-bottom get-vw(-175, $width-md)
+
+		@media $sm
+			margin-bottom get-vw(-155, $width-sm)
+
+		@media $xs
+			margin-bottom get-vw(-130, $width-xs)
+
 	&:not(:last-child, &:first-child)
 		margin-bottom get-vw(-40, $width-xl)
 
-	@media $xl
-		min-height: 909px
+		@media $lg
+			margin-bottom get-vw(-40, $width-lg)
+
+		@media $md
+			margin-bottom get-vw(-60, $width-md)
+
+		@media $sm
+			margin-bottom get-vw(-75, $width-sm)
+
+		@media $xs
+			margin-bottom get-vw(-35, $width-xs)
 
 	&__video-wrap
 		width: 100%
@@ -57,6 +99,9 @@
 	&__icon--color
 		fill: $d-grey
 
+	&__slider-wrap
+		min-height: inherit
+
 	&__imgs-wrap
 		display: flex
 		justify-content: center
@@ -78,14 +123,42 @@
 		object-position: top
 
 	&__img-wrap--center
+		display flex
+		flex-direction column
+		justify-content flex-end
 		max-width: 1087px
-		top unset
-		bottom get-vw(-160, $width-xl)
-		transform: translateY(-@bottom)
+		bottom 0
 		left unset
+
+		@media $lg
+			width: 58%
+
+		@media $md
+			width 70%
+			right: 40px
+
+		@media $sm
+			right 0
+			width 85%
+
+		@media $xs
+			width 95%
+			right 10px
 
 	&__img-wrap--center picture,
 	&__img-wrap--center img
+		height: auto
+		position relative
+		bottom -100px
+
+		@media $lg
+			bottom get-vw(-70, $width-lg)
+
+	&__img-wrap--height
+		@media (min-width: 575px) and (max-width: 767px)
+			height: 150%
+
+	&__slide.swiper-slide
 		height: auto
 
 	&__content
@@ -95,22 +168,72 @@
 		z-index: 1
 		margin: 0 auto
 
-	&__content--flex
-		display: flex
-		flex-direction: row
-		flex-wrap: wrap
-		justify-content: space-between
-		height: 100%
-		padding-bottom: 120px
+		@media $lg
+			padding 117px 25px 10px 25px
+
+		@media $md
+			padding 86px 40px 30px 40px
+
+		@media $sm
+			padding: 85px 20px 20px 20px
+
+	&__content--padding
+		@media $lg
+			padding: 117px 25px 165px 25px
+
+		@media $md
+			padding 109px 0 65px
+			margin-bottom 65px
+
+	&__content--grid
+		display grid
+		grid-template-columns repeat(2, 50%)
+		grid-template-rows 1fr auto
+		align-items: flex-end
+		height 100%
+		padding-bottom 122px
+
+		@media $md
+			flex-direction column
+			align-items: flex-end
+
+		@media $sm
+			grid-template-columns: 0.7fr 1fr
+
+		@media $xs
+			grid-template-columns 1fr
+			align-items: center
 
 	&__inner
-		max-width: 639px
+		max-width: 50%
 		padding-bottom: 169px
+
+		@media $md
+			padding-bottom 93px
+
+		@media $xs
+			max-width: 100%
+
+	&__inner--last
+		@media $sm
+			padding-bottom 28%
 
 	&__inner--bg
 		background-color: $white
 		padding 49px 62px
 		max-width: 455px
+
+		@media $md
+			max-width: 50%
+			padding: 49px 40px
+
+		@media $sm
+			padding: 49px 20px
+
+		@media $xs
+			max-width: 100%
+			background 0
+			padding: 0 20px
 
 		& .screen__title
 			padding-bottom: 31px
@@ -120,7 +243,18 @@
 		flex-direction: column
 		align-items: flex-start
 		justify-content: flex-end
-		padding: 0;
+		padding: 0
+
+	&__inner--slider
+		@media $lg
+			padding-bottom 335px
+
+		@media $md
+			padding-bottom 177px
+
+		@media $xs
+			padding-top 90%
+			padding-bottom 180px
 
 	&__title
 		fz-75()
@@ -130,6 +264,9 @@
 		line-height 100%
 		padding-bottom: 50px
 
+		@media $lg
+			padding-bottom 20px
+
 	&__title--fonts
 		fz-60()
 		padding-bottom: 35px
@@ -137,12 +274,23 @@
 		font-family: $Inter
 		text-transform: uppercase
 
+		@media $md
+			padding-bottom 13px
+			grid-column: 2
+			grid-row: 1
+
+		@media $xs
+			grid-column: 1
+
 	&__title--color
 		color: $d-grey
 		padding: 0
 
 	&__title--padding
 		padding-bottom 66px
+
+		@media $md
+			padding-bottom 31px
 
 	&__text
 		fz-15()
@@ -152,26 +300,52 @@
 		line-height 24px
 		padding-bottom: 72px
 
+		@media $lg
+			padding-bottom 40px
+
 	&__text--padding
 		fz-21()
 		padding-bottom 55px
 		max-width: 556px
 
-	&__text--fz
-		fz-15()
+		@media $md
+			padding-bottom 40px
 
 	&__text--color
 		color: $d-grey
 		padding-bottom 30px
 
+	&__text--md
+		@media $md
+			font-size: 20px
+			line-height 24px
+			font-weight 700
+			padding-bottom 45px
+
+	&__text--fz
+		font-size: 15px
+
+		@media $md
+			padding-bottom 95px
+
 	&__link
 		fz-15()
+		display block
 		line-height 18px
 		text-decoration: none
 		padding: 12px 58px
 		border: 1px solid $white
 		font-weight bold
 		color: $white
+		max-width 158px
+		grid-column: 1
+
+		@media $md
+			grid-column: 2
+			grid-row: 3
+
+		@media $xs
+			grid-column: 1
 
 	&__link--color
 		color: $d-grey
@@ -183,11 +357,14 @@
 		cursor pointer
 		display: block
 		position absolute
-		left: 90px
+		left: calc(5% - 51px)
 		top: 50%
 		transform: translate(0, -50%)
 		z-index 99999
 		opacity: 0.5
+
+		@media $lg
+			display: none
 
 		&:disabled
 			opacity: 0.5
@@ -198,7 +375,7 @@
 		&--next
 			transform: translate(0, -50%) rotate(-180deg)
 			left: unset
-			right: 90px
+			right: calc(5% - 51px)
 
 	&__nav-icon
 		width: 51px
@@ -218,6 +395,21 @@
 		left: 0
 		right: 0
 
+		@media $lg
+			bottom: 56px
+
+		@media $md
+			padding: 0 40px
+			bottom: 56px
+
+		@media $sm
+			padding: 0 20px
+			bottom: 60px
+			margin-bottom 30px
+
+		@media $xs
+			bottom 40px
+
 	&__p-container
 		max-width: 655px
 		height: 60px
@@ -233,6 +425,9 @@
 
 	&__p-item
 		opacity: 0.5
+
+		@media $sm
+			max-width: 80px
 
 	&__p-btn
 		background: 0
@@ -253,12 +448,18 @@
 		&:not(:last-child)
 			padding-bottom 70px
 
+			@media $md
+				padding-bottom 40px
+
 	&__sub-title
 		fz-24()
 		line-height 32px
 		color: $white
 		font-weight bold
 		padding-bottom 101px
+
+		@media $md
+			padding-bottom 34px
 
 	&__o-list
 		list-style: none
@@ -270,9 +471,18 @@
 		padding 0
 		counter-reset: itemCounter
 
+		@media $md
+			flex-direction: column
+
 	&__o-item
 		flex: 1
 		position relative
+
+		@media $md
+			display inline-flex
+			flex-direction: row
+			justify-content: flex-start
+			align-items: center
 
 		&:before
 			fz-15()
@@ -280,6 +490,7 @@
 			counter-increment: itemCounter
 			content: counter(itemCounter)
 			color: $white
+			min-width: 40px
 			width: 40px
 			height: 40px
 			display: flex
@@ -291,8 +502,18 @@
 			top: -@height - 15px
 			left: 0
 
+			@media $md
+				position relative
+				top unset
+				left unset
+				margin-right 12px
+
 		&:not(:last-child)
 			margin-right 60px
+
+			@media $md
+				margin 0
+				padding-bottom 30px
 
 			&:after
 				position: absolute
@@ -303,6 +524,9 @@
 				height 2px
 				background-color rgba(255,255,255,0.2);
 
+				@media $md
+					display: none
+
 	&__o-text
 		fz-15()
 		line-height 24px
@@ -310,8 +534,13 @@
 		font-weight 500
 		text-align: left
 
-	&__o-text--color
+	&__o-button
+		fz-15()
 		color: $orange
+		background: 0
+		border: 0
+		border-radius: 0
+		cursor pointer
 
 	&__title-wrap
 		display: flex
@@ -320,6 +549,12 @@
 		align-items: center
 		padding-bottom: 90px
 
+		@media $lg
+			padding-bottom 32px
+
+		@media $md
+			justify-content: center
+
 	&__title-link
 		fz-15()
 		line-height 18px
@@ -327,12 +562,24 @@
 		font-weight: 700
 		text-decoration: none
 
+		@media $md
+			margin-left 130px
+
 	&__dl
-		width: 45%
 		display: flex
 		flex-direction: column
 		align-items: flex-start
 		justify-content: space-between
+		grid-column: 2
+		grid-row: 1 / -1
+		height 100%
+
+		@media $md
+			grid-row: 2
+			padding-bottom 70px
+
+		@media $xs
+			grid-column: 1
 
 	&__d-wrap
 		display: flex
@@ -341,6 +588,9 @@
 
 		&:not(:last-child)
 			padding-bottom: 40px
+
+			@media $md
+				padding-bottom 30px
 
 	&__dt
 		fz-56()
@@ -363,9 +613,15 @@
 		color: $cian
 		padding-bottom 30px
 
+		@media $md
+			font-size: 21px
+
 	&__contacts
 		padding-bottom 54px
 		max-width: 363px
+
+		@media $md
+			padding-bottom 72px
 
 	&__text-title
 		fz-21()
@@ -373,6 +629,9 @@
 		line-height 29px
 		padding-bottom 25px
 		color: $white
+
+		@media $md
+			font-size 21px
 
 	&__contacts-list
 		list-style: none

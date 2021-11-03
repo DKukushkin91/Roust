@@ -6,9 +6,12 @@ import {getCatalogList} from './modules/catalog-list';
 import {getScrollItem} from './modules/brands-item';
 import {getSliders, getScrollElement} from './modules/brands-item-slider';
 import {getGallery} from './modules/career-gallery';
+import {getPopup} from './modules/popup-form';
+import {burgerMenuHandler} from './modules/burger-menu';
 
 document.addEventListener('DOMContentLoaded', () => {
 	getTop();
+	burgerMenuHandler();
 	getMainSlider();
 	getNewsSlider();
 	getBrandsList();
@@ -17,4 +20,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	getSliders();
 	getScrollElement();
 	getGallery();
+	getPopup();
 });

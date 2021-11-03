@@ -81,7 +81,20 @@ var getMainSlider = function getMainSlider() {
     var subSwiper = new Swiper(subSlider, {
       slidesPerView: 6,
       watchSlidesProgress: true,
-      spaceBetween: 30
+      spaceBetween: 30,
+      breakpoints: {
+        320: {
+          slidesPerView: 'auto',
+          watchSlidesProgress: true
+        },
+        575: {
+          slidesPerView: 'auto',
+          watchSlidesProgress: true
+        },
+        768: {
+          slidesPerView: 6
+        }
+      }
     });
     var swiper = new Swiper(slider, {
       thumbs: {
@@ -105,6 +118,17 @@ var getNewsSlider = function getNewsSlider() {
       navigation: {
         nextEl: '.js-news-slider-next',
         prevEl: '.js-news-slider-prev'
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 'auto',
+          pagination: {
+            el: ".swiper-pagination"
+          }
+        },
+        960: {
+          pagination: false
+        }
       }
     });
   }
@@ -401,8 +425,221 @@ var getGallery = function getGallery() {
   }
 };
 
+var selectHandler = function selectHandler(template) {
+  var elSelectNative = template.getElementsByClassName("js-select-native")[0];
+  var elSelectCustom = template.getElementsByClassName("js-select-custom")[0];
+  var elSelectCustomBox = elSelectCustom.children[0];
+  var elSelectCustomOpts = elSelectCustom.children[1];
+  var customOptsList = Array.from(elSelectCustomOpts.children);
+  var optionsCount = customOptsList.length;
+  var defaultLabel = elSelectCustomBox.getAttribute("data-value");
+  var optionChecked = "";
+  var optionHoveredIndex = -1; // Toggle custom select visibility when clicking the box
+
+  elSelectCustomBox.addEventListener("click", function (e) {
+    var isClosed = !elSelectCustom.classList.contains("m-select__custom-wrap--active");
+
+    if (isClosed) {
+      openSelectCustom();
+    } else {
+      closeSelectCustom();
+    }
+  });
+
+  function openSelectCustom() {
+    elSelectCustom.classList.add("m-select__custom-wrap--active"); // Remove aria-hidden in case this was opened by a user
+    // who uses AT (e.g. Screen Reader) and a mouse at the same time.
+
+    elSelectCustom.setAttribute("aria-hidden", false);
+
+    if (optionChecked) {
+      var optionCheckedIndex = customOptsList.findIndex(function (el) {
+        return el.getAttribute("data-value") === optionChecked;
+      });
+      updateCustomSelectHovered(optionCheckedIndex);
+    } // Add related event listeners
+
+
+    document.addEventListener("click", watchClickOutside);
+    document.addEventListener("keydown", supportKeyboardNavigation);
+  }
+
+  function closeSelectCustom() {
+    elSelectCustom.classList.remove("m-select__custom-wrap--active");
+    elSelectCustom.setAttribute("aria-hidden", true);
+    updateCustomSelectHovered(-1); // Remove related event listeners
+
+    document.removeEventListener("click", watchClickOutside);
+    document.removeEventListener("keydown", supportKeyboardNavigation);
+  }
+
+  function updateCustomSelectHovered(newIndex) {
+    var prevOption = elSelectCustomOpts.children[optionHoveredIndex];
+    var option = elSelectCustomOpts.children[newIndex];
+
+    if (prevOption) {
+      prevOption.classList.remove("m-select__custom-option--hover");
+    }
+
+    if (option) {
+      option.classList.add("m-select__custom-option--hover");
+    }
+
+    optionHoveredIndex = newIndex;
+  }
+
+  function updateCustomSelectChecked(value, text) {
+    var prevValue = optionChecked;
+    var elPrevOption = elSelectCustomOpts.querySelector("[data-value=\"".concat(prevValue, "\""));
+    var elOption = elSelectCustomOpts.querySelector("[data-value=\"".concat(value, "\""));
+
+    if (elPrevOption) {
+      elPrevOption.classList.remove("m-select__custom-wrap--active");
+    }
+
+    if (elOption) {
+      elOption.classList.add("m-select__custom-wrap--active");
+    }
+
+    elSelectCustomBox.textContent = text;
+    optionChecked = value;
+  }
+
+  function watchClickOutside(e) {
+    var didClickedOutside = !elSelectCustom.contains(event.target);
+
+    if (didClickedOutside) {
+      closeSelectCustom();
+    }
+  }
+
+  function supportKeyboardNavigation(e) {
+    // press down -> go next
+    if (event.keyCode === 40 && optionHoveredIndex < optionsCount - 1) {
+      e.preventDefault(); // prevent page scrolling
+
+      updateCustomSelectHovered(optionHoveredIndex + 1);
+    } // press up -> go previous
+
+
+    if (event.keyCode === 38 && optionHoveredIndex > 0) {
+      e.preventDefault(); // prevent page scrolling
+
+      updateCustomSelectHovered(optionHoveredIndex - 1);
+    } // press Enter or space -> select the option
+
+
+    if (event.keyCode === 13 || event.keyCode === 32) {
+      e.preventDefault();
+      var option = elSelectCustomOpts.children[optionHoveredIndex];
+      var value = option && option.getAttribute("data-value");
+
+      if (value) {
+        elSelectNative.value = value;
+        updateCustomSelectChecked(value, option.textContent);
+      }
+
+      closeSelectCustom();
+    } // press ESC -> close selectCustom
+
+
+    if (event.keyCode === 27) {
+      closeSelectCustom();
+    }
+  } // Update selectCustom value when selectNative is changed.
+
+
+  elSelectNative.addEventListener("change", function (e) {
+    var value = e.target.value;
+    var elRespectiveCustomOption = elSelectCustomOpts.querySelectorAll("[data-value=\"".concat(value, "\"]"))[0];
+    updateCustomSelectChecked(value, elRespectiveCustomOption.textContent);
+  }); // Update selectCustom value when an option is clicked or hovered
+
+  customOptsList.forEach(function (elOption, index) {
+    elOption.addEventListener("click", function (e) {
+      var value = e.target.getAttribute("data-value"); // Sync native select to have the same value
+
+      elSelectNative.value = value;
+      updateCustomSelectChecked(value, e.target.textContent);
+      closeSelectCustom();
+    });
+    elOption.addEventListener("mouseenter", function (e) {
+      updateCustomSelectHovered(index);
+    }); // TODO: Toggle these event listeners based on selectCustom visibility
+  });
+};
+
+var getPopup = function getPopup() {
+  if (document.querySelector('.js-btn-form')) {
+    (function () {
+      var body = document.querySelector('body');
+      var buttons = document.querySelectorAll('.js-btn-form');
+      var popupTemplate = document.querySelector('.js-popup-form').content.querySelector('.js-popup-wrap');
+
+      var escPressHandler = function escPressHandler(evt) {
+        if (evt.key === 'Escape') {
+          evt.preventDefault();
+          elementRemoveHandler();
+        }
+      };
+
+      var elementRemoveHandler = function elementRemoveHandler() {
+        var wrap = document.querySelector('.js-popup-wrap');
+
+        if (wrap) {
+          wrap.remove();
+          document.removeEventListener('keydown', escPressHandler);
+        }
+      };
+
+      var getElement = function getElement() {
+        var template = popupTemplate.cloneNode(true);
+        var closeBtn = template.querySelector('.js-close-btn');
+        closeBtn.addEventListener('click', elementRemoveHandler);
+        selectHandler(template);
+        return template;
+      };
+
+      var appendElement = function appendElement() {
+        var fragment = document.createDocumentFragment();
+        var element = getElement();
+        fragment.appendChild(element);
+        document.addEventListener('keydown', escPressHandler);
+        createElement(body, fragment);
+      };
+
+      var _iterator2 = _createForOfIteratorHelper(buttons),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var button = _step2.value;
+          button.addEventListener('click', function (evt) {
+            evt.preventDefault();
+            appendElement();
+          });
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+    })();
+  }
+};
+
+var burgerMenuHandler = function burgerMenuHandler() {
+  if (document.querySelector('.js-burger-btn')) {
+    var button = document.querySelector('.js-burger-btn');
+    button.addEventListener('click', function () {
+      button.classList.toggle('header__burger-btn--active');
+    });
+  }
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   getTop();
+  burgerMenuHandler();
   getMainSlider();
   getNewsSlider();
   getBrandsList();
@@ -411,6 +648,7 @@ document.addEventListener('DOMContentLoaded', function () {
   getSliders();
   getScrollElement();
   getGallery();
+  getPopup();
 });
 "use strict";
 
