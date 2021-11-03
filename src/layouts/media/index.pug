@@ -1,0 +1,58 @@
+extends ../../template/_layout
+
+block pageVar
+	-
+		page = 'media';
+
+block path
+	-
+		baseDir = '/f';
+
+block title
+	-
+		title = 'Media Center';
+
+block page
+	section.media
+		.container
+			.media__subscription
+				button.media__btn.btn Subscribe to our newsletters
+			.media__banner
+				img(src=`${baseDir}/img/media-banner.jpg`, alt="").media__banner-img
+				.media__banner-date.media__date 3 september 2020
+				h2.media__banner-title 25th Anniversary of Roust's Largest Vodka Distillery in Russia
+			ul.media__list
+				li.media__item
+					a(href="#").media__item-link
+						img(src=`${baseDir}/img/media-item-1.png`, alt="").media__item-img
+						.media__item-content
+							.media__item-date.media__date 11 august 2020
+							p.media__item-text Outstanding Gold Medal Wins at The Vodka Masters
+				li.media__item
+					a(href="#").media__item-link
+						img(src=`${baseDir}/img/media-item-2.png`, alt="").media__item-img
+						.media__item-content
+							.media__item-date.media__date 11 august 2020
+							p.media__item-text Outstanding Gold Medal Wins at The Vodka Masters
+				li.media__item
+					a(href="#").media__item-link
+						img(src=`${baseDir}/img/media-item-3.png`, alt="").media__item-img
+						.media__item-content
+							.media__item-date.media__date 11 august 2020
+							p.media__item-text Outstanding Gold Medal Wins at The Vodka Masters
+				li.media__item
+					a(href="#").media__item-link
+						img(src=`${baseDir}/img/media-item-4.png`, alt="").media__item-img
+						.media__item-content
+							.media__item-date.media__date 11 august 2020
+							p.media__item-text Outstanding Gold Medal Wins at The Vodka Masters
+				li.media__item
+					a(href="#").media__item-link
+						img(src=`${baseDir}/img/media-item-5.png`, alt="").media__item-img
+						.media__item-content
+							.media__item-date.media__date 11 august 2020
+							p.media__item-text Outstanding Gold Medal Wins at The Vodka Masters
+			.media__more
+				button.media__btn.btn More
+
+			
