@@ -2,19 +2,27 @@
 	flex 1 1 100vh
 	position: relative
 	overflow: hidden
+	width 100%
+	padding: 149px 0 109px 0
 
 	@media $xl
 		flex 1 1 100%
-		min-height: 909px
 
 	@media $lg
 		min-height: 572px
+
+	@media $md
+		flex: 1 1 100%
+		padding: 90px 0 20px 0
 
 	@media $sm
 		min-height 545px
 
 	&:first-child
 		margin-bottom -325px
+
+		@media $xl
+			min-height: 909px
 
 		@media $lg
 			margin-bottom -360px
@@ -37,13 +45,13 @@
 			margin-bottom get-vw(-175, $width-md)
 
 		@media $sm
-			margin-bottom get-vw(-155, $width-sm)
+			margin-bottom get-vw(-156.717, $width-sm)
 
 		@media $xs
 			margin-bottom get-vw(-130, $width-xs)
 
 	&:not(:last-child, &:first-child)
-		margin-bottom get-vw(-40, $width-xl)
+		margin-bottom get-vw(-46.4, $width-xl)
 
 		@media $lg
 			margin-bottom get-vw(-40, $width-lg)
@@ -55,7 +63,11 @@
 			margin-bottom get-vw(-75, $width-sm)
 
 		@media $xs
-			margin-bottom get-vw(-35, $width-xs)
+			margin-bottom get-vw(-50, $width-xs)
+
+	&.swiper
+		width 100%
+		z-index 0
 
 	&__video-wrap
 		width: 100%
@@ -131,7 +143,7 @@
 		left unset
 
 		@media $lg
-			width: 58%
+			width: 80%
 
 		@media $md
 			width 70%
@@ -162,20 +174,20 @@
 		height: auto
 
 	&__content
-		padding: 149px 25px 20px 25px
+		padding: 0 25px 20px 25px
 		max-width: 1150px
 		position: relative
 		z-index: 1
 		margin: 0 auto
 
 		@media $lg
-			padding 117px 25px 10px 25px
+			padding 0 25px 10px 25px
 
 		@media $md
-			padding 86px 40px 30px 40px
+			padding 0 40px 30px 40px
 
 		@media $sm
-			padding: 85px 20px 20px 20px
+			padding: 0 20px 20px 20px
 
 	&__content--padding
 		@media $lg
@@ -191,11 +203,15 @@
 		grid-template-rows 1fr auto
 		align-items: flex-end
 		height 100%
-		padding-bottom 122px
+		min-height inherit
+
+		@media $lg
+			grid-template-columns: auto min-content
 
 		@media $md
 			flex-direction column
 			align-items: flex-end
+			padding-bottom 120px
 
 		@media $sm
 			grid-template-columns: 0.7fr 1fr
@@ -203,6 +219,15 @@
 		@media $xs
 			grid-template-columns 1fr
 			align-items: center
+
+	&__content--slider
+		padding: 149px 25px 335px 25px
+
+		@media $md
+			padding: 90px 40px 125px 40px
+
+		@media $sm
+			padding-bottom: 20px
 
 	&__inner
 		max-width: 50%
@@ -252,9 +277,18 @@
 		@media $md
 			padding-bottom 177px
 
+		@media $sm
+			padding-bottom 140px
+
 		@media $xs
-			padding-top 90%
+			padding-top 95%
 			padding-bottom 180px
+
+	&__inner--padding
+		padding-bottom 50%
+
+		@media $md
+			padding-bottom 14%
 
 	&__title
 		fz-75()
@@ -391,16 +425,16 @@
 		margin: 0 auto
 		max-width: 1150px
 		padding: 0 25px
-		bottom: 20%
+		bottom: 10%
 		left: 0
 		right: 0
 
 		@media $lg
-			bottom: 56px
+			bottom: 70px
 
 		@media $md
 			padding: 0 40px
-			bottom: 56px
+			bottom: 80px
 
 		@media $sm
 			padding: 0 20px
@@ -555,6 +589,9 @@
 		@media $md
 			justify-content: center
 
+		@media $sm
+			justify-content: space-between
+
 	&__title-link
 		fz-15()
 		line-height 18px
@@ -564,6 +601,9 @@
 
 		@media $md
 			margin-left 130px
+
+		@media $sm
+			margin-left 20px
 
 	&__dl
 		display: flex
