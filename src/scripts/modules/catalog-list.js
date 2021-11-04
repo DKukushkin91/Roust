@@ -1,8 +1,9 @@
 import {createElement} from '../utils/utils.js';
 
 export const getCatalogList = () => {
-	if(document.querySelector('.js-list-wrap')) {
-		const listWrapper = document.querySelector('.js-list-wrap');
+	if(document.querySelector('.catalog-brands')) {
+		const catalogWrap = document.querySelector('.catalog-brands');
+		const listWrapper = catalogWrap.querySelector('.js-list-wrap');
 		const list = document.querySelector('.js-catalog-template')
 			.content
 			.querySelectorAll('.js-catalog-list');

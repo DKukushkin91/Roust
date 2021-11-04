@@ -177,8 +177,9 @@ var getBrandsList = function getBrandsList() {
 };
 
 var getCatalogList = function getCatalogList() {
-  if (document.querySelector('.js-list-wrap')) {
-    var listWrapper = document.querySelector('.js-list-wrap');
+  if (document.querySelector('.catalog-brands')) {
+    var catalogWrap = document.querySelector('.catalog-brands');
+    var listWrapper = catalogWrap.querySelector('.js-list-wrap');
     var list = document.querySelector('.js-catalog-template').content.querySelectorAll('.js-catalog-list');
 
     var getItems = function getItems(template) {
