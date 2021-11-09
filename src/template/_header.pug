@@ -1,6 +1,6 @@
 header.header.js-animate-header
 	.container.header__container
-		.header__wrap
+		.header__wrap(class=`${page}__header-wrap`)
 			.header__logo-wrap
 				if (page != 'main-page')
 					a.header__link(href=`../main-page/index.html`)

@@ -237,14 +237,15 @@
 		// 	top: -20%
 
 	&__scroll-btn
-		position relative
+		position fixed
 		display: block
 		margin: 0 auto
 		margin-top: 66px
 		width: 143px
 		min-height: 50px
-		// left: calc(50% - (143px / 2))
-		// bottom: 0
+		left 0
+		right 0
+		bottom 0
 		background: 0
 		border: 0
 		border-radius: 0
@@ -253,7 +254,7 @@
 		transition: all 0.2s ease 0s
 
 		&:hover
-			margin-top: 63px
+			width 160px
 
 		& svg
 			display: block
@@ -272,8 +273,8 @@
 		max-width 226px
 
 	&__picture--animate.swiper
-		max-width: 176px
-		top: -20%
+		max-width: 14.33333333%
+		top: -20.33333333%
 
 	&__img-wrapper.swiper-wrapper
 		align-items: flex-end
