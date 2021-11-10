@@ -166,7 +166,7 @@
 		width: 100%
 		position relative
 		display block
-		transition: all 1s ease 0.2s
+		transition: all 1s ease 0s
 		transform: translate(0px, 0px)
 
 		&--brands-item
@@ -184,7 +184,7 @@
 		padding 0
 		margin 0
 		position relative
-		transition: all 1s ease 0.2s
+		transition: all 1s ease 0s
 		transform: translate(0px, 0px)
 
 	&__item-awards
@@ -275,6 +275,9 @@
 	&__picture--animate.swiper
 		max-width: 14.33333333%
 		top: -20.33333333%
+
+		@media (max-width: 1460px)
+			right 7vw
 
 	&__img-wrapper.swiper-wrapper
 		align-items: flex-end
