@@ -89,6 +89,13 @@ input::placeholder
 		flex-direction: column
 		justify-content: flex-start
 
+		@media $lg
+			width: 100vw
+			max-width: 100%
+			transform: none
+			display grid
+			grid-area: unset
+
 	&--animate
 		transform: translate(0, 0)
 		margin-top: 4vw

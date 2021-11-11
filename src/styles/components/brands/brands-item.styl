@@ -6,6 +6,14 @@
 		background $white
 		height: 100%
 
+		@media $lg
+			grid-row: 1
+
+	&--width
+		@media $lg
+			width 100vw
+			max-width: 100%
+
 	// &__top-container
 	// 	transition: all 0.3s ease 0s
 
@@ -35,6 +43,12 @@
 		opacity: 0
 		transition: all 0.8s ease 0s;
 
+		@media $lg
+			transform: none
+			width 100%
+			opacity: 1
+
+
 	&__wrap--active
 		transform: translate(0px, 0px)
 		opacity: 1
@@ -44,10 +58,21 @@
 		width: 100%
 		display: grid
 
+		@media $lg
+			display block
+
 	&__img-slider
 		grid-area: 1 / -1
 		width: 100%
 		height: 100%
+
+		@media $lg
+			grid-area: unset
+			position: absolute
+			top 0
+			left 0
+			width 100%
+			height 100%
 
 	&__img
 		width: 100%
@@ -73,6 +98,9 @@
 		&:disabled
 			opacity: 0.5
 
+		@media (max-width: 1365px)
+			display none
+
 	&__nav-btn--next
 		right: 40px
 		transform: rotate(-90deg)
@@ -90,9 +118,17 @@
 		margin auto 190px auto auto
 		max-width: 363px
 
+		@media $lg
+			grid-area: unset
+			margin: 0 auto
+			max-width: 535px
+
 	&__text-wrapper.swiper-wrapper
 		display: grid
 		grid-auto-flow: column
+
+		@media $lg
+			display flex
 
 	&__text-block
 		display: flex
@@ -104,6 +140,12 @@
 		text-align: left
 		opacity: 0
 		transition: all 0.8s ease 0.3s
+
+		@media $lg
+			opacity: 1
+
+			&.swiper-slide
+				height: auto
 
 		&--animate
 			opacity: 1
@@ -129,7 +171,7 @@
 	&__inner
 		max-width: 1680px
 		margin: 0 auto
-		padding: 0 63px
+		padding-left: 63px
 		display: flex
 		flex-direction: row
 
@@ -161,6 +203,9 @@
 	&__slide
 		flex: 1
 
+		&.swiper
+			width 100%
+
 	&__list
 		list-style: none
 		display: flex
@@ -169,7 +214,7 @@
 		margin 0
 
 	&__item
-		flex: 1
+		// flex: 1
 		max-width: 360px
 		border-left: 1px solid #e6e8ea
 

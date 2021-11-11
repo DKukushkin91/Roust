@@ -10,9 +10,13 @@ export const getSliders = () => {
 		const gThumbSlider = new Swiper(thumbSlider, {
 			slidesPerView: 'auto',
 			watchSlidesProgress: true,
-			navigation: {
-				nextEl: document.querySelector('.js-item-next'),
-				prevEl: document.querySelector('.js-item-prev'),
+			breakpoints: {
+				1366: {
+					navigation: {
+						nextEl: document.querySelector('.js-item-next'),
+						prevEl: document.querySelector('.js-item-prev'),
+					},
+				}
 			},
 		})
 
@@ -27,9 +31,13 @@ export const getSliders = () => {
 							.forEach(n => n.slideToLoop(this.realIndex));
 					},
 				},
-				navigation: {
-					nextEl: document.querySelector('.js-item-next'),
-					prevEl: document.querySelector('.js-item-prev'),
+				breakpoints: {
+					1366: {
+						navigation: {
+							nextEl: document.querySelector('.js-item-next'),
+							prevEl: document.querySelector('.js-item-prev'),
+						},
+					}
 				},
 				thumbs: {
 					swiper: gThumbSlider,
