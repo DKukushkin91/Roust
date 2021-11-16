@@ -46,8 +46,9 @@ export const getScrollItem = () => {
 		}
 
 		const scrollToMain = () => window.scrollBy(0, 80);
-
-		scrollBtn.addEventListener('click', scrollToMain);
-		window.addEventListener('scroll', onScrollAnim);
+		if(window.innerWidth >= 1280) {
+			scrollBtn.addEventListener('click', scrollToMain);
+			window.addEventListener('scroll', onScrollAnim);
+		}
 	}
 }

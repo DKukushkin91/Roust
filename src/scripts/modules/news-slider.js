@@ -17,7 +17,8 @@ export const getNewsSlider = () => {
 					},
 				},
 				960: {
-					pagination: false
+					pagination: false,
+					watchSlidesProgress: true,
 				}
 			}
 		})
