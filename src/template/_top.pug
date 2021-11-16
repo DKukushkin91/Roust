@@ -43,6 +43,16 @@ section.top
 					button.top__btn.js-btn-form
 						span.top__btn-text Complete the form
 
+				if (page == 'contacts')
+					h2.top__text(class=`top__text--${page} top__text--country`)=topTextCountry
+					p.top__text(class=`top__text--${page} top__text--name`)=topTextName
+					p.top__text(class=`top__text--${page} top__text--address`)=topTextAddress
+					a.top__text(href=`tel:${topTextTelephone}` class=`top__text--${page} top__text--telephone`)=topTextTelephone
+					a.top__text(href=`mailto:${topTextMail}` class=`top__text--${page} top__text--mail`)=topTextMail
+
+					button.top__btn.js-btn-form
+						span.top__btn-text Send message
+
 			if (page == 'brands-item')
 				ul.top__list-awards.js-opacity
 					li.top__item-awards

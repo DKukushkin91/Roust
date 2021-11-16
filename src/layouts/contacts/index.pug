@@ -1,0 +1,56 @@
+extends ../../template/_layout
+
+block pageVar
+	-
+		page = 'contacts';
+
+block path
+	-
+		baseDir = '/f';
+
+block title
+	-
+		title = 'Contacts';
+
+block text
+	-
+		topTextCountry = 'Russia';
+		topTextName = 'Roust Global Headquarters';
+		topTextAddress = 'Novoorlovskaya Street 5 Moscow 119633 Russia';
+		topTextTelephone = '+7 (495) 777-1-777';
+		topTextMail = 'info@roust.com';
+
+block page
+	section.contacts
+		.container
+			ul.contacts__list.contacts__local
+				li.contacts__li
+					h3.contacts__li-title.contacts__li-title--factory Russian Standard Vodka Distillery
+					p.contacts__li-address Pulkovskoye Shosse 46/2 St.Petersburg 196140 Russia
+					p.contacts__li-tel +7 (812) 449-3111
+					a(href="#").contacts__li-link Send message
+				li.contacts__li
+					h3.contacts__li-title.contacts__li-title--factory Russian Standard Vodka Spirits Production Center
+					p.contacts__li-address Ul. Obiezdnaya, 2. Buinsk 422430. Russia
+					p.contacts__li-tel +7 (843) 743-2490
+					a(href="#").contacts__li-link Send message
+				li.contacts__li
+					h3.contacts__li-title.contacts__li-title--factory Topaz Distillery
+					p.contacts__li-address Ul. Oktyabrskaya, 46. Pushkino 141201 Russia
+					p.contacts__li-tel +7 (495) 993-5161
+					a(href="#").contacts__li-link Send message
+				li.contacts__li
+					h3.contacts__li-title.contacts__li-title--factory Parliament Distillery
+					p.contacts__li-address Ul. Popovka, area 5 Balashikha 143956 Russia
+					p.contacts__li-tel +7 (495) 739-4040
+					a(href="#").contacts__li-link Send message
+				li.contacts__li
+					h3.contacts__li-title.contacts__li-title--factory Bravo Premium
+					p.contacts__li-address Ul. Kuznetsovskaya, 52, House 3, Lift A St.Petersburg 196105 Russia
+					p.contacts__li-tel +7 (812) 336-4884
+					a(href="#").contacts__li-link Send message
+				li.contacts__li
+					h3.contacts__li-title.contacts__li-title--factory Siberian Distillery
+					p.contacts__li-address Kolcovo Village Siberian Distillery Industrial Zone №1 Novosibirsk Region 630559 Russia
+					p.contacts__li-tel +7 (383) 363-3399
+					a(href="#").contacts__li-link Send message

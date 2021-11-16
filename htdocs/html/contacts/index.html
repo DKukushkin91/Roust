@@ -8,27 +8,127 @@
     <link href="/f/css/vendor.css" type="text/css" rel="stylesheet">
   </head>
   <body lang="ru-RU">
-    <div class="box box__index">
-      <div class="box__content-index">
-        <main class="main">
-          <section class="sub">
+    <div class="box">
+      <div class="box__content box__content--contacts">
+        <div class="box__top box__top--contacts">
+          <header class="header js-animate-header">
+            <div class="container header__container">
+              <div class="header__wrap">
+                <div class="header__logo-wrap"><a class="header__link" href="../main-page/index.html"><img src="/f/img/roust-logo.svg"></a>
+                </div>
+                <div class="header__search">
+                  <input class="header__input" type="search" placeholder="Search" readonly>
+                  <button class="header__search-btn">
+                    <svg class="header__search-icon" width="16" height="16">
+                      <use href="/f/img/sprite.svg#search"></use>
+                    </svg>
+                  </button>
+                </div>
+                <button class="header__burger-btn js-burger-btn"><span class="header__burger-menu"></span></button>
+                <nav class="nav">
+                  <ul class="nav__list">
+                    <li class="nav__item"><a class="nav__link" href="#">About us</a></li>
+                    <li class="nav__item"><a class="nav__link" href="../brands/index.html">Brands</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#">Investors</a></li>
+                    <li class="nav__item"><a class="nav__link" href="../partnership/index.html">Partnership</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#">Social projects</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#">Media Center</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#">Career</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#">Contacts</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </header>
+          <section class="top">
             <div class="container">
-              <h1 class="sub__title"><img src="/f/img/roust-logo.svg"></h1>
-              <ul class="sub__list">
-                <li class="sub__item"><a class="sub__link" href="main-page/index.html">Main page</a></li>
-                <li class="sub__item"><a class="sub__link" href="brands/index.html">Brands</a></li>
-                <li class="sub__item"><a class="sub__link" href="brands/brands-item/index.html">Brands-item</a></li>
-                <li class="sub__item"><a class="sub__link" href="partnership/index.html">Partnership</a></li>
-                <li class="sub__item"><a class="sub__link" href="catalog-brands/index.html">Catalog-brands</a></li>
-                <li class="sub__item"><a class="sub__link" href="career/index.html">Career</a></li>
-                <li class="sub__item"><a class="sub__link" href="social-projects/index.html">Social projects</a></li>
-                <li class="sub__item"><a class="sub__link" href="media/index.html">Media Center</a></li>
-                <li class="sub__item"><a class="sub__link" href="contacts/index.html">Contacts</a></li>
+              <div class="top__wrap top__wrap--contacts">
+                <div class="top__content top__content--contacts js-opacity">
+                  <h1 class="top__title top__title--contacts">Contacts</h1>
+                  <p class="top__text top__text--contacts"></p>
+                  <h2 class="top__text top__text--contacts top__text--country">Russia</h2>
+                  <p class="top__text top__text--contacts top__text--name">Roust Global Headquarters</p>
+                  <p class="top__text top__text--contacts top__text--address">Novoorlovskaya Street 5 Moscow 119633 Russia</p><a class="top__text top__text--contacts top__text--telephone" href="tel:+7 (495) 777-1-777">+7 (495) 777-1-777</a><a class="top__text top__text--contacts top__text--mail" href="mailto:info@roust.com">info@roust.com</a>
+                  <button class="top__btn js-btn-form"><span class="top__btn-text">Send message</span></button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <main class="main main--contacts">
+          <section class="contacts">
+            <div class="container">
+              <ul class="contacts__list contacts__local">
+                <li class="contacts__li">
+                  <h3 class="contacts__li-title contacts__li-title--factory">Russian Standard Vodka Distillery</h3>
+                  <p class="contacts__li-address">Pulkovskoye Shosse 46/2 St.Petersburg 196140 Russia</p>
+                  <p class="contacts__li-tel">+7 (812) 449-3111</p><a class="contacts__li-link" href="#">Send message</a>
+                </li>
+                <li class="contacts__li">
+                  <h3 class="contacts__li-title contacts__li-title--factory">Russian Standard Vodka Spirits Production Center</h3>
+                  <p class="contacts__li-address">Ul. Obiezdnaya, 2. Buinsk 422430. Russia</p>
+                  <p class="contacts__li-tel">+7 (843) 743-2490</p><a class="contacts__li-link" href="#">Send message</a>
+                </li>
+                <li class="contacts__li">
+                  <h3 class="contacts__li-title contacts__li-title--factory">Topaz Distillery</h3>
+                  <p class="contacts__li-address">Ul. Oktyabrskaya, 46. Pushkino 141201 Russia</p>
+                  <p class="contacts__li-tel">+7 (495) 993-5161</p><a class="contacts__li-link" href="#">Send message</a>
+                </li>
+                <li class="contacts__li">
+                  <h3 class="contacts__li-title contacts__li-title--factory">Parliament Distillery</h3>
+                  <p class="contacts__li-address">Ul. Popovka, area 5 Balashikha 143956 Russia</p>
+                  <p class="contacts__li-tel">+7 (495) 739-4040</p><a class="contacts__li-link" href="#">Send message</a>
+                </li>
+                <li class="contacts__li">
+                  <h3 class="contacts__li-title contacts__li-title--factory">Bravo Premium</h3>
+                  <p class="contacts__li-address">Ul. Kuznetsovskaya, 52, House 3, Lift A St.Petersburg 196105 Russia</p>
+                  <p class="contacts__li-tel">+7 (812) 336-4884</p><a class="contacts__li-link" href="#">Send message</a>
+                </li>
+                <li class="contacts__li">
+                  <h3 class="contacts__li-title contacts__li-title--factory">Siberian Distillery</h3>
+                  <p class="contacts__li-address">Kolcovo Village Siberian Distillery Industrial Zone №1 Novosibirsk Region 630559 Russia</p>
+                  <p class="contacts__li-tel">+7 (383) 363-3399</p><a class="contacts__li-link" href="#">Send message</a>
+                </li>
               </ul>
             </div>
           </section>
         </main>
       </div>
+      <footer class="footer">
+        <div class="container">
+          <div class="footer__wrap">
+            <div class="footer__content">
+              <div class="footer__social">
+                <ul class="footer__social-list">
+                  <li class="footer__social-item footer__social-item--fb"><a class="footer__social-link" href="#"></a></li>
+                  <li class="footer__social-item footer__social-item--inst"><a class="footer__social-link" href="#"></a></li>
+                  <li class="footer__social-item footer__social-item--vk"><a class="footer__social-link" href="#"></a></li>
+                </ul>
+              </div>
+              <div class="footer__copyright">
+                <p class="footer__copyright-text">&copy;&nbsp;&laquo;Roust&raquo; 2021</p>
+              </div>
+            </div>
+            <ul class="footer__list footer__list--grid-1">
+              <li class="footer__item"><a class="footer__link" href="#">About us</a></li>
+              <li class="footer__item"><a class="footer__link" href="#">Brands</a></li>
+              <li class="footer__item"><a class="footer__link" href="#">Investors</a></li>
+              <li class="footer__item"><a class="footer__link" href="#">Partners</a></li>
+            </ul>
+            <ul class="footer__list footer__list--grid-2">
+              <li class="footer__item"><a class="footer__link" href="#">Social projects</a></li>
+              <li class="footer__item"><a class="footer__link" href="#">Press center</a></li>
+              <li class="footer__item"><a class="footer__link" href="#">Career</a></li>
+              <li class="footer__item"><a class="footer__link" href="#">Contacts</a></li>
+            </ul>
+            <button class="footer__btn js-btn-top">
+              <svg class="footer__icon" width="14" height="9">
+                <use href="/f/img/sprite.svg#arrow-b"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </footer>
     </div>
   </body>
   <template class="brands__template js-brands-template">
