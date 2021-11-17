@@ -50,6 +50,9 @@
 		@media $xs
 			margin-bottom get-vw(-130, $width-xs)
 
+		@media (max-width: 374px)
+			margin-bottom get-vw(-150, 320)
+
 	&:not(:last-child, &:first-child)
 		margin-bottom get-vw(-46.4, $width-xl)
 
@@ -64,6 +67,9 @@
 
 		@media $xs
 			margin-bottom get-vw(-50, $width-xs)
+
+		@media (max-width: 374px)
+			margin-bottom get-vw(-68, 320)
 
 	&.swiper
 		width 100%
@@ -640,11 +646,17 @@
 		color: $cian
 		padding-bottom: 5px
 
+		@media (max-width: 374px)
+			font-size: get-vw(32, 320)
+
 	&__dd
 		fz-24()
 		line-height 32px
 		color: $white
 		font-weight bold
+
+		@media (max-width: 374px)
+			font-size get-vw(18, 320)
 
 	&__prev-text
 		fz-21()
