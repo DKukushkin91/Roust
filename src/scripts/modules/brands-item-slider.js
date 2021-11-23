@@ -5,31 +5,56 @@ export const getSliders = () => {
 		const imgItemSlider = document.querySelector('.js-top-slider');
 		const thumbSlider = document.querySelector('.js-thumbs-slider');
 		const mobileSlider = document.querySelector('.js-mob-slider');
+		const contentSliderMob = document.querySelector('.js-content-slider');
+		const contentSliderWrap = contentSliderMob.querySelector('.js-content-wrap');
+		const contentSlides = contentSliderMob.querySelectorAll('.js-content-slide');
 
 		const sliderArray = [imgSlider, textSlider, imgItemSlider, mobileSlider];
 
 		const gThumbSlider = new Swiper(thumbSlider, {
 			slidesPerView: 'auto',
 			watchSlidesProgress: true,
-			breakpoints: {
-				1366: {
-					navigation: {
-						nextEl: document.querySelector('.js-item-next'),
-						prevEl: document.querySelector('.js-item-prev'),
-					},
-				}
-			},
+			slideToClickedSlide: true,
+		})
+
+		const getMobSlider = new Swiper(contentSliderMob, {
+			init: false,
+			slidesPerView: 'auto',
+			allowTouchMove: true,
+			navigation: {
+				nextEl: document.querySelector('.js-mob-next-btn'),
+				prevEl: document.querySelector('.js-mob-prev-btn'),
+			}
+		})
+
+		if(window.innerWidth <= 640){
+			contentSliderMob.classList.add('swiper');
+			contentSliderWrap.classList.add('swiper-wrapper');
+			contentSlides.forEach(e => e.classList.add('swiper-slide'));
+			getMobSlider.init();
+		}
+
+		window.addEventListener('resize', () => {
+			if(window.innerWidth <= 640){
+				contentSliderMob.classList.add('swiper');
+				contentSliderWrap.classList.add('swiper-wrapper');
+				contentSlides.forEach(e => e.classList.add('swiper-slide'));
+				getMobSlider.init();
+			}else{
+				contentSliderMob.classList.remove('swiper');
+				contentSliderWrap.classList.remove('swiper-wrapper');
+				contentSlides.forEach(e => e.classList.remove('swiper-slide'));
+			}
 		})
 
 		const sliders = sliderArray.map(el => {
-			const slider = new Swiper(el, {
+			return new Swiper(el, {
 				slidesPerView: 1,
 				allowTouchMove: false,
+				slideToClickedSlide: false,
 				on: {
 					slideChange() {
-						sliders
-							.filter(n => n !== slider)
-							.forEach(n => n.slideToLoop(this.realIndex));
+						sliders.filter(n => n !== el).forEach(n => n.slideToLoop(this.realIndex));
 					},
 				},
 				breakpoints: {
@@ -38,21 +63,20 @@ export const getSliders = () => {
 							nextEl: document.querySelector('.js-item-next'),
 							prevEl: document.querySelector('.js-item-prev'),
 						},
-					}
+					},
 				},
+
 				thumbs: {
 					swiper: gThumbSlider,
 					watchSlidesProgress: true,
 				},
 			});
-
-			return slider;
 		});
 	}
 }
 
 export const getScrollElement = () => {
-	if(document.querySelector('.js-scroll')) {
+	if(document.querySelector('.js-scroll') && window.innerWidth >= 575) {
 		const scrollItems = document.querySelectorAll('.js-scroll-item');
 		const scroll = document.querySelector('.js-scroll');
 		const targetRectX = (evt) => evt.currentTarget.getBoundingClientRect().x;

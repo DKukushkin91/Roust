@@ -6,8 +6,9 @@
 		background $white
 		height: 100%
 
-		@media (max-width: 640px)
+		@media $sm
 			max-width: 100vw
+			overflow: hidden
 
 	&--width
 		@media $lg
@@ -25,7 +26,7 @@
 	// 	margin-left auto
 
 	&__news-section
-		@media (max-width: 640px)
+		@media $sm
 			width 100vw
 
 	&__breadcrumbs
@@ -61,6 +62,9 @@
 			flex-direction: row
 			flex-wrap: wrap
 
+		@media (max-width: 640px)
+			flex-wrap: nowrap
+
 	&__wrap--active
 		transform: translate(0px, 0px)
 		opacity: 1
@@ -75,11 +79,20 @@
 			height: auto
 			width 50%
 
+		@media (max-width: 640px)
+			order: 1
+
+			&.swiper-slide
+				height: auto
+
 	&__content--mobile
 		display: none
 
 		@media $lg
 			display block
+
+		@media (max-width: 640px)
+			order 0
 
 	&__img-slider
 		grid-area: 1 / -1
@@ -94,6 +107,9 @@
 
 			&.swiper
 				position: absolute
+
+		@media (max-width:640px)
+			width 100%
 
 	&__img
 		width: 100%
@@ -146,6 +162,9 @@
 		@media $md
 			margin 40px auto
 
+		@media $xs
+			margin: 40px 0 40px auto
+
 	&__text-wrapper.swiper-wrapper
 		display: grid
 		grid-auto-flow: column
@@ -171,7 +190,13 @@
 				height: auto
 
 		@media $md
-			padding: 8%
+			padding: 5%
+
+		@media $sm
+			padding 3%
+
+		@media (max-width: 640px)
+			padding 8%
 
 		&--animate
 			opacity: 1
@@ -242,6 +267,9 @@
 		&.swiper
 			width 100%
 
+			@media $sm
+				overflow: unset
+
 	&__list
 		list-style: none
 		display: flex
@@ -263,6 +291,9 @@
 		@media $md
 			max-width: 384px
 
+		@media $xs
+			max-width: 100%
+
 	&__btn
 		background: 0
 		border: 0
@@ -274,8 +305,33 @@
 		position relative
 		width: 100%
 
+		@media $sm
+			padding-right 50%
+
 		&:hover
 			background: $h-grey
+
+	&__btn--mobile
+		display: none
+		@media (max-width: 640px)
+			display: block
+			padding: 0
+			width 65px
+			height 65px
+			position: absolute
+			z-index 11
+			background-color: #596876
+			background-image: url("data:image/svg+xml,%3Csvg width='9' height='15' viewBox='0 0 9 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5.39485 7.03394L-5.37893e-07 1.76084L1.8 0.00146953L8.99485 7.03394L1.8 14.0664L-7.69047e-08 12.307L5.39485 7.03394Z' fill='white'/%3E%3C/svg%3E%0A");
+			background-repeat: no-repeat
+			background-position 50% 50%
+			border-radius: 50%
+			top: calc(50% - (65px / 2))
+			right: 20px
+
+	&__btn--mobile-prev
+		right: unset
+		left: 20px
+		background-image: url("data:image/svg+xml,%3Csvg width='9' height='15' viewBox='0 0 9 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M3.60515 7.96606L9 13.2392L7.2 14.9985L0.00514858 7.96606L7.2 0.933594L9 2.69297L3.60515 7.96606Z' fill='white'/%3E%3C/svg%3E%0A");
 
 	&__text-box
 		display: block
@@ -286,12 +342,16 @@
 		right: 0
 		bottom: 0
 
+		@media $sm
+			width 100%
+			max-width: 45%
+
 	&__scroll-wrap
 		width: 100%
 		position relative
 
-		@media (max-width: 640px)
-			overflow: hidden
+		// @media (max-width: 640px)
+		// 	overflow: hidden
 
 	&__scroll
 		position: absolute
@@ -301,6 +361,9 @@
 		height: 5px
 		z-index 1
 		transition: all 0.3s ease 0s
+
+		@media $xs
+			width 100%
 
 	&__bg-img
 		position: absolute
@@ -324,6 +387,9 @@
 		flex-direction: row
 		align-items: center
 		justify-content: center
+
+		@media (max-width: 640px)
+			margin: auto
 
 		& img,
 		& picture

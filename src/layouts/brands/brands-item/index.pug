@@ -19,31 +19,34 @@ block text
 block page
 	section.brands-item.brands-item--width
 		.container.brands-item__container
-			.brands-item__wrap.js-anim-items
-				.brands-item__content
-					.brands-item__img-slider.swiper.js-img-slider
-						.brands-item__img-wrapper.swiper-wrapper
-							.brands-item__img.swiper-slide
-								img(src=`${baseDir}/img/bg-slide.jpg`, alt="")
-							.brands-item__img.swiper-slide
-								img(src=`${baseDir}/img/bg-brands.jpg`, alt="")
-					.brands-item__text-slider.swiper.js-text-slider
-						.brands-item__text-wrapper.swiper-wrapper
-							.brands-item__text-block.js-anim-text.swiper-slide
-								h2.brands-item__title Russian Standard <span class="brands-item__title--color">Original</span>
-								p.brands-item__text At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.
-							.brands-item__text-block.js-anim-text.swiper-slide
-								h2.brands-item__title Russian Standard <span class="brands-item__title--color">Special Edition</span>
-								p.brands-item__text At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.
-				.brands-item__content.brands-item__content--mobile
-					.brands-item__bg-img
-						img(src=`${baseDir}/img/rs-bg.jpg`, alt="")
-					.brands-item__mob-slider.swiper.js-mob-slider
-						.brands-item__mob-wrap.swiper-wrapper
-							.brands-item__mob-img.swiper-slide
-								+picture('rs-bottle', '', baseDir)
-							.brands-item__mob-img.swiper-slide
-								+picture('rs-test', '', baseDir)
+			.brands-item__content-slider.swiper.js-content-slider
+				.brands-item__wrap.js-anim-items.js-content-wrap
+					.brands-item__content.js-content-slide
+						.brands-item__img-slider.swiper.js-img-slider
+							.brands-item__img-wrapper.swiper-wrapper
+								.brands-item__img.swiper-slide
+									img(src=`${baseDir}/img/bg-slide.jpg`, alt="")
+								.brands-item__img.swiper-slide
+									img(src=`${baseDir}/img/bg-brands.jpg`, alt="")
+						.brands-item__text-slider.swiper.js-text-slider
+							.brands-item__text-wrapper.swiper-wrapper
+								.brands-item__text-block.js-anim-text.swiper-slide
+									h2.brands-item__title Russian Standard <span class="brands-item__title--color">Original</span>
+									p.brands-item__text At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.
+								.brands-item__text-block.js-anim-text.swiper-slide
+									h2.brands-item__title Russian Standard <span class="brands-item__title--color">Special Edition</span>
+									p.brands-item__text At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.
+						button.brands-item__btn.brands-item__btn--mobile.brands-item__btn--mobile-prev.js-mob-prev-btn
+					.brands-item__content.brands-item__content--mobile.js-content-slide
+						.brands-item__bg-img
+							img(src=`${baseDir}/img/rs-bg.jpg`, alt="")
+						.brands-item__mob-slider.swiper.js-mob-slider
+							.brands-item__mob-wrap.swiper-wrapper
+								.brands-item__mob-img.swiper-slide
+									+picture('rs-bottle', '', baseDir)
+								.brands-item__mob-img.swiper-slide
+									+picture('rs-test', '', baseDir)
+						button.brands-item__btn.brands-item__btn--mobile.js-mob-next-btn
 		button.brands-item__nav-btn.brands-item__nav-btn--prev.js-item-prev.js-slide-btn
 			svg(width="14" height="9").brands-item__icon
 				use(href=`${baseDir}/img/sprite.svg#arrow-b`)
