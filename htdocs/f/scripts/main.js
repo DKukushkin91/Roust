@@ -258,7 +258,7 @@ var getScrollItem = function getScrollItem() {
       return window.scrollBy(0, 80);
     };
 
-    if (window.innerWidth >= 1280) {
+    if (window.innerWidth >= 1279.9) {
       scrollBtn.addEventListener('click', scrollToMain);
       window.addEventListener('scroll', onScrollAnim);
     }
@@ -271,7 +271,8 @@ var getSliders = function getSliders() {
     var textSlider = document.querySelector('.js-text-slider');
     var imgItemSlider = document.querySelector('.js-top-slider');
     var thumbSlider = document.querySelector('.js-thumbs-slider');
-    var sliderArray = [imgSlider, textSlider, imgItemSlider];
+    var mobileSlider = document.querySelector('.js-mob-slider');
+    var sliderArray = [imgSlider, textSlider, imgItemSlider, mobileSlider];
     var gThumbSlider = new Swiper(thumbSlider, {
       slidesPerView: 'auto',
       watchSlidesProgress: true,

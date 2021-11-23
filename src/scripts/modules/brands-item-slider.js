@@ -4,8 +4,9 @@ export const getSliders = () => {
 		const textSlider = document.querySelector('.js-text-slider');
 		const imgItemSlider = document.querySelector('.js-top-slider');
 		const thumbSlider = document.querySelector('.js-thumbs-slider');
+		const mobileSlider = document.querySelector('.js-mob-slider');
 
-		const sliderArray = [imgSlider, textSlider, imgItemSlider];
+		const sliderArray = [imgSlider, textSlider, imgItemSlider, mobileSlider];
 
 		const gThumbSlider = new Swiper(thumbSlider, {
 			slidesPerView: 'auto',

@@ -3,7 +3,7 @@ section.top
 		.top__wrap(class=`top__wrap--${page}`)
 
 			if (page == 'brands-item')
-				nav.breadcrumbs.js-opacity
+				nav.breadcrumbs.js-opacity(class=`${page}__breadcrumbs`)
 					ul.breadcrumbs__list
 						li.breadcrumbs__item
 							a.breadcrumbs__link(href="#") Home page
