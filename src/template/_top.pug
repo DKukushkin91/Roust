@@ -70,6 +70,14 @@ section.top
 						.top__picture.swiper-slide
 							+picture('rs-test', '', baseDir)
 
+			if (page == 'about-us')
+				.top__sub-content
+					.top__sub-text-content
+						span.top__sub-text Roustam Tariko
+						span.top__sub-text.top__sub-text--font Founder and Chairman, Roust
+					.top__sub-img
+						+picture('signature', '', baseDir)
+
 	if (page == 'brands-item')
 		button.top__scroll-btn.js-scroll-btn
 			svg(width="144" height="50").top__scroll-icon
