@@ -20,6 +20,13 @@
 			@media $lg
 				flex-direction: column
 
+		&--partnership
+			@media $md
+				width 50%
+
+			@media $xs
+				width 100%
+
 	&__title
 		fz-75()
 		line-height 100%
@@ -32,6 +39,12 @@
 
 		&--partnership
 			padding-bottom 45px
+
+			@media $md
+				padding-bottom 10px
+
+			@media (max-width 374px)
+				font-size: 45px
 
 		&--brands-item
 			padding-bottom 30px
@@ -51,6 +64,10 @@
 		&--partnership
 			padding-bottom 152px
 			width: 50%
+
+			@media $md
+				width 100%
+				padding-bottom 40px
 
 		&--brands-item
 			fz-15()
@@ -74,6 +91,9 @@
 		position relative
 		z-index 1
 
+		@media $md
+			padding-bottom
+
 	&__list
 		list-style: none
 		position relative
@@ -85,6 +105,10 @@
 		padding 0
 		padding-bottom 20px
 
+		@media $md
+			flex-direction: column
+			align-items: flex-start
+
 	&__item
 		position relative
 		display flex
@@ -94,6 +118,10 @@
 
 		&:not(:last-child)
 			margin-right 114px
+
+			@media $md
+				margin-right 0
+				margin-bottom 54px
 
 			&::before
 				content: ''
@@ -106,6 +134,12 @@
 				background-size: 100%
 				width: 10px
 				height: 20px
+
+				@media $md
+					right calc(50% - 5px)
+					top: unset
+					bottom: calc(-100% + 20px)
+					transform: rotate(90deg)
 
 	&__btn
 		background: 0
