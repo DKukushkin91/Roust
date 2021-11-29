@@ -9,6 +9,7 @@ import {getGallery} from './modules/career-gallery';
 import {getPopup} from './modules/popup-form';
 import {burgerMenuHandler} from './modules/burger-menu';
 import {getAboutUsSlider} from './modules/about-us-slider';
+import { getSideBlock } from './modules/side-block';
 
 document.addEventListener('DOMContentLoaded', () => {
 	getTop();
@@ -23,4 +24,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	getGallery();
 	getPopup();
 	getAboutUsSlider();
+	getSideBlock();
 });

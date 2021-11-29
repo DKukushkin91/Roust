@@ -691,6 +691,110 @@ var getAboutUsSlider = function getAboutUsSlider() {
   }
 };
 
+var cardsMocks = [{
+  name: 'Roustam Tariko',
+  text: '"Welcome to Roust. We are a group of consumer-focused companies with market-leading brands in 86 countries markets around the world, including UK, USA, Germany, France, Italy, Russia, Poland and Hungary. It is with great pride that I personally ensure that Roust products are of the highest quality and offer the best possible consumer experience."'
+}, {
+  name: 'Igor Kosarev',
+  text: 'Our goal is to build a global company of leading brands. Through consumer insight, we have a deep understanding of what our consumers need and desire. Through innovation, we create products and services that start new trends.'
+}, {
+  name: 'Pavel Merkul',
+  text: 'Pavel joined Roust Group in October 2017 as Roust Russia CFO. In December 2017, he was appointed Roust Group Global CFO. In this role, Yaroslav is responsible for the financial management of all Roust Group companies and production sites. Yaroslav began his career in 1995 joining the multinational FMCG giant PepsiCo. In 2001, he moved to AB InBev, a world leading brewer, where he worked his way up from a finance controller to the Finance Director responsible for Strategic Planning & Business Performance Management in Central & Eastern Europe. During his tenure at AB InBev, he also had direct commercial experience, successfully running Sales in the capacity of Regional Sales Director and National On-Trade Channel Director. In 2014, Yaroslav continued his career as CFO for Russia, India, the Middle East, Turkey and Africa at Kraft Heinz. Yaroslav received his MSc in Economics and Business Management from Sochi State University, and his Executive MBA from INSEAD/Wharton Leadership Program.'
+}, {
+  name: 'Alessandro Picchi',
+  text: 'Alessandro joined Roust Group in October 2017 as Roust Russia CFO. In December 2017, he was appointed Roust Group Global CFO. In this role, Yaroslav is responsible for the financial management of all Roust Group companies and production sites. Yaroslav began his career in 1995 joining the multinational FMCG giant PepsiCo. In 2001, he moved to AB InBev, a world leading brewer, where he worked his way up from a finance controller to the Finance Director responsible for Strategic Planning & Business Performance Management in Central & Eastern Europe. During his tenure at AB InBev, he also had direct commercial experience, successfully running Sales in the capacity of Regional Sales Director and National On-Trade Channel Director. In 2014, Yaroslav continued his career as CFO for Russia, India, the Middle East, Turkey and Africa at Kraft Heinz. Yaroslav received his MSc in Economics and Business Management from Sochi State University, and his Executive MBA from INSEAD/Wharton Leadership Program.'
+}, {
+  name: 'Yaroslav Zakharov',
+  text: 'Yaroslav joined Roust Group in October 2017 as Roust Russia CFO. In December 2017, he was appointed Roust Group Global CFO. In this role, Yaroslav is responsible for the financial management of all Roust Group companies and production sites. Yaroslav began his career in 1995 joining the multinational FMCG giant PepsiCo. In 2001, he moved to AB InBev, a world leading brewer, where he worked his way up from a finance controller to the Finance Director responsible for Strategic Planning & Business Performance Management in Central & Eastern Europe. During his tenure at AB InBev, he also had direct commercial experience, successfully running Sales in the capacity of Regional Sales Director and National On-Trade Channel Director. In 2014, Yaroslav continued his career as CFO for Russia, India, the Middle East, Turkey and Africa at Kraft Heinz. Yaroslav received his MSc in Economics and Business Management from Sochi State University, and his Executive MBA from INSEAD/Wharton Leadership Program.'
+}, {
+  name: 'Ilya Blinov',
+  text: 'Ilya joined Roust Group in October 2017 as Roust Russia CFO. In December 2017, he was appointed Roust Group Global CFO. In this role, Yaroslav is responsible for the financial management of all Roust Group companies and production sites. Yaroslav began his career in 1995 joining the multinational FMCG giant PepsiCo. In 2001, he moved to AB InBev, a world leading brewer, where he worked his way up from a finance controller to the Finance Director responsible for Strategic Planning & Business Performance Management in Central & Eastern Europe. During his tenure at AB InBev, he also had direct commercial experience, successfully running Sales in the capacity of Regional Sales Director and National On-Trade Channel Director. In 2014, Yaroslav continued his career as CFO for Russia, India, the Middle East, Turkey and Africa at Kraft Heinz. Yaroslav received his MSc in Economics and Business Management from Sochi State University, and his Executive MBA from INSEAD/Wharton Leadership Program.'
+}, {
+  name: 'Mariusz Chrobot',
+  text: 'Mariusz joined Roust Group in October 2017 as Roust Russia CFO. In December 2017, he was appointed Roust Group Global CFO. In this role, Yaroslav is responsible for the financial management of all Roust Group companies and production sites. Yaroslav began his career in 1995 joining the multinational FMCG giant PepsiCo. In 2001, he moved to AB InBev, a world leading brewer, where he worked his way up from a finance controller to the Finance Director responsible for Strategic Planning & Business Performance Management in Central & Eastern Europe. During his tenure at AB InBev, he also had direct commercial experience, successfully running Sales in the capacity of Regional Sales Director and National On-Trade Channel Director. In 2014, Yaroslav continued his career as CFO for Russia, India, the Middle East, Turkey and Africa at Kraft Heinz. Yaroslav received his MSc in Economics and Business Management from Sochi State University, and his Executive MBA from INSEAD/Wharton Leadership Program.'
+}];
+var productionMocks = [{
+  name: 'Parliament Production Distillery',
+  text: 'One of the most technologically advanced distilleries of Roust Group. Built and commissioned in 1991. Investments in the modernization of the plant since 2011 amount to over 270 million rubles. Production capacity of 6.61 million 9l cases per year (vodka and spirits).'
+}];
+
+var getSideBlock = function getSideBlock() {
+  if (document.querySelector('.js-side-block')) {
+    var buttons = document.querySelectorAll('.js-side-block');
+    var body = document.querySelector('body');
+    var template = document.querySelector('.js-about-template').content.querySelector('.side');
+
+    var escPressHandler = function escPressHandler(evt) {
+      if (evt.key === 'Escape') {
+        evt.preventDefault();
+        elementRemoveHandler();
+      }
+    };
+
+    var elementRemoveHandler = function elementRemoveHandler() {
+      var wrap = document.querySelector('.side');
+
+      if (body.classList.contains('lock-scroll')) {
+        body.classList.remove('lock-scroll');
+      }
+
+      if (wrap) {
+        wrap.remove();
+        document.removeEventListener('keydown', escPressHandler);
+      }
+    };
+
+    var getElement = function getElement(cardTitle, cardSubtitle, cardImage, evt) {
+      var templateClone = template.cloneNode(true);
+      var backBtn = templateClone.querySelector('.js-back-btn');
+      var contentWrap = templateClone.querySelector('.js-side-wrap');
+      var title = templateClone.querySelector('.js-side-title');
+      var subTitle = templateClone.querySelector('.js-side-subTitle');
+      var image = templateClone.querySelector('.js-side-img');
+      var text = templateClone.querySelector('.js-side-text');
+      image.src = cardImage.src;
+      title.textContent = cardTitle.textContent;
+      subTitle.textContent = cardSubtitle.textContent;
+      cardsMocks.map(function (e) {
+        return e.name === title.textContent ? text.textContent = e.text : '';
+      });
+
+      if (evt.target.closest('.js-about-card')) {
+        title.classList.add('side__title--order');
+        title.parentNode.classList.add('side__texts-wrap--order');
+        subTitle.classList.add('side__sub-title--order');
+        image.parentNode.classList.add('side__img--order');
+        productionMocks.map(function (e) {
+          return e.name === title.textContent ? text.textContent = e.text : '';
+        });
+      }
+
+      contentWrap.classList.add('side__wrap--active');
+      body.classList.add('lock-scroll');
+      backBtn.addEventListener('click', elementRemoveHandler);
+      return templateClone;
+    };
+
+    var appendElement = function appendElement(cardTitle, cardSubtitle, cardImage, evt) {
+      var fragment = document.createDocumentFragment();
+      var element = getElement(cardTitle, cardSubtitle, cardImage, evt);
+      fragment.appendChild(element);
+      document.addEventListener('keydown', escPressHandler);
+      createElement(body, fragment);
+    };
+
+    buttons.forEach(function (el) {
+      el.addEventListener('click', function (evt) {
+        evt.preventDefault();
+        var title = evt.target.parentNode.querySelector('.js-card-title');
+        var subTitle = evt.target.parentNode.querySelector('.js-card-text');
+        var cardImage = evt.target.parentNode.parentNode.querySelector('.js-card-img');
+        appendElement(title, subTitle, cardImage, evt);
+      });
+    });
+  }
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   getTop();
   burgerMenuHandler();
@@ -704,6 +808,7 @@ document.addEventListener('DOMContentLoaded', function () {
   getGallery();
   getPopup();
   getAboutUsSlider();
+  getSideBlock();
 });
 "use strict";
 

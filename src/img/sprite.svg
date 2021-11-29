@@ -59,4 +59,7 @@
 	<symbol id="arrow-g" viewBox="0 0 9 15">
 		<path fill-rule="evenodd" clip-rule="evenodd" d="M5.39486 7.20209L-5.37894e-07 1.98478L1.8 0.244018L8.99487 7.20209L1.8 14.1602L-7.69049e-08 12.4194L5.39486 7.20209Z"/>
 	</symbol>
+	<symbol id="arrow-back" viewBox="0 0 16 16">
+		<path d="M16 7H3.83L9.42 1.41L8 0L0 8L8 16L9.41 14.59L3.83 9H16V7Z"/>
+	</symbol>
 </svg>

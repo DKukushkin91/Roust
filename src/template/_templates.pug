@@ -185,3 +185,20 @@ block templates
 						input#upload.popup-form__upload-input(type="file", name="upload-file" required)
 						label.popup-form__upload-label(for="upload") Upload CV *
 						button.popup-form__btn(type="submit") Submit
+
+	template.js-about-template
+		.side
+			.side__wrap.js-side-wrap
+				.side__content
+					button.side__back-btn.js-back-btn
+						svg(width="16" height="16").side__icon
+							use(href=`${baseDir}/img/sprite.svg#arrow-back`)
+						span.side__btn-text Go back
+					.side__top
+						.side__img
+							img.js-side-img(src="", alt="")
+						.side__texts-wrap
+							h2.side__title.js-side-title
+							span.side__sub-title.js-side-subTitle
+					.side__main
+						p.side__text.js-side-text
