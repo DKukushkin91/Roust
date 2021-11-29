@@ -27,6 +27,9 @@
 			@media $xs
 				width 100%
 
+		&--about-us
+			width 50%
+
 	&__title
 		fz-75()
 		line-height 100%
@@ -48,6 +51,9 @@
 
 		&--brands-item
 			padding-bottom 30px
+
+		&--about-us
+			padding-bottom 45px
 
 	&__text
 		fz-21()
@@ -79,6 +85,9 @@
 
 			&:not(:last-child)
 				padding-bottom: 79px
+
+		&--about-us
+			padding-bottom 45px
 
 	&__sub-title
 		fz-33()
@@ -384,3 +393,31 @@
 
 	&__img-wrapper.swiper-wrapper
 		align-items: flex-end
+
+	&__sub-content
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+		padding-bottom 30px
+
+	&__sub-text-content
+		display flex
+		flex-direction: column
+		margin-right: 30px
+
+	&__sub-text
+		fz-15()
+		line-height 24px
+		font-weight 900
+		font-family $Inter
+		color $white
+		text-align: left
+
+		&:not(:last-child)
+			padding-bottom 10px
+
+	&__sub-text--font
+		fz-13()
+		line-height 20px
+		font-weight 400
+		opacity: 0.6

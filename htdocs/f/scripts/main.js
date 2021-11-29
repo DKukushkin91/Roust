@@ -681,6 +681,16 @@ var burgerMenuHandler = function burgerMenuHandler() {
   }
 };
 
+var getAboutUsSlider = function getAboutUsSlider() {
+  if (document.querySelector('.js-about-us-slider')) {
+    var aboutUsSlider = document.querySelector('.js-about-us-slider');
+    new Swiper(aboutUsSlider, {
+      slidesPerView: 1,
+      spaceBetween: 20
+    });
+  }
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   getTop();
   burgerMenuHandler();
@@ -693,6 +703,7 @@ document.addEventListener('DOMContentLoaded', function () {
   getScrollElement();
   getGallery();
   getPopup();
+  getAboutUsSlider();
 });
 "use strict";
 

@@ -8,6 +8,7 @@ import {getSliders, getScrollElement} from './modules/brands-item-slider';
 import {getGallery} from './modules/career-gallery';
 import {getPopup} from './modules/popup-form';
 import {burgerMenuHandler} from './modules/burger-menu';
+import {getAboutUsSlider} from './modules/about-us-slider';
 
 document.addEventListener('DOMContentLoaded', () => {
 	getTop();
@@ -21,4 +22,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	getScrollElement();
 	getGallery();
 	getPopup();
+	getAboutUsSlider();
 });
