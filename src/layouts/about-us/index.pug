@@ -31,34 +31,58 @@ block page
 						.about-us__slider-wrapper.swiper-wrapper
 							.about-us__slide.swiper-slide
 								.about-us__slide-img
-									img(src=`${baseDir}/img/about-us-slide1.jpg`, alt="")
+									picture
+										source(media="(max-width: 959px)", srcset=`${baseDir}/img/about-us-slide1-t.jpg`)
+										source(media="(max-width: 767px)", srcset=`${baseDir}/img/about-us-slide1-m.jpg`)
+										img(src=`${baseDir}/img/about-us-slide1.jpg`, alt="")
 								.about-us__slide-content
+									.about-us__slide-box
 										h3.about-us__slide-title "A leading distributor of premium spirits brands"
 										p.about-us__slide-text Founded in 1992 by pioneering Russian businessman Roustam Tariko, Roust Inc. quickly became a leading distributor of premium spirits brands.
+									span.about-us__slide-num.about-us__slide-num--dark 1992
 							.about-us__slide.swiper-slide
 								.about-us__slide-img
-									img(src=`${baseDir}/img/about-us-slide2.jpg`, alt="")
-								.about-us__slide-content
+									picture
+										source(media="(max-width: 959px)", srcset=`${baseDir}/img/about-us-slide2-t.jpg`)
+										source(media="(max-width: 767px)", srcset=`${baseDir}/img/about-us-slide2-m.jpg`)
+										img(src=`${baseDir}/img/about-us-slide2.jpg`, alt="")
+								.about-us__slide-content.about-us__slide-content--padding
+									.about-us__slide-box
 										h3.about-us__slide-title.about-us__slide-title--color Brands that reflect the new standard of quality and innovation
 										p.about-us__slide-text.about-us__slide-text--color Roust then set out to fulfill its founding mission by creating brands that reflect a new standard of quality and innovation. In 1998, Russian Standard Vodka was launched as Russia’s first premium vodka, quickly becoming the number one premium vodka in Russia.
+									span.about-us__slide-num 1998
 							.about-us__slide.swiper-slide
 								.about-us__slide-img
-									img(src=`${baseDir}/img/about-us-slide3.jpg`, alt="")
+									picture
+										source(media="(max-width: 959px)", srcset=`${baseDir}/img/about-us-slide3-t.jpg`)
+										source(media="(max-width: 767px)", srcset=`${baseDir}/img/about-us-slide3-m.jpg`)
+										img(src=`${baseDir}/img/about-us-slide3.jpg`, alt="")
 								.about-us__slide-content
+									.about-us__slide-box
 										h3.about-us__slide-title Russian leader in the international consumer goods market
 										p.about-us__slide-text Today, Russian Standard Vodka’s brands – Original, Platinum, Gold and IMPERIA – dominate the premium vodka segment in Russia and are exported to more than 80 markets around the world. Russian Standard Vodka is Russia’s only truly global consumer brand.
 							.about-us__slide.swiper-slide
 								.about-us__slide-img
-									img(src=`${baseDir}/img/about-us-slide4.jpg`, alt="")
+									picture
+										source(media="(max-width: 959px)", srcset=`${baseDir}/img/about-us-slide4-t.jpg`)
+										source(media="(max-width: 767px)", srcset=`${baseDir}/img/about-us-slide4-m.jpg`)
+										img(src=`${baseDir}/img/about-us-slide4.jpg`, alt="")
 								.about-us__slide-content
+									.about-us__slide-box
 										h3.about-us__slide-title.about-us__slide-title--color "Italy’s original sparkling wine and vermouth"
 										p.about-us__slide-text.about-us__slide-text--color In 2011, Roust acquired Gancia, the legendary Italian producer of sparkling wines and vermouths founded in 1850.
+									span.about-us__slide-num 2011
 							.about-us__slide.swiper-slide
 								.about-us__slide-img
-									img(src=`${baseDir}/img/about-us-slide5.jpg`, alt="")
+									picture
+										source(media="(max-width: 959px)", srcset=`${baseDir}/img/about-us-slide5-t.jpg`)
+										source(media="(max-width: 767px)", srcset=`${baseDir}/img/about-us-slide5-m.jpg`)
+										img(src=`${baseDir}/img/about-us-slide5.jpg`, alt="")
 								.about-us__slide-content
+									.about-us__slide-box
 										h3.about-us__slide-title "One of the largest vodka producers in the world"
 										p.about-us__slide-text Through the acquisition of Central European Distribution Corporation, Roust became the largest integrated spirits beverage producer and distributor in Central and Eastern Europe, and one of the largest vodka producers in the world.
+									span.about-us__slide-num.about-us__slide-num--dark 2014
 						.about-us__slider-pagination.swiper-pagination.js-about-pagination
 				li.about-us__item
 					p.about-us__item-title Our Team

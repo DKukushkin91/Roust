@@ -55,6 +55,11 @@
 	&__item-title--padding
 		padding-bottom 20px
 
+		@media $lg
+			margin-bottom: -70px
+			position relative
+			z-index 30
+
 	&__item-wrap
 		display: flex
 		flex-direction: row
@@ -98,26 +103,52 @@
 	&__slider-wrapper
 		width 100%
 
+		&.swiper-wrapper
+			align-items: flex-end
+
 	&__slide
 		display: grid
 
-	&__slide.swiper-slide
-		height: auto
+		@media $md
+			&.swiper-slide
+				height: auto
+				max-width: 689px
+
+			// align-items: flex-end
 
 	&__slide-img
 		grid-area: 1/-1
 
-		& img
+		& img,
+		& picture
 			height: 100%
 			object-fit: cover
 
 	&__slide-content
 		grid-area: 1/-1
 		width 50%
-		padding: 134px 20px 20px 92px
+		padding: 118px 20px 20px 92px
+		position relative
+		display flex
+		flex-direction: column
+		justify-content: space-between
 
-		// @media $md
-		// 	padding: 88px 20px 20px 60px
+		@media $lg
+			width 54%
+			padding 103px 20px 20px 92px
+
+		@media $md
+			padding: 132px 20px 25px 60px
+			width 55%
+
+	&__slide-content--padding
+		padding-top: 38px
+
+		@media $lg
+			padding-top 35px
+
+	&__slide-box
+		width 100%
 
 	&__slide-title
 		fz-24()
@@ -142,10 +173,32 @@
 	&__slide-text--color
 		color $white
 
+	&__slide-num
+		font-size: 220px
+		line-height 250px
+		font-weight 700
+		font-family $Georgia
+		color $white
+		opacity: 0.1
+		position relative
+		margin-top: -67px
+		bottom: -67px
+		user-select: none
+
+		@media $lg
+			font-size 80px
+			line-height 100%
+			margin-top 0
+			bottom: 0
+
+	&__slide-num--dark
+		color $d-grey
+		opacity: 0.08
+
 	&__slider-pagination
 		display: none
 
-		@media $md
+		@media $lg
 			display: block
 
 			&.swiper-pagination

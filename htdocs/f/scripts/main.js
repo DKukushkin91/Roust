@@ -685,16 +685,18 @@ var getAboutUsSlider = function getAboutUsSlider() {
   if (document.querySelector('.js-about-us-slider')) {
     var aboutUsSlider = document.querySelector('.js-about-us-slider');
     new Swiper(aboutUsSlider, {
-      slidesPerView: 1,
       spaceBetween: 20,
       breakpoints: {
         320: {
           pagination: {
             el: '.js-about-pagination'
-          }
+          },
+          slidesPerView: 'auto',
+          watchSlidesProgress: true
         },
-        960: {
-          pagination: false
+        1280: {
+          pagination: false,
+          slidesPerView: 1
         }
       }
     });
