@@ -1,8 +1,19 @@
 .about-us
 	width 100%
 
+	&__top-section
+		@media $md
+			padding-bottom 0
+
+	&__header-wrap
+		@media $md
+			padding-bottom 20px
+
 	& .container
 		padding-top: 80px
+
+		@media $md
+			padding-top: 40px
 
 	&__list
 		padding 0
@@ -16,6 +27,9 @@
 		&:not(:last-child)
 			padding-bottom 90px
 
+			@media $md
+				padding-bottom 70px
+
 	&__item-title
 		fz-24()
 		line-height 32px
@@ -25,6 +39,9 @@
 		display flex
 		align-items: center
 		padding-bottom 42px
+
+		@media $md
+			padding-bottom 25px
 
 		&::before
 			fz-15()
@@ -44,6 +61,10 @@
 		flex-wrap: wrap
 		justify-content: space-between
 
+		@media $md
+			flex-direction: column
+			justify-content: flex-start
+
 	&__sub-title
 		fz-33()
 		line-height 40px
@@ -53,6 +74,12 @@
 		max-width: 47%
 		margin-right: 20px
 
+		@media $md
+			max-width 100%
+			margin-right 0
+			padding-bottom 20px
+			text-align: left
+
 	&__item-text
 		fz-15()
 		line-height 24px
@@ -60,6 +87,10 @@
 		font-family $inter
 		font-weight 500
 		max-width: 47%
+
+		@media $md
+			max-width: 100%
+			text-align: left
 
 	&__slider
 		width 100%
@@ -85,6 +116,9 @@
 		width 50%
 		padding: 134px 20px 20px 92px
 
+		// @media $md
+		// 	padding: 88px 20px 20px 60px
+
 	&__slide-title
 		fz-24()
 		line-height 32px
@@ -108,14 +142,38 @@
 	&__slide-text--color
 		color $white
 
+	&__slider-pagination
+		display: none
+
+		@media $md
+			display: block
+
+			&.swiper-pagination
+				position static
+
+			& .swiper-pagination-bullet.swiper-pagination-bullet-active
+				background: $orange
+
 	&__cards-wrap
 		display: grid
 		grid-template-columns: repeat(auto-fill, 140px)
 		grid-column-gap: 90px
 		grid-row-gap: 90px
 
+		@media $lg
+			column-gap: 6%
+			justify-content: space-around
+
+		@media $md
+			column-gap: 40px
+			row-gap: 50px
+
 	&__cards-wrap--width
 		grid-template-columns: repeat(auto-fill, 271px)
+
+		@media $md
+			column-gap: 70px
+			row-gap: 55px
 
 	&__card
 		width 100%

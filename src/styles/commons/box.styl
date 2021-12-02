@@ -47,6 +47,14 @@
 
 		&--about-us
 			background-image: url('/f/img/about-us-bg.jpg')
+			background-position 50% 50%
+
+			@media $md
+				background-image: url('/f/img/about-us-bg-t.jpg')
+				background-position: 0 0
+
+			@media $sm
+				background-image: url('/f/img/about-us-bg-m.jpg')
 
 		&--brands-item
 			@media $lg

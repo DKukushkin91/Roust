@@ -30,6 +30,9 @@
 		&--about-us
 			width 50%
 
+			@media $md
+				width 40%
+
 	&__title
 		fz-75()
 		line-height 100%
@@ -54,6 +57,9 @@
 
 		&--about-us
 			padding-bottom 45px
+
+			@media $md
+				padding-bottom 10px
 
 	&__text
 		fz-21()
@@ -404,6 +410,10 @@
 		display flex
 		flex-direction: column
 		margin-right: 30px
+
+		@media $md
+			margin-right 0
+			margin-bottom 20px
 
 	&__sub-text
 		fz-15()
