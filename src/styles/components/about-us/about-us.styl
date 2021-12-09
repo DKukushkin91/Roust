@@ -5,6 +5,9 @@
 		@media $md
 			padding-bottom 0
 
+		@media $sm
+			min-height: 639px
+
 	&__header-wrap
 		@media $md
 			padding-bottom 20px
@@ -29,6 +32,10 @@
 
 			@media $md
 				padding-bottom 70px
+
+	&__item--margin
+		@media $sm
+			margin 0 -20px
 
 	&__item-title
 		fz-24()
@@ -59,6 +66,11 @@
 			margin-bottom: -70px
 			position relative
 			z-index 30
+
+		@media $sm
+			margin-bottom 0
+			padding-right: 20px
+			padding-left 20px
 
 	&__item-wrap
 		display: flex
@@ -109,10 +121,13 @@
 	&__slide
 		display: grid
 
-		@media $md
-			&.swiper-slide
+		&.swiper-slide
+			@media $md
 				height: auto
 				max-width: 689px
+
+			@media $sm
+				max-width: 375px
 
 			// align-items: flex-end
 
@@ -141,11 +156,21 @@
 			padding: 132px 20px 25px 60px
 			width 55%
 
+		@media $sm
+			width 100%
+			padding 20px
+
 	&__slide-content--padding
 		padding-top: 38px
 
 		@media $lg
 			padding-top 35px
+
+		@media $md
+			padding-top 53px
+
+		@media $sm
+			padding 20px
 
 	&__slide-box
 		width 100%

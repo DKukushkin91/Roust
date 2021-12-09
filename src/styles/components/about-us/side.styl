@@ -46,6 +46,10 @@
 			max-width: 608px
 			background-color: transparent
 
+		@media $sm
+			justify-content: flex-start
+			background-color: $white
+
 	&__wrap--active
 		opacity: 1
 		transition: all 1s ease 0s
@@ -61,7 +65,8 @@
 			padding: 60px 70px
 			height: fit-content
 
-	//////WIP
+		@media $sm
+			padding: 20px
 
 	&__back-btn
 		display flex
