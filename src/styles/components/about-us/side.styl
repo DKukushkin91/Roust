@@ -9,6 +9,11 @@
 	align-items: center
 	z-index: 100
 
+	@media $md
+		flex-direction: column
+		align-items: center
+		justify-content: center
+
 	&::before
 		content: ''
 		position absolute
@@ -22,7 +27,7 @@
 		display block
 
 	&__wrap
-		transform: translateX(220%)
+		opacity: 0
 		background-color: $white
 		display: flex
 		flex-direction: column
@@ -33,8 +38,16 @@
 		position relative
 		z-index 14
 
+		@media $lg
+			width 50%
+
+		@media $md
+			width 100%
+			max-width: 608px
+			background-color: transparent
+
 	&__wrap--active
-		transform: translateX(0)
+		opacity: 1
 		transition: all 1s ease 0s
 
 	&__content
@@ -42,6 +55,13 @@
 		height 100%
 		padding: 80px
 		overflow: auto
+		background-color: $white
+
+		@media $md
+			padding: 60px 70px
+			height: fit-content
+
+	//////WIP
 
 	&__back-btn
 		display flex
