@@ -95,7 +95,7 @@ block page
 									button.screen__p-btn
 										+picture('parlament-logo', 'Parliament vodka', baseDir)
 				.main-page__screen.screen
-					.screen__icon-wrap
+					.screen__icon-wrap.js-anchor-bottle
 						svg(width="14" height="9").screen__icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
 					.screen__imgs-wrap
@@ -108,7 +108,11 @@ block page
 								source(srcset=`${baseDir}/img/responsive/brands-banner@1x.webp 1x, ${baseDir}/img/responsive/brands-banner@2x.webp 2x` type="image/webp")
 								source(srcset=`${baseDir}/img/responsive/brands-banner@1x.png 1x, ${baseDir}/img/responsive/brands-banner@2x.png 2x` type="image/png")
 								img(src=`${baseDir}/img/responsive/brands-banner@1x.png` alt=altName)
-						.screen__img-wrap.screen__img-wrap--center
+						.screen__img-wrap.screen__img-wrap--center.screen__img-wrap--desk
+							each val in ['rs', 'gancia', 'gancia2', 'zm', 'gancia3', 'pm', 'talka']
+								.screen__img-animate(class=`screen__img-animate--${val}`)
+									+picture(`main-${val}-bottle`, '', baseDir)
+						.screen__img-wrap.screen__img-wrap--center.screen__img-wrap--mob
 							+picture('bottles', '', baseDir)
 					.screen__content
 						.screen__inner.screen__inner--padding

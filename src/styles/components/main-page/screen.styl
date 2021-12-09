@@ -104,7 +104,7 @@
 		position: absolute
 		display: block
 		text-align: center
-		z-index 1
+		z-index 2
 		top: 46px
 		left: 0
 		right: 0
@@ -125,12 +125,50 @@
 		justify-content: center
 		align-items: flex-start
 
+	&__img-animate
+		grid-area: 1/-1
+		position relative
+
+		&--rs
+			max-width: 186px
+			z-index 1
+
+		&--gancia
+			max-width: 173px
+			transform: translate(72%, 10%)
+
+		&--gancia2
+			max-width: 109px
+			transform: translate(320%, 35%)
+			z-index -1
+
+		&--zm
+			max-width: 283px
+			transform: translate(85%, 21%)
+			z-index: -1
+
+		&--gancia3
+			max-width: 321px
+			transform: translate(-44%, 18%)
+			z-index: 0
+
+		&--pm
+			max-width: 103px
+			transform: translate(-207%, 30%)
+			z-index: -1
+
+		&--talka
+			max-width: 105px
+			transform: translate(-278%, 42%)
+			z-index: -2
+
 	&__img-wrap
 		position absolute
 		width: 100%
 		height 100%
 		top: 0
 		left 0
+		z-index 1
 
 	&__img-wrap picture
 		height: 100%
@@ -141,9 +179,6 @@
 		object-position: top
 
 	&__img-wrap--center
-		display flex
-		flex-direction column
-		justify-content flex-end
 		max-width: 1087px
 		bottom 0
 		left unset
@@ -151,7 +186,30 @@
 		@media $lg
 			width: 80%
 
+	&__img-wrap--center picture,
+	&__img-wrap--center img
+		height: auto
+		position relative
+		bottom -100px
+
+		@media $lg
+			bottom get-vw(-70, $width-lg)
+
+	&__img-wrap--desk
+		display: grid
+		align-items: center
+		justify-items: center
+
 		@media $md
+			display: none
+
+	&__img-wrap--mob
+		display: none
+
+		@media $md
+			display flex
+			flex-direction column
+			justify-content flex-end
 			width 70%
 			right: 40px
 
@@ -162,15 +220,6 @@
 		@media $xs
 			width 95%
 			right 10px
-
-	&__img-wrap--center picture,
-	&__img-wrap--center img
-		height: auto
-		position relative
-		bottom -100px
-
-		@media $lg
-			bottom get-vw(-70, $width-lg)
 
 	&__img-wrap--height
 		@media (min-width: 575px) and (max-width: 767px)
@@ -236,10 +285,11 @@
 			padding-bottom: 20px
 
 	&__inner
-		max-width 50%
+		max-width 45%
 		padding-bottom 169px
 
 		@media $md
+			max-width: 50%
 			padding-bottom 93px
 
 		@media $xs
