@@ -128,6 +128,10 @@
 	&__img-animate
 		grid-area: 1/-1
 		position relative
+		transition: ease 3s all 0s
+
+		&.screen__img-animate--on
+			transition: ease 3s all 1s
 
 		&--rs
 			max-width: 186px
@@ -135,32 +139,44 @@
 
 		&--gancia
 			max-width: 173px
-			transform: translate(72%, 10%)
+
+			&.screen__img-animate--on
+				transform: translate(72%, 10%)
 
 		&--gancia2
 			max-width: 109px
-			transform: translate(320%, 35%)
 			z-index -1
+
+			&.screen__img-animate--on
+				transform: translate(320%, 35%)
 
 		&--zm
 			max-width: 283px
-			transform: translate(85%, 21%)
 			z-index: -1
+
+			&.screen__img-animate--on
+				transform: translate(85%, 21%)
 
 		&--gancia3
 			max-width: 321px
-			transform: translate(-44%, 18%)
 			z-index: 0
+
+			&.screen__img-animate--on
+				transform: translate(-44%, 18%)
 
 		&--pm
 			max-width: 103px
-			transform: translate(-207%, 30%)
 			z-index: -1
+
+			&.screen__img-animate--on
+				transform: translate(-207%, 30%)
 
 		&--talka
 			max-width: 105px
-			transform: translate(-278%, 42%)
 			z-index: -2
+
+			&.screen__img-animate--on
+				transform: translate(-278%, 42%)
 
 	&__img-wrap
 		position absolute

@@ -807,6 +807,37 @@ var getSideBlock = function getSideBlock() {
   }
 };
 
+var getItemAnimation = function getItemAnimation() {
+  if (document.querySelector('.js-anchor-bottle')) {
+    var bottles = document.querySelectorAll('.js-animate-bottle');
+    var anchor = document.querySelector('.js-anchor-bottle');
+
+    var onScrollAnimation = function onScrollAnimation() {
+      var targetPosition = {
+        top: window.scrollY + anchor.getBoundingClientRect().top,
+        bottom: window.scrollY + anchor.getBoundingClientRect().bottom
+      };
+      var windowPosition = {
+        top: window.scrollY,
+        bottom: window.scrollY + document.documentElement.clientHeight
+      };
+
+      if (targetPosition.bottom > windowPosition.top && targetPosition.top < windowPosition.bottom) {
+        console.log('scroll');
+        bottles.forEach(function (e) {
+          return e.classList.add('screen__img-animate--on');
+        });
+      } else {
+        bottles.forEach(function (e) {
+          return e.classList.remove('screen__img-animate--on');
+        });
+      }
+    };
+
+    window.addEventListener('scroll', onScrollAnimation);
+  }
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   getTop();
   burgerMenuHandler();
@@ -821,6 +852,7 @@ document.addEventListener('DOMContentLoaded', function () {
   getPopup();
   getAboutUsSlider();
   getSideBlock();
+  getItemAnimation();
 });
 "use strict";
 

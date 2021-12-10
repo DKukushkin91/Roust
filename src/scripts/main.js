@@ -10,6 +10,7 @@ import {getPopup} from './modules/popup-form';
 import {burgerMenuHandler} from './modules/burger-menu';
 import {getAboutUsSlider} from './modules/about-us-slider';
 import { getSideBlock } from './modules/side-block';
+import { getItemAnimation } from './modules/bottle-anim';
 
 document.addEventListener('DOMContentLoaded', () => {
 	getTop();
@@ -25,4 +26,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	getPopup();
 	getAboutUsSlider();
 	getSideBlock();
+	getItemAnimation();
 });
