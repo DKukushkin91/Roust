@@ -1,0 +1,159 @@
+extends ../../template/_layout
+
+block pageVar
+	-
+		page = 'investors';
+
+block path
+	-
+		baseDir = '/f';
+
+block title
+	-
+		title = 'Investor relations';
+
+block text
+	-
+		topText = 'Roust is one of the largest vodka producers in the world. Our company has a leading position in the spirit markets of Poland, Russia and Hungary.';
+
+block page
+	section.investors
+		.container
+			.investors__wrap
+				h2.investors__title Investor News
+				a.investors__news-link(href="#") All news
+				.investors__slider.js-investors-slider
+					ul.investors__list.js-investors-wrap
+						li.investors__item.js-investors-slide
+							a.investors__item-link(href="#")
+							time.investors__date 22 october 2019
+							p.investors__text Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates
+						li.investors__item.js-investors-slide
+							a.investors__item-link(href="#")
+							time.investors__date 22 october 2019
+							p.investors__text Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates
+						li.investors__item.js-investors-slide
+							a.investors__item-link(href="#")
+							time.investors__date 22 october 2019
+							p.investors__text Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates
+						li.investors__item.js-investors-slide
+							a.investors__item-link(href="#")
+							time.investors__date 22 october 2019
+							p.investors__text Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates
+					.investors__pagination.swiper-pagination.js-investors-pagination
+			.investors__wrap.investors__wrap--grid
+				.investors__docs-box
+					h2.investors__title Current Reports
+					a.investors__box-link(href='#' download)
+						.investors__icon
+							img(src=`${baseDir}/img/icon-pdf.png`, alt="")
+						.investors__box-content
+							time.investors__box-date 03 Apr 2020
+							p.investors__box-text Roust Corporation Presentation for Q3 2019
+					a.investors__redirect(href='#')
+						span.investors__redirect-text All presentations (23)
+						svg(width="9" height="15").investors__redirect-icon
+							use(href=`${baseDir}/img/sprite.svg#arrow-g`)
+				.investors__docs-box
+					h2.investors__title Quarterly Reports
+					a.investors__box-link(href='#' download)
+						.investors__icon
+							img(src=`${baseDir}/img/icon-pdf.png`, alt="")
+						.investors__box-content
+							time.investors__box-date 03 Apr 2020
+							p.investors__box-text IFRS Roust Corporation financial results for Q1 2019
+					a.investors__redirect(href='#')
+						span.investors__redirect-text All presentations (16)
+						svg(width="9" height="15").investors__redirect-icon
+							use(href=`${baseDir}/img/sprite.svg#arrow-g`)
+				.investors__docs-box
+					h2.investors__title Presentations
+					a.investors__box-link(href='#' download)
+						.investors__icon
+							img(src=`${baseDir}/img/icon-pdf.png`, alt="")
+						.investors__box-content
+							time.investors__box-date 03 Apr 2020
+							p.investors__box-text Roust Corporation Presentation for Q3 2019
+					a.investors__redirect(href='#')
+						span.investors__redirect-text All presentations (12)
+						svg(width="9" height="15").investors__redirect-icon
+							use(href=`${baseDir}/img/sprite.svg#arrow-g`)
+				.investors__docs-box
+					h2.investors__title Annual Reports
+					a.investors__box-link(href='#' download)
+						.investors__icon
+							img(src=`${baseDir}/img/icon-pdf.png`, alt="")
+						.investors__box-content
+							time.investors__box-date 03 Apr 2020
+							p.investors__box-text IFRS Roust Corporation 2018 annual report
+					a.investors__redirect(href='#')
+						span.investors__redirect-text All presentations (7)
+						svg(width="9" height="15").investors__redirect-icon
+							use(href=`${baseDir}/img/sprite.svg#arrow-g`)
+			.investors__wrap
+				.investors__content-box.investors__content-box--width
+					h2.investors__title Board of Directors
+					.about-us__cards-wrap.about-us__cards-wrap--jc
+						.about-us__card
+							.about-us__card-img
+								img.js-card-img(src=`${baseDir}/img/portrait1.jpg`, alt="")
+							.about-us__card-content
+								h4.about-us__card-title.js-card-title Roustam Tariko
+								p.about-us__card-text.js-card-text Chairman of the Board of Directors
+								button.about-us__card-btn.js-side-block More
+						.about-us__card
+							.about-us__card-img
+								img.js-card-img(src=`${baseDir}/img/portrait2.jpg`, alt="")
+							.about-us__card-content
+								h4.about-us__card-title.js-card-title Igor Kosarev
+								p.about-us__card-text.js-card-text Vice President
+								button.about-us__card-btn.js-side-block More
+						.about-us__card
+							.about-us__card-img
+								img.js-card-img(src=`${baseDir}/img/portrait3.jpg`, alt="")
+							.about-us__card-content
+								h4.about-us__card-title.js-card-title Pavel Merkul
+								p.about-us__card-text.js-card-text CEO, Russian Standard Holding Director
+								button.about-us__card-btn.js-side-block More
+						.about-us__card
+							.about-us__card-img
+								img.js-card-img(src=`${baseDir}/img/portrait4.jpg`, alt="")
+							.about-us__card-content
+								h4.about-us__card-title.js-card-title Alessandro Picchi
+								p.about-us__card-text.js-card-text CEO, Roust Corporation
+								button.about-us__card-btn.js-side-block More
+						.about-us__card
+							.about-us__card-img
+								img.js-card-img(src=`${baseDir}/img/portrait5.jpg`, alt="")
+							.about-us__card-content
+								h4.about-us__card-title.js-card-title Yaroslav Zakharov
+								p.about-us__card-text.js-card-text CFO
+								button.about-us__card-btn.js-side-block More
+				.investors__content-box.investors__content-box--max-width
+					h2.investors__title Executive Officers
+					.about-us__cards-wrap.about-us__cards-wrap--jc
+						.about-us__card
+							.about-us__card-img
+								img.js-card-img(src=`${baseDir}/img/portrait6.jpg`, alt="")
+							.about-us__card-content
+								h4.about-us__card-title.js-card-title Ilya Blinov
+								p.about-us__card-text.js-card-text Head of Global Operations General Manager Russia
+								button.about-us__card-btn.js-side-block More
+						.about-us__card
+							.about-us__card-img
+								img.js-card-img(src=`${baseDir}/img/portrait7.jpg`, alt="")
+							.about-us__card-content
+								h4.about-us__card-title.js-card-title Mariusz Chrobot
+								p.about-us__card-text.js-card-text General Manager Poland
+								button.about-us__card-btn.js-side-block More
+				.investors__content-box.investors__content-box--map
+					h2.investors__title Investor Relations Contact
+					.investors__content-inner
+						.investors__content-img
+							picture
+								source(media="(max-width: 575px)", srcset=`${baseDir}/img/map-m.jpg`)
+								source(media="(max-width: 1024px)", srcset=`${baseDir}/img/map-t.jpg`)
+								img(src=`${baseDir}/img/map.jpg`, alt="")
+						.investors__content-wrap
+							p.investors__content-text Novoorlovskaya Street 5 Moscow 119633 Russia
+							a.investors__content-link(href="mailto:IR@roust.com", target="_blank", rel="noopener noreferrer") IR@roust.com

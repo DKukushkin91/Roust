@@ -838,6 +838,50 @@ var getItemAnimation = function getItemAnimation() {
   }
 };
 
+var getInvestorsSlider = function getInvestorsSlider() {
+  if (document.querySelector('.js-investors-slider')) {
+    var slider = document.querySelector('.js-investors-slider');
+    var sliderWrap = document.querySelector('.js-investors-wrap');
+    var slides = document.querySelectorAll('.js-investors-slide');
+    var createSlider = new Swiper(slider, {
+      init: false,
+      slidesPerView: 'auto',
+      watchSlidesProgress: true,
+      spaceBetween: 5,
+      pagination: {
+        el: '.js-investors-pagination',
+        type: 'bullets'
+      }
+    });
+
+    if (window.innerWidth <= 640) {
+      slider.classList.add('swiper');
+      sliderWrap.classList.add('swiper-wrapper');
+      slides.forEach(function (e) {
+        return e.classList.add('swiper-slide');
+      });
+      createSlider.init();
+    }
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth <= 640) {
+        slider.classList.add('swiper');
+        sliderWrap.classList.add('swiper-wrapper');
+        slides.forEach(function (e) {
+          return e.classList.add('swiper-slide');
+        });
+        createSlider.init();
+      } else {
+        slider.classList.remove('swiper');
+        sliderWrap.classList.remove('swiper-wrapper');
+        slides.forEach(function (e) {
+          return e.classList.remove('swiper-slide');
+        });
+      }
+    });
+  }
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   getTop();
   burgerMenuHandler();
@@ -853,6 +897,7 @@ document.addEventListener('DOMContentLoaded', function () {
   getAboutUsSlider();
   getSideBlock();
   getItemAnimation();
+  getInvestorsSlider();
 });
 "use strict";
 

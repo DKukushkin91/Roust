@@ -1,0 +1,271 @@
+.investors
+	width 100%
+
+	&__header-wrap
+		padding-bottom 15px
+
+	&__top-section
+		@media $sm
+			max-width: 68%
+			padding-bottom 30px
+
+	&__wrap
+		width 100%
+		display flex
+		flex-direction row
+		flex-wrap: wrap
+		padding-bottom 80px
+		align-items: flex-start
+
+		@media $md
+			padding-bottom 40px
+
+	&__wrap--grid
+		display grid
+		grid-template-columns repeat(auto-fill, calc(50% - 5px))
+		grid-row-gap: 5px
+		grid-column-gap: 5px
+
+		@media $sm
+			grid-template-columns: 1fr
+
+	&__title
+		fz-33()
+		line-height 40px
+		color $d-grey
+		font-family $Inter
+		font-weight 900
+		padding-bottom 35px
+
+		@media $md
+			font-size 28px
+			line-height 120%
+
+	&__news-link
+		fz-15()
+		text-decoration: none
+		line-height 18px
+		font-family $Inter
+		font-weight 700
+		border 2px solid $d-grey
+		padding: 14px 60px
+		color $d-grey
+		display block
+		text-align: center
+		margin-left: auto
+		margin-bottom 35px
+
+		@media (max-width: 640px)
+			order: 2
+			margin: 0 auto
+
+	&__slider
+		width 100%
+
+		@media (max-width: 640px)
+			margin-bottom 50px
+
+	&__list
+		width 100%
+		list-style: none
+		padding 0
+		margin -2.5px
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+
+		@media (max-width: 640px)
+			flex-wrap: nowrap
+			margin: 0
+			margin-bottom 30px
+
+	&__item
+		flex: 1 1 270px
+		position relative
+		background-color: #EDF3F8
+		padding: 40px 30px
+		margin: 2.5px
+
+		@media (max-width: 640px)
+			margin 0
+			flex-basis: 341px
+
+		@media $md
+			padding: 30px
+
+	&__item-link
+		position: absolute
+		top: 0
+		left: 0
+		width 100%
+		height 100%
+		display block
+
+	&__date
+		fz-14()
+		line-height 29px
+		text-align: left
+		color $orange
+		font-family $Georgia
+		font-weight 700
+		padding-bottom 35px
+		display block
+
+	&__text
+		fz-21()
+		line-height 29px
+		font-family $Inter
+		color $black
+		font-weight 500
+		text-align: left
+
+		@media $md
+			font-size: 18px
+			line-height 120%
+
+	&__docs-box
+		display flex
+		flex-direction: column
+		width 100%
+		height: 100%
+		padding: 30px
+		background-color #EDF3F8
+
+
+	&__box-link
+		text-decoration: none
+		display: flex
+		align-items: flex-start
+		flex-direction: row
+		flex-wrap: wrap
+		width 100%
+		margin-bottom 56px
+		flex: 1
+
+		&:hover .investors__box-text
+			text-decoration: underline
+
+	&__icon
+		width 52px
+
+	&__box-content
+		max-width 80%
+		padding-left 32px
+
+		@media $sm
+			max-width: 70%
+
+	&__box-date
+		fz-13()
+		line-height 20px
+		font-family $Inter
+		font-weight 400
+		color $m-grey
+		padding-bottom 5px
+
+	&__box-text
+		fz-21()
+		line-height 29px
+		font-weight 500
+		font-family $Inter
+		color $black
+
+		@media $md
+			font-size: 18px
+			line-height 120%
+
+	&__redirect
+		display flex
+		flex-direction row
+		justify-content space-between
+		align-items: center
+		text-decoration: none
+		flex: 0 0 auto
+
+		&:hover
+			text-decoration: underline
+
+	&__redirect-text
+		fz-15()
+		line-height 24px
+		color $d-grey
+		font-weight 500
+		font-family $Inter
+		text-align: left
+
+	&__redirect-icon
+		fill: $orange
+
+	&__content-box
+		flex: 1
+
+		&:first-child
+			padding-bottom 40px
+
+	&__content-box--width
+		flex-basis: 100%
+		max-width 100%
+
+	&__content-box--max-width
+		max-width: 408px
+		margin-right 52px
+
+		@media $md
+			margin-right 0
+			padding-bottom 40px
+
+	&__content-box--map
+		@media $md
+			flex: 1 1 100%
+
+	&__content-inner
+		display grid
+
+	&__content-img
+		grid-area: 1/-1
+		max-width: 100%
+
+		& picture,
+		& img
+			height 100%
+			object-fit: cover
+
+	&__content-wrap
+		grid-area: 1/-1
+		padding: 40px
+		max-width: 411px
+
+	&__content-text
+		fz-24()
+		line-height 32px
+		font-family $Inter
+		font-weight 700
+		color $m-grey
+		padding-bottom 20px
+
+	&__content-link
+		fz-21()
+		line-height 29px
+		font-family $Inter
+		font-weight 500
+		color $m-grey
+		text-decoration: none
+
+		&:hover
+			text-decoration: underline
+
+	&__pagination
+		display none
+
+		@media $md
+			&.swiper-pagination
+				display block
+				position relative
+				bottom 0 !important
+
+			& .swiper-pagination-bullet
+				background: #E3EBF1
+				opacity: 1
+
+			& .swiper-pagination-bullet-active
+				background: $orange
