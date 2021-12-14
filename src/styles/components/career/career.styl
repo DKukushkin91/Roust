@@ -35,6 +35,9 @@
 			grid-row-gap 34px
 			grid-column-gap: 40px
 
+		@media $xs
+			grid-template-columns: 1fr
+
 	&__item
 		flex 1 0 292px
 		max-width 292px
@@ -46,6 +49,9 @@
 
 			@media $md
 				margin-right 0
+
+		@media $xs
+			max-width: 100%
 
 	&__img
 		position absolute
