@@ -54,22 +54,22 @@ block page
 						h2.gallery__title Comfortable offices
 						button.gallery__btn.js-open-gallery
 							span.gallery__btn-text Watch photo
-	section.contacts
-		.contacts__img
+	section.career-contacts
+		.career-contacts__img
 			img(src=`${baseDir}/img/arrow-bg.jpg`, alt="")
 		.container
-			.contacts__wrap
-				h2.contacts__title HR Team
-				p.contacts__sub-title Roust provides its employees with exciting career opportunities.
-				ul.contacts__list
+			.career-contacts__wrap
+				h2.career-contacts__title HR Team
+				p.career-contacts__sub-title Roust provides its employees with exciting career opportunities.
+				ul.career-contacts__list
 
 					each title in ['Russia', 'Poland', 'Hungary', 'USA', 'United Kingdom']
-						li.contacts__item
-							p.contacts__item-title=title
-							a.contacts__link(href="mailto:info@roust.com" target="_blank")
-								svg(width="20" height="16").contacts__icon
+						li.career-contacts__item
+							p.career-contacts__item-title=title
+							a.career-contacts__link(href="mailto:info@roust.com" target="_blank")
+								svg(width="20" height="16").career-contacts__icon
 										use(href=`${baseDir}/img/sprite.svg#email`)
-								span.contacts__link-text info@roust.com
-				p.contacts__text For further information on job vacancies at Roust, please contact our HR team.
-				button.top__btn.contacts__btn.js-btn-form
-					span.top__btn-text.contacts__btn-text Complete the form
+								span.career-contacts__link-text info@roust.com
+				p.career-contacts__text For further information on job vacancies at Roust, please contact our HR team.
+				button.top__btn.career-contacts__btn.js-btn-form
+					span.top__btn-text.career-contacts__btn-text Complete the form
