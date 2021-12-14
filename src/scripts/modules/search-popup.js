@@ -1,13 +1,12 @@
-import {createElement} from '../utils/utils';
-import {selectHandler} from './select';
+import {createElement} from '../utils/utils'
 
-export const getPopup = () => {
-	if(document.querySelector('.js-btn-form')){
-		const body = document.querySelector('body')
-		const buttons = document.querySelectorAll('.js-btn-form');
-		const popupTemplate = document.querySelector('.js-popup-form')
+export const getSearchPopup = () => {
+	if(document.querySelector('.js-search-btn')) {
+		const body = document.querySelector('body');
+		const createPopupButton = document.querySelector('.js-search-btn');
+		const popupTemplate = document.querySelector('.js-search-template')
 			.content
-			.querySelector('.js-popup-wrap')
+			.querySelector('.js-search-popup');
 
 		const escPressHandler = (evt) => {
 			if (evt.key === 'Escape') {
@@ -17,7 +16,7 @@ export const getPopup = () => {
 		};
 
 		const elementRemoveHandler = () => {
-			const wrap = document.querySelector('.js-popup-wrap');
+			const wrap = document.querySelector('.js-search-popup');
 
 			if (wrap) {
 				wrap.remove();
@@ -32,7 +31,6 @@ export const getPopup = () => {
 			const closeBtn = template.querySelector('.js-close-btn');
 
 			closeBtn.addEventListener('click', elementRemoveHandler);
-			selectHandler(template)
 			return template
 		}
 
@@ -46,11 +44,6 @@ export const getPopup = () => {
 			body.classList.add('lock-scroll');
 		}
 
-		for(let button of buttons){
-			button.addEventListener('click', (evt) => {
-				evt.preventDefault();
-				appendElement();
-			})
-		}
+		createPopupButton.addEventListener('click', appendElement);
 	}
 }

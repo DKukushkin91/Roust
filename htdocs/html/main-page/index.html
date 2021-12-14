@@ -17,8 +17,7 @@
                 <div class="header__logo-wrap"><a class="header__link" href=""><img src="/f/img/roust-logo.svg"></a>
                 </div>
                 <div class="header__search">
-                  <input class="header__input" type="search" placeholder="Search" readonly>
-                  <button class="header__search-btn">
+                  <button class="header__search-btn js-search-btn"><span class="header__search-text">Search</span>
                     <svg class="header__search-icon" width="16" height="16">
                       <use href="/f/img/sprite.svg#search"></use>
                     </svg>
@@ -827,6 +826,28 @@
             <p class="side__text js-side-text"></p>
           </div>
         </div>
+      </div>
+    </div>
+  </template>
+  <template class="js-search-template">
+    <div class="search-popup js-search-popup">
+      <div class="search-popup__wrap">
+        <button class="search-popup__close-btn js-close-btn">
+          <svg class="search-popup__icon" width="22" height="22">
+            <use href="/f/img/sprite.svg#cross"></use>
+          </svg>
+        </button>
+        <h2 class="search-popup__title">Search</h2>
+        <form class="search-popup__form" action="" method="get">
+          <input class="search-popup__input" type="search" name="search" placeholder="Enter text">
+          <button class="search-popup__btn">Search</button>
+        </form>
+        <ul class="search-popup__list">
+          <li class="search-popup__item">
+            <h3 class="search-popup__sub-title">Parliament Production Distillery</h3>
+            <p class="search-popup__text js-search-result">One of the most technologically advanced distilleries of Roust Group. Built and commissioned in 1991.  Investments in the modernization of the plant since 2011 amount to over 270 million rubles</p><a class="search-popup__link" href="#">More</a>
+          </li>
+        </ul>
       </div>
     </div>
   </template>

@@ -11,6 +11,7 @@
 		right: 0
 		bottom: 0
 		left 0
+		overflow: auto
 
 		&::before {
 			content: '';
@@ -26,6 +27,9 @@
 		display: inline-block;
 		vertical-align: middle;
 		background $white
+
+		@media $md
+			max-width: 608px
 
 	&__close-btn
 		position: absolute
@@ -49,6 +53,9 @@
 		grid-template-columns: repeat(auto-fill, minmax(290px, 418px))
 		column-gap: 80px
 		row-gap: 30px
+
+		@media $md
+			padding: 40px
 
 	&__title
 		fz-33()

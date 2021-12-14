@@ -423,6 +423,8 @@ var getGallery = function getGallery() {
         galleryContainer.remove();
         document.removeEventListener('keydown', escPressHandler);
       }
+
+      body.classList.remove('lock-scroll');
     };
 
     var getElements = function getElements(template) {
@@ -438,6 +440,7 @@ var getGallery = function getGallery() {
         }
       });
       createElement(container, fragment);
+      body.classList.add('lock-scroll');
     };
 
     var getElement = function getElement(index) {
@@ -458,6 +461,7 @@ var getGallery = function getGallery() {
       fragment.appendChild(element);
       document.addEventListener('keydown', escPressHandler);
       createElement(body, fragment);
+      body.classList.add('lock-scroll');
     };
 
     buttons.forEach(function (button, index) {
@@ -634,6 +638,8 @@ var getPopup = function getPopup() {
           wrap.remove();
           document.removeEventListener('keydown', escPressHandler);
         }
+
+        body.classList.remove('lock-scroll');
       };
 
       var getElement = function getElement() {
@@ -650,6 +656,7 @@ var getPopup = function getPopup() {
         fragment.appendChild(element);
         document.addEventListener('keydown', escPressHandler);
         createElement(body, fragment);
+        body.classList.add('lock-scroll');
       };
 
       var _iterator2 = _createForOfIteratorHelper(buttons),
@@ -882,6 +889,50 @@ var getInvestorsSlider = function getInvestorsSlider() {
   }
 };
 
+var getSearchPopup = function getSearchPopup() {
+  if (document.querySelector('.js-search-btn')) {
+    var body = document.querySelector('body');
+    var createPopupButton = document.querySelector('.js-search-btn');
+    var popupTemplate = document.querySelector('.js-search-template').content.querySelector('.js-search-popup');
+
+    var escPressHandler = function escPressHandler(evt) {
+      if (evt.key === 'Escape') {
+        evt.preventDefault();
+        elementRemoveHandler();
+      }
+    };
+
+    var elementRemoveHandler = function elementRemoveHandler() {
+      var wrap = document.querySelector('.js-search-popup');
+
+      if (wrap) {
+        wrap.remove();
+        document.removeEventListener('keydown', escPressHandler);
+      }
+
+      body.classList.remove('lock-scroll');
+    };
+
+    var getElement = function getElement() {
+      var template = popupTemplate.cloneNode(true);
+      var closeBtn = template.querySelector('.js-close-btn');
+      closeBtn.addEventListener('click', elementRemoveHandler);
+      return template;
+    };
+
+    var appendElement = function appendElement() {
+      var fragment = document.createDocumentFragment();
+      var element = getElement();
+      fragment.appendChild(element);
+      document.addEventListener('keydown', escPressHandler);
+      createElement(body, fragment);
+      body.classList.add('lock-scroll');
+    };
+
+    createPopupButton.addEventListener('click', appendElement);
+  }
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   getTop();
   burgerMenuHandler();
@@ -898,6 +949,7 @@ document.addEventListener('DOMContentLoaded', function () {
   getSideBlock();
   getItemAnimation();
   getInvestorsSlider();
+  getSearchPopup();
 });
 "use strict";
 

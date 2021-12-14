@@ -202,3 +202,19 @@ block templates
 							span.side__sub-title.js-side-subTitle
 					.side__main
 						p.side__text.js-side-text
+
+	template.js-search-template
+		.search-popup.js-search-popup
+			.search-popup__wrap
+				button.search-popup__close-btn.js-close-btn
+					svg(width="22" height="22").search-popup__icon
+						use(href=`${baseDir}/img/sprite.svg#cross`)
+				h2.search-popup__title Search
+				form.search-popup__form(action="", method="get")
+					input.search-popup__input(type="search", name="search", placeholder='Enter text')
+					button.search-popup__btn Search
+				ul.search-popup__list
+					li.search-popup__item
+						h3.search-popup__sub-title Parliament Production Distillery
+						p.search-popup__text.js-search-result One of the most technologically advanced distilleries of Roust Group. Built and commissioned in 1991.  Investments in the modernization of the plant since 2011 amount to over 270 million rubles
+						a.search-popup__link(href='#') More
