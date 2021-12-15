@@ -1,9 +1,22 @@
+.box__content--media
+    & .top
+        @media $md
+            padding-bottom 204px
+        @media $xs
+            max-width 50%
+            padding-bottom 80px
 .media
     padding 74px 0 47px
+    @media $md
+        padding 40px 0
 .media__subscription
     padding 0 0 50px
+    @media $md
+        padding 0 0 40px
 .media__btn
     margin-left auto
+    @media $xs
+        width 100%
 .media__date
     font-family $Georgia
     font-weight 700
@@ -49,11 +62,22 @@
     list-style none
     padding 0
     margin 0
+    @media $md
+        grid-template-columns repeat(2,50%)
+        grid-template-rows repeat(3,minmax(360px,auto))
+    @media $xs
+        grid-template-columns repeat(1,100%)
+        grid-template-rows repeat(5,minmax(280px,auto))
 .media__item
     position relative
 .media__item:nth-child(4)
     grid-column 1/3
     grid-row 2
+    @media $md
+        grid-row 3
+    @media $xs
+        grid-column 1
+        grid-row 5
 .media__item:nth-child(5) .media__item-img
     background-color #000000
 .media__item-link

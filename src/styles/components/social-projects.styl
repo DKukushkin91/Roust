@@ -1,8 +1,20 @@
 .box__top.box__top--social-projects
     .top
         padding-bottom 102px
+        @media $xs
+            padding-bottom 49px
     .header
         padding 60px 0 77px
+        @media $xs
+            padding 30px 20px
+    .header__container
+        @media $md
+            padding 0 40px
+        @media $xs
+            padding 0
+    .header__wrap
+        @media $md
+            padding-bottom 0
     .top__title
         max-width 50%
         padding-bottom 45px
@@ -12,6 +24,10 @@
     list-style none
     padding 79px 0 60px
     margin 0
+    @media $md
+        padding 52px 0 60px
+    @media $xs
+        padding 40px 0 50px
     &__item
         margin-bottom 100px
         @media $md
@@ -42,6 +58,7 @@
             margin-bottom 20px
     &__img img
         object-fit cover
+        height 100%
     &__title
         font-weight 900
         font-size 33px
@@ -108,3 +125,11 @@
             grid-template-columns repeat(3,222px)
             grid-template-rows repeat(1,minmax(180px,auto))
             column-gap 11px
+            & img:nth-child(n + 3)
+                display none
+        @media $sm
+            & img:nth-child(n + 2)
+                display none
+        @media $xs
+            grid-template-columns repeat(2,162px)
+            grid-template-rows repeat(1,minmax(132px,auto))
