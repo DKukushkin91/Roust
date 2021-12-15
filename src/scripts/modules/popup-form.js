@@ -23,6 +23,8 @@ export const getPopup = () => {
 				wrap.remove();
 				document.removeEventListener('keydown', escPressHandler);
 			}
+
+			body.classList.remove('lock-scroll');
 		};
 
 		const getElement = () => {
@@ -41,6 +43,7 @@ export const getPopup = () => {
 			fragment.appendChild(element);
 			document.addEventListener('keydown', escPressHandler);
 			createElement(body, fragment);
+			body.classList.add('lock-scroll');
 		}
 
 		for(let button of buttons){

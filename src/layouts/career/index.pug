@@ -56,7 +56,10 @@ block page
 							span.gallery__btn-text Watch photo
 	section.career-contacts
 		.career-contacts__img
-			img(src=`${baseDir}/img/arrow-bg.jpg`, alt="")
+			picture
+				source(media="(max-width: 574.9px)", srcset=`${baseDir}/img/arrow-bg-m.jpg`)
+				source(media="(max-width: 959.9px)", srcset=`${baseDir}/img/arrow-bg-t.jpg`)
+				img(src=`${baseDir}/img/arrow-bg.jpg`, alt="")
 		.container
 			.career-contacts__wrap
 				h2.career-contacts__title HR Team

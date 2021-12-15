@@ -73,6 +73,17 @@ block page
 									h2.screen__title Parliament
 									p.screen__text Parliament vodka is one of the oldest Russian brands in the segment. This classic vodka is crafted according to a traditional Russian vodka recipe - using alcohol and water only - and is complemented by unparalleled purification with milk.
 									a.screen__link(href="#") More
+						.screen__slide.swiper-slide
+							.screen__img-wrap
+								+picture('talka-banner', '', baseDir)
+							.screen__icon-wrap
+								svg(width="14" height="9").screen__icon
+									use(href="/f/img/sprite.svg#arrow-b")
+							.screen__content.screen__content--slider
+								.screen__inner.screen__inner--slider
+									h2.screen__title Talka
+									p.screen__text В глубинах Сибири, среди заснеженных просторов и суровой северной природы, среди величавых рек и свежего таежного воздуха, берет свое начало водка «Талка» — Легенда Сибири.
+									a.screen__link(href="#") More
 					button.screen__nav-btn.screen__nav-btn--next.js-main-slider-next
 						svg(width="51" height="12").screen__nav-icon
 							use(href="/f/img/sprite.svg#arrow-nav")
@@ -94,6 +105,9 @@ block page
 								li.screen__p-item.swiper-slide
 									button.screen__p-btn
 										+picture('parlament-logo', 'Parliament vodka', baseDir)
+								li.screen__p-item.swiper-slide
+									button.screen__p-btn
+										+picture('parlament-logo', 'Talka', baseDir)
 				.main-page__screen.screen.js-anchor-bottle
 					.screen__icon-wrap
 						svg(width="14" height="9").screen__icon
@@ -109,7 +123,7 @@ block page
 								source(srcset=`${baseDir}/img/responsive/brands-banner@1x.png 1x, ${baseDir}/img/responsive/brands-banner@2x.png 2x` type="image/png")
 								img(src=`${baseDir}/img/responsive/brands-banner@1x.png` alt=altName)
 						.screen__img-wrap.screen__img-wrap--center.screen__img-wrap--desk
-							each val in ['rs', 'gancia', 'gancia2', 'zm', 'gancia3', 'pm', 'talka']
+							each val in ['rs', 'rsplatinum', 'rsgold', 'gancia', 'gancia2', 'zm', 'gancia3', 'pm', 'talka']
 								.screen__img-animate(class=`screen__img-animate--${val} js-animate-bottle`)
 									+picture(`main-${val}-bottle`, '', baseDir)
 						.screen__img-wrap.screen__img-wrap--center.screen__img-wrap--mob

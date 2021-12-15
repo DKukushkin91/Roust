@@ -33,6 +33,8 @@ export const getGallery = () => {
 				galleryContainer.remove();
 				document.removeEventListener('keydown', escPressHandler);
 			}
+
+			body.classList.remove('lock-scroll');
 		};
 
 		const getElements = (template) => template.cloneNode(true);
@@ -48,6 +50,7 @@ export const getGallery = () => {
 			})
 
 			createElement(container, fragment);
+			body.classList.add('lock-scroll');
 		}
 
 		const getElement = (index) => {
@@ -70,6 +73,7 @@ export const getGallery = () => {
 			fragment.appendChild(element);
 			document.addEventListener('keydown', escPressHandler);
 			createElement(body, fragment);
+			body.classList.add('lock-scroll');
 		}
 
 		buttons.forEach((button, index) => {

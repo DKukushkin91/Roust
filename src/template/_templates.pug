@@ -160,16 +160,16 @@ block templates
 				fieldset.popup-form__fieldset
 					h2.popup-form__title Please complete the form
 					.popup-form__input-group
-						input#first-name.popup-form__input(type="text", name="first-name" placeholder="Mark" required)
+						input#first-name.popup-form__input(type="text", name="first-name" required)
 						label.popup-form__label(for="first-name") First name
 					.popup-form__input-group
-						input#surname.popup-form__input(type="text", name="surname" placeholder="Webber")
+						input#surname.popup-form__input(type="text", name="surname")
 						label.popup-form__label(for="surname") Surname
 					.popup-form__input-group
-						input#email.popup-form__input(type="email", name="email" placeholder="mark.webber@gmail.com" required)
+						input#email.popup-form__input(type="email", name="email" required)
 						label.popup-form__label(for="email") Email
 					.popup-form__input-group
-						input#c-email.popup-form__input(type="email", name="email" placeholder="mark.webber@gmail.com" required)
+						input#c-email.popup-form__input(type="email", name="email" required)
 						label.popup-form__label(for="c-email") Confirm email
 
 					+selectHybrid('company', 'Application for company', 'Select company...', ['ABC technologies', 'Roust', 'Test Company'], 'required')
@@ -202,3 +202,19 @@ block templates
 							span.side__sub-title.js-side-subTitle
 					.side__main
 						p.side__text.js-side-text
+
+	template.js-search-template
+		.search-popup.js-search-popup
+			.search-popup__wrap
+				button.search-popup__close-btn.js-close-btn
+					svg(width="22" height="22").search-popup__icon
+						use(href=`${baseDir}/img/sprite.svg#cross`)
+				h2.search-popup__title Search
+				form.search-popup__form(action="", method="get")
+					input.search-popup__input(type="search", name="search", placeholder='Enter text')
+					button.search-popup__btn Search
+				ul.search-popup__list
+					li.search-popup__item
+						h3.search-popup__sub-title Parliament Production Distillery
+						p.search-popup__text.js-search-result One of the most technologically advanced distilleries of Roust Group. Built and commissioned in 1991.  Investments in the modernization of the plant since 2011 amount to over 270 million rubles
+						a.search-popup__link(href='#') More
