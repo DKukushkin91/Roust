@@ -12,11 +12,15 @@
 			display: none
 
 	&__container
-		@media $md
+		@media (max-width: 990px)
 			padding: 0
 
 	&__btns-wrap
 		padding-bottom 47px
+
+		@media (max-width: 990px)
+			padding: 0 25px
+			padding-bottom 26px
 
 		@media $md
 			text-align: center
@@ -49,6 +53,7 @@
 		width: 100%
 
 	&__list
+		list-style: none
 		padding: 0
 		margin 0
 		display grid
@@ -57,70 +62,97 @@
 		column-gap: 5px
 		row-gap: 5px
 		padding-bottom 48px
+		overflow: hidden
 
 		@media $md
 			grid-template-columns: repeat(2, minmax(310px, auto))
 
-		@media (max-width: 624px)
-			grid-template-columns: repeat(auto-fill, minmax(310px, auto))
+		@media $b-sm
+			grid-template-columns: repeat(auto-fill, minmax(50%, 100%))
 
 	&__item
-		width: 100%
+		width 100%
 		min-height: 310px
-		height: 100%
-		display flex
-		flex-direction: row
-		flex-wrap: wrap
-		padding 30px 40px
-		background-repeat: no-repeat
-		background-size: cover
-		justify-content space-between
+		height 100%
 		position relative
+		padding 20px 30px
 		overflow hidden
+		display: flex
+		flex-direction: row
 
-		@media (max-width: 624px)
-			min-height: 350px
+		@media $b-sm
+			padding: 30px
+			flex-direction: row-reverse
 
 		&:first-child
 			grid-column: 1
 			grid-row: 1 / 3
 
-		&:nth-child(4)
-			grid-column: 2 / 4
+	&__item--flex
+		display flex
+		flex-direction: column-reverse
+		justify-content: flex-end
 
-			@media $md
-				grid-row: 3
+		@media $b-sm
+			flex-direction row-reverse
+			justify-content: space-between
+			align-items: center
 
-			@media $md
-				grid-column: 1 / -1
+	&__item--bg-red
+		background: linear-gradient(90deg, rgba(166,0,0,1) 13%, rgba(244,116,130,1) 77%);
 
-		&:nth-child(3n+4)
-			@media $md
-				grid-column: 1 / -1
+	&__item--bg-blue
+		background: linear-gradient(339deg, rgba(94,233,252,1) 0%, rgba(0,62,149,1) 100%);
 
-		&:not(:first-child) .brands__item-content
-			width: 70%
+	&__item--grid-2
+		grid-column: 3
+		grid-row: 2 / 4
 
-		&:not(:first-child) .brands__item-content
-			display: flex
-			flex-direction: column
-			height: 100%
+		@media $md
+			grid-row: unset
+			grid-column: 1/-1
 
-		&:not(:first-child) .brands__item-text
-			flex: 1
+	&__item--grid-3
+		grid-column: 1 / 3
+		grid-row: 3
 
-		&:first-child .brands__item-text,
-		&:nth-child(4) .brands__item-text
-			padding-bottom: 30px
+		@media $md
+			grid-column: unset
 
-		&:first-child .brands__item-content
-			@media (max-width: 624px)
-				width 70%
+	&__item-bg
+		width 100%
+		height: 100%
+		position absolute
+		top 0
+		left 0
+
+		& img,
+		& picture
+			height 100%
+			object-fit: cover
 
 	&__item-content
-		width: 100%
 		position relative
+		width: 100%
 		z-index 1
+		display flex
+		flex-direction: column
+		max-width: 60%
+		min-height 240px
+
+		@media $b-sm
+			min-height: auto
+			height 100%
+			max-width: 100%
+
+	&__item-content--max-width
+		max-width: 80%
+
+		@media $md
+			max-width: 60%
+
+		@media $b-sm
+			max-width: 100%
 
 	&__item-title
 		fz-24()
@@ -137,6 +169,7 @@
 		padding-bottom 15px
 		font-family $Inter
 		font-weight 500
+		flex 1 1 auto
 
 	&__link
 		fz-14()
@@ -144,25 +177,119 @@
 		text-decoration: none
 		border: 1px solid $white
 		padding: 14px 50px
-		display: block
+		display: inline-block
+		vertical-align: bottom
 		max-width: 138px
 		text-align: center
+		flex 0 0 auto
 
 	&__img
-		position: absolute
-		width: 100%
-		height: 100%
-		top: 0
-		left 0
-		z-index 0
+		position absolute
+		right 15px
 
-	&__img img,
-	&__img picture
-		height 100%
-		object-fit: cover
+		@media $b-sm
+			position relative
+			right 0
+			float: right
+			padding-left: 10px;
+			shape-outside: inset(0 round 41% 0);
+
+	&__img--rs
+		bottom -80px
+
+		@media $b-sm
+			max-width: 186px
+			margin-right -50px
+			margin-top -32px
+			bottom 0
+
+	&__img--chanti
+		@media $b-sm
+			max-width: 73px
+
+	&__img--gancia
+		@media $b-sm
+			max-width: 91px
+
+	&__img--darrow
+		@media $b-sm
+			max-width 76px
+
+	&__img--bravo
+		@media $md
+			max-width: 109px
+			bottom: -60px
+
+		@media $b-sm
+			max-width 95px
+			bottom: unset
+
+	&__img--gancia3
+		bottom -80px
 
 		@media $md
-			object-position: top
+			bottom: unset
+			top: 20px
+			right 78px
+			max-width: 103px
+
+		@media $b-sm
+			bottom 0
+			top unset
+			right unset
+			max-width: 72px
+
+	&__img--grants
+		bottom: -130px
+
+		@media $b-sm
+			bottom 0
+			max-width: 82px
+
+	&__img--martin
+		right -40px
+		bottom -60px
+
+		@media $md
+			right 15px
+
+		@media $b-sm
+			right 0
+			bottom 0
+			margin-right -15%
+			display flex
+			align-items flex-end
+
+	&__img--jager
+		@media $b-sm
+			max-width: 111px
+
+	&__img--zb
+		bottom -60px
+
+		@media $b-sm
+			bottom 0
+			max-width: 78px
+
+	&__img--cr
+		@media $b-sm
+			max-width 75px
+
+	&__img--rum
+		@media $b-sm
+			max-width: 85px
+
+	&__img--sierra
+		@media $b-sm
+			max-width 106px
+
+	&__img--botanist
+		@media $md
+			right: 78px
+
+		@media $b-sm
+			right 0
+			max-width: 94px
 
 	&__sub-text
 		fz-13()
