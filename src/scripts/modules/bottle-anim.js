@@ -14,7 +14,6 @@ export const getItemAnimation = () => {
 			}
 
 			if(targetPosition.bottom > windowPosition.top && targetPosition.top < windowPosition.bottom) {
-				console.log('scroll')
 				bottles.forEach(e => e.classList.add('screen__img-animate--on'))
 			} else {
 				bottles.forEach(e => e.classList.remove('screen__img-animate--on'))
