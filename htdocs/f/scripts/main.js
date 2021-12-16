@@ -474,146 +474,247 @@ var getGallery = function getGallery() {
 };
 
 var selectHandler = function selectHandler(template) {
-  var elSelectNative = template.getElementsByClassName("js-select-native")[0];
-  var elSelectCustom = template.getElementsByClassName("js-select-custom")[0];
-  var elSelectCustomBox = elSelectCustom.children[0];
-  var elSelectCustomOpts = elSelectCustom.children[1];
-  var customOptsList = Array.from(elSelectCustomOpts.children);
-  var optionsCount = customOptsList.length;
-  var defaultLabel = elSelectCustomBox.getAttribute("data-value");
-  var optionChecked = "";
-  var optionHoveredIndex = -1; // Toggle custom select visibility when clicking the box
+  // const elSelectNative = template.getElementsByClassName('js-select-native')[0];
+  // const elSelectCustom = template.getElementsByClassName('js-select-custom')[0];
+  // const elSelectCustomBox = elSelectCustom.children[0];
+  // const elSelectCustomOpts = elSelectCustom.children[1];
+  // const customOptsList = Array.from(elSelectCustomOpts.children);
+  // const optionsCount = customOptsList.length;
+  // const defaultLabel = elSelectCustomBox.getAttribute('data-value');
+  // let optionChecked = '';
+  // let optionHoveredIndex = -1;
+  // // Toggle custom select visibility when clicking the box
+  // elSelectCustomBox.addEventListener('click', (e) => {
+  //   const isClosed = !elSelectCustom.classList.contains('m-select__custom-wrap--active');
+  //   if (isClosed) {
+  //     openSelectCustom();
+  //   } else {
+  //     closeSelectCustom();
+  //   }
+  // });
+  // function openSelectCustom() {
+  //   elSelectCustom.classList.add('m-select__custom-wrap--active');
+  //   // Remove aria-hidden in case this was opened by a user
+  //   // who uses AT (e.g. Screen Reader) and a mouse at the same time.
+  //   elSelectCustom.setAttribute('aria-hidden', false);
+  //   if (optionChecked) {
+  //     const optionCheckedIndex = customOptsList.findIndex(
+  //       (el) => el.getAttribute('data-value') === optionChecked
+  //     );
+  //     updateCustomSelectHovered(optionCheckedIndex);
+  //   }
+  //   // Add related event listeners
+  //   document.addEventListener('click', watchClickOutside);
+  //   document.addEventListener('keydown', supportKeyboardNavigation);
+  // }
+  // function closeSelectCustom() {
+  //   elSelectCustom.classList.remove('m-select__custom-wrap--active');
+  //   elSelectCustom.setAttribute('aria-hidden', true);
+  //   updateCustomSelectHovered(-1);
+  //   // Remove related event listeners
+  //   document.removeEventListener('click', watchClickOutside);
+  //   document.removeEventListener('keydown', supportKeyboardNavigation);
+  // }
+  // function updateCustomSelectHovered(newIndex) {
+  //   const prevOption = elSelectCustomOpts.children[optionHoveredIndex];
+  //   const option = elSelectCustomOpts.children[newIndex];
+  //   if (prevOption) {
+  //     prevOption.classList.remove('m-select__custom-option--hover');
+  //   }
+  //   if (option) {
+  //     option.classList.add('m-select__custom-option--hover');
+  //   }
+  //   optionHoveredIndex = newIndex;
+  // }
+  // function updateCustomSelectChecked(value, text) {
+  //   const prevValue = optionChecked;
+  //   const elPrevOption = elSelectCustomOpts.querySelector(
+  //     `[data-value='${prevValue}'`
+  //   );
+  //   const elOption = elSelectCustomOpts.querySelector(`[data-value='${value}'`);
+  //   if (elPrevOption) {
+  //     elPrevOption.classList.remove('m-select__custom-wrap--active');
+  //   }
+  //   if (elOption) {
+  //     elOption.classList.add('m-select__custom-wrap--active');
+  //   }
+  //   elSelectCustomBox.textContent = text;
+  //   optionChecked = value;
+  // }
+  // function watchClickOutside(e) {
+  //   const didClickedOutside = !elSelectCustom.contains(event.target);
+  //   if (didClickedOutside) {
+  //     closeSelectCustom();
+  //   }
+  // }
+  // function supportKeyboardNavigation(e) {
+  //   // press down -> go next
+  //   if (event.keyCode === 40 && optionHoveredIndex < optionsCount - 1) {
+  //     let index = optionHoveredIndex;
+  //     e.preventDefault(); // prevent page scrolling
+  //     updateCustomSelectHovered(optionHoveredIndex + 1);
+  //   }
+  //   // press up -> go previous
+  //   if (event.keyCode === 38 && optionHoveredIndex > 0) {
+  //     e.preventDefault(); // prevent page scrolling
+  //     updateCustomSelectHovered(optionHoveredIndex - 1);
+  //   }
+  //   // press Enter or space -> select the option
+  //   if (event.keyCode === 13 || event.keyCode === 32) {
+  //     e.preventDefault();
+  //     const option = elSelectCustomOpts.children[optionHoveredIndex];
+  //     const value = option && option.getAttribute('data-value');
+  //     if (value) {
+  //       elSelectNative.value = value;
+  //       updateCustomSelectChecked(value, option.textContent);
+  //     }
+  //     closeSelectCustom();
+  //   }
+  //   // press ESC -> close selectCustom
+  //   if (event.keyCode === 27) {
+  //     closeSelectCustom();
+  //   }
+  // }
+  // // Update selectCustom value when selectNative is changed.
+  // elSelectNative.addEventListener('change', (e) => {
+  //   const value = e.target.value;
+  //   const elRespectiveCustomOption = elSelectCustomOpts.querySelectorAll(
+  //     `[data-value='${value}']`
+  //   )[0];
+  //   updateCustomSelectChecked(value, elRespectiveCustomOption.textContent);
+  // });
+  // // Update selectCustom value when an option is clicked or hovered
+  // customOptsList.forEach(function (elOption, index) {
+  //   elOption.addEventListener('click', (e) => {
+  //     const value = e.target.getAttribute('data-value');
+  //     // Sync native select to have the same value
+  //     elSelectNative.value = value;
+  //     updateCustomSelectChecked(value, e.target.textContent);
+  //     closeSelectCustom();
+  //   });
+  //   elOption.addEventListener('mouseenter', (e) => {
+  //     updateCustomSelectHovered(index);
+  //   });
+  //   // TODO: Toggle these event listeners based on selectCustom visibility
+  // 	});
+  var elSelectNative = template.querySelectorAll('.js-select-native');
+  var elSelectCustom = template.querySelectorAll('.js-select-custom');
+  var elSelectCustomBox = template.querySelectorAll('.js-custom-box');
+  var optionChecked = '';
+  var optionHoveredIndex = -1; // // Toggle custom select visibility when clicking the box
 
-  elSelectCustomBox.addEventListener("click", function (e) {
-    var isClosed = !elSelectCustom.classList.contains("m-select__custom-wrap--active");
+  elSelectCustomBox.forEach(function (el, index) {
+    el.addEventListener('click', function () {
+      elSelectCustom.forEach(function (e) {
+        var isClosed = !e.classList.contains('m-select__custom-wrap--active');
 
-    if (isClosed) {
-      openSelectCustom();
-    } else {
-      closeSelectCustom();
-    }
+        if (isClosed) {
+          openSelectCustom(index);
+        } else {
+          closeSelectCustom();
+        }
+      });
+    });
   });
 
-  function openSelectCustom() {
-    elSelectCustom.classList.add("m-select__custom-wrap--active"); // Remove aria-hidden in case this was opened by a user
-    // who uses AT (e.g. Screen Reader) and a mouse at the same time.
-
-    elSelectCustom.setAttribute("aria-hidden", false);
-
-    if (optionChecked) {
-      var optionCheckedIndex = customOptsList.findIndex(function (el) {
-        return el.getAttribute("data-value") === optionChecked;
-      });
-      updateCustomSelectHovered(optionCheckedIndex);
-    } // Add related event listeners
-
-
-    document.addEventListener("click", watchClickOutside);
-    document.addEventListener("keydown", supportKeyboardNavigation);
-  }
-
-  function closeSelectCustom() {
-    elSelectCustom.classList.remove("m-select__custom-wrap--active");
-    elSelectCustom.setAttribute("aria-hidden", true);
-    updateCustomSelectHovered(-1); // Remove related event listeners
-
-    document.removeEventListener("click", watchClickOutside);
-    document.removeEventListener("keydown", supportKeyboardNavigation);
-  }
-
-  function updateCustomSelectHovered(newIndex) {
-    var prevOption = elSelectCustomOpts.children[optionHoveredIndex];
-    var option = elSelectCustomOpts.children[newIndex];
-
-    if (prevOption) {
-      prevOption.classList.remove("m-select__custom-option--hover");
-    }
-
-    if (option) {
-      option.classList.add("m-select__custom-option--hover");
-    }
-
-    optionHoveredIndex = newIndex;
-  }
-
-  function updateCustomSelectChecked(value, text) {
-    var prevValue = optionChecked;
-    var elPrevOption = elSelectCustomOpts.querySelector("[data-value=\"".concat(prevValue, "\""));
-    var elOption = elSelectCustomOpts.querySelector("[data-value=\"".concat(value, "\""));
-
-    if (elPrevOption) {
-      elPrevOption.classList.remove("m-select__custom-wrap--active");
-    }
-
-    if (elOption) {
-      elOption.classList.add("m-select__custom-wrap--active");
-    }
-
-    elSelectCustomBox.textContent = text;
-    optionChecked = value;
-  }
-
-  function watchClickOutside(e) {
-    var didClickedOutside = !elSelectCustom.contains(event.target);
-
-    if (didClickedOutside) {
-      closeSelectCustom();
-    }
-  }
-
-  function supportKeyboardNavigation(e) {
-    // press down -> go next
-    if (event.keyCode === 40 && optionHoveredIndex < optionsCount - 1) {
-      e.preventDefault(); // prevent page scrolling
-
-      updateCustomSelectHovered(optionHoveredIndex + 1);
-    } // press up -> go previous
-
-
-    if (event.keyCode === 38 && optionHoveredIndex > 0) {
-      e.preventDefault(); // prevent page scrolling
-
-      updateCustomSelectHovered(optionHoveredIndex - 1);
-    } // press Enter or space -> select the option
-
-
-    if (event.keyCode === 13 || event.keyCode === 32) {
-      e.preventDefault();
-      var option = elSelectCustomOpts.children[optionHoveredIndex];
-      var value = option && option.getAttribute("data-value");
-
-      if (value) {
-        elSelectNative.value = value;
-        updateCustomSelectChecked(value, option.textContent);
+  var openSelectCustom = function openSelectCustom(index) {
+    elSelectCustom.forEach(function (e, i) {
+      if (i === index) {
+        e.classList.add('m-select__custom-wrap--active');
+        e.setAttribute('aria-hidden', false);
       }
 
-      closeSelectCustom();
-    } // press ESC -> close selectCustom
-
-
-    if (event.keyCode === 27) {
-      closeSelectCustom();
-    }
-  } // Update selectCustom value when selectNative is changed.
-
-
-  elSelectNative.addEventListener("change", function (e) {
-    var value = e.target.value;
-    var elRespectiveCustomOption = elSelectCustomOpts.querySelectorAll("[data-value=\"".concat(value, "\"]"))[0];
-    updateCustomSelectChecked(value, elRespectiveCustomOption.textContent);
-  }); // Update selectCustom value when an option is clicked or hovered
-
-  customOptsList.forEach(function (elOption, index) {
-    elOption.addEventListener("click", function (e) {
-      var value = e.target.getAttribute("data-value"); // Sync native select to have the same value
-
-      elSelectNative.value = value;
-      updateCustomSelectChecked(value, e.target.textContent);
-      closeSelectCustom();
+      if (optionChecked) {
+        var customOptsList = Array.from(e.querySelectorAll('.js-custom-option'));
+        var optionCheckedIndex = customOptsList.findIndex(function (el) {
+          return el.getAttribute('data-value') === optionChecked;
+        });
+        updateCustomSelectHovered(optionCheckedIndex);
+      }
     });
-    elOption.addEventListener("mouseenter", function (e) {
-      updateCustomSelectHovered(index);
-    }); // TODO: Toggle these event listeners based on selectCustom visibility
+  };
+
+  var closeSelectCustom = function closeSelectCustom() {
+    elSelectCustom.forEach(function (el) {
+      el.classList.remove('m-select__custom-wrap--active');
+      el.setAttribute('aria-hidden', true);
+    });
+    updateCustomSelectHovered(-1);
+  };
+
+  var updateCustomSelectHovered = function updateCustomSelectHovered(newIndex) {
+    elSelectCustom.forEach(function (el) {
+      var customOptions = el.querySelector('.js-custom-options');
+      var prevOption = customOptions.children[optionHoveredIndex];
+      var option = customOptions.children[newIndex];
+
+      if (prevOption) {
+        prevOption.classList.remove('m-select__custom-option--hover');
+      }
+
+      if (option) {
+        option.classList.add('m-select__custom-option--hover');
+      }
+
+      optionHoveredIndex = newIndex;
+    });
+  };
+
+  var updateCustomSelectChecked = function updateCustomSelectChecked(value, text) {
+    elSelectCustom.forEach(function (el) {
+      var prevValue = optionChecked;
+      var elCustomOptions = el.querySelector('.js-custom-options');
+      var elCustomBox = el.querySelector('.js-custom-box');
+      var elPrevOption = elCustomOptions.querySelector("[data-value='".concat(prevValue, "'"));
+      var elOption = elCustomOptions.querySelector("[data-value='".concat(value, "'"));
+
+      if (elPrevOption) {
+        elPrevOption.classList.remove('m-select__custom-wrap--active');
+      }
+
+      if (elOption) {
+        elOption.classList.add('m-select__custom-wrap--active');
+      }
+
+      elCustomBox.textContent = text;
+      optionChecked = value;
+    });
+  }; // // Update selectCustom value when selectNative is changed.
+
+
+  elSelectCustom.forEach(function (e, index) {
+    elSelectNative.forEach(function (el, i) {
+      if (index === i) {
+        var elCustomOptions = e.querySelector('.js-custom-options');
+        el.addEventListener('change', function (evt) {
+          var value = evt.target.value;
+          var elRespectiveCustomOption = elCustomOptions.querySelectorAll("[data-value='".concat(value, "']"))[0];
+          updateCustomSelectChecked(value, elRespectiveCustomOption.textContent);
+        });
+      }
+    });
+  }); // // Update selectCustom value when an option is clicked or hovered
+
+  elSelectCustom.forEach(function (el, i) {
+    el.addEventListener('click', function (evt) {
+      var customOptsList = Array.from(evt.currentTarget.getElementsByClassName('js-custom-option'));
+      customOptsList.forEach(function (elOption, index) {
+        elOption.addEventListener('click', function (e) {
+          var value = e.target.getAttribute('data-value'); //Sync native select to have the same value
+
+          elSelectNative.forEach(function (el, index) {
+            if (i === index) {
+              el.value = value;
+              updateCustomSelectChecked(value, e.target.textContent);
+              closeSelectCustom();
+            }
+          });
+        });
+        elOption.addEventListener('mouseenter', function (e) {
+          updateCustomSelectHovered(index);
+        });
+      });
+    });
   });
 };
 
