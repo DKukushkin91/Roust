@@ -112,6 +112,10 @@
 			grid-row: unset
 			grid-column: 1/-1
 
+	&__item--grid-last
+		@media $md
+			grid-column 1/-1
+
 	&__item--grid-3
 		grid-column: 1 / 3
 		grid-row: 3
@@ -198,30 +202,30 @@
 		bottom -80px
 
 		@media $b-sm
-			max-width: 186px
+			width: 320px
 			margin-right -50px
 			margin-top -32px
 			bottom 0
 
 	&__img--chanti
 		@media $b-sm
-			max-width: 73px
+			width: 109px
 
 	&__img--gancia
 		@media $b-sm
-			max-width: 91px
+			width: 144px
 
 	&__img--darrow
 		@media $b-sm
-			max-width 76px
+			width 115px
 
 	&__img--bravo
 		@media $md
-			max-width: 109px
+			width: 109px
 			bottom: -60px
 
 		@media $b-sm
-			max-width 95px
+			width 153px
 			bottom: unset
 
 	&__img--gancia3
@@ -231,20 +235,20 @@
 			bottom: unset
 			top: 20px
 			right 78px
-			max-width: 103px
+			width: 103px
 
 		@media $b-sm
 			bottom 0
 			top unset
 			right unset
-			max-width: 72px
+			width: 108px
 
 	&__img--grants
 		bottom: -130px
 
 		@media $b-sm
 			bottom 0
-			max-width: 82px
+			width: 126px
 
 	&__img--martin
 		right -40px
@@ -254,6 +258,7 @@
 			right 15px
 
 		@media $b-sm
+			width 333px
 			right 0
 			bottom 0
 			margin-right -15%
@@ -262,26 +267,26 @@
 
 	&__img--jager
 		@media $b-sm
-			max-width: 111px
+			width: 191px
 
 	&__img--zb
 		bottom -60px
 
 		@media $b-sm
 			bottom 0
-			max-width: 78px
+			width: 119px
 
 	&__img--cr
 		@media $b-sm
-			max-width 75px
+			width 113px
 
 	&__img--rum
 		@media $b-sm
-			max-width: 85px
+			width: 132px
 
 	&__img--sierra
 		@media $b-sm
-			max-width 106px
+			width 178px
 
 	&__img--botanist
 		@media $md
@@ -289,7 +294,7 @@
 
 		@media $b-sm
 			right 0
-			max-width: 94px
+			width: 151px
 
 	&__sub-text
 		fz-13()
