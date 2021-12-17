@@ -32,29 +32,53 @@
         text-decoration none
         display block
         margin-bottom 54px
-.top__content--contacts .top__btn-text
-    background transparent
-    border 2px solid #ffffff
-    padding 14px 58px
-.top__content--contacts .top__btn-text:hover
-    background #ffffff
-    color #272E3F
+.top__content--contacts
+    @media $sm
+        padding-top 160px
+    & .top__btn-text
+        background transparent
+        border 2px solid #ffffff
+        padding 14px 58px
+    & .top__btn-text:hover
+        background #ffffff
+        color #272E3F
 .contacts
+    padding-bottom 77px
+    @media $md
+        padding-bottom 60px
+    @media $sm
+        padding-bottom 53px
     &__list
+        position relative
+        z-index 1
         display grid
-        grid-template-columns: repeat(3, 33.033%)
-        grid-template-rows: repeat(auto-fill, minmax(148px, auto))
-        column-gap: 20px
-        row-gap: 46px
+        grid-template-columns repeat(3, 33.033%)
+        grid-template-rows repeat(auto-fill, minmax(148px, auto))
+        column-gap 20px
+        row-gap 46px
         margin 0
+        @media $md
+            grid-template-columns repeat(2, 50%)
+            row-gap 40px
+        @media $sm
+            grid-template-columns repeat(1, 100%)
+            row-gap 40px
+    &__list-multi
+        row-gap 90px
+        @media $md
+            row-gap 40px
     &__local
         margin-bottom 80px
         padding 30px 0 0
+        @media $md
+            padding 0
+        @media $sm
+            margin-bottom 40px
     &__title
         font-size 21px
         line-height 29px
         color #00F0FF
-        margin-bottom 30px
+        margin-bottom auto
     &__li
         display flex
         flex-direction column
@@ -64,6 +88,7 @@
         font-size 15px
         line-height 24px
         color #ffffff
+        margin-top 30px
         margin-bottom 20px
     &__li-title--factory::before
         content ''
@@ -87,6 +112,8 @@
         margin-bottom 10px
     &__li-address
         max-width 220px
+        @media $md
+            max-width 290px
     &__li-link
         text-decoration none
     &__li-link:hover
