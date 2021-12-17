@@ -918,32 +918,43 @@ var getSideBlock = function getSideBlock() {
 var getItemAnimation = function getItemAnimation() {
   if (document.querySelector('.js-anchor-bottle')) {
     var items = document.querySelectorAll('.js-animate-bottle');
-    var itemsArray = Array.from(items);
-    var firstItem = items[0];
-    var anchor = document.querySelector('.js-anchor-bottle');
-    var val = 0.01;
+    var mainItem = document.querySelector('.js-main-bottle');
+    var itemsArray = Array.from(items); // const anchor = document.querySelector('.js-anchor-bottle');
+
+    var val = 0.06;
+    var flag = null;
 
     var moveElements = function moveElements(elements) {
       var evenIndexs = elements.filter(function (x, index) {
-        return index % 2 === 0 && index !== 0;
+        return index % 2 === 0;
       });
       var oddIndexs = elements.filter(function (x, index) {
         return index % 2 !== 0;
       });
-      evenIndexs.forEach(function (el, index) {
-        var value = window.scrollY * (index * val);
-        el.style.transform = "translate(".concat(value, "px)");
-      });
-      oddIndexs.forEach(function (el, index) {
-        var value = window.scrollY * (index * val);
-        el.style.transform = "translate(-".concat(value, "px)");
-      });
+
+      if (flag === 1) {
+        evenIndexs.forEach(function (el, index) {
+          var value = window.scrollY * ((index + 1) * val);
+          el.style.left = "".concat(value, "px");
+        });
+        oddIndexs.forEach(function (el, index) {
+          var value = window.scrollY * ((index + 1) * val);
+          el.style.right = "".concat(value, "px");
+        });
+      } else {
+        evenIndexs.forEach(function (el) {
+          el.style.left = 0;
+        });
+        oddIndexs.forEach(function (el) {
+          el.style.right = 0;
+        });
+      }
     };
 
     var onScrollAnimation = function onScrollAnimation() {
       var targetPosition = {
-        top: window.scrollY + firstItem.getBoundingClientRect().top,
-        bottom: window.scrollY + firstItem.getBoundingClientRect().bottom
+        top: window.scrollY + mainItem.getBoundingClientRect().top,
+        bottom: window.scrollY + mainItem.getBoundingClientRect().bottom
       };
       var windowPosition = {
         top: window.scrollY,
@@ -951,6 +962,10 @@ var getItemAnimation = function getItemAnimation() {
       };
 
       if (targetPosition.bottom > windowPosition.top && targetPosition.top < windowPosition.bottom) {
+        flag = 1;
+        moveElements(itemsArray);
+      } else {
+        flag = null;
         moveElements(itemsArray);
       }
     };

@@ -123,7 +123,9 @@ block page
 								source(srcset=`${baseDir}/img/responsive/brands-banner@1x.png 1x, ${baseDir}/img/responsive/brands-banner@2x.png 2x` type="image/png")
 								img(src=`${baseDir}/img/responsive/brands-banner@1x.png` alt=altName)
 						.screen__img-wrap.screen__img-wrap--center.screen__img-wrap--desk
-							each val in ['rs', 'rsplatinum', 'rsgold', 'gancia', 'gancia2', 'zm', 'gancia3', 'pm', 'talka']
+							.screen__img-animate(class=`screen__img-animate--rs js-main-bottle`)
+								+picture(`main-rs-bottle`, '', baseDir)
+							each val in ['rsplatinum', 'rsgold', 'gancia', 'talka', 'gancia3', 'zm', 'gancia2', 'pm']
 								.screen__img-animate(class=`screen__img-animate--${val} js-animate-bottle`)
 									+picture(`main-${val}-bottle`, '', baseDir)
 						.screen__img-wrap.screen__img-wrap--center.screen__img-wrap--mob
