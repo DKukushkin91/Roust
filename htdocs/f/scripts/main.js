@@ -917,13 +917,33 @@ var getSideBlock = function getSideBlock() {
 
 var getItemAnimation = function getItemAnimation() {
   if (document.querySelector('.js-anchor-bottle')) {
-    var bottles = document.querySelectorAll('.js-animate-bottle');
+    var items = document.querySelectorAll('.js-animate-bottle');
+    var itemsArray = Array.from(items);
+    var firstItem = items[0];
     var anchor = document.querySelector('.js-anchor-bottle');
+    var val = 0.01;
+
+    var moveElements = function moveElements(elements) {
+      var evenIndexs = elements.filter(function (x, index) {
+        return index % 2 === 0 && index !== 0;
+      });
+      var oddIndexs = elements.filter(function (x, index) {
+        return index % 2 !== 0;
+      });
+      evenIndexs.forEach(function (el, index) {
+        var value = window.scrollY * (index * val);
+        el.style.transform = "translate(".concat(value, "px)");
+      });
+      oddIndexs.forEach(function (el, index) {
+        var value = window.scrollY * (index * val);
+        el.style.transform = "translate(-".concat(value, "px)");
+      });
+    };
 
     var onScrollAnimation = function onScrollAnimation() {
       var targetPosition = {
-        top: window.scrollY + anchor.getBoundingClientRect().top,
-        bottom: window.scrollY + anchor.getBoundingClientRect().bottom
+        top: window.scrollY + firstItem.getBoundingClientRect().top,
+        bottom: window.scrollY + firstItem.getBoundingClientRect().bottom
       };
       var windowPosition = {
         top: window.scrollY,
@@ -931,13 +951,7 @@ var getItemAnimation = function getItemAnimation() {
       };
 
       if (targetPosition.bottom > windowPosition.top && targetPosition.top < windowPosition.bottom) {
-        bottles.forEach(function (e) {
-          return e.classList.add('screen__img-animate--on');
-        });
-      } else {
-        bottles.forEach(function (e) {
-          return e.classList.remove('screen__img-animate--on');
-        });
+        moveElements(itemsArray);
       }
     };
 
