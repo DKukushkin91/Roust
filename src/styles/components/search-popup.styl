@@ -12,12 +12,17 @@
 	left 0
 	overflow: auto
 
-	&::before {
+	@media $b-sm
+		background-color: $white
+
+	&::before
 		content: '';
 		display: inline-block;
 		height: 100%;
 		vertical-align: middle;
-	}
+
+		@media $b-sm
+			display: none
 
 	&__wrap
 		position: relative
@@ -28,6 +33,14 @@
 		background-color: $white
 		padding: 60px 90px
 
+		@media $lg
+			padding: 51px 40px
+			width: 608px
+
+		@media $b-sm
+			width 100%
+			padding 20px
+
 	&__close-btn
 		background: 0
 		border: 0
@@ -37,6 +50,10 @@
 		top: 50px
 		right: 45px
 		cursor pointer
+
+		@media $b-sm
+			top 20px
+			right 20px
 
 	&__icon
 		stroke: $orange
@@ -57,6 +74,12 @@
 		flex-wrap: wrap
 		padding-bottom 51px
 
+		@media $lg
+			padding-bottom 30px
+
+		@media $b-sm
+			justify-content: center
+
 	&__input
 		fz-15()
 		line-height 24px
@@ -68,6 +91,13 @@
 		background-color: $h-grey
 		padding 11px 17px
 		flex: 1 1 723px
+
+		@media $lg
+			flex 1 1 346px
+
+		@media $b-sm
+			width 100%
+			margin-bottom 20px
 
 		&::placeholder
 			fz-15()
@@ -89,6 +119,12 @@
 		border: 0
 		background-color: $orange
 		cursor pointer
+
+		@media $lg
+			margin-left 10px
+
+		@media $b-sm
+			margin 0
 
 	&__list
 		list-style: none
