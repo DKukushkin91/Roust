@@ -160,37 +160,38 @@ export const selectHandler = (template) => {
 
 	let optionChecked = '';
 	let optionHoveredIndex = -1;
+	// let currentElement;
 
 	// // Toggle custom select visibility when clicking the box
-	elSelectCustomBox.forEach((el, index) => {
-		el.addEventListener('click', () => {
-			elSelectCustom.forEach(e => {
-				const isClosed = !e.classList.contains('m-select__custom-wrap--active');
+	elSelectCustom.forEach(el => {
+		el.addEventListener('click', (evt) => {
+			const target = evt.currentTarget;
+			const isClosed = !target.classList.contains('m-select__custom-wrap--active');
 
-				if (isClosed) {
-					openSelectCustom(index);
-				} else {
-					closeSelectCustom();
-				}
-			})
+			if (isClosed) {
+				openSelectCustom(target);
+			} else {
+				closeSelectCustom();
+			}
+
+			// currentElement = [...template.querySelectorAll('.js-select-custom')].findIndex(e => e === target);
+			// console.log(currentElement);
 		});
 	})
 
-	const openSelectCustom = (index) => {
-		elSelectCustom.forEach((e, i) => {
-			if(i === index) {
-				e.classList.add('m-select__custom-wrap--active');
-				e.setAttribute('aria-hidden', false);
-			}
 
-			if (optionChecked) {
-				const customOptsList = Array.from(e.querySelectorAll('.js-custom-option'))
-				const optionCheckedIndex = customOptsList.findIndex(
-					(el) => el.getAttribute('data-value') === optionChecked
-				);
-				updateCustomSelectHovered(optionCheckedIndex);
-			}
-		})
+
+	const openSelectCustom = (target) => {
+		target.classList.add('m-select__custom-wrap--active');
+		target.setAttribute('aria-hidden', false);
+
+		if (optionChecked) {
+			const customOptsList = Array.from(target.querySelectorAll('.js-custom-option'))
+			const optionCheckedIndex = customOptsList.findIndex(
+				(el) => el.getAttribute('data-value') === optionChecked
+			);
+			updateCustomSelectHovered(optionCheckedIndex);
+		}
 	}
 
 	const closeSelectCustom = () => {
@@ -220,65 +221,68 @@ export const selectHandler = (template) => {
 	}
 
 	const updateCustomSelectChecked = (value, text) => {
-		elSelectCustom.forEach(el => {
-			const prevValue = optionChecked;
-			const elCustomOptions = el.querySelector('.js-custom-options');
-			const elCustomBox = el.querySelector('.js-custom-box');
-			const elPrevOption = elCustomOptions.querySelector(
-				`[data-value='${prevValue}'`
-			);
-			const elOption = elCustomOptions.querySelector(`[data-value='${value}'`);
+		elSelectCustom.forEach((el, index) => {
+			[...elSelectNative].filter((e, i) => {
 
-			if (elPrevOption) {
-				elPrevOption.classList.remove('m-select__custom-wrap--active');
-			}
+				if(index === i){
+					const prevValue = optionChecked;
+					const elCustomOptions = el.querySelector('.js-custom-options');
+					const elCustomBox = el.querySelector('.js-custom-box');
+					const elPrevOption = elCustomOptions.querySelector(`[data-value='${prevValue}'`);
+					const elOption = elCustomOptions.querySelector(`[data-value='${value}'`);
 
-			if (elOption) {
-				elOption.classList.add('m-select__custom-wrap--active');
-			}
+					if (elPrevOption) {
+						elPrevOption.classList.remove('m-select__custom-wrap--active');
+					}
 
-			elCustomBox.textContent = text;
-			optionChecked = value;
+					if (elOption) {
+						elOption.classList.add('m-select__custom-wrap--active');
+					}
+
+					elCustomBox.textContent = text;
+					optionChecked = value;
+				}
+
+			})
 		})
 	}
 
-		// // Update selectCustom value when selectNative is changed.
+	//// Update selectCustom value when selectNative is changed.
 	elSelectCustom.forEach((e, index) => {
-		elSelectNative.forEach((el, i) => {
+		[...elSelectNative].filter((el, i) => {
 			if(index === i) {
-				const elCustomOptions = e.querySelector('.js-custom-options');
 				el.addEventListener('change', (evt) => {
+					const elCustomOptions = e.querySelector('.js-custom-options');
 					const value = evt.target.value;
-					const elRespectiveCustomOption = elCustomOptions.querySelectorAll(
-						`[data-value='${value}']`
-					)[0];
+					const elRespectiveCustomOption = elCustomOptions.querySelectorAll(`[data-value='${value}']`)[0];
+					console.log(elRespectiveCustomOption)
 
 					updateCustomSelectChecked(value, elRespectiveCustomOption.textContent);
 				});
 			}
-		})
+		});
 	})
 
-		// // Update selectCustom value when an option is clicked or hovered
-		elSelectCustom.forEach((el, i) => {
+	//// Update selectCustom value when an option is clicked or hovered
+	elSelectCustom.forEach((el, i) => {
 		el.addEventListener('click', (evt) => {
-			const customOptsList = Array.from(evt.currentTarget.getElementsByClassName('js-custom-option'));
-			customOptsList.forEach(function (elOption, index) {
+			const customOptsList = Array.from(evt.currentTarget.querySelectorAll('.js-custom-option'));
+			customOptsList.forEach((elOption, indexList) => {
 				elOption.addEventListener('click', (e) => {
 					const value = e.target.getAttribute('data-value');
 
-							//Sync native select to have the same value
-							elSelectNative.forEach((el, index) => {
-								if(i === index) {
-									el.value = value;
-									updateCustomSelectChecked(value, e.target.textContent);
-									closeSelectCustom();
-								}
-							})
-					});
+					//Sync native select to have the same value
+					elSelectNative.forEach((element, index) => {
+						if(index === i) {
+							element.value = value;
+							updateCustomSelectChecked(value, e.currentTarget.textContent);
+							closeSelectCustom();
+						}
+					})
+				});
 
 					elOption.addEventListener('mouseenter', (e) => {
-						updateCustomSelectHovered(index);
+						updateCustomSelectHovered(indexList);
 				});
 			});
 		})

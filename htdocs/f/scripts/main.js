@@ -1,5 +1,13 @@
 "use strict";
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -601,37 +609,35 @@ var selectHandler = function selectHandler(template) {
   var elSelectCustom = template.querySelectorAll('.js-select-custom');
   var elSelectCustomBox = template.querySelectorAll('.js-custom-box');
   var optionChecked = '';
-  var optionHoveredIndex = -1; // // Toggle custom select visibility when clicking the box
+  var optionHoveredIndex = -1; // let currentElement;
+  // // Toggle custom select visibility when clicking the box
 
-  elSelectCustomBox.forEach(function (el, index) {
-    el.addEventListener('click', function () {
-      elSelectCustom.forEach(function (e) {
-        var isClosed = !e.classList.contains('m-select__custom-wrap--active');
+  elSelectCustom.forEach(function (el) {
+    el.addEventListener('click', function (evt) {
+      var target = evt.currentTarget;
+      var isClosed = !target.classList.contains('m-select__custom-wrap--active');
 
-        if (isClosed) {
-          openSelectCustom(index);
-        } else {
-          closeSelectCustom();
-        }
-      });
+      if (isClosed) {
+        openSelectCustom(target);
+      } else {
+        closeSelectCustom();
+      } // currentElement = [...template.querySelectorAll('.js-select-custom')].findIndex(e => e === target);
+      // console.log(currentElement);
+
     });
   });
 
-  var openSelectCustom = function openSelectCustom(index) {
-    elSelectCustom.forEach(function (e, i) {
-      if (i === index) {
-        e.classList.add('m-select__custom-wrap--active');
-        e.setAttribute('aria-hidden', false);
-      }
+  var openSelectCustom = function openSelectCustom(target) {
+    target.classList.add('m-select__custom-wrap--active');
+    target.setAttribute('aria-hidden', false);
 
-      if (optionChecked) {
-        var customOptsList = Array.from(e.querySelectorAll('.js-custom-option'));
-        var optionCheckedIndex = customOptsList.findIndex(function (el) {
-          return el.getAttribute('data-value') === optionChecked;
-        });
-        updateCustomSelectHovered(optionCheckedIndex);
-      }
-    });
+    if (optionChecked) {
+      var customOptsList = Array.from(target.querySelectorAll('.js-custom-option'));
+      var optionCheckedIndex = customOptsList.findIndex(function (el) {
+        return el.getAttribute('data-value') === optionChecked;
+      });
+      updateCustomSelectHovered(optionCheckedIndex);
+    }
   };
 
   var closeSelectCustom = function closeSelectCustom() {
@@ -661,57 +667,62 @@ var selectHandler = function selectHandler(template) {
   };
 
   var updateCustomSelectChecked = function updateCustomSelectChecked(value, text) {
-    elSelectCustom.forEach(function (el) {
-      var prevValue = optionChecked;
-      var elCustomOptions = el.querySelector('.js-custom-options');
-      var elCustomBox = el.querySelector('.js-custom-box');
-      var elPrevOption = elCustomOptions.querySelector("[data-value='".concat(prevValue, "'"));
-      var elOption = elCustomOptions.querySelector("[data-value='".concat(value, "'"));
+    elSelectCustom.forEach(function (el, index) {
+      _toConsumableArray(elSelectNative).filter(function (e, i) {
+        if (index === i) {
+          var prevValue = optionChecked;
+          var elCustomOptions = el.querySelector('.js-custom-options');
+          var elCustomBox = el.querySelector('.js-custom-box');
+          var elPrevOption = elCustomOptions.querySelector("[data-value='".concat(prevValue, "'"));
+          var elOption = elCustomOptions.querySelector("[data-value='".concat(value, "'"));
 
-      if (elPrevOption) {
-        elPrevOption.classList.remove('m-select__custom-wrap--active');
-      }
+          if (elPrevOption) {
+            elPrevOption.classList.remove('m-select__custom-wrap--active');
+          }
 
-      if (elOption) {
-        elOption.classList.add('m-select__custom-wrap--active');
-      }
+          if (elOption) {
+            elOption.classList.add('m-select__custom-wrap--active');
+          }
 
-      elCustomBox.textContent = text;
-      optionChecked = value;
+          elCustomBox.textContent = text;
+          optionChecked = value;
+        }
+      });
     });
-  }; // // Update selectCustom value when selectNative is changed.
+  }; //// Update selectCustom value when selectNative is changed.
 
 
   elSelectCustom.forEach(function (e, index) {
-    elSelectNative.forEach(function (el, i) {
+    _toConsumableArray(elSelectNative).filter(function (el, i) {
       if (index === i) {
-        var elCustomOptions = e.querySelector('.js-custom-options');
         el.addEventListener('change', function (evt) {
+          var elCustomOptions = e.querySelector('.js-custom-options');
           var value = evt.target.value;
           var elRespectiveCustomOption = elCustomOptions.querySelectorAll("[data-value='".concat(value, "']"))[0];
+          console.log(elRespectiveCustomOption);
           updateCustomSelectChecked(value, elRespectiveCustomOption.textContent);
         });
       }
     });
-  }); // // Update selectCustom value when an option is clicked or hovered
+  }); //// Update selectCustom value when an option is clicked or hovered
 
   elSelectCustom.forEach(function (el, i) {
     el.addEventListener('click', function (evt) {
-      var customOptsList = Array.from(evt.currentTarget.getElementsByClassName('js-custom-option'));
-      customOptsList.forEach(function (elOption, index) {
+      var customOptsList = Array.from(evt.currentTarget.querySelectorAll('.js-custom-option'));
+      customOptsList.forEach(function (elOption, indexList) {
         elOption.addEventListener('click', function (e) {
           var value = e.target.getAttribute('data-value'); //Sync native select to have the same value
 
-          elSelectNative.forEach(function (el, index) {
-            if (i === index) {
-              el.value = value;
-              updateCustomSelectChecked(value, e.target.textContent);
+          elSelectNative.forEach(function (element, index) {
+            if (index === i) {
+              element.value = value;
+              updateCustomSelectChecked(value, e.currentTarget.textContent);
               closeSelectCustom();
             }
           });
         });
         elOption.addEventListener('mouseenter', function (e) {
-          updateCustomSelectHovered(index);
+          updateCustomSelectHovered(indexList);
         });
       });
     });
