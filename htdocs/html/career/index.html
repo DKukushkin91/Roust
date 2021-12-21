@@ -486,9 +486,9 @@
             <input class="popup-form__input" id="c-email" type="email" name="email" required>
             <label class="popup-form__label" for="c-email">Confirm email</label>
           </div>
-          <div class="m-select"><span class="m-select__label" id="company">Application for company</span>
+          <div class="m-select">
             <div class="m-select__wrapper">
-              <select class="m-select__native-wrap js-select-native" name="" aria-labelledby="company" required="undefined">
+              <select class="m-select__native-wrap js-select-native" name="" aria-labelledby="company" required="required">
                 <option value="select" disabled="disabled" selected="selected">Select company...</option>
                 <option value="ABC technologies">ABC technologies</option>
                 <option value="Roust">Roust</option>
@@ -505,11 +505,11 @@
                   <use href="/f/img/sprite.svg#arrow-b"></use>
                 </svg>
               </div>
-            </div>
+            </div><span class="m-select__label" id="company">Application for company</span>
           </div>
-          <div class="m-select"><span class="m-select__label" id="country">Country</span>
+          <div class="m-select">
             <div class="m-select__wrapper">
-              <select class="m-select__native-wrap js-select-native" name="" aria-labelledby="country" required="undefined">
+              <select class="m-select__native-wrap js-select-native" name="" aria-labelledby="country" required="required">
                 <option value="select" disabled="disabled" selected="selected">Select country...</option>
                 <option value="United Kingdom">United Kingdom</option>
                 <option value="USA">USA</option>
@@ -526,7 +526,7 @@
                   <use href="/f/img/sprite.svg#arrow-b"></use>
                 </svg>
               </div>
-            </div>
+            </div><span class="m-select__label" id="country">Country</span>
           </div>
           <div class="popup-form__input-group popup-form__input-group--textarea">
             <textarea class="popup-form__textarea" id="textarea" name="cover" required></textarea>

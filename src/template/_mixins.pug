@@ -8,9 +8,8 @@ mixin picture(name, altName, baseDir)
 
 mixin selectHybrid(id, pseudoLabel, defaultSelect, array, required)
 	.m-select
-		span.m-select__label(id=`${id}`)=pseudoLabel
 		.m-select__wrapper
-			select.m-select__native-wrap.js-select-native(name="", aria-labelledby=`${id}`, required=`${type}`)
+			select.m-select__native-wrap.js-select-native(name="", aria-labelledby=`${id}`, required=required)
 				option(value="select" disabled selected)=defaultSelect
 				each item in array
 					option(value=`${item}`)=item
@@ -22,3 +21,4 @@ mixin selectHybrid(id, pseudoLabel, defaultSelect, array, required)
 						.m-select__custom-option.js-custom-option(data-value=`${item}`)=item
 				svg(width="14" height="9").m-select__custom-icon
 					use(href=`${baseDir}/img/sprite.svg#arrow-b`)
+		span.m-select__label(id=`${id}`)=pseudoLabel

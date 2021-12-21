@@ -1,9 +1,12 @@
 .m-select
 	width 100%
 	display flex
-	flex-direction row
+	flex-direction column-reverse
 	flex-wrap: wrap
 	position relative
+
+	@media $md
+		padding-bottom 20px
 
 	&__label
 		fz-13()
@@ -14,6 +17,15 @@
 		position relative
 		padding-bottom 5px
 		text-align: left
+
+	&__label::after
+		content: '*'
+		font-style inherit
+		font-size inherit
+		font-weight inherit
+		line-height inherit
+		color: $orange
+		margin-left 5px
 
 	&__wrapper
 		position relative
@@ -109,7 +121,7 @@
 		&:not(:last-child)
 			padding-bottom 5px
 
-	&__custom-option&__custom-option--hover,
+	&__custom-option &__custom-option--hover,
 	&__custom-option:hover
 		cursor default
 		text-decoration underline
