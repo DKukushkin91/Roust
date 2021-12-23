@@ -156,7 +156,6 @@ export const selectHandler = (template) => {
 
 	const elSelectNative = template.querySelectorAll('.js-select-native');
 	const elSelectCustom = template.querySelectorAll('.js-select-custom');
-	const elSelectCustomBox = template.querySelectorAll('.js-custom-box');
 
 	let optionChecked = '';
 	let optionHoveredIndex = -1;
@@ -173,13 +172,8 @@ export const selectHandler = (template) => {
 			} else {
 				closeSelectCustom();
 			}
-
-			// currentElement = [...template.querySelectorAll('.js-select-custom')].findIndex(e => e === target);
-			// console.log(currentElement);
 		});
 	})
-
-
 
 	const openSelectCustom = (target) => {
 		target.classList.add('m-select__custom-wrap--active');
@@ -192,6 +186,9 @@ export const selectHandler = (template) => {
 			);
 			updateCustomSelectHovered(optionCheckedIndex);
 		}
+
+		document.addEventListener('click', watchClickOutside);
+  	document.addEventListener('keydown', supportKeyboardNavigation);
 	}
 
 	const closeSelectCustom = () => {
@@ -201,22 +198,28 @@ export const selectHandler = (template) => {
 		})
 
 		updateCustomSelectHovered(-1);
+		document.removeEventListener('click', watchClickOutside);
+  	document.removeEventListener('keydown', supportKeyboardNavigation);
 	}
 
 	const updateCustomSelectHovered = (newIndex) => {
 		elSelectCustom.forEach(el => {
-			const customOptions = el.querySelector('.js-custom-options');
-			const prevOption = customOptions.children[optionHoveredIndex];
-			const option = customOptions.children[newIndex];
+			if(el.classList.contains('m-select__custom-wrap--active')) {
+				const customOptions = el.querySelector('.js-custom-options');
+				const prevOption = customOptions.children[optionHoveredIndex];
+				const option = customOptions.children[newIndex];
 
-			if (prevOption) {
-				prevOption.classList.remove('m-select__custom-option--hover');
-			}
-			if (option) {
-				option.classList.add('m-select__custom-option--hover');
-			}
+				if (prevOption) {
+					prevOption.classList.remove('m-select__custom-option--hover');
+				}
+				if (option) {
+					option.classList.add('m-select__custom-option--hover');
+				}
 
-			optionHoveredIndex = newIndex;
+				if(option) {
+					optionHoveredIndex = newIndex;
+				}
+			}
 		})
 	}
 
@@ -239,10 +242,11 @@ export const selectHandler = (template) => {
 						elOption.classList.add('m-select__custom-wrap--active');
 					}
 
-					elCustomBox.textContent = text;
-					optionChecked = value;
+					if (el.classList.contains('m-select__custom-wrap--active')) {
+						elCustomBox.textContent = text;
+						optionChecked = value;
+					}
 				}
-
 			})
 		})
 	}
@@ -255,7 +259,6 @@ export const selectHandler = (template) => {
 					const elCustomOptions = e.querySelector('.js-custom-options');
 					const value = evt.target.value;
 					const elRespectiveCustomOption = elCustomOptions.querySelectorAll(`[data-value='${value}']`)[0];
-					console.log(elRespectiveCustomOption)
 
 					updateCustomSelectChecked(value, elRespectiveCustomOption.textContent);
 				});
@@ -267,24 +270,76 @@ export const selectHandler = (template) => {
 	elSelectCustom.forEach((el, i) => {
 		el.addEventListener('click', (evt) => {
 			const customOptsList = Array.from(evt.currentTarget.querySelectorAll('.js-custom-option'));
+
 			customOptsList.forEach((elOption, indexList) => {
-				elOption.addEventListener('click', (e) => {
-					const value = e.target.getAttribute('data-value');
+				elOption.addEventListener('click', (evt) => {
+					const value = evt.currentTarget.getAttribute('data-value');
 
 					//Sync native select to have the same value
 					elSelectNative.forEach((element, index) => {
 						if(index === i) {
 							element.value = value;
-							updateCustomSelectChecked(value, e.currentTarget.textContent);
-							closeSelectCustom();
+							updateCustomSelectChecked(value, evt.currentTarget.textContent);
 						}
 					})
+
+					closeSelectCustom();
 				});
 
-					elOption.addEventListener('mouseenter', (e) => {
+				if(el.classList.contains('m-select__custom-wrap--active')) {
+					elOption.addEventListener('mouseenter', (evt) => {
 						updateCustomSelectHovered(indexList);
-				});
+					});
+				}
 			});
 		})
 	})
+
+const watchClickOutside = (evt) => {
+	elSelectCustom.forEach(el => {
+		if(el.classList.contains('m-select__custom-wrap--active')){
+			const didClickedOutside = !el.contains(evt.target);
+			if (didClickedOutside) {
+				closeSelectCustom();
+			}
+		}
+	})
+}
+
+	const supportKeyboardNavigation = (evt) => {
+		// press down -> go next
+		if (evt.keyCode === 40 && optionHoveredIndex < optionsCount - 1) {
+			let index = optionHoveredIndex;
+			evt.preventDefault(); // prevent page scrolling
+			updateCustomSelectHovered(optionHoveredIndex + 1);
+		}
+
+		// press up -> go previous
+		if (evt.keyCode === 38 && optionHoveredIndex > 0) {
+			evt.preventDefault(); // prevent page scrolling
+			updateCustomSelectHovered(optionHoveredIndex - 1);
+		}
+
+		// press Enter or space -> select the option
+		if (evt.keyCode === 13 || evt.keyCode === 32) {
+			evt.preventDefault();
+			console.log('clack')
+
+			elSelectCustom.forEach((el, index) => {
+				const option = el.querySelector('.js-custom-options').children[optionHoveredIndex];
+				const value = option && option.getAttribute('data-value');
+
+				if (value) {
+					elSelectNative.forEach((e, i) => {
+						if(index === i) {
+							e.value = value;
+							updateCustomSelectChecked(value, option.textContent);
+						}
+					})
+				}
+			})
+
+			closeSelectCustom();
+		}
+	}
 }

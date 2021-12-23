@@ -607,7 +607,6 @@ var selectHandler = function selectHandler(template) {
   // 	});
   var elSelectNative = template.querySelectorAll('.js-select-native');
   var elSelectCustom = template.querySelectorAll('.js-select-custom');
-  var elSelectCustomBox = template.querySelectorAll('.js-custom-box');
   var optionChecked = '';
   var optionHoveredIndex = -1; // let currentElement;
   // // Toggle custom select visibility when clicking the box
@@ -621,9 +620,7 @@ var selectHandler = function selectHandler(template) {
         openSelectCustom(target);
       } else {
         closeSelectCustom();
-      } // currentElement = [...template.querySelectorAll('.js-select-custom')].findIndex(e => e === target);
-      // console.log(currentElement);
-
+      }
     });
   });
 
@@ -638,6 +635,9 @@ var selectHandler = function selectHandler(template) {
       });
       updateCustomSelectHovered(optionCheckedIndex);
     }
+
+    document.addEventListener('click', watchClickOutside);
+    document.addEventListener('keydown', supportKeyboardNavigation);
   };
 
   var closeSelectCustom = function closeSelectCustom() {
@@ -646,23 +646,29 @@ var selectHandler = function selectHandler(template) {
       el.setAttribute('aria-hidden', true);
     });
     updateCustomSelectHovered(-1);
+    document.removeEventListener('click', watchClickOutside);
+    document.removeEventListener('keydown', supportKeyboardNavigation);
   };
 
   var updateCustomSelectHovered = function updateCustomSelectHovered(newIndex) {
     elSelectCustom.forEach(function (el) {
-      var customOptions = el.querySelector('.js-custom-options');
-      var prevOption = customOptions.children[optionHoveredIndex];
-      var option = customOptions.children[newIndex];
+      if (el.classList.contains('m-select__custom-wrap--active')) {
+        var customOptions = el.querySelector('.js-custom-options');
+        var prevOption = customOptions.children[optionHoveredIndex];
+        var option = customOptions.children[newIndex];
 
-      if (prevOption) {
-        prevOption.classList.remove('m-select__custom-option--hover');
+        if (prevOption) {
+          prevOption.classList.remove('m-select__custom-option--hover');
+        }
+
+        if (option) {
+          option.classList.add('m-select__custom-option--hover');
+        }
+
+        if (option) {
+          optionHoveredIndex = newIndex;
+        }
       }
-
-      if (option) {
-        option.classList.add('m-select__custom-option--hover');
-      }
-
-      optionHoveredIndex = newIndex;
     });
   };
 
@@ -684,8 +690,10 @@ var selectHandler = function selectHandler(template) {
             elOption.classList.add('m-select__custom-wrap--active');
           }
 
-          elCustomBox.textContent = text;
-          optionChecked = value;
+          if (el.classList.contains('m-select__custom-wrap--active')) {
+            elCustomBox.textContent = text;
+            optionChecked = value;
+          }
         }
       });
     });
@@ -699,7 +707,6 @@ var selectHandler = function selectHandler(template) {
           var elCustomOptions = e.querySelector('.js-custom-options');
           var value = evt.target.value;
           var elRespectiveCustomOption = elCustomOptions.querySelectorAll("[data-value='".concat(value, "']"))[0];
-          console.log(elRespectiveCustomOption);
           updateCustomSelectChecked(value, elRespectiveCustomOption.textContent);
         });
       }
@@ -710,23 +717,74 @@ var selectHandler = function selectHandler(template) {
     el.addEventListener('click', function (evt) {
       var customOptsList = Array.from(evt.currentTarget.querySelectorAll('.js-custom-option'));
       customOptsList.forEach(function (elOption, indexList) {
-        elOption.addEventListener('click', function (e) {
-          var value = e.target.getAttribute('data-value'); //Sync native select to have the same value
+        elOption.addEventListener('click', function (evt) {
+          var value = evt.currentTarget.getAttribute('data-value'); //Sync native select to have the same value
 
           elSelectNative.forEach(function (element, index) {
             if (index === i) {
               element.value = value;
-              updateCustomSelectChecked(value, e.currentTarget.textContent);
-              closeSelectCustom();
+              updateCustomSelectChecked(value, evt.currentTarget.textContent);
             }
           });
+          closeSelectCustom();
         });
-        elOption.addEventListener('mouseenter', function (e) {
-          updateCustomSelectHovered(indexList);
-        });
+
+        if (el.classList.contains('m-select__custom-wrap--active')) {
+          elOption.addEventListener('mouseenter', function (evt) {
+            updateCustomSelectHovered(indexList);
+          });
+        }
       });
     });
   });
+
+  var watchClickOutside = function watchClickOutside(evt) {
+    elSelectCustom.forEach(function (el) {
+      if (el.classList.contains('m-select__custom-wrap--active')) {
+        var didClickedOutside = !el.contains(evt.target);
+
+        if (didClickedOutside) {
+          closeSelectCustom();
+        }
+      }
+    });
+  };
+
+  var supportKeyboardNavigation = function supportKeyboardNavigation(evt) {
+    // press down -> go next
+    if (evt.keyCode === 40 && optionHoveredIndex < optionsCount - 1) {
+      evt.preventDefault(); // prevent page scrolling
+
+      updateCustomSelectHovered(optionHoveredIndex + 1);
+    } // press up -> go previous
+
+
+    if (evt.keyCode === 38 && optionHoveredIndex > 0) {
+      evt.preventDefault(); // prevent page scrolling
+
+      updateCustomSelectHovered(optionHoveredIndex - 1);
+    } // press Enter or space -> select the option
+
+
+    if (evt.keyCode === 13 || evt.keyCode === 32) {
+      evt.preventDefault();
+      console.log('clack');
+      elSelectCustom.forEach(function (el, index) {
+        var option = el.querySelector('.js-custom-options').children[optionHoveredIndex];
+        var value = option && option.getAttribute('data-value');
+
+        if (value) {
+          elSelectNative.forEach(function (e, i) {
+            if (index === i) {
+              e.value = value;
+              updateCustomSelectChecked(value, option.textContent);
+            }
+          });
+        }
+      });
+      closeSelectCustom();
+    }
+  };
 };
 
 var getPopup = function getPopup() {
