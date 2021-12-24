@@ -13,6 +13,11 @@
 		left 0
 		overflow: auto
 
+		@media $lg
+			display flex
+			align-items: center
+			justify-content: center
+
 		&::before {
 			content: '';
 			display: inline-block;
@@ -59,6 +64,12 @@
 		cursor pointer
 		z-index 99
 
+		@media $sm
+			width 35px
+			height 35px
+			top 10px
+			right 10px
+
 	&__icon
 		stroke: $white
 		fill: none
@@ -73,12 +84,20 @@
 		padding-bottom 5px
 		font-family $Inter
 
+		@media (max-width: 1099.9px)
+			padding-right 20px
+			padding-left 20px
+
 	&__text
 		fz-21()
 		line-height 29px
 		color $white
 		font-weight 500
 		font-family $Inter
+
+		@media (max-width: 1099.9px)
+			padding-right 20px
+			padding-left 20px
 
 	&__nav-btn
 		background: $d-grey
@@ -95,17 +114,26 @@
 		cursor pointer
 		z-index 99
 
+		@media $md
+			display none
+
 		&:disabled
 			opacity 0.5
 
 		&--left
 			left: 8%
 
+			@media $lg
+				left 20px
+
 			& .g-template__nav-icon
 				transform: rotate(-180deg)
 
 		&--right
 			right: 8%
+
+			@media $lg
+				right 20px
 
 	&__nav-icon
 		fill: $white
