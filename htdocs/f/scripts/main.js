@@ -641,7 +641,8 @@ var selectHandler = function selectHandler(template) {
       var customOptsList = Array.from(evt.currentTarget.querySelectorAll('.js-custom-option'));
       customOptsList.forEach(function (elOption, indexList) {
         elOption.addEventListener('click', function (evt) {
-          var value = evt.currentTarget.getAttribute('data-value'); //Sync native select to have the same value
+          var value = evt.currentTarget.getAttribute('data-value');
+          evt.stopPropagation(); //Sync native select to have the same value
 
           elSelectNative.forEach(function (element, index) {
             if (index === i) {
@@ -727,8 +728,10 @@ var getPopup = function getPopup() {
 var burgerMenuHandler = function burgerMenuHandler() {
   if (document.querySelector('.js-burger-btn')) {
     var button = document.querySelector('.js-burger-btn');
+    var body = document.querySelector('body');
     button.addEventListener('click', function () {
       button.classList.toggle('header__burger-btn--active');
+      body.classList.toggle('background-burger');
     });
   }
 };

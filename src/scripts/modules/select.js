@@ -170,8 +170,9 @@ export const selectHandler = (template) => {
 
 			customOptsList.forEach((elOption, indexList) => {
 				elOption.addEventListener('click', (evt) => {
-
 					const value = evt.currentTarget.getAttribute('data-value');
+
+					evt.stopPropagation();
 
 					//Sync native select to have the same value
 					elSelectNative.forEach((element, index) => {
