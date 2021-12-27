@@ -25,10 +25,10 @@ block page
 						.screen__slide.swiper-slide
 							.screen__img-wrap
 									picture
-										source(srcset=`${baseDir}/img/m-rs-slide@1x.webp 1x, ${baseDir}/img/m-rs-slide@2x.webp 2x` media='(max-width: 574px)' type="image/webp")
-										source(srcset=`${baseDir}/img/m-rs-slide@1x.png 1x, ${baseDir}/img/m-rs-slide@2x.png 2x` media='(max-width: 574px)' type="image/png")
-										source(srcset=`${baseDir}/img/t-rs-slide@1x.webp 1x, ${baseDir}/img/t-rs-slide@2x.webp 2x` media='(max-width: 959px)' type="image/webp")
-										source(srcset=`${baseDir}/img/t-rs-slide@1x.png 1x, ${baseDir}/img/t-rs-slide@2x.png 2x` media='(max-width: 959px)' type="image/png")
+										source(srcset=`${baseDir}/img/m-rs-slide@1x.webp 1x, ${baseDir}/img/m-rs-slide@2x.webp 2x` media='(max-width: 574.9px)' type="image/webp")
+										source(srcset=`${baseDir}/img/m-rs-slide@1x.png 1x, ${baseDir}/img/m-rs-slide@2x.png 2x` media='(max-width: 574.9px)' type="image/png")
+										source(srcset=`${baseDir}/img/t-rs-slide@1x.webp 1x, ${baseDir}/img/t-rs-slide@2x.webp 2x` media='(max-width: 959.9px)' type="image/webp")
+										source(srcset=`${baseDir}/img/t-rs-slide@1x.png 1x, ${baseDir}/img/t-rs-slide@2x.png 2x` media='(max-width: 959.9px)' type="image/png")
 										source(srcset=`${baseDir}/img/responsive/rs-banner@1x.webp 1x, ${baseDir}/img/responsive/rs-banner@2x.webp 2x` type="image/webp")
 										source(srcset=`${baseDir}/img/responsive/rs-banner@1x.png 1x, ${baseDir}/img/responsive/rs-banner@2x.png 2x` type="image/png")
 										img(src=`${baseDir}/img/responsive/rs-banner@1x.png` alt=altName)
@@ -36,13 +36,16 @@ block page
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
 							.screen__content.screen__content--slider
-								.screen__inner.screen__inner--slider
+								.screen__inner.screen__inner--slider.screen__inner--top
 									h2.screen__title Russian Standard
 									p.screen__text A vodka of exceptional quality, born from our pursuit for perfection and Russia's rich vodka heritage.
 									a.screen__link(href="#") More
 						.screen__slide.swiper-slide
 							.screen__img-wrap
-								+picture('gancia-banner', '', baseDir)
+								picture
+									source(srcset=`${baseDir}/img/responsive/gancia-banner@1x.webp 1x, ${baseDir}/img/responsive/gancia-banner@2x.webp 2x` type="image/webp")
+									source(srcset=`${baseDir}/img/responsive/gancia-banner@1x.png 1x, ${baseDir}/img/responsive/gancia-banner@2x.png 2x` type="image/png")
+									img(src=`${baseDir}/img/responsive/gancia-banner@1x.png` alt=altName)
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
@@ -51,9 +54,14 @@ block page
 									h2.screen__title Gancia
 									p.screen__text The first Italian sparkling wine. Its cellars are reckoned world heritage and are protected by UNESCO.
 									a.screen__link(href="#") More
+								.screen__content-img.screen__content-img--gancia
+									+picture('slider-gancia-bottle', '', baseDir)
 						.screen__slide.swiper-slide
 							.screen__img-wrap
-								+picture('gm-banner', '', baseDir)
+								picture
+									source(srcset=`${baseDir}/img/responsive/gm-banner@1x.webp 1x, ${baseDir}/img/responsive/gm-banner@2x.webp 2x` type="image/webp")
+									source(srcset=`${baseDir}/img/responsive/gm-banner@1x.png 1x, ${baseDir}/img/responsive/gm-banner@2x.png 2x` type="image/png")
+									img(src=`${baseDir}/img/responsive/gm-banner@1x.png` alt=altName)
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
@@ -62,9 +70,14 @@ block page
 									h2.screen__title GreenMark
 									p.screen__text One of the most popular brands in Russia. Green Mark is a classic vodka with a long history steeped in the very best traditions of Russian vodka production.
 									a.screen__link(href="#") More
+								.screen__content-img.screen__content-img--gm
+									+picture('slider-gm-bottle', '', baseDir)
 						.screen__slide.swiper-slide
 							.screen__img-wrap
-								+picture('pm-banner', '', baseDir)
+								picture
+									source(srcset=`${baseDir}/img/responsive/pm-banner@1x.webp 1x, ${baseDir}/img/responsive/pm-banner@2x.webp 2x` type="image/webp")
+									source(srcset=`${baseDir}/img/responsive/pm-banner@1x.png 1x, ${baseDir}/img/responsive/pm-banner@2x.png 2x` type="image/png")
+									img(src=`${baseDir}/img/responsive/pm-banner@1x.png` alt=altName)
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
@@ -73,9 +86,14 @@ block page
 									h2.screen__title Parliament
 									p.screen__text Parliament vodka is one of the oldest Russian brands in the segment. This classic vodka is crafted according to a traditional Russian vodka recipe - using alcohol and water only - and is complemented by unparalleled purification with milk.
 									a.screen__link(href="#") More
+								.screen__content-img.screen__content-img--pm
+									+picture('slider-pm-bottle', '', baseDir)
 						.screen__slide.swiper-slide
 							.screen__img-wrap
-								+picture('talka-banner', '', baseDir)
+								picture
+									source(srcset=`${baseDir}/img/responsive/talka-banner@1x.webp 1x, ${baseDir}/img/responsive/talka-banner@2x.webp 2x` type="image/webp")
+									source(srcset=`${baseDir}/img/responsive/talka-banner@1x.png 1x, ${baseDir}/img/responsive/talka-banner@2x.png 2x` type="image/png")
+									img(src=`${baseDir}/img/responsive/talka-banner@1x.png` alt=altName)
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
@@ -84,6 +102,8 @@ block page
 									h2.screen__title Talka
 									p.screen__text В глубинах Сибири, среди заснеженных просторов и суровой северной природы, среди величавых рек и свежего таежного воздуха, берет свое начало водка «Талка» — Легенда Сибири.
 									a.screen__link(href="#") More
+								.screen__content-img.screen__content-img--talka
+									+picture('slider-talka-bottle', '', baseDir)
 					button.screen__nav-btn.screen__nav-btn--next.js-main-slider-next
 						svg(width="51" height="12").screen__nav-icon
 							use(href="/f/img/sprite.svg#arrow-nav")
@@ -107,7 +127,7 @@ block page
 										+picture('parlament-logo', 'Parliament vodka', baseDir)
 								li.screen__p-item.swiper-slide
 									button.screen__p-btn
-										+picture('parlament-logo', 'Talka', baseDir)
+										+picture('talka-logo', 'Talka', baseDir)
 				.main-page__screen.screen.js-anchor-bottle
 					.screen__icon-wrap
 						svg(width="14" height="9").screen__icon

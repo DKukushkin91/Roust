@@ -117,6 +117,33 @@
 	&__icon--color
 		fill: $d-grey
 
+	&__content-img
+		position absolute
+		right 0
+		top 9%
+
+		@media $lg
+			position static
+
+		@media $xs
+			margin-bottom 25px
+
+	&__content-img--gancia
+		@media $lg
+			width 122px
+
+	&__content-img--gm
+		@media $lg
+			width 162px
+
+	&__content-img--pm
+		@media $lg
+			width 93px
+
+	&__content-img--talka
+		@media $lg
+			width 113px
+
 	&__slider-wrap
 		min-height: inherit
 
@@ -314,15 +341,25 @@
 	&__content--slider
 		padding: 149px 25px 335px 25px
 
+		@media $lg
+			display: flex
+			flex-direction: row
+			justify-content: space-between
+
 		@media $md
 			padding: 90px 40px 125px 40px
 
 		@media $sm
 			padding-bottom: 20px
 
+		@media $xs
+			padding-left: 20px
+			padding-right 20px
+			flex-direction: column-reverse
+			align-items: center
+
 	&__inner
 		max-width 45%
-		padding-bottom 169px
 
 		@media $md
 			max-width: 50%
@@ -373,8 +410,12 @@
 			padding-bottom 140px
 
 		@media $xs
-			padding-top 95%
+			width 100%
 			padding-bottom 180px
+
+	&__inner--top
+		@media $xs
+			padding-top 95%
 
 	&__inner--padding
 		padding-bottom 50%
@@ -535,6 +576,7 @@
 
 		@media $xs
 			bottom 40px
+			margin-bottom 60px
 
 	&__p-container
 		max-width: 655px
