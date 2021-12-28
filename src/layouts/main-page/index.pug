@@ -25,13 +25,10 @@ block page
 						.screen__slide.swiper-slide
 							.screen__img-wrap
 									picture
-										source(srcset=`${baseDir}/img/m-rs-slide@1x.webp 1x, ${baseDir}/img/m-rs-slide@2x.webp 2x` media='(max-width: 574.9px)' type="image/webp")
-										source(srcset=`${baseDir}/img/m-rs-slide@1x.png 1x, ${baseDir}/img/m-rs-slide@2x.png 2x` media='(max-width: 574.9px)' type="image/png")
-										source(srcset=`${baseDir}/img/t-rs-slide@1x.webp 1x, ${baseDir}/img/t-rs-slide@2x.webp 2x` media='(max-width: 959.9px)' type="image/webp")
-										source(srcset=`${baseDir}/img/t-rs-slide@1x.png 1x, ${baseDir}/img/t-rs-slide@2x.png 2x` media='(max-width: 959.9px)' type="image/png")
-										source(srcset=`${baseDir}/img/responsive/rs-banner@1x.webp 1x, ${baseDir}/img/responsive/rs-banner@2x.webp 2x` type="image/webp")
-										source(srcset=`${baseDir}/img/responsive/rs-banner@1x.png 1x, ${baseDir}/img/responsive/rs-banner@2x.png 2x` type="image/png")
-										img(src=`${baseDir}/img/responsive/rs-banner@1x.png` alt=altName)
+										source(srcset=`${baseDir}/img/m-rs-banner.jpg` media='(max-width: 574.9px)' type="image/jpg")
+										source(srcset=`${baseDir}/img/t-rs-banner.jpg` media='(max-width: 959.9px)' type="image/jpg")
+										source(srcset=`${baseDir}/img/t-rs-slide@1x.jpg 1x, ${baseDir}/img/t-rs-slide@2x.jpg 2x` media='(max-width: 959.9px)' type="image/jpg")
+										img(src=`${baseDir}/img/rs-banner.jpg` alt='')
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
@@ -42,10 +39,7 @@ block page
 									a.screen__link(href="#") More
 						.screen__slide.swiper-slide
 							.screen__img-wrap
-								picture
-									source(srcset=`${baseDir}/img/responsive/gancia-banner@1x.webp 1x, ${baseDir}/img/responsive/gancia-banner@2x.webp 2x` type="image/webp")
-									source(srcset=`${baseDir}/img/responsive/gancia-banner@1x.png 1x, ${baseDir}/img/responsive/gancia-banner@2x.png 2x` type="image/png")
-									img(src=`${baseDir}/img/responsive/gancia-banner@1x.png` alt=altName)
+								img(src=`${baseDir}/img/gancia-banner.jpg` alt='')
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
@@ -58,10 +52,7 @@ block page
 									+picture('slider-gancia-bottle', '', baseDir)
 						.screen__slide.swiper-slide
 							.screen__img-wrap
-								picture
-									source(srcset=`${baseDir}/img/responsive/gm-banner@1x.webp 1x, ${baseDir}/img/responsive/gm-banner@2x.webp 2x` type="image/webp")
-									source(srcset=`${baseDir}/img/responsive/gm-banner@1x.png 1x, ${baseDir}/img/responsive/gm-banner@2x.png 2x` type="image/png")
-									img(src=`${baseDir}/img/responsive/gm-banner@1x.png` alt=altName)
+								img(src=`${baseDir}/img/gm-banner.jpg` alt='')
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
@@ -74,10 +65,7 @@ block page
 									+picture('slider-gm-bottle', '', baseDir)
 						.screen__slide.swiper-slide
 							.screen__img-wrap
-								picture
-									source(srcset=`${baseDir}/img/responsive/pm-banner@1x.webp 1x, ${baseDir}/img/responsive/pm-banner@2x.webp 2x` type="image/webp")
-									source(srcset=`${baseDir}/img/responsive/pm-banner@1x.png 1x, ${baseDir}/img/responsive/pm-banner@2x.png 2x` type="image/png")
-									img(src=`${baseDir}/img/responsive/pm-banner@1x.png` alt=altName)
+								img(src=`${baseDir}/img/pm-banner.jpg` alt='')
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
@@ -90,10 +78,7 @@ block page
 									+picture('slider-pm-bottle', '', baseDir)
 						.screen__slide.swiper-slide
 							.screen__img-wrap
-								picture
-									source(srcset=`${baseDir}/img/responsive/talka-banner@1x.webp 1x, ${baseDir}/img/responsive/talka-banner@2x.webp 2x` type="image/webp")
-									source(srcset=`${baseDir}/img/responsive/talka-banner@1x.png 1x, ${baseDir}/img/responsive/talka-banner@2x.png 2x` type="image/png")
-									img(src=`${baseDir}/img/responsive/talka-banner@1x.png` alt=altName)
+								img(src=`${baseDir}/img/talka-banner.jpg` alt='')
 							.screen__icon-wrap
 								svg(width="14" height="9").screen__icon
 									use(href="/f/img/sprite.svg#arrow-b")
@@ -134,14 +119,7 @@ block page
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
 					.screen__imgs-wrap
 						.screen__img-wrap
-							picture
-								source(srcset=`${baseDir}/img/responsive/m-brands-banner@1x.webp 1x, ${baseDir}/img/responsive/m-brands-banner@2x.webp 2x` media='(max-width: 574px)' type="image/webp")
-								source(srcset=`${baseDir}/img/responsive/m-brands-banner@1x.png 1x, ${baseDir}/img/responsive/m-brands-banner@2x.png 2x` media='(max-width: 574px)' type="image/png")
-								source(srcset=`${baseDir}/img/t-brands@1x.webp 1x, ${baseDir}/img/t-brands@2x.webp 2x` media='(max-width: 959px)' type="image/webp")
-								source(srcset=`${baseDir}/img/t-brands@1x.png 1x, ${baseDir}/img/t-brands@2x.png 2x` media='(max-width: 959px)' type="image/png")
-								source(srcset=`${baseDir}/img/responsive/brands-banner@1x.webp 1x, ${baseDir}/img/responsive/brands-banner@2x.webp 2x` type="image/webp")
-								source(srcset=`${baseDir}/img/responsive/brands-banner@1x.png 1x, ${baseDir}/img/responsive/brands-banner@2x.png 2x` type="image/png")
-								img(src=`${baseDir}/img/responsive/brands-banner@1x.png` alt=altName)
+							img(src=`${baseDir}/img/brands-banner.jpg` alt='')
 						.screen__img-wrap.screen__img-wrap--center.screen__img-wrap--desk
 							.screen__img-animate(class=`screen__img-animate--rs js-main-bottle`)
 								+picture(`main-rs-bottle`, '', baseDir)
@@ -160,7 +138,7 @@ block page
 						svg(width="14" height="9").screen__icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
 					.screen__img-wrap
-						+picture('partnership-bg', '', baseDir)
+						img(src=`${baseDir}/img/partnership-banner.jpg` alt='')
 					.screen__content
 						.screen__inner
 							h2.screen__title.screen__title--fonts Partnership
@@ -193,14 +171,7 @@ block page
 						svg(width="14" height="9").screen__icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
 					.screen__img-wrap.screen__img-wrap--height
-						picture
-							source(srcset=`${baseDir}/img/m-investors@1x.webp 1x, ${baseDir}/img/m-investors@2x.webp 2x` media='(max-width: 574px)' type="image/webp")
-							source(srcset=`${baseDir}/img/m-investors@1x.png 1x, ${baseDir}/img/m-investors@2x.png 2x` media='(max-width: 574px)' type="image/png")
-							source(srcset=`${baseDir}/img/t-investors@1x.webp 1x, ${baseDir}/img/t-investors@2x.webp 2x` media='(max-width: 959px)' type="image/webp")
-							source(srcset=`${baseDir}/img/t-investors@1x.png 1x, ${baseDir}/img/t-investors@2x.png 2x` media='(max-width: 959px)' type="image/png")
-							source(srcset=`${baseDir}/img/responsive/bg-investors@1x.webp 1x, ${baseDir}/img/responsive/bg-investors@2x.webp 2x` type="image/webp")
-							source(srcset=`${baseDir}/img/responsive/bg-investors@1x.png 1x, ${baseDir}/img/responsive/bg-investors@2x.png 2x` type="image/png")
-							img(src=`${baseDir}/img/responsive/bg-investors@1x.png` alt=altName)
+						img(src=`${baseDir}/img/investors-banner.jpg` alt='')
 					.screen__content.screen__content--grid
 						h2.screen__title.screen__title--fonts
 							|	Investors
@@ -215,17 +186,12 @@ block page
 							.screen__d-wrap
 								dt.screen__dt $&nbsp;2&nbsp;000&nbsp;000&nbsp;000
 								dd.screen__dd is the turnover in 2019
-				.main-page__screen.screen
+				.main-page__screen.screen.screen--bg-before
 					.screen__icon-wrap
-						svg(width="14" height="9").screen__icon
+						svg(width="14" height="9").screen__icon.screen__icon--fill
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
 					.screen__img-wrap
-						picture
-							source(srcset=`${baseDir}/img/bg-o-career@1x.webp 1x, ${baseDir}/img/bg-o-career@2x.webp 2x` media='(max-width: 574px)' type="image/webp")
-							source(srcset=`${baseDir}/img/bg-o-career@1x.png 1x, ${baseDir}/img/bg-o-career@2x.png 2x` media='(max-width: 574px)' type="image/png")
-							source(srcset=`${baseDir}/img/responsive/bg-career@1x.webp 1x, ${baseDir}/img/responsive/bg-career@2x.webp 2x` type="image/webp")
-							source(srcset=`${baseDir}/img/responsive/bg-career@1x.png 1x, ${baseDir}/img/responsive/bg-career@2x.png 2x` type="image/png")
-							img(src=`${baseDir}/img/responsive/bg-career@1x.png` alt=altName)
+						img(src=`${baseDir}/img/career-banner.jpg` alt='')
 					.screen__content.screen__content--padding
 						.screen__inner.screen__inner--bg
 							h2.screen__title.screen__title--fonts.screen__title--color Career
@@ -237,7 +203,7 @@ block page
 						svg(width="14" height="9").screen__icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
 					.screen__img-wrap
-						+picture('bg-contacts', '', baseDir)
+						img(src=`${baseDir}/img/contacts-banner.jpg` alt='')
 					.screen__content
 						.screen__inner.screen__inner--last
 							h2.screen__title.screen__title--fonts.screen__title--padding Contacts

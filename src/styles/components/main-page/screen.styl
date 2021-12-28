@@ -18,6 +18,9 @@
 	@media $sm
 		min-height 545px
 
+	&:not(:first-child)
+		clip-path: polygon(100% 35px, calc(50% + 50px) 35px, 50% 0, calc(50% - 50px) 35px, 0 35px, 0px 100%, 100% 100%)
+
 	&:first-child
 		margin-bottom -325px
 
@@ -71,6 +74,19 @@
 		@media (max-width: 374px)
 			margin-bottom get-vw(-68, 320)
 
+	&--bg-before
+		@media $xs
+			&::before
+				content: ''
+				display block
+				position: absolute
+				width 100%
+				height 100%
+				background rgba(255, 255, 255, 0.8)
+				top 0
+				left 0
+				z-index 2
+
 	&.swiper
 		width 100%
 		z-index 0
@@ -117,31 +133,43 @@
 	&__icon--color
 		fill: $d-grey
 
+	&__icon--fill
+		@media $xs
+			fill: $d-grey
+
 	&__content-img
 		position absolute
 		right 0
 		top 9%
 
-		@media $lg
+		@media $md
 			position static
 
 		@media $xs
 			margin-bottom 25px
 
 	&__content-img--gancia
-		@media $lg
+		width 218px
+
+		@media $md
 			width 122px
 
 	&__content-img--gm
-		@media $lg
+		width 388px
+
+		@media $md
 			width 162px
 
 	&__content-img--pm
-		@media $lg
+		width 233px
+
+		@media $md
 			width 93px
 
 	&__content-img--talka
-		@media $lg
+		width 299px
+
+		@media $md
 			width 113px
 
 	&__slider-wrap
@@ -314,6 +342,10 @@
 		@media $md
 			padding 109px 0 65px
 			margin-bottom 65px
+
+		@media $sm
+			position relative
+			z-index 3
 
 	&__content--grid
 		display grid
