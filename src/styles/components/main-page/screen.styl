@@ -4,6 +4,8 @@
 	overflow: hidden
 	width 100%
 	padding: 149px 0 109px 0
+	min-height 910px
+	margin-bottom -35px
 
 	@media $xl
 		flex 1 1 100%
@@ -22,57 +24,17 @@
 		clip-path: polygon(100% 35px, calc(50% + 50px) 35px, 50% 0, calc(50% - 50px) 35px, 0 35px, 0px 100%, 100% 100%)
 
 	&:first-child
-		margin-bottom -325px
-
-		@media $xl
-			min-height: 909px
-
 		@media $lg
-			margin-bottom -360px
 			flex 1 1 100vh
 
-		@media $md
-			margin-bottom -200px
-
 		@media $sm
-			margin-bottom 0
 			flex 1 1 100%
 
 	&:last-child
-		margin-bottom get-vw(-180, $width-xl)
+		margin-bottom calc(-35px * 3)
 
-		@media $lg
-			margin-bottom get-vw(-175, $width-lg)
-
-		@media $md
-			margin-bottom get-vw(-175, $width-md)
-
-		@media $sm
-			margin-bottom get-vw(-156.717, $width-sm)
-
-		@media $xs
-			margin-bottom get-vw(-130, $width-xs)
-
-		@media (max-width: 374px)
-			margin-bottom get-vw(-150, 320)
-
-	&:not(:last-child, &:first-child)
-		margin-bottom get-vw(-46.4, $width-xl)
-
-		@media $lg
-			margin-bottom get-vw(-40, $width-lg)
-
-		@media $md
-			margin-bottom get-vw(-60, $width-md)
-
-		@media $sm
-			margin-bottom get-vw(-75, $width-sm)
-
-		@media $xs
-			margin-bottom get-vw(-50, $width-xs)
-
-		@media (max-width: 374px)
-			margin-bottom get-vw(-68, 320)
+	&--background
+		background $white
 
 	&--bg-before
 		@media $xs
@@ -269,6 +231,13 @@
 		object-fit: cover
 		object-position: top
 
+	&__img-wrap--o-position
+		@media $sm
+			img
+				height: 100%
+				object-fit: cover
+				object-position: 25%
+
 	&__img-wrap--center
 		max-width: 1087px
 		bottom 0
@@ -450,7 +419,7 @@
 			padding-top 95%
 
 	&__inner--padding
-		padding-bottom 50%
+		padding-bottom 44%
 
 		@media $md
 			padding-bottom 14%
@@ -523,6 +492,7 @@
 
 	&__text--fz
 		font-size: 15px
+		padding-bottom 79px
 
 		@media $md
 			padding-bottom 95px

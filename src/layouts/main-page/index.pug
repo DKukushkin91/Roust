@@ -153,12 +153,10 @@ block page
 									li.screen__o-item
 										p.screen__o-text Let’s start earning together
 							a.screen__link(href="#") More
-				.main-page__screen.screen
+				.main-page__screen.screen.screen--background
 					.screen__icon-wrap
 						svg(width="14" height="9").screen__icon.screen__icon--color
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
-					.screen__img-wrap
-						img(src=`${baseDir}/img/bg.svg`)
 					.screen__content
 						.screen__title-wrap
 							h2.screen__title.screen__title--fonts.screen__title--color News
@@ -202,7 +200,7 @@ block page
 					.screen__icon-wrap
 						svg(width="14" height="9").screen__icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
-					.screen__img-wrap
+					.screen__img-wrap.screen__img-wrap--o-position
 						img(src=`${baseDir}/img/contacts-banner.jpg` alt='')
 					.screen__content
 						.screen__inner.screen__inner--last
