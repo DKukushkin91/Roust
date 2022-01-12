@@ -8,13 +8,32 @@ switch ($APPLICATION->GetCurPage(false)) {
     case '/';
         $page_name ='main-page';
     break;
-    case "/investors/":
-        $page_name ='investors';
+    case "/about-us/":
+        $page_name ='about-us';
+    break;
+    case "/brands/":
+        $page_name ='brands';
+    break;
+    case "/career/":
+        $page_name ='career';
     break;
     case "/contacts/":
         $page_name ='contacts';
     break;
-    default:                    
+    case "/investors/":
+        $page_name ='investors';
+    break;
+    case "/media/":
+        $page_name ='media';
+    break;
+    case "/partnership/":
+        $page_name ='partnership';
+    break;
+    case "/social-projects/":
+        $page_name ='social-projects';
+    break;
+    default:   
+		$page_name ='main-page';                 
     break;
 }?>
 <!DOCTYPE html>
@@ -73,7 +92,7 @@ switch ($APPLICATION->GetCurPage(false)) {
 				<header class="header js-animate-header">
 					<div class="container header__container">
 						<div class="header__wrap <?=$page_name?>__header-wrap">
-							<div class="header__logo-wrap"><a class="header__link" href="../main-page/index.html"><img
+							<div class="header__logo-wrap"><a class="header__link" href="/"><img
 										src="/f/img/roust-logo.svg"></a>
 							</div>
 							<button class="header__burger-btn js-burger-btn"><span class="header__burger-menu"></span></button>
@@ -106,19 +125,21 @@ switch ($APPLICATION->GetCurPage(false)) {
 					</div>
 				</header>                
                 <?
-                $page_header = "header_".$page_name;
-                $APPLICATION->IncludeComponent(
-                    'bitrix:news.detail',
-                    'include_html_from_iblock',
-                    array(
-                        'IBLOCK_ID' => CIBlockTools::GetIBlockId('content_page'),
-                        'ELEMENT_CODE' => $page_header,
-                        'CACHE_TIPE' => 'Y',
-                        'CACHE_TIME' => 604800,
-                        "SET_STATUS_404" => "Y",
-                        "SHOW_404" => "Y",
-                )
-                ); 
+				if($page_header!="main-page"){
+					$page_header = "header_".$page_name;
+					$APPLICATION->IncludeComponent(
+						'bitrix:news.detail',
+						'include_html_from_iblock',
+						array(
+							'IBLOCK_ID' => CIBlockTools::GetIBlockId('content_page'),
+							'ELEMENT_CODE' => $page_header,
+							'CACHE_TIPE' => 'Y',
+							'CACHE_TIME' => 604800,
+							"SET_STATUS_404" => "Y",
+							"SHOW_404" => "Y",
+					)
+					); 
+				}
                 ?>
 			</div>
 			<main class="main main--<?=$page_name?>">
