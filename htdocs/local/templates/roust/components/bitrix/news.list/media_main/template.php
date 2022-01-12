@@ -1,12 +1,12 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <ul class="news__list-slide swiper-wrapper">
 	<?foreach ($arResult['ITEMS'] as $value) {?>
-	<?CIBlockFormatProperties::DateFormat("j F Y", MakeTimeStamp($value["DATE_ACTIVE_FROM"], CSite::GetDateFormat()));?>
 	<li class="news__item-slide swiper-slide"><a class="news__item-link" href="<?=$value["DETAIL_PAGE_URL"];?>"></a>
 		<div class="news__item-img"><img src="<?=$value["PREVIEW_PICTURE"]["SRC"]?>"
 				alt="<?=$value["PREVIEW_PICTURE"]["ALT"]?>"></div>
 		<div class="news__item-content">
-			<p class="news__item-date"><?=$value["DATE_ACTIVE_FROM"]?></p>
+			<p class="news__item-date"><?echo CIBlockFormatProperties::DateFormat("j F Y", MakeTimeStamp($value["DATE_ACTIVE_FROM"], CSite::GetDateFormat()));?>
+		</p>
 			<p class="news__item-text"><?=$value["NAME"]?></p>
 		</div>
 	</li>

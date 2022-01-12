@@ -33,7 +33,7 @@ switch ($APPLICATION->GetCurPage(false)) {
         $page_name ='social-projects';
     break;
     default:   
-		$page_name ='main-page';                 
+		$page_name ='media';                 
     break;
 }?>
 <!DOCTYPE html>
@@ -75,10 +75,10 @@ switch ($APPLICATION->GetCurPage(false)) {
 	<meta property="og:image" content="<? echo " https://".$_SERVER['SERVER_NAME']."/f/img/snippet-537-240.png";?>" />
 	<?}?>
 
-	<?
-    Asset::getInstance()->addCss("/f/css/vendor.css");
-    Asset::getInstance()->addCss("/f/css/main.css");
-      
+    <link href="/f/css/main.css" type="text/css" rel="stylesheet">
+    <link href="/f/css/vendor.css" type="text/css" rel="stylesheet">
+
+	<?      
     $APPLICATION->ShowCSS();
     $APPLICATION->ShowHeadStrings();
     CJSCore::Init();
@@ -87,7 +87,7 @@ switch ($APPLICATION->GetCurPage(false)) {
 
 <body lang="ru-RU">
 	<div class="box">
-		<div class="box__content">
+		<div class="box__content box__content--<?=$page_name?>">
 			<div class="box__top box__top--<?=$page_name?>">
 				<header class="header js-animate-header">
 					<div class="container header__container">
@@ -125,7 +125,7 @@ switch ($APPLICATION->GetCurPage(false)) {
 					</div>
 				</header>                
                 <?
-				if($page_header!="main-page"){
+				if($page_name!="main-page"){
 					$page_header = "header_".$page_name;
 					$APPLICATION->IncludeComponent(
 						'bitrix:news.detail',

@@ -503,7 +503,9 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 									"SET_TITLE" => "N",
 									"SHOW_404" => "Y",
 									"SORT_BY1" => "SORT",
-									"SORT_ORDER1" => "ASC"
+									"SORT_ORDER1" => "ASC",		
+									"SORT_BY2" => "ACTIVE_FROM",
+									"SORT_ORDER2" => "DESC",	
 								)
 							);?>
 						</div>
