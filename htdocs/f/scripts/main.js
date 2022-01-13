@@ -60,16 +60,6 @@ var removeChilds = function removeChilds(parent) {
 }; //вычесление позиции относительно верха страницы
 
 
-var getOffset = function getOffset(el) {
-  var rect = el.getBoundingClientRect();
-  var scrollLeft = window.scrollX || document.documentElement.scrollLeft;
-  var scrollTop = window.scrollY || document.documentElement.scrollTop;
-  return {
-    top: rect.top + scrollTop,
-    left: rect.left + scrollLeft
-  };
-};
-
 var getTop = function getTop() {
   var btn = document.querySelector('.js-btn-top');
 
@@ -219,47 +209,43 @@ var getScrollItem = function getScrollItem() {
     var scrollBtn = document.querySelector('.js-scroll-btn');
     var main = document.querySelector('.main');
     var animText = document.querySelectorAll('.js-anim-text');
+    var itemContainer = document.querySelector('.js-brands-item-container');
+
+    var isSeen = function isSeen() {
+      return itemContainer.getBoundingClientRect().bottom + 45 <= window.innerHeight;
+    };
 
     var onScrollAnim = function onScrollAnim() {
-      animItems.forEach(function (i) {
-        var animItem = i;
-        var animItemHeight = animItem.offsetHeight;
-        var animItemOffset = getOffset(animItem).top;
-        var animStart = 4;
-        var animItemPoint = window.innerHeight - animItemHeight / animStart;
+      if (isSeen()) {
+        opacityItems.forEach(function (e) {
+          return e.classList.add('animate__opacity');
+        });
+        animItems.forEach(function (e) {
+          return e.classList.add('brands-item__wrap--active');
+        });
+        header.classList.add('header__active');
+        imgSize.classList.add('top__picture--animate');
+        scrollBtn.classList.add('top__scroll-btn--animate');
+        animText.forEach(function (e) {
+          return e.classList.add('brands-item__text-block--animate');
+        });
+      }
 
-        if (animItemHeight > window.innerHeight) {
-          animItemPoint = window.innerHeight - window.innerHeight / animStart;
-        }
-
-        if (scrollY > animItemOffset - animItemPoint || scrollY < animItemOffset + animItemHeight) {
-          opacityItems.forEach(function (e) {
-            return e.classList.add('animate__opacity');
-          });
-          animItem.classList.add('brands-item__wrap--active');
-          header.classList.add('header__active');
-          imgSize.classList.add('top__picture--animate');
-          scrollBtn.classList.add('top__scroll-btn--animate');
-          main.classList.add('main--animate');
-          animText.forEach(function (e) {
-            return e.classList.add('brands-item__text-block--animate');
-          });
-        }
-
-        if (scrollY == 0) {
-          main.classList.remove('main--animate');
-          opacityItems.forEach(function (e) {
-            return e.classList.remove('animate__opacity');
-          });
-          animItem.classList.remove('brands-item__wrap--active');
-          header.classList.remove('header__active');
-          imgSize.classList.remove('top__picture--animate');
-          scrollBtn.classList.remove('top__scroll-btn--animate');
-          animText.forEach(function (e) {
-            return e.classList.remove('brands-item__text-block--animate');
-          });
-        }
-      });
+      if (scrollY === 0) {
+        main.classList.remove('main--animate');
+        opacityItems.forEach(function (e) {
+          return e.classList.remove('animate__opacity');
+        });
+        animItems.forEach(function (e) {
+          return e.classList.remove('brands-item__wrap--active');
+        });
+        header.classList.remove('header__active');
+        imgSize.classList.remove('top__picture--animate');
+        scrollBtn.classList.remove('top__scroll-btn--animate');
+        animText.forEach(function (e) {
+          return e.classList.remove('brands-item__text-block--animate');
+        });
+      }
     };
 
     var scrollToMain = function scrollToMain() {
