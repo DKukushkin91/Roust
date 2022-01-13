@@ -14,10 +14,7 @@ block page
 			.main-page__wrap
 				.main-page__screen.screen
 					.screen__video-wrap
-						.screen__video
-							video.screen__video-item(preload="auto" autoplay muted loop playsinline)
-								source(src=`${baseDir}/video/bg-video.webm`, type="video/webm")
-								source(src=`${baseDir}/video/bg-video.mp4`, type="video/mp4")
+						.screen__video.js-video-container
 						.screen__video-img
 							+picture('bg-video', '', baseDir)
 				.main-page__screen.screen.swiper.js-main-slider

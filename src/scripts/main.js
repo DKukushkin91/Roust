@@ -13,6 +13,7 @@ import {getSideBlock} from './modules/side-block';
 import {getItemAnimation} from './modules/bottle-anim';
 import {getInvestorsSlider} from './modules/investors-slider';
 import {getSearchPopup} from './modules/search-popup';
+import {getVideoSrc} from './modules/video-src';
 
 document.addEventListener('DOMContentLoaded', () => {
 	getTop();
@@ -31,4 +32,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	getItemAnimation();
 	getInvestorsSlider();
 	getSearchPopup();
+	getVideoSrc();
 });

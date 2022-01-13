@@ -51,3 +51,7 @@ export const getOffset = (el) => {
 		bottom: rect.bottom + window.scrollY
 	}
 }
+
+export const render = (container, template, place) => {
+  container.insertAdjacentHTML(place, template);
+};
