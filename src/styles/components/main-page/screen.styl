@@ -29,6 +29,10 @@
 
 		@media $sm
 			flex 1 1 100%
+			min-height 46vw
+
+		@media $xs
+			min-height: 100vw
 
 	&:last-child
 		margin-bottom calc(-37px * 3)
@@ -69,6 +73,10 @@
 		height: 100%
 		object-fit: cover
 		display: block
+
+		@media $sm
+			object-fit: contain
+			object-position: top
 
 	&__video-img
 		position absolute
