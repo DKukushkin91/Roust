@@ -12,6 +12,11 @@
     background-position center
     background-repeat no-repeat
     background-size cover
+.contacts__top-section
+    padding-bottom 38px
+.top__title.top__title--contacts
+    margin-top -53px
+    padding-bottom 38px
 .top__text--contacts
     &.top__text--country
         color #00F0FF
@@ -31,14 +36,14 @@
     &.top__text--mail
         text-decoration none
         display block
-        margin-bottom 54px
+        margin-bottom 53px
 .top__content--contacts
     @media $sm
         padding-top 160px
     & .top__btn-text
         background transparent
         border 2px solid #ffffff
-        padding 14px 58px
+        padding 13px 58px
     & .top__btn-text:hover
         background #ffffff
         color #272E3F
@@ -119,3 +124,7 @@
     &__li-link:hover
     &__li-link:focus
         text-decoration underline
+.del:before
+    content none
+.contacts__footer-wrap:before
+    content none
