@@ -24,10 +24,14 @@
 		clip-path: polygon(100% 35px, calc(50% + 50px) 35px, 50% 0, calc(50% - 50px) 35px, 0 35px, 0px 100%, 100% 100%)
 
 	&:first-child
-		@media $lg
-			flex 1 1 100vh
+		@media (min-width 1441px)
+			flex 1 1 100%
+			min-height: 575px
 
-		@media $sm
+		@media (max-width: 1440px)
+			min-height 33vw
+
+		@media $lg
 			flex 1 1 100%
 			min-height 46vw
 
@@ -59,10 +63,10 @@
 
 	&__video-wrap
 		width: 100%
+		height: 100%
 		position fixed
 		top: 0
 		left: 0
-		height: 100%
 
 	&__video
 		width: 100%
@@ -74,7 +78,7 @@
 		object-fit: cover
 		display: block
 
-		@media $sm
+		@media $md
 			object-fit: contain
 			object-position: top
 

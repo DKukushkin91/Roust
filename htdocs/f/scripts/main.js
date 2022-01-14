@@ -1019,7 +1019,7 @@ var getVideoSrc = function getVideoSrc() {
     var container = document.querySelector('.js-video-container');
     var breakpoints = {
       MOBILE: 574.9,
-      TABLET: 959.9
+      TABLET: 1279.9
     };
 
     var template = function template(e) {
@@ -1028,13 +1028,18 @@ var getVideoSrc = function getVideoSrc() {
 
     var getResizeVideo = function getResizeVideo() {
       if (window.innerWidth <= breakpoints.MOBILE) {
+        removeChilds(container);
         render(container, template("m-"), 'beforeend');
       }
 
       if (window.innerWidth <= breakpoints.TABLET && window.innerWidth >= breakpoints.MOBILE) {
+        removeChilds(container);
         render(container, template("t-"), 'beforeend');
-      } else {
-        render(container, template(""), 'beforeend');
+      }
+
+      if (window.innerWidth > breakpoints.TABLET) {
+        removeChilds(container);
+        render(container, template(''), 'beforeend');
       }
     };
 
