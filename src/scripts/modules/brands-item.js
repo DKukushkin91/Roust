@@ -1,4 +1,4 @@
-import {getOffset} from '../utils/utils';
+import {getScrollTo} from '../utils/utils';
 
 export const getScrollItem = () => {
 	if(document.querySelector('.js-anim-items')){
@@ -9,7 +9,8 @@ export const getScrollItem = () => {
 		const scrollBtn = document.querySelector('.js-scroll-btn');
 		const main = document.querySelector('.main');
 		const animText = document.querySelectorAll('.js-anim-text');
-		const itemContainer = document.querySelector('.js-brands-item-container');
+		const itemContainer = document.querySelector('.top__content--brands-item');
+
 		const isSeen = () => itemContainer.getBoundingClientRect().bottom + 45 <= window.innerHeight
 
 		const removeClass = () => {
@@ -35,9 +36,6 @@ export const getScrollItem = () => {
 		const onScrollAnim = () => {
 			if(isSeen()){
 				addClass();
-				// if(main.getBoundingClientRect().top >= 0) {
-				// 	main.style.transform = `translate(0, ${itemContainer.getBoundingClientRect().bottom - 45}px)`
-				// }
 			}
 
 			if(scrollY === 0){
@@ -45,10 +43,11 @@ export const getScrollItem = () => {
 			}
 		}
 
-		// const scrollToMain = () => window.scrollBy(0, 80);
-
 		if(window.innerWidth >= 1279.9) {
-			scrollBtn.addEventListener('click', addClass);
+			scrollBtn.addEventListener('click', () => {
+				addClass();
+				window.scrollBy(0, window.innerWidth / 13)
+			});
 			window.addEventListener('scroll', onScrollAnim);
 		}
 	}

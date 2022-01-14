@@ -56,7 +56,12 @@
 				font-size: 45px
 
 		&--brands-item
-			padding-bottom 30px
+			padding-bottom get-vw(30, 1680)
+			font-size: get-vw(75, 1680)
+
+			@media $lg
+				fz-75()
+				padding-bottom 30px
 
 		&--about-us
 			padding-bottom 45px
@@ -85,9 +90,13 @@
 				padding-bottom 40px
 
 		&--brands-item
-			fz-15()
-			padding-bottom 60px
 			width: 100%
+			font-size get-vw(15, 1680)
+			padding-bottom get-vw(60, 1680)
+
+			@media $lg
+				fz-15()
+				padding-bottom 60px
 
 		&--career
 			max-width: 443px
@@ -279,6 +288,9 @@
 		transition: all 1s ease 0s
 		transform: translate(0px, 0px)
 
+		@media $xl
+			max-width get-vw(213, 1680)
+
 		@media $lg
 			flex-direction: row;
 			flex-wrap: wrap;
@@ -306,6 +318,9 @@
 		padding: 28px 53px
 		text-align: center
 
+		@media $xl
+			padding get-vw(28, 1680) get-vw(53, 1680)
+
 		@media $lg
 			max-width: 211px
 
@@ -317,6 +332,9 @@
 
 		&:not(:last-child)
 			margin-bottom 57px
+
+			@media $xl
+				margin-bottom get-vw(57, 1680)
 
 			@media $lg
 				margin-bottom 0
@@ -332,12 +350,18 @@
 		font-weight 900
 		line-height 24px
 
+		@media $xl
+			font-size get-vw(15, 1680)
+
 		&:not(:last-child)
 			padding-bottom 4px
 
 	&__text-awards sup
 		fz-13()
 		font-weight normal
+
+		@media $xl
+			font-size get-vw(13, 1680)
 
 		@media $md
 			font-size 9px
@@ -346,10 +370,16 @@
 		fz-33()
 		line-height 100%
 
+		@media $xl
+			font-size get-vw(33, 1680)
+
 	&__text-awards--fw
 		fz-13()
 		line-height 16px
 		font-weight 500
+
+		@media $xl
+			font-size get-vw(13, 1680)
 
 		@media $md
 			font-size 9px
@@ -424,7 +454,7 @@
 			right 7vw
 
 	&__img-wrapper.swiper-wrapper
-		align-items: flex-end
+		align-items: flex-start
 
 	&__sub-content
 		display: flex

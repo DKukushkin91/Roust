@@ -15,7 +15,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 // Функция прокрутки с контролем скорости
-var scrollTo = function scrollTo(to) {
+var getScrollTo = function getScrollTo(to) {
   var duration = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 700;
 
   var element = document.scrollingElement || document.documentElement,
@@ -70,7 +70,7 @@ var getTop = function getTop() {
   if (btn) {
     btn.addEventListener('click', function (evt) {
       evt.preventDefault();
-      scrollTo(0, 400);
+      getScrollTo(0, 400);
     });
   }
 };
@@ -216,7 +216,7 @@ var getScrollItem = function getScrollItem() {
     var scrollBtn = document.querySelector('.js-scroll-btn');
     var main = document.querySelector('.main');
     var animText = document.querySelectorAll('.js-anim-text');
-    var itemContainer = document.querySelector('.js-brands-item-container');
+    var itemContainer = document.querySelector('.top__content--brands-item');
 
     var isSeen = function isSeen() {
       return itemContainer.getBoundingClientRect().bottom + 45 <= window.innerHeight;
@@ -256,19 +256,19 @@ var getScrollItem = function getScrollItem() {
 
     var onScrollAnim = function onScrollAnim() {
       if (isSeen()) {
-        addClass(); // if(main.getBoundingClientRect().top >= 0) {
-        // 	main.style.transform = `translate(0, ${itemContainer.getBoundingClientRect().bottom - 45}px)`
-        // }
+        addClass();
       }
 
       if (scrollY === 0) {
         removeClass();
       }
-    }; // const scrollToMain = () => window.scrollBy(0, 80);
-
+    };
 
     if (window.innerWidth >= 1279.9) {
-      scrollBtn.addEventListener('click', addClass);
+      scrollBtn.addEventListener('click', function () {
+        addClass();
+        window.scrollBy(0, window.innerWidth / 13);
+      });
       window.addEventListener('scroll', onScrollAnim);
     }
   }
@@ -752,7 +752,11 @@ var getAboutUsSlider = function getAboutUsSlider() {
         },
         1280: {
           pagination: false,
-          slidesPerView: 1
+          slidesPerView: 1,
+          navigation: {
+            prevEl: '.js-about-prev',
+            nextEl: '.js-about-next'
+          }
         }
       }
     });

@@ -1,5 +1,5 @@
 // Функция прокрутки с контролем скорости
-export const scrollTo = (to, duration = 700) => {
+export const getScrollTo = (to, duration = 700) => {
 	const
 			element = document.scrollingElement || document.documentElement,
 			start = element.scrollTop,
