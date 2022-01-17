@@ -40,13 +40,13 @@
 .top__content--contacts
     @media $sm
         padding-top 160px
+    & .top__btn
+      border 2px solid #ffffff
     & .top__btn-text
         background transparent
-        border 2px solid #ffffff
         padding 13px 58px
-    & .top__btn-text:hover
-        background #ffffff
-        color #272E3F
+        position relative
+        z-index 1
 .contacts
     padding-bottom 77px
     @media $md

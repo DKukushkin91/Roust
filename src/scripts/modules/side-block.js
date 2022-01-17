@@ -32,11 +32,11 @@ export const getSideBlock = () => {
 		const getElement = (cardTitle, cardSubtitle, cardImage, evt) => {
 			const templateClone = template.cloneNode(true);
 			const backBtn = templateClone.querySelector('.js-back-btn');
-			const contentWrap = templateClone.querySelector('.js-side-wrap');
 			const title = templateClone.querySelector('.js-side-title');
 			const subTitle = templateClone.querySelector('.js-side-subTitle');
 			const image = templateClone.querySelector('.js-side-img');
 			const text = templateClone.querySelector('.js-side-text');
+			const contentWrap = templateClone.querySelector('.js-side-wrap');
 
 			image.src = cardImage.src;
 			title.textContent = cardTitle.textContent;
@@ -53,7 +53,6 @@ export const getSideBlock = () => {
 				productionMocks.map(e => e.name === title.textContent ? text.textContent = e.text : '');
 			};
 
-			contentWrap.classList.add('side__wrap--active');
 			body.classList.add('lock-scroll')
 			backBtn.addEventListener('click', elementRemoveHandler);
 			return templateClone
@@ -76,6 +75,10 @@ export const getSideBlock = () => {
 				const cardImage = evt.target.parentNode.parentNode.querySelector('.js-card-img');
 
 				appendElement(title, subTitle, cardImage, evt);
+
+				const contentWrap = document.querySelector('.js-side-wrap');
+				const changeClass = () => contentWrap ? contentWrap.classList.add('side__wrap--active') : '';
+				setTimeout(changeClass);
 			})
 		})
 	}

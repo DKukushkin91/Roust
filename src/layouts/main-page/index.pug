@@ -33,7 +33,8 @@ block page
 								.screen__inner.screen__inner--slider.screen__inner--top
 									h2.screen__title Russian Standard
 									p.screen__text A vodka of exceptional quality, born from our pursuit for perfection and Russia's rich vodka heritage.
-									a.screen__link(href="#") More
+									a.screen__link.animate-button(href="#")
+										span.screen__link-text More
 						.screen__slide.swiper-slide
 							.screen__img-wrap
 								img(src=`${baseDir}/img/gancia-banner.jpg` alt='')
@@ -44,7 +45,8 @@ block page
 								.screen__inner.screen__inner--slider
 									h2.screen__title Gancia
 									p.screen__text The first Italian sparkling wine. Its cellars are reckoned world heritage and are protected by UNESCO.
-									a.screen__link(href="#") More
+									a.screen__link.animate-button(href="#")
+										span.screen__link-text More
 								.screen__content-img.screen__content-img--gancia
 									+picture('slider-gancia-bottle', '', baseDir)
 						.screen__slide.swiper-slide
@@ -57,7 +59,8 @@ block page
 								.screen__inner.screen__inner--slider
 									h2.screen__title GreenMark
 									p.screen__text One of the most popular brands in Russia. Green Mark is a classic vodka with a long history steeped in the very best traditions of Russian vodka production.
-									a.screen__link(href="#") More
+									a.screen__link.animate-button(href="#")
+										span.screen__link-text More
 								.screen__content-img.screen__content-img--gm
 									+picture('slider-gm-bottle', '', baseDir)
 						.screen__slide.swiper-slide
@@ -70,7 +73,8 @@ block page
 								.screen__inner.screen__inner--slider
 									h2.screen__title Parliament
 									p.screen__text Parliament vodka is one of the oldest Russian brands in the segment. This classic vodka is crafted according to a traditional Russian vodka recipe - using alcohol and water only - and is complemented by unparalleled purification with milk.
-									a.screen__link(href="#") More
+									a.screen__link.animate-button(href="#")
+										span.screen__link-text More
 								.screen__content-img.screen__content-img--pm
 									+picture('slider-pm-bottle', '', baseDir)
 						.screen__slide.swiper-slide
@@ -83,7 +87,8 @@ block page
 								.screen__inner.screen__inner--slider
 									h2.screen__title Talka
 									p.screen__text В глубинах Сибири, среди заснеженных просторов и суровой северной природы, среди величавых рек и свежего таежного воздуха, берет свое начало водка «Талка» — Легенда Сибири.
-									a.screen__link(href="#") More
+									a.screen__link.animate-button(href="#")
+										span.screen__link-text More
 								.screen__content-img.screen__content-img--talka
 									+picture('slider-talka-bottle', '', baseDir)
 					button.screen__nav-btn.screen__nav-btn--next.js-main-slider-next
@@ -129,7 +134,8 @@ block page
 						.screen__inner.screen__inner--padding
 							h2.screen__title.screen__title--fonts Brands
 							p.screen__text.screen__text--padding We produce and supply world-famous alcohol brands to 86 countries.
-							a.screen__link(href="#") More
+							a.screen__link.animate-button(href="#")
+								span.screen__link-text More
 				.main-page__screen.screen
 					.screen__icon-wrap
 						svg(width="14" height="9").screen__icon
@@ -149,7 +155,8 @@ block page
 										p.screen__o-text We will contact you to discuss the details
 									li.screen__o-item
 										p.screen__o-text Let’s start earning together
-							a.screen__link(href="#") More
+							a.screen__link.animate-button(href="#")
+								span.screen__link-text More
 				.main-page__screen.screen.screen--background
 					.screen__icon-wrap
 						svg(width="14" height="9").screen__icon.screen__icon--color
@@ -157,7 +164,7 @@ block page
 					.screen__content
 						.screen__title-wrap
 							h2.screen__title.screen__title--fonts.screen__title--color News
-							a.screen__title-link(href="#") More news
+							a.screen__title-link(href="#") More News
 
 					include ../../template/_news
 
@@ -170,7 +177,8 @@ block page
 					.screen__content.screen__content--grid
 						h2.screen__title.screen__title--fonts
 							|	Investors
-						a.screen__link(href="#") More
+						a.screen__link.animate-button(href="#")
+							span.screen__link-text More
 						dl.screen__dl
 							.screen__d-wrap
 								dt.screen__dt 60
@@ -192,7 +200,8 @@ block page
 							h2.screen__title.screen__title--fonts.screen__title--color Career
 							p.screen__text.screen__text--padding.screen__text--color.screen__text--md We give our employees opportunities to fulfill their dreams.
 							p.screen__text.screen__text--fz.screen__text--color Join our international team of professionals who achieve their ambitions with us.
-							a.screen__link.screen__link--color(href="#") More
+							a.screen__link.screen__link--color.animate-button(href="#")
+								span.screen__link-text.screen__link-text--color More
 				.main-page__screen.screen
 					.screen__icon-wrap
 						svg(width="14" height="9").screen__icon
@@ -211,4 +220,5 @@ block page
 										a.screen__contacts-link(href="tel:84957771777" target="_blank") +7 (495) 777-1-777
 									li.screen__contacts-item
 										a.screen__contacts-link(href="mailto:info@rust.com") info@roust.com
-							button.screen__contacts-btn Send message
+							button.screen__contacts-btn.animate-button
+								span.screen__contacts-btn-text Send message

@@ -819,11 +819,11 @@ var getSideBlock = function getSideBlock() {
     var getElement = function getElement(cardTitle, cardSubtitle, cardImage, evt) {
       var templateClone = template.cloneNode(true);
       var backBtn = templateClone.querySelector('.js-back-btn');
-      var contentWrap = templateClone.querySelector('.js-side-wrap');
       var title = templateClone.querySelector('.js-side-title');
       var subTitle = templateClone.querySelector('.js-side-subTitle');
       var image = templateClone.querySelector('.js-side-img');
       var text = templateClone.querySelector('.js-side-text');
+      var contentWrap = templateClone.querySelector('.js-side-wrap');
       image.src = cardImage.src;
       title.textContent = cardTitle.textContent;
       subTitle.textContent = cardSubtitle.textContent;
@@ -841,7 +841,6 @@ var getSideBlock = function getSideBlock() {
         });
       }
 
-      contentWrap.classList.add('side__wrap--active');
       body.classList.add('lock-scroll');
       backBtn.addEventListener('click', elementRemoveHandler);
       return templateClone;
@@ -862,6 +861,13 @@ var getSideBlock = function getSideBlock() {
         var subTitle = evt.target.parentNode.querySelector('.js-card-text');
         var cardImage = evt.target.parentNode.parentNode.querySelector('.js-card-img');
         appendElement(title, subTitle, cardImage, evt);
+        var contentWrap = document.querySelector('.js-side-wrap');
+
+        var changeClass = function changeClass() {
+          return contentWrap ? contentWrap.classList.add('side__wrap--active') : '';
+        };
+
+        setTimeout(changeClass);
       });
     });
   }
