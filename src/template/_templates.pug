@@ -171,9 +171,9 @@ block templates
 					p.g-template__title Topaz distillery.
 					p.g-template__text=item
 
-	template.popup-form.js-popup-form
+	template.popup-form.js-popup-form-template
 		.popup-form__wrap.js-popup-wrap
-			form(action="", method="post").popup-form__form
+			form(action="", method="post").popup-form__form.js-popup-form
 				button.popup-form__close-btn.js-close-btn
 					svg(width="22" height="22").popup-form__icon
 						use(href=`${baseDir}/img/sprite.svg#cross`)
@@ -225,7 +225,7 @@ block templates
 
 	template.js-search-template
 		.search-popup.js-search-popup
-			.search-popup__wrap
+			.search-popup__wrap.js-search-wrap
 				button.search-popup__close-btn.js-close-btn
 					svg(width="22" height="22").search-popup__icon
 						use(href=`${baseDir}/img/sprite.svg#cross`)

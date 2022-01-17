@@ -1,11 +1,11 @@
-import {createElement} from '../utils/utils';
+import {changeActiveClass, createElement} from '../utils/utils';
 import {selectHandler} from './select';
 
 export const getPopup = () => {
 	if(document.querySelector('.js-btn-form')){
 		const body = document.querySelector('body')
 		const buttons = document.querySelectorAll('.js-btn-form');
-		const popupTemplate = document.querySelector('.js-popup-form')
+		const popupTemplate = document.querySelector('.js-popup-form-template')
 			.content
 			.querySelector('.js-popup-wrap')
 
@@ -44,6 +44,9 @@ export const getPopup = () => {
 			document.addEventListener('keydown', escPressHandler);
 			createElement(body, fragment);
 			body.classList.add('lock-scroll');
+
+			const popupForm = document.querySelector('.js-popup-form');
+			setTimeout(()=>changeActiveClass(popupForm, 'popup-form'))
 		}
 
 		for(let button of buttons){

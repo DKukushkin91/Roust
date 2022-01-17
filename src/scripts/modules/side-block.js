@@ -1,4 +1,4 @@
-import {createElement} from '../utils/utils'
+import {changeActiveClass, createElement} from '../utils/utils'
 import {cardsMocks, productionMocks} from './mocks';
 
 export const getSideBlock = () => {
@@ -36,7 +36,6 @@ export const getSideBlock = () => {
 			const subTitle = templateClone.querySelector('.js-side-subTitle');
 			const image = templateClone.querySelector('.js-side-img');
 			const text = templateClone.querySelector('.js-side-text');
-			const contentWrap = templateClone.querySelector('.js-side-wrap');
 
 			image.src = cardImage.src;
 			title.textContent = cardTitle.textContent;
@@ -77,8 +76,8 @@ export const getSideBlock = () => {
 				appendElement(title, subTitle, cardImage, evt);
 
 				const contentWrap = document.querySelector('.js-side-wrap');
-				const changeClass = () => contentWrap ? contentWrap.classList.add('side__wrap--active') : '';
-				setTimeout(changeClass);
+
+				setTimeout(()=>changeActiveClass(contentWrap, 'side'));
 			})
 		})
 	}

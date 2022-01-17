@@ -64,6 +64,10 @@ var render = function render(container, template, place) {
   container.insertAdjacentHTML(place, template);
 };
 
+var changeActiveClass = function changeActiveClass(element, mainClass) {
+  return element ? element.classList.add("".concat(mainClass, "__wrap--active")) : '';
+};
+
 var getTop = function getTop() {
   var btn = document.querySelector('.js-btn-top');
 
@@ -98,7 +102,7 @@ var getMainSlider = function getMainSlider() {
         }
       }
     });
-    var swiper = new Swiper(slider, {
+    new Swiper(slider, {
       thumbs: {
         swiper: subSwiper
       },
@@ -107,6 +111,18 @@ var getMainSlider = function getMainSlider() {
         prevEl: '.js-main-slider-prev'
       }
     });
+
+    var getHideVideo = function getHideVideo() {
+      var videoContainer = document.querySelector('.js-video-container');
+
+      if (slider.getBoundingClientRect().top <= 0) {
+        videoContainer.style.display = 'none';
+      } else {
+        videoContainer.style.display = 'block';
+      }
+    };
+
+    window.addEventListener('scroll', getHideVideo);
   }
 };
 
@@ -669,7 +685,7 @@ var getPopup = function getPopup() {
     (function () {
       var body = document.querySelector('body');
       var buttons = document.querySelectorAll('.js-btn-form');
-      var popupTemplate = document.querySelector('.js-popup-form').content.querySelector('.js-popup-wrap');
+      var popupTemplate = document.querySelector('.js-popup-form-template').content.querySelector('.js-popup-wrap');
 
       var escPressHandler = function escPressHandler(evt) {
         if (evt.key === 'Escape') {
@@ -704,6 +720,10 @@ var getPopup = function getPopup() {
         document.addEventListener('keydown', escPressHandler);
         createElement(body, fragment);
         body.classList.add('lock-scroll');
+        var popupForm = document.querySelector('.js-popup-form');
+        setTimeout(function () {
+          return changeActiveClass(popupForm, 'popup-form');
+        });
       };
 
       var _iterator2 = _createForOfIteratorHelper(buttons),
@@ -823,7 +843,6 @@ var getSideBlock = function getSideBlock() {
       var subTitle = templateClone.querySelector('.js-side-subTitle');
       var image = templateClone.querySelector('.js-side-img');
       var text = templateClone.querySelector('.js-side-text');
-      var contentWrap = templateClone.querySelector('.js-side-wrap');
       image.src = cardImage.src;
       title.textContent = cardTitle.textContent;
       subTitle.textContent = cardSubtitle.textContent;
@@ -862,12 +881,9 @@ var getSideBlock = function getSideBlock() {
         var cardImage = evt.target.parentNode.parentNode.querySelector('.js-card-img');
         appendElement(title, subTitle, cardImage, evt);
         var contentWrap = document.querySelector('.js-side-wrap');
-
-        var changeClass = function changeClass() {
-          return contentWrap ? contentWrap.classList.add('side__wrap--active') : '';
-        };
-
-        setTimeout(changeClass);
+        setTimeout(function () {
+          return changeActiveClass(contentWrap, 'side');
+        });
       });
     });
   }
@@ -1014,6 +1030,10 @@ var getSearchPopup = function getSearchPopup() {
       document.addEventListener('keydown', escPressHandler);
       createElement(body, fragment);
       body.classList.add('lock-scroll');
+      var popupWrap = document.querySelector('.js-search-wrap');
+      setTimeout(function () {
+        return changeActiveClass(popupWrap, 'search-popup');
+      });
     };
 
     createPopupButton.addEventListener('click', appendElement);

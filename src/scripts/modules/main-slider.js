@@ -22,7 +22,7 @@ export const getMainSlider = () => {
 			}
 		})
 
-		const swiper = new Swiper(slider, {
+		new Swiper(slider, {
 			thumbs: {
 				swiper: subSwiper,
 			},
@@ -31,5 +31,16 @@ export const getMainSlider = () => {
 				prevEl: '.js-main-slider-prev',
 			},
 		})
+
+		const getHideVideo = () => {
+			const videoContainer = document.querySelector('.js-video-container');
+			if(slider.getBoundingClientRect().top <= 0) {
+				videoContainer.style.display = 'none';
+			} else {
+				videoContainer.style.display = 'block';
+			}
+		}
+
+		window.addEventListener('scroll', getHideVideo);
 	}
 }

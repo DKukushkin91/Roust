@@ -55,3 +55,5 @@ export const getOffset = (el) => {
 export const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
 };
+
+export const changeActiveClass = (element, mainClass) => element ? element.classList.add(`${mainClass}__wrap--active`) : '';
