@@ -28,6 +28,8 @@ block page
 									img(src=`${baseDir}/img/bg-slide.jpg`, alt="")
 								.brands-item__img.swiper-slide
 									img(src=`${baseDir}/img/bg-brands.jpg`, alt="")
+								.brands-item__img.swiper-slide
+									img(src=`${baseDir}/img/russkiy-standart-original.jpg`, alt="")
 						.brands-item__text-slider.swiper.js-text-slider
 							.brands-item__text-wrapper.swiper-wrapper
 								.brands-item__text-block.js-anim-text.swiper-slide
@@ -35,6 +37,9 @@ block page
 									p.brands-item__text At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.
 								.brands-item__text-block.js-anim-text.swiper-slide
 									h2.brands-item__title Russian Standard <span class="brands-item__title--color">Special Edition</span>
+									p.brands-item__text At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.
+								.brands-item__text-block.js-anim-text.swiper-slide
+									h2.brands-item__title Talka <span class="brands-item__title--color">Special Edition</span>
 									p.brands-item__text At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.
 						button.brands-item__btn.brands-item__btn--mobile.brands-item__btn--mobile-prev.js-mob-prev-btn
 					.brands-item__content.brands-item__content--mobile.js-content-slide
@@ -73,6 +78,13 @@ block page
 								button.brands-item__btn
 									span.brands-item__text-box
 										p.brands-item__text Russian Standart
+										p.brands-item__text.brands-item__text--fz Special Edition
+									span.brands-item__picture
+										+picture('se-b', '', baseDir)
+							li.brands-item__item.swiper-slide.js-scroll-item
+								button.brands-item__btn
+									span.brands-item__text-box
+										p.brands-item__text Talka
 										p.brands-item__text.brands-item__text--fz Special Edition
 									span.brands-item__picture
 										+picture('se-b', '', baseDir)
