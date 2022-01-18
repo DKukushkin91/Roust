@@ -72,33 +72,59 @@ export const getSliders = () => {
 				},
 			});
 		});
-	}
-}
 
-export const getScrollElement = () => {
-	if(document.querySelector('.js-scroll') && window.innerWidth >= 575) {
-		const scrollItems = document.querySelectorAll('.js-scroll-item');
-		const scroll = document.querySelector('.js-scroll');
-		const targetRectX = (evt) => evt.currentTarget.getBoundingClientRect().x;
-		const parrentRectLeft = (evt) => evt.currentTarget.parentNode.getBoundingClientRect().left;
-		const slideBtns = document.querySelectorAll('.js-slide-btn');
+		if(document.querySelector('.js-scroll') && window.innerWidth >= 575) {
+			const scrollItems = document.querySelectorAll('.js-scroll-item');
+			const scroll = document.querySelector('.js-scroll');
+			const targetRectX = (evt) => evt.currentTarget.getBoundingClientRect().x;
+			const parrentRectLeft = (evt) => evt.currentTarget.parentNode.getBoundingClientRect().left;
+			const slideBtns = document.querySelectorAll('.js-slide-btn');
 
-		scroll.style.width = `${scrollItems[0].offsetWidth}px`
+			scroll.style.width = `${scrollItems[0].offsetWidth}px`
 
-		scrollItems.forEach(item => {
-			item.addEventListener('click', (evt) => {
-				scroll.style.left = `${targetRectX(evt) - parrentRectLeft(evt)}px`;
+			scrollItems.forEach(item => {
+				item.addEventListener('click', (evt) => {
+					scroll.style.left = `${targetRectX(evt) - parrentRectLeft(evt)}px`;
+				})
 			})
-		})
 
-		slideBtns.forEach(e => {
-			e.addEventListener('click', () => {
-				for(let item of scrollItems) {
-					if(item.classList.contains('swiper-slide-thumb-active')){
-						scroll.style.left = `${item.getBoundingClientRect().x - item.parentNode.getBoundingClientRect().left}px`;
+			slideBtns.forEach(e => {
+				e.addEventListener('click', () => {
+					for(let item of scrollItems) {
+						if(item.classList.contains('swiper-slide-thumb-active')){
+							scroll.style.left = `${item.getBoundingClientRect().x - item.parentNode.getBoundingClientRect().left}px`;
+						}
 					}
-				}
+				})
 			})
-		})
+		}
 	}
 }
+
+// export const getScrollElement = () => {
+// 	if(document.querySelector('.js-scroll') && window.innerWidth >= 575) {
+// 		const scrollItems = document.querySelectorAll('.js-scroll-item');
+// 		const scroll = document.querySelector('.js-scroll');
+// 		const targetRectX = (evt) => evt.currentTarget.getBoundingClientRect().x;
+// 		const parrentRectLeft = (evt) => evt.currentTarget.parentNode.getBoundingClientRect().left;
+// 		const slideBtns = document.querySelectorAll('.js-slide-btn');
+
+// 		scroll.style.width = `${scrollItems[0].offsetWidth}px`
+
+// 		scrollItems.forEach(item => {
+// 			item.addEventListener('click', (evt) => {
+// 				scroll.style.left = `${targetRectX(evt) - parrentRectLeft(evt)}px`;
+// 			})
+// 		})
+
+// 		slideBtns.forEach(e => {
+// 			e.addEventListener('click', () => {
+// 				for(let item of scrollItems) {
+// 					if(item.classList.contains('swiper-slide-thumb-active')){
+// 						scroll.style.left = `${item.getBoundingClientRect().x - item.parentNode.getBoundingClientRect().left}px`;
+// 					}
+// 				}
+// 			})
+// 		})
+// 	}
+// }

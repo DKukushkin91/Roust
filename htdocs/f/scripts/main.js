@@ -371,51 +371,73 @@ var getSliders = function getSliders() {
         }
       });
     });
-  }
-};
 
-var getScrollElement = function getScrollElement() {
-  if (document.querySelector('.js-scroll') && window.innerWidth >= 575) {
-    var scrollItems = document.querySelectorAll('.js-scroll-item');
-    var scroll = document.querySelector('.js-scroll');
+    if (document.querySelector('.js-scroll') && window.innerWidth >= 575) {
+      var scrollItems = document.querySelectorAll('.js-scroll-item');
+      var scroll = document.querySelector('.js-scroll');
 
-    var targetRectX = function targetRectX(evt) {
-      return evt.currentTarget.getBoundingClientRect().x;
-    };
+      var targetRectX = function targetRectX(evt) {
+        return evt.currentTarget.getBoundingClientRect().x;
+      };
 
-    var parrentRectLeft = function parrentRectLeft(evt) {
-      return evt.currentTarget.parentNode.getBoundingClientRect().left;
-    };
+      var parrentRectLeft = function parrentRectLeft(evt) {
+        return evt.currentTarget.parentNode.getBoundingClientRect().left;
+      };
 
-    var slideBtns = document.querySelectorAll('.js-slide-btn');
-    scroll.style.width = "".concat(scrollItems[0].offsetWidth, "px");
-    scrollItems.forEach(function (item) {
-      item.addEventListener('click', function (evt) {
-        scroll.style.left = "".concat(targetRectX(evt) - parrentRectLeft(evt), "px");
+      var slideBtns = document.querySelectorAll('.js-slide-btn');
+      scroll.style.width = "".concat(scrollItems[0].offsetWidth, "px");
+      scrollItems.forEach(function (item) {
+        item.addEventListener('click', function (evt) {
+          scroll.style.left = "".concat(targetRectX(evt) - parrentRectLeft(evt), "px");
+        });
       });
-    });
-    slideBtns.forEach(function (e) {
-      e.addEventListener('click', function () {
-        var _iterator = _createForOfIteratorHelper(scrollItems),
-            _step;
+      slideBtns.forEach(function (e) {
+        e.addEventListener('click', function () {
+          var _iterator = _createForOfIteratorHelper(scrollItems),
+              _step;
 
-        try {
-          for (_iterator.s(); !(_step = _iterator.n()).done;) {
-            var item = _step.value;
+          try {
+            for (_iterator.s(); !(_step = _iterator.n()).done;) {
+              var item = _step.value;
 
-            if (item.classList.contains('swiper-slide-thumb-active')) {
-              scroll.style.left = "".concat(item.getBoundingClientRect().x - item.parentNode.getBoundingClientRect().left, "px");
+              if (item.classList.contains('swiper-slide-thumb-active')) {
+                scroll.style.left = "".concat(item.getBoundingClientRect().x - item.parentNode.getBoundingClientRect().left, "px");
+              }
             }
+          } catch (err) {
+            _iterator.e(err);
+          } finally {
+            _iterator.f();
           }
-        } catch (err) {
-          _iterator.e(err);
-        } finally {
-          _iterator.f();
-        }
+        });
       });
-    });
+    }
   }
-};
+}; // export const getScrollElement = () => {
+// 	if(document.querySelector('.js-scroll') && window.innerWidth >= 575) {
+// 		const scrollItems = document.querySelectorAll('.js-scroll-item');
+// 		const scroll = document.querySelector('.js-scroll');
+// 		const targetRectX = (evt) => evt.currentTarget.getBoundingClientRect().x;
+// 		const parrentRectLeft = (evt) => evt.currentTarget.parentNode.getBoundingClientRect().left;
+// 		const slideBtns = document.querySelectorAll('.js-slide-btn');
+// 		scroll.style.width = `${scrollItems[0].offsetWidth}px`
+// 		scrollItems.forEach(item => {
+// 			item.addEventListener('click', (evt) => {
+// 				scroll.style.left = `${targetRectX(evt) - parrentRectLeft(evt)}px`;
+// 			})
+// 		})
+// 		slideBtns.forEach(e => {
+// 			e.addEventListener('click', () => {
+// 				for(let item of scrollItems) {
+// 					if(item.classList.contains('swiper-slide-thumb-active')){
+// 						scroll.style.left = `${item.getBoundingClientRect().x - item.parentNode.getBoundingClientRect().left}px`;
+// 					}
+// 				}
+// 			})
+// 		})
+// 	}
+// }
+
 
 var getGallery = function getGallery() {
   if (document.querySelector('.js-open-gallery')) {
@@ -487,6 +509,10 @@ var getGallery = function getGallery() {
       document.addEventListener('keydown', escPressHandler);
       createElement(body, fragment);
       body.classList.add('lock-scroll');
+      var sliderWrap = document.querySelector('.js-gallery-slider');
+      setTimeout(function () {
+        return changeActiveClass(sliderWrap, 'g-template');
+      });
     };
 
     buttons.forEach(function (button, index) {
@@ -1082,8 +1108,8 @@ document.addEventListener('DOMContentLoaded', function () {
   getBrandsList();
   getCatalogList();
   getScrollItem();
-  getSliders();
-  getScrollElement();
+  getSliders(); // getScrollElement();
+
   getGallery();
   getPopup();
   getAboutUsSlider();

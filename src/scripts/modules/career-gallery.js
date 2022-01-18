@@ -1,4 +1,4 @@
-import {createElement} from '../utils/utils';
+import {changeActiveClass, createElement} from '../utils/utils';
 
 export const getGallery = () => {
 	if(document.querySelector('.js-open-gallery')){
@@ -74,6 +74,10 @@ export const getGallery = () => {
 			document.addEventListener('keydown', escPressHandler);
 			createElement(body, fragment);
 			body.classList.add('lock-scroll');
+
+			const sliderWrap = document.querySelector('.js-gallery-slider');
+
+			setTimeout(()=>changeActiveClass(sliderWrap, 'g-template'));
 		}
 
 		buttons.forEach((button, index) => {

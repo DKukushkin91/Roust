@@ -2,7 +2,7 @@
 	&__container
 		display: block;
 		text-align: center;
-		background-color: rgba(0,0,0,0.7);
+		background-color: rgba(0,0,0,0.9);
 		z-index: 99999999;
 		position: fixed;
 		width: 100%;
@@ -26,11 +26,20 @@
 		}
 
 	&__wrap
+		opacity: 0
 		position: relative
 		width: 100%
-		max-width: 1100px
+		max-width: get-vw(1100, 1680)
 		display: inline-block;
 		vertical-align: middle;
+		transition: all 1s ease 0s
+
+		@media $md
+			max-width: 1100px
+
+	&__wrap--active
+		opacity: 1
+		transition: all 1s ease 0s
 
 	&__list
 		list-style none
@@ -47,6 +56,17 @@
 	&__img
 		position relative
 		margin-bottom 30px
+		height: get-vw(618, 1680)
+
+		@media $md
+			height auto
+
+	&__img img
+		height 100%
+		object-fit: cover
+
+		@media $md
+			height auto
 
 	&__btn
 		background: $d-grey
