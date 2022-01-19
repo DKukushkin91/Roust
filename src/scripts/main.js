@@ -4,7 +4,7 @@ import {getNewsSlider} from './modules/news-slider';
 import {getBrandsList} from './modules/brands-list';
 import {getCatalogList} from './modules/catalog-list';
 import {getScrollItem} from './modules/brands-item';
-import {getSliders, getScrollElement} from './modules/brands-item-slider';
+import {getSliders} from './modules/brands-item-slider';
 import {getGallery} from './modules/career-gallery';
 import {getPopup} from './modules/popup-form';
 import {burgerMenuHandler} from './modules/burger-menu';
@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	getCatalogList();
 	getScrollItem();
 	getSliders();
-	// getScrollElement();
 	getGallery();
 	getPopup();
 	getAboutUsSlider();
