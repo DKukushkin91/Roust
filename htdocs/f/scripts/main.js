@@ -298,6 +298,13 @@ var getSliders = function getSliders() {
     var contentSliderMob = document.querySelector('.js-content-slider');
     var contentSliderWrap = contentSliderMob.querySelector('.js-content-wrap');
     var contentSlides = contentSliderMob.querySelectorAll('.js-content-slide');
+
+    var onSlideChange = function onSlideChange(onElement, moveElement) {
+      onElement.on('slideChange', function () {
+        moveElement.slideToLoop(onElement.realIndex);
+      });
+    };
+
     var gThumbSlider = new Swiper(thumbSlider, {
       slidesPerView: 'auto',
       watchSlidesProgress: true,
@@ -306,7 +313,7 @@ var getSliders = function getSliders() {
     var getMobSlider = new Swiper(contentSliderMob, {
       init: false,
       slidesPerView: 'auto',
-      allowTouchMove: true,
+      allowTouchMove: false,
       navigation: {
         nextEl: document.querySelector('.js-mob-next-btn'),
         prevEl: document.querySelector('.js-mob-prev-btn')
@@ -354,6 +361,11 @@ var getSliders = function getSliders() {
         }
       }
     });
+    var mobBottleSlider = new Swiper(mobileSlider, {
+      slidesPerView: 1,
+      allowTouchMove: true,
+      slideToClickedSlide: false
+    });
     var sliderBottle = new Swiper(imgItemSlider, {
       slidesPerView: 1,
       allowTouchMove: false,
@@ -371,18 +383,21 @@ var getSliders = function getSliders() {
         watchSlidesProgress: true
       }
     });
+
+    if (window.innerWidth <= 1279) {
+      onSlideChange(mobBottleSlider, sliderBottle);
+      onSlideChange(sliderBottle, mobBottleSlider);
+    }
+
     sliders.forEach(function (element) {
-      sliderBottle.on('slideChange', function () {
-        element.slideToLoop(sliderBottle.realIndex);
+      onSlideChange(sliderBottle, element);
+    });
+
+    if (window.innerWidth <= 768) {
+      sliders.forEach(function (el) {
+        onSlideChange(mobBottleSlider, el);
       });
-    }); // wip on touch devices
-    // if(window.innerWidth <= 768) {
-    // 	sliders.forEach(el => {
-    // 		el.on('slideChange', () => {
-    // 			el.slideToLoop(el.realIndex);
-    // 		})
-    // 	})
-    // }
+    }
 
     if (document.querySelector('.js-scroll') && window.innerWidth >= 575) {
       var scrollItems = document.querySelectorAll('.js-scroll-item');
@@ -396,32 +411,37 @@ var getSliders = function getSliders() {
         return evt.currentTarget.parentNode.getBoundingClientRect().left;
       };
 
-      var slideBtns = document.querySelectorAll('.js-slide-btn');
       scroll.style.width = "".concat(scrollItems[0].offsetWidth, "px");
       scrollItems.forEach(function (item) {
         item.addEventListener('click', function (evt) {
           scroll.style.left = "".concat(targetRectX(evt) - parrentRectLeft(evt), "px");
         });
       });
-      slideBtns.forEach(function (e) {
-        e.addEventListener('click', function () {
-          var _iterator = _createForOfIteratorHelper(scrollItems),
-              _step;
+      var observer = new MutationObserver(function (mutations) {
+        var _iterator = _createForOfIteratorHelper(mutations),
+            _step;
 
-          try {
-            for (_iterator.s(); !(_step = _iterator.n()).done;) {
-              var item = _step.value;
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var mutation = _step.value;
 
-              if (item.classList.contains('swiper-slide-thumb-active')) {
-                scroll.style.left = "".concat(item.getBoundingClientRect().x - item.parentNode.getBoundingClientRect().left, "px");
-              }
+            if (mutation.type === 'attributes') {
+              scrollItems.forEach(function (el) {
+                if (el.classList.contains('swiper-slide-thumb-active')) {
+                  scroll.style.left = "".concat(el.getBoundingClientRect().x - el.parentNode.getBoundingClientRect().left, "px");
+                  scroll.style.left = "".concat(el.getBoundingClientRect().x + window.scrollX - el.parentNode.getBoundingClientRect().left, "px");
+                }
+              });
             }
-          } catch (err) {
-            _iterator.e(err);
-          } finally {
-            _iterator.f();
           }
-        });
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+      });
+      observer.observe(document.querySelector('.js-scroll-item'), {
+        attributes: true
       });
     }
   }
