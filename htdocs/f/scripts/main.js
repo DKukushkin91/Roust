@@ -292,15 +292,19 @@ var getScrollItem = function getScrollItem() {
 
 var getSliders = function getSliders() {
   if (document.querySelector('.brands-item__wrap')) {
-    var imgSlider = document.querySelector('.js-img-slider');
-    var textSlider = document.querySelector('.js-text-slider');
     var imgItemSlider = document.querySelector('.js-top-slider');
     var thumbSlider = document.querySelector('.js-thumbs-slider');
     var mobileSlider = document.querySelector('.js-mob-slider');
     var contentSliderMob = document.querySelector('.js-content-slider');
     var contentSliderWrap = contentSliderMob.querySelector('.js-content-wrap');
     var contentSlides = contentSliderMob.querySelectorAll('.js-content-slide');
-    var sliderArray = [imgSlider, textSlider, imgItemSlider, mobileSlider];
+
+    var onSlideChange = function onSlideChange(onElement, moveElement) {
+      onElement.on('slideChange', function () {
+        moveElement.slideToLoop(onElement.realIndex);
+      });
+    };
+
     var gThumbSlider = new Swiper(thumbSlider, {
       slidesPerView: 'auto',
       watchSlidesProgress: true,
@@ -309,7 +313,7 @@ var getSliders = function getSliders() {
     var getMobSlider = new Swiper(contentSliderMob, {
       init: false,
       slidesPerView: 'auto',
-      allowTouchMove: true,
+      allowTouchMove: false,
       navigation: {
         nextEl: document.querySelector('.js-mob-next-btn'),
         prevEl: document.querySelector('.js-mob-prev-btn')
@@ -341,36 +345,59 @@ var getSliders = function getSliders() {
         });
       }
     });
-    var sliders = sliderArray.map(function (el) {
-      return new Swiper(el, {
-        slidesPerView: 1,
-        allowTouchMove: false,
-        slideToClickedSlide: false,
-        on: {
-          slideChange: function slideChange() {
-            var _this = this;
-
-            sliders.filter(function (n) {
-              return n !== el;
-            }).forEach(function (n) {
-              return n.slideToLoop(_this.realIndex);
-            });
-          }
+    var sliders = new Swiper('.js-b-item-slider', {
+      slidesPerView: 1,
+      allowTouchMove: false,
+      slideToClickedSlide: false,
+      breakpoints: {
+        768: {
+          allowTouchMove: true
         },
-        breakpoints: {
-          1366: {
-            navigation: {
-              nextEl: document.querySelector('.js-item-next'),
-              prevEl: document.querySelector('.js-item-prev')
-            }
+        769: {
+          navigation: {
+            nextEl: document.querySelector('.js-item-next'),
+            prevEl: document.querySelector('.js-item-prev')
           }
-        },
-        thumbs: {
-          swiper: gThumbSlider,
-          watchSlidesProgress: true
         }
-      });
+      }
     });
+    var mobBottleSlider = new Swiper(mobileSlider, {
+      slidesPerView: 1,
+      allowTouchMove: true,
+      slideToClickedSlide: false
+    });
+    var sliderBottle = new Swiper(imgItemSlider, {
+      slidesPerView: 1,
+      allowTouchMove: false,
+      slideToClickedSlide: false,
+      breakpoints: {
+        768: {
+          navigation: {
+            nextEl: document.querySelector('.js-item-next'),
+            prevEl: document.querySelector('.js-item-prev')
+          }
+        }
+      },
+      thumbs: {
+        swiper: gThumbSlider,
+        watchSlidesProgress: true
+      }
+    });
+
+    if (window.innerWidth <= 1279) {
+      onSlideChange(mobBottleSlider, sliderBottle);
+      onSlideChange(sliderBottle, mobBottleSlider);
+    }
+
+    sliders.forEach(function (element) {
+      onSlideChange(sliderBottle, element);
+    });
+
+    if (window.innerWidth <= 768) {
+      sliders.forEach(function (el) {
+        onSlideChange(mobBottleSlider, el);
+      });
+    }
 
     if (document.querySelector('.js-scroll') && window.innerWidth >= 575) {
       var scrollItems = document.querySelectorAll('.js-scroll-item');
@@ -384,60 +411,41 @@ var getSliders = function getSliders() {
         return evt.currentTarget.parentNode.getBoundingClientRect().left;
       };
 
-      var slideBtns = document.querySelectorAll('.js-slide-btn');
       scroll.style.width = "".concat(scrollItems[0].offsetWidth, "px");
       scrollItems.forEach(function (item) {
         item.addEventListener('click', function (evt) {
           scroll.style.left = "".concat(targetRectX(evt) - parrentRectLeft(evt), "px");
         });
       });
-      slideBtns.forEach(function (e) {
-        e.addEventListener('click', function () {
-          var _iterator = _createForOfIteratorHelper(scrollItems),
-              _step;
+      var observer = new MutationObserver(function (mutations) {
+        var _iterator = _createForOfIteratorHelper(mutations),
+            _step;
 
-          try {
-            for (_iterator.s(); !(_step = _iterator.n()).done;) {
-              var item = _step.value;
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var mutation = _step.value;
 
-              if (item.classList.contains('swiper-slide-thumb-active')) {
-                scroll.style.left = "".concat(item.getBoundingClientRect().x - item.parentNode.getBoundingClientRect().left, "px");
-              }
+            if (mutation.type === 'attributes') {
+              scrollItems.forEach(function (el) {
+                if (el.classList.contains('swiper-slide-thumb-active')) {
+                  scroll.style.left = "".concat(el.getBoundingClientRect().x - el.parentNode.getBoundingClientRect().left, "px");
+                  scroll.style.left = "".concat(el.getBoundingClientRect().x + window.scrollX - el.parentNode.getBoundingClientRect().left, "px");
+                }
+              });
             }
-          } catch (err) {
-            _iterator.e(err);
-          } finally {
-            _iterator.f();
           }
-        });
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+      });
+      observer.observe(document.querySelector('.js-scroll-item'), {
+        attributes: true
       });
     }
   }
-}; // export const getScrollElement = () => {
-// 	if(document.querySelector('.js-scroll') && window.innerWidth >= 575) {
-// 		const scrollItems = document.querySelectorAll('.js-scroll-item');
-// 		const scroll = document.querySelector('.js-scroll');
-// 		const targetRectX = (evt) => evt.currentTarget.getBoundingClientRect().x;
-// 		const parrentRectLeft = (evt) => evt.currentTarget.parentNode.getBoundingClientRect().left;
-// 		const slideBtns = document.querySelectorAll('.js-slide-btn');
-// 		scroll.style.width = `${scrollItems[0].offsetWidth}px`
-// 		scrollItems.forEach(item => {
-// 			item.addEventListener('click', (evt) => {
-// 				scroll.style.left = `${targetRectX(evt) - parrentRectLeft(evt)}px`;
-// 			})
-// 		})
-// 		slideBtns.forEach(e => {
-// 			e.addEventListener('click', () => {
-// 				for(let item of scrollItems) {
-// 					if(item.classList.contains('swiper-slide-thumb-active')){
-// 						scroll.style.left = `${item.getBoundingClientRect().x - item.parentNode.getBoundingClientRect().left}px`;
-// 					}
-// 				}
-// 			})
-// 		})
-// 	}
-// }
-
+};
 
 var getGallery = function getGallery() {
   if (document.querySelector('.js-open-gallery')) {
@@ -1126,8 +1134,7 @@ document.addEventListener('DOMContentLoaded', function () {
   getBrandsList();
   getCatalogList();
   getScrollItem();
-  getSliders(); // getScrollElement();
-
+  getSliders();
   getGallery();
   getPopup();
   getAboutUsSlider();

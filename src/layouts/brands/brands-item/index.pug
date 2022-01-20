@@ -19,10 +19,10 @@ block text
 block page
 	section.brands-item.brands-item--width
 		.container.brands-item__container
-			.brands-item__content-slider.swiper.js-content-slider
+			.brands-item__content-slider.js-content-slider
 				.brands-item__wrap.js-anim-items.js-content-wrap
 					.brands-item__content.js-content-slide
-						.brands-item__img-slider.swiper.js-img-slider
+						.brands-item__img-slider.swiper.js-img-slider.js-b-item-slider
 							.brands-item__img-wrapper.swiper-wrapper
 								.brands-item__img.swiper-slide
 									img(src=`${baseDir}/img/bg-slide.jpg`, alt="")
@@ -30,7 +30,7 @@ block page
 									img(src=`${baseDir}/img/bg-brands.jpg`, alt="")
 								.brands-item__img.swiper-slide
 									img(src=`${baseDir}/img/russkiy-standart-original.jpg`, alt="")
-						.brands-item__text-slider.swiper.js-text-slider
+						.brands-item__text-slider.swiper.js-text-slider.js-b-item-slider
 							.brands-item__text-wrapper.swiper-wrapper
 								.brands-item__text-block.js-anim-text.swiper-slide
 									h2.brands-item__title Russian Standard <span class="brands-item__title--color">Original</span>
@@ -51,6 +51,8 @@ block page
 									+picture('rs-bottle', '', baseDir)
 								.brands-item__mob-img.swiper-slide
 									+picture('rs-test', '', baseDir)
+								.brands-item__mob-img.swiper-slide
+									+picture('talka-bottle', '', baseDir)
 						button.brands-item__btn.brands-item__btn--mobile.js-mob-next-btn
 		button.brands-item__nav-btn.brands-item__nav-btn--prev.js-item-prev.js-slide-btn
 			svg(width="14" height="9").brands-item__icon
