@@ -111,9 +111,7 @@ export const getSliders = () => {
 		if(document.querySelector('.js-scroll') && window.innerWidth >= 575) {
 			const scrollItems = document.querySelectorAll('.js-scroll-item');
 			const scroll = document.querySelector('.js-scroll');
-
-			let transformElement = thumbsWrapper.style.transform;
-			let [tx, ty, tz] = transformElement.match(/-*\d+(?=px)/g);
+			const rectPoitn = document.querySelector('.js-rect-point');
 
 			scroll.style.width = `${scrollItems[0].offsetWidth}px`
 
@@ -121,8 +119,10 @@ export const getSliders = () => {
 				for (let mutation of mutations){
 					if (mutation.type === 'attributes'){
 						scrollItems.forEach(el => {
-							if (el.classList.contains('swiper-slide-thumb-active')) {
-								scroll.style.left = `${el.getBoundingClientRect().x - tx}px`;
+							if (window.innerWidth < 1280 && el.classList.contains('swiper-slide-thumb-active')) {
+								scroll.style.left = `${el.getBoundingClientRect().x}px`;
+							} else if (window.innerWidth >= 1280 && el.classList.contains('swiper-slide-thumb-active')) {
+								scroll.style.left = `${el.getBoundingClientRect().x - el.parentNode.getBoundingClientRect().left}px`;
 							}
 						})
 					}
@@ -133,8 +133,10 @@ export const getSliders = () => {
 				for (const mutation of mutations) {
 					if (mutation.type === 'attributes'){
 						scrollItems.forEach(el => {
-							if (el.classList.contains('swiper-slide-thumb-active')) {
-								scroll.style.left = `${el.getBoundingClientRect().x - tx}px`;
+							if (window.innerWidth < 1280 && el.classList.contains('swiper-slide-thumb-active')) {
+								scroll.style.left = `${el.getBoundingClientRect().x}px`;
+							} else if (window.innerWidth >= 1280 && el.classList.contains('swiper-slide-thumb-active')) {
+								scroll.style.left = `${el.getBoundingClientRect().x - rectPoitn.getBoundingClientRect().right}px`;
 							}
 						})
 					}
