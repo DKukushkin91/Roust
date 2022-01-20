@@ -8,11 +8,19 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 // Функция прокрутки с контролем скорости
 var getScrollTo = function getScrollTo(to) {
@@ -294,6 +302,7 @@ var getSliders = function getSliders() {
   if (document.querySelector('.brands-item__wrap')) {
     var imgItemSlider = document.querySelector('.js-top-slider');
     var thumbSlider = document.querySelector('.js-thumbs-slider');
+    var thumbsWrapper = document.querySelector('.js-thumbs-wrapper');
     var mobileSlider = document.querySelector('.js-mob-slider');
     var contentSliderMob = document.querySelector('.js-content-slider');
     var contentSliderWrap = contentSliderMob.querySelector('.js-content-wrap');
@@ -402,21 +411,15 @@ var getSliders = function getSliders() {
     if (document.querySelector('.js-scroll') && window.innerWidth >= 575) {
       var scrollItems = document.querySelectorAll('.js-scroll-item');
       var scroll = document.querySelector('.js-scroll');
+      var transformElement = thumbsWrapper.style.transform;
 
-      var targetRectX = function targetRectX(evt) {
-        return evt.currentTarget.getBoundingClientRect().x;
-      };
-
-      var parrentRectLeft = function parrentRectLeft(evt) {
-        return evt.currentTarget.parentNode.getBoundingClientRect().left;
-      };
+      var _transformElement$mat = transformElement.match(/-*\d+(?=px)/g),
+          _transformElement$mat2 = _slicedToArray(_transformElement$mat, 3),
+          tx = _transformElement$mat2[0],
+          ty = _transformElement$mat2[1],
+          tz = _transformElement$mat2[2];
 
       scroll.style.width = "".concat(scrollItems[0].offsetWidth, "px");
-      scrollItems.forEach(function (item) {
-        item.addEventListener('click', function (evt) {
-          scroll.style.left = "".concat(targetRectX(evt) - parrentRectLeft(evt), "px");
-        });
-      });
       var observer = new MutationObserver(function (mutations) {
         var _iterator = _createForOfIteratorHelper(mutations),
             _step;
@@ -428,8 +431,7 @@ var getSliders = function getSliders() {
             if (mutation.type === 'attributes') {
               scrollItems.forEach(function (el) {
                 if (el.classList.contains('swiper-slide-thumb-active')) {
-                  scroll.style.left = "".concat(el.getBoundingClientRect().x - el.parentNode.getBoundingClientRect().left, "px");
-                  scroll.style.left = "".concat(el.getBoundingClientRect().x + window.scrollX - el.parentNode.getBoundingClientRect().left, "px");
+                  scroll.style.left = "".concat(el.getBoundingClientRect().x - tx, "px");
                 }
               });
             }
@@ -439,6 +441,31 @@ var getSliders = function getSliders() {
         } finally {
           _iterator.f();
         }
+      });
+      var transformObserver = new MutationObserver(function (mutations) {
+        var _iterator2 = _createForOfIteratorHelper(mutations),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var mutation = _step2.value;
+
+            if (mutation.type === 'attributes') {
+              scrollItems.forEach(function (el) {
+                if (el.classList.contains('swiper-slide-thumb-active')) {
+                  scroll.style.left = "".concat(el.getBoundingClientRect().x - tx, "px");
+                }
+              });
+            }
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+      });
+      transformObserver.observe(thumbsWrapper, {
+        attributes: true
       });
       observer.observe(document.querySelector('.js-scroll-item'), {
         attributes: true
@@ -760,21 +787,21 @@ var getPopup = function getPopup() {
         });
       };
 
-      var _iterator2 = _createForOfIteratorHelper(buttons),
-          _step2;
+      var _iterator3 = _createForOfIteratorHelper(buttons),
+          _step3;
 
       try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var button = _step2.value;
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var button = _step3.value;
           button.addEventListener('click', function (evt) {
             evt.preventDefault();
             appendElement();
           });
         }
       } catch (err) {
-        _iterator2.e(err);
+        _iterator3.e(err);
       } finally {
-        _iterator2.f();
+        _iterator3.f();
       }
     })();
   }
