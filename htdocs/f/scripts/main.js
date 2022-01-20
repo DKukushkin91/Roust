@@ -441,6 +441,24 @@ var getSliders = function getSliders() {
 
 var getGallery = function getGallery() {
   if (document.querySelector('.js-open-gallery')) {
+    var calcImg = function calcImg(i) {
+      var pictureAll = document.querySelectorAll('.project__img-several img');
+      var pictureLast = pictureAll[i];
+      var pictureOther = "<a class=\"project__img-link\" href=\"#\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"project__img-text\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"project__img-number\"></div>\u0444\u043E\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0439\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t".concat(pictureAll[i].outerHTML, "\n\t\t\t\t\t\t\t\t\t</a>");
+      pictureLast.outerHTML = pictureOther;
+      var pictureNumder = document.querySelector('.project__img-number');
+      pictureNumder.innerHTML = '+' + (pictureAll.length - i);
+    };
+
+    if (document.body.clientWidth > 959.9) {
+      calcImg(3);
+    } else if (document.body.clientWidth <= 574.9) {
+      calcImg(1);
+    } else if (document.body.clientWidth <= 959.9) {
+      calcImg(2);
+    } // window.addEventListener('resize', calcImg())
+
+
     var body = document.querySelector('body');
     var buttons = document.querySelectorAll('.js-open-gallery');
     var elementTemplate = document.querySelector('.js-gallery-template').content.querySelector('.js-gallery-container');
