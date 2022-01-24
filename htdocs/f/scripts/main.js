@@ -794,6 +794,40 @@ var getPopup = function getPopup() {
         setTimeout(function () {
           return changeActiveClass(popupForm, 'popup-form');
         });
+        popupForm.noValidate = true;
+
+        var validateForm = function validateForm(evt) {
+          var form = evt.target;
+          var field = Array.from(form.elements);
+          var select = Array.from(document.querySelectorAll('.js-select-native'));
+          field.forEach(function (i) {
+            i.setCustomValidity('');
+            i.parentElement.classList.remove('invalid');
+          });
+          select.forEach(function (i) {
+            i.setCustomValidity('');
+            i.parentElement.parentElement.classList.remove('invalid');
+          });
+          select.forEach(function (el) {
+            if (el.options[el.selectedIndex].value === 'select') {
+              evt.preventDefault();
+              evt.stopImmediatePropagation();
+              el.parentElement.parentElement.classList.add('invalid');
+            }
+          });
+
+          if (!form.checkValidity()) {
+            evt.preventDefault();
+            evt.stopImmediatePropagation();
+            field.forEach(function (i) {
+              if (!i.checkValidity()) {
+                i.parentElement.classList.add('invalid');
+              }
+            });
+          }
+        };
+
+        popupForm.addEventListener('submit', validateForm);
       };
 
       var _iterator3 = _createForOfIteratorHelper(buttons),

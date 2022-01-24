@@ -197,15 +197,18 @@ block templates
 					.popup-form__input-group
 						input#first-name.popup-form__input(type="text", name="first-name" required)
 						label.popup-form__label(for="first-name") First name
+						p.popup-form__error-text Please enter your First name.
 					.popup-form__input-group
 						input#surname.popup-form__input(type="text", name="surname")
 						label.popup-form__label(for="surname") Surname
 					.popup-form__input-group
 						input#email.popup-form__input(type="email", name="email" required)
 						label.popup-form__label(for="email") Email
+						p.popup-form__error-text Please enter your email.
 					.popup-form__input-group
 						input#c-email.popup-form__input(type="email", name="email" required)
 						label.popup-form__label(for="c-email") Confirm email
+						p.popup-form__error-text Please confirm your email.
 
 					+selectHybrid('company', 'Application for company', 'Select company...', ['ABC technologies', 'Roust', 'Test Company'], 'required')
 					+selectHybrid('country', 'Country', 'Select country...', ['United Kingdom', 'USA', 'Russia'], 'required')
@@ -213,6 +216,7 @@ block templates
 					.popup-form__input-group.popup-form__input-group--textarea
 						textarea#textarea.popup-form__textarea(name="cover", required)
 						label.popup-form__label(for="textarea") Cover letter
+						p.popup-form__error-text Please enter your cover letter.
 
 					p.popup-form__text <span class='popup-form__text popup-form__text--color'>*</span> All fields are required
 
@@ -220,6 +224,7 @@ block templates
 						input#upload.popup-form__upload-input(type="file", name="upload-file" required)
 						label.popup-form__upload-label(for="upload") Upload CV *
 						button.popup-form__btn(type="submit") Submit
+						p.popup-form__error-text Please upload your CV.
 
 	template.js-about-template
 		.side

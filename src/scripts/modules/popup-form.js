@@ -46,7 +46,47 @@ export const getPopup = () => {
 			body.classList.add('lock-scroll');
 
 			const popupForm = document.querySelector('.js-popup-form');
-			setTimeout(()=>changeActiveClass(popupForm, 'popup-form'))
+
+			setTimeout(()=>changeActiveClass(popupForm, 'popup-form'));
+
+			popupForm.noValidate = true;
+
+			const validateForm = (evt) => {
+				const form = evt.target;
+				const field = Array.from(form.elements);
+				const select = Array.from(document.querySelectorAll('.js-select-native'));
+
+				field.forEach(i => {
+					i.setCustomValidity('');
+					i.parentElement.classList.remove('invalid');
+				});
+
+				select.forEach(i => {
+					i.setCustomValidity('');
+					i.parentElement.parentElement.classList.remove('invalid')
+				});
+
+				select.forEach(el => {
+					if(el.options[el.selectedIndex].value === 'select') {
+						evt.preventDefault();
+						evt.stopImmediatePropagation();
+						el.parentElement.parentElement.classList.add('invalid');
+					}
+				})
+
+				if(!form.checkValidity()){
+					evt.preventDefault();
+					evt.stopImmediatePropagation();
+
+					field.forEach(i => {
+						if(!i.checkValidity()){
+							i.parentElement.classList.add('invalid');
+						}
+					})
+				}
+			}
+
+			popupForm.addEventListener('submit', validateForm);
 		}
 
 		for(let button of buttons){
