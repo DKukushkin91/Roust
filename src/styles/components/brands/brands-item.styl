@@ -30,8 +30,11 @@
 			width 100vw
 
 	&__breadcrumbs
-		@media $xl
-			padding-bottom get-vw(56, 1680)
+		@media (min-width: 1681px)
+			padding-bottom 56px
+
+		@media (min-width: 1280px) and (max-width: 1680px)
+			padding-bottom 3.333333vh
 		@media $md
 			display: none
 
