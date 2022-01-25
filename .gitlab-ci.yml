@@ -8,6 +8,7 @@ promodev:
   tags: [dinamic php7.4 bitrix]
   script:
     - rsync -azvh ./htdocs $PATH_PROJ/$NAME
+    - rsync -azvh ./src $PATH_PROJ/$NAME
   only:
     - master
 
