@@ -1,0 +1,16 @@
+stages:
+    - deploydev
+variables:
+    NAME: $CI_PROJECT_NAME
+    PATH_PROJ: /vault/www/dev/auto
+    PATH_PROD: /vault/www/prod
+    POSTFIX_DIR: htdocs
+promodev:
+  stage: deploydev
+  tags: [dinamic php7.4 bitrix]
+  script:
+    - ls -la
+    - pwd
+  only:
+    - master
+
