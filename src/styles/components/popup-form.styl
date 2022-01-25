@@ -243,5 +243,11 @@
 		opacity: 0
 		transition: all 1s ease 0s
 
+		@media $md
+			bottom 0
+
+	&__inner .popup-form__error-text
+		bottom: -20px
+
 .invalid .popup-form__error-text
 	opacity: 1;
