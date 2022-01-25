@@ -8,7 +8,7 @@ promodev:
   stage: deploydev
   tags: [dinamic php7.4 bitrix]
   script:
-    - rsync -azvh ./htdocs $PATH_PROJ/$POSTFIX_DIR
+    - rsync -azvh ./htdocs $PATH_PROJ/$NAME/$POSTFIX_DIR
   only:
     - master
 
