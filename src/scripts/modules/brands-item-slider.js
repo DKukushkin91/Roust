@@ -2,6 +2,7 @@ export const getSliders = () => {
 	if(document.querySelector('.brands-item__wrap')) {
 		const imgItemSlider = document.querySelector('.js-top-slider');
 		const thumbSlider = document.querySelector('.js-thumbs-slider');
+		const thumbsWrapper = document.querySelector('.js-thumbs-wrapper');
 		const mobileSlider = document.querySelector('.js-mob-slider');
 		const contentSliderMob = document.querySelector('.js-content-slider');
 		const contentSliderWrap = contentSliderMob.querySelector('.js-content-wrap');
@@ -110,30 +111,39 @@ export const getSliders = () => {
 		if(document.querySelector('.js-scroll') && window.innerWidth >= 575) {
 			const scrollItems = document.querySelectorAll('.js-scroll-item');
 			const scroll = document.querySelector('.js-scroll');
-			const targetRectX = (evt) => evt.currentTarget.getBoundingClientRect().x;
-			const parrentRectLeft = (evt) => evt.currentTarget.parentNode.getBoundingClientRect().left;
+			const rectPoitn = document.querySelector('.js-rect-point');
 
 			scroll.style.width = `${scrollItems[0].offsetWidth}px`
 
-			scrollItems.forEach(item => {
-				item.addEventListener('click', (evt) => {
-					scroll.style.left = `${targetRectX(evt) - parrentRectLeft(evt)}px`;
-				})
-			})
-
 			let observer = new MutationObserver ((mutations) => {
-				for (let mutation of mutations) {
-					if (mutation.type === 'attributes') {
+				for (let mutation of mutations){
+					if (mutation.type === 'attributes'){
 						scrollItems.forEach(el => {
-							if (el.classList.contains('swiper-slide-thumb-active')) {
+							if (window.innerWidth < 1280 && el.classList.contains('swiper-slide-thumb-active')) {
+								scroll.style.left = `${el.getBoundingClientRect().x}px`;
+							} else if (window.innerWidth >= 1280 && el.classList.contains('swiper-slide-thumb-active')) {
 								scroll.style.left = `${el.getBoundingClientRect().x - el.parentNode.getBoundingClientRect().left}px`;
-								scroll.style.left = `${el.getBoundingClientRect().x + window.scrollX - el.parentNode.getBoundingClientRect().left}px`;
 							}
 						})
 					}
 				}
 			});
 
+			let transformObserver = new MutationObserver ((mutations) => {
+				for (const mutation of mutations) {
+					if (mutation.type === 'attributes'){
+						scrollItems.forEach(el => {
+							if (window.innerWidth < 1280 && el.classList.contains('swiper-slide-thumb-active')) {
+								scroll.style.left = `${el.getBoundingClientRect().x}px`;
+							} else if (window.innerWidth >= 1280 && el.classList.contains('swiper-slide-thumb-active')) {
+								scroll.style.left = `${el.getBoundingClientRect().x - rectPoitn.getBoundingClientRect().right}px`;
+							}
+						})
+					}
+				}
+			})
+
+			transformObserver.observe(thumbsWrapper, {attributes: true});
 			observer.observe(document.querySelector('.js-scroll-item'), {attributes: true});
 		}
 	}

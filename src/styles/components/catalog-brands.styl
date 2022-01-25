@@ -1,7 +1,14 @@
 .catalog-brands
+    & .breadcrumbs__item
+      color: $m-grey
+
+    & .breadcrumbs__item:last-child
+      color $d-grey
+
     &.brands
         @media $md
             padding 31px 0 25px 0
+
     &.brands .container
         padding 0
     & .brands__list

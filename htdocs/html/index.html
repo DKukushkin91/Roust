@@ -13,7 +13,14 @@
         <main class="main">
           <section class="sub">
             <div class="container">
-              <h1 class="sub__title"><img src="/f/img/roust-logo.svg"></h1>
+              <h1 class="sub__title">
+                <picture>
+                  <source srcset="/f/img/responsive/m-roust-logo@1x.webp 1x, /f/img/responsive/m-roust-logo@2x.webp 2x" media="(max-width: 639px)" type="image/webp"/>
+                  <source srcset="/f/img/responsive/m-roust-logo@1x.png 1x, /f/img/responsive/roust-logo@2x.png 2x" media="(max-width: 639px)" type="image/png"/>
+                  <source srcset="/f/img/responsive/roust-logo@1x.webp 1x, /f/img/responsive/roust-logo@2x.webp 2x" type="image/webp"/>
+                  <source srcset="/f/img/responsive/roust-logo@1x.png 1x, /f/img/responsive/roust-logo@2x.png 2x" type="image/png"/><img src="/f/img/responsive/roust-logo@1x.png" alt=""/>
+                </picture>
+              </h1>
               <ul class="sub__list">
                 <li class="sub__item"><a class="sub__link" href="main-page/index.html">Main page</a></li>
                 <li class="sub__item"><a class="sub__link" href="brands/index.html">Brands</a></li>
@@ -290,6 +297,28 @@
         <p class="g-template__text">The second vodka producer, second largest vodka</p>
       </li>
     </ul>
+    <ul class="g-template__list swiper-wrapper js-g-list">
+      <li class="g-template__item swiper-slide">
+        <div class="g-template__img"><img src="/f/img/sp-content-2.jpg" alt=""></div>
+        <p class="g-template__title">Topaz distillery.</p>
+        <p class="g-template__text">Test</p>
+      </li>
+      <li class="g-template__item swiper-slide">
+        <div class="g-template__img"><img src="/f/img/sp-content-3.jpg" alt=""></div>
+        <p class="g-template__title">Topaz distillery.</p>
+        <p class="g-template__text">Test</p>
+      </li>
+      <li class="g-template__item swiper-slide">
+        <div class="g-template__img"><img src="/f/img/sp-content-4.jpg" alt=""></div>
+        <p class="g-template__title">Topaz distillery.</p>
+        <p class="g-template__text">Test</p>
+      </li>
+      <li class="g-template__item swiper-slide">
+        <div class="g-template__img"><img src="/f/img/sp-content-5.jpg" alt=""></div>
+        <p class="g-template__title">Topaz distillery.</p>
+        <p class="g-template__text">Test</p>
+      </li>
+    </ul>
   </template>
   <template class="popup-form js-popup-form-template">
     <div class="popup-form__wrap js-popup-wrap">
@@ -304,6 +333,7 @@
           <div class="popup-form__input-group">
             <input class="popup-form__input" id="first-name" type="text" name="first-name" required>
             <label class="popup-form__label" for="first-name">First name</label>
+            <p class="popup-form__error-text">Please enter your First name.</p>
           </div>
           <div class="popup-form__input-group">
             <input class="popup-form__input" id="surname" type="text" name="surname">
@@ -312,10 +342,12 @@
           <div class="popup-form__input-group">
             <input class="popup-form__input" id="email" type="email" name="email" required>
             <label class="popup-form__label" for="email">Email</label>
+            <p class="popup-form__error-text">Please enter your email.</p>
           </div>
           <div class="popup-form__input-group">
             <input class="popup-form__input" id="c-email" type="email" name="email" required>
             <label class="popup-form__label" for="c-email">Confirm email</label>
+            <p class="popup-form__error-text">Please confirm your email.</p>
           </div>
           <div class="m-select">
             <div class="m-select__wrapper">
@@ -337,6 +369,7 @@
                 </svg>
               </div>
             </div><span class="m-select__label" id="company">Application for company</span>
+            <p class="popup-form__error-text">Please choose your company.</p>
           </div>
           <div class="m-select">
             <div class="m-select__wrapper">
@@ -358,16 +391,19 @@
                 </svg>
               </div>
             </div><span class="m-select__label" id="country">Country</span>
+            <p class="popup-form__error-text">Please choose your country.</p>
           </div>
           <div class="popup-form__input-group popup-form__input-group--textarea">
             <textarea class="popup-form__textarea" id="textarea" name="cover" required></textarea>
             <label class="popup-form__label" for="textarea">Cover letter</label>
+            <p class="popup-form__error-text">Please enter your cover letter.</p>
           </div>
           <p class="popup-form__text"><span class='popup-form__text popup-form__text--color'>*</span> All fields are required</p>
           <div class="popup-form__inner">
             <input class="popup-form__upload-input" id="upload" type="file" name="upload-file" required>
             <label class="popup-form__upload-label" for="upload">Upload CV *</label>
             <button class="popup-form__btn" type="submit">Submit</button>
+            <p class="popup-form__error-text">Please upload your CV.</p>
           </div>
         </fieldset>
       </form>

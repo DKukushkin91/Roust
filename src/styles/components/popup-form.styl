@@ -108,8 +108,9 @@
 
 	&__input-group
 		display flex
-		flex-direction column-reverse
+		flex-direction column
 		align-items flex-start
+		position relative
 
 		@media $md
 			padding-bottom 20px
@@ -138,6 +139,7 @@
 		font-weight 500
 		color $d-grey
 		width 100%
+		order: 2
 
 		&::placeholder
 			fz-15()
@@ -169,6 +171,7 @@
 			border-radius: 4px
 			background: $h-grey
 			padding: 11px 17px
+			order 2
 
 	&__text
 		fz-13()
@@ -190,6 +193,7 @@
 		display flex
 		flex-direction row
 		justify-content space-between
+		position relative
 
 	&__upload-input
 			width: 0.1px
@@ -215,6 +219,7 @@
 		max-width: 210px
 
 	&__btn
+		fz-15()
 		background $orange
 		border: 0
 		border-radius: 0
@@ -222,9 +227,27 @@
 		text-align: center
 		width: 100%
 		max-width: 173px
-		fz-15()
 		line-height 18px
 		font-weight 700
 		font-family $Inter
 		color: $white
 		cursor pointer
+
+	&__error-text
+		fz-13()
+		text-align: left
+		color: red
+		position absolute
+		bottom -20px
+		left 0
+		opacity: 0
+		transition: all 1s ease 0s
+
+		@media $md
+			bottom 0
+
+	&__inner .popup-form__error-text
+		bottom: -20px
+
+.invalid .popup-form__error-text
+	opacity: 1;

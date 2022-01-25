@@ -1,0 +1,14 @@
+stages:
+    - deploydev
+variables:
+    NAME: $CI_PROJECT_NAME
+    PATH_PROJ: /vault/www/dev/auto
+promodev:
+  stage: deploydev
+  tags: [dinamic php7.4 bitrix]
+  script:
+    - rsync -azvh ./htdocs $PATH_PROJ/$NAME
+    - rsync -azvh ./src $PATH_PROJ/$NAME
+  only:
+    - master
+

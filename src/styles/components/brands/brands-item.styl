@@ -30,8 +30,11 @@
 			width 100vw
 
 	&__breadcrumbs
-		@media $xl
-			padding-bottom get-vw(56, 1680)
+		@media (min-width: 1681px)
+			padding-bottom 56px
+
+		@media (min-width: 1280px) and (max-width: 1680px)
+			padding-bottom 3.333333vh
 		@media $md
 			display: none
 
@@ -46,6 +49,9 @@
 			margin: 0
 			margin-bottom 1px
 			border-bottom: 1px solid #e6e8ea
+
+			@media $xl
+				overflow hidden
 
 	&__header-wrap
 		padding-bottom 0
@@ -248,6 +254,7 @@
 		max-width: 360px
 		text-align: left
 		flex: 1 0 360px
+		border-right: 1px solid #e6e8ea
 
 		@media $lg
 			width 100%
@@ -276,6 +283,7 @@
 
 	&__slide
 		flex: 1
+		overflow hidden
 
 		&.swiper
 			width 100%
@@ -294,6 +302,10 @@
 		// flex: 1
 		max-width: 360px
 		border-left: 1px solid #e6e8ea
+
+		@media $xl
+			&:first-child
+				border-left: 0
 
 		@media $lg
 			border-left: 0
@@ -378,6 +390,9 @@
 	&__scroll-wrap
 		width: 100%
 		position relative
+
+		@media $xl
+			overflow hidden
 
 		// @media (max-width: 640px)
 		// 	overflow: hidden

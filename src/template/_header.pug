@@ -4,10 +4,10 @@ header.header.js-animate-header
 			.header__logo-wrap
 				if (page != 'main-page')
 					a.header__link(href=`../main-page/index.html`)
-						img(src=`/f/img/roust-logo.png`)
+						+picture('roust-logo', '', baseDir)
 				if (page == 'main-page')
 					a.header__link(href="")
-						img(src=`/f/img/roust-logo.png`)
+						+picture('roust-logo', '', baseDir)
 			button.header__burger-btn.js-burger-btn
 				span.header__burger-menu
 			.header__content-box

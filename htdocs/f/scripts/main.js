@@ -294,6 +294,7 @@ var getSliders = function getSliders() {
   if (document.querySelector('.brands-item__wrap')) {
     var imgItemSlider = document.querySelector('.js-top-slider');
     var thumbSlider = document.querySelector('.js-thumbs-slider');
+    var thumbsWrapper = document.querySelector('.js-thumbs-wrapper');
     var mobileSlider = document.querySelector('.js-mob-slider');
     var contentSliderMob = document.querySelector('.js-content-slider');
     var contentSliderWrap = contentSliderMob.querySelector('.js-content-wrap');
@@ -402,21 +403,8 @@ var getSliders = function getSliders() {
     if (document.querySelector('.js-scroll') && window.innerWidth >= 575) {
       var scrollItems = document.querySelectorAll('.js-scroll-item');
       var scroll = document.querySelector('.js-scroll');
-
-      var targetRectX = function targetRectX(evt) {
-        return evt.currentTarget.getBoundingClientRect().x;
-      };
-
-      var parrentRectLeft = function parrentRectLeft(evt) {
-        return evt.currentTarget.parentNode.getBoundingClientRect().left;
-      };
-
+      var rectPoitn = document.querySelector('.js-rect-point');
       scroll.style.width = "".concat(scrollItems[0].offsetWidth, "px");
-      scrollItems.forEach(function (item) {
-        item.addEventListener('click', function (evt) {
-          scroll.style.left = "".concat(targetRectX(evt) - parrentRectLeft(evt), "px");
-        });
-      });
       var observer = new MutationObserver(function (mutations) {
         var _iterator = _createForOfIteratorHelper(mutations),
             _step;
@@ -427,9 +415,10 @@ var getSliders = function getSliders() {
 
             if (mutation.type === 'attributes') {
               scrollItems.forEach(function (el) {
-                if (el.classList.contains('swiper-slide-thumb-active')) {
+                if (window.innerWidth < 1280 && el.classList.contains('swiper-slide-thumb-active')) {
+                  scroll.style.left = "".concat(el.getBoundingClientRect().x, "px");
+                } else if (window.innerWidth >= 1280 && el.classList.contains('swiper-slide-thumb-active')) {
                   scroll.style.left = "".concat(el.getBoundingClientRect().x - el.parentNode.getBoundingClientRect().left, "px");
-                  scroll.style.left = "".concat(el.getBoundingClientRect().x + window.scrollX - el.parentNode.getBoundingClientRect().left, "px");
                 }
               });
             }
@@ -440,6 +429,33 @@ var getSliders = function getSliders() {
           _iterator.f();
         }
       });
+      var transformObserver = new MutationObserver(function (mutations) {
+        var _iterator2 = _createForOfIteratorHelper(mutations),
+            _step2;
+
+        try {
+          for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+            var mutation = _step2.value;
+
+            if (mutation.type === 'attributes') {
+              scrollItems.forEach(function (el) {
+                if (window.innerWidth < 1280 && el.classList.contains('swiper-slide-thumb-active')) {
+                  scroll.style.left = "".concat(el.getBoundingClientRect().x, "px");
+                } else if (window.innerWidth >= 1280 && el.classList.contains('swiper-slide-thumb-active')) {
+                  scroll.style.left = "".concat(el.getBoundingClientRect().x - rectPoitn.getBoundingClientRect().right, "px");
+                }
+              });
+            }
+          }
+        } catch (err) {
+          _iterator2.e(err);
+        } finally {
+          _iterator2.f();
+        }
+      });
+      transformObserver.observe(thumbsWrapper, {
+        attributes: true
+      });
       observer.observe(document.querySelector('.js-scroll-item'), {
         attributes: true
       });
@@ -449,23 +465,25 @@ var getSliders = function getSliders() {
 
 var getGallery = function getGallery() {
   if (document.querySelector('.js-open-gallery')) {
-    var calcImg = function calcImg(i) {
-      var pictureAll = document.querySelectorAll('.project__img-several img');
-      var pictureLast = pictureAll[i];
-      var pictureOther = "<a class=\"project__img-link\" href=\"#\">\n\t\t\t\t\t\t\t\t\t\t<div class=\"project__img-text\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"project__img-number\"></div>\u0444\u043E\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0439\n\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t".concat(pictureAll[i].outerHTML, "\n\t\t\t\t\t\t\t\t\t</a>");
-      pictureLast.outerHTML = pictureOther;
-      var pictureNumder = document.querySelector('.project__img-number');
-      pictureNumder.innerHTML = '+' + (pictureAll.length - i);
-    };
+    if (document.querySelector('.js-gallery-counter')) {
+      var calcImg = function calcImg(i) {
+        var pictureAll = document.querySelectorAll('.project__img-several img');
+        var pictureLast = pictureAll[i];
+        var pictureOther = "<a class=\"project__img-link\" href=\"#\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"project__img-text\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"project__img-number\"></div>\u0444\u043E\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0439\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t".concat(pictureAll[i].outerHTML, "\n\t\t\t\t\t\t\t\t\t\t</a>");
+        pictureLast.outerHTML = pictureOther;
+        var pictureNumder = document.querySelector('.project__img-number');
+        pictureNumder.innerHTML = '+' + (pictureAll.length - i);
+      };
 
-    if (document.body.clientWidth > 959.9) {
-      calcImg(3);
-    } else if (document.body.clientWidth <= 574.9) {
-      calcImg(1);
-    } else if (document.body.clientWidth <= 959.9) {
-      calcImg(2);
-    } // window.addEventListener('resize', calcImg())
+      if (document.body.clientWidth > 959.9) {
+        calcImg(3);
+      } else if (document.body.clientWidth <= 574.9) {
+        calcImg(1);
+      } else if (document.body.clientWidth <= 959.9) {
+        calcImg(2);
+      } // window.addEventListener('resize', calcImg())
 
+    }
 
     var body = document.querySelector('body');
     var buttons = document.querySelectorAll('.js-open-gallery');
@@ -776,23 +794,57 @@ var getPopup = function getPopup() {
         setTimeout(function () {
           return changeActiveClass(popupForm, 'popup-form');
         });
+        popupForm.noValidate = true;
+
+        var validateForm = function validateForm(evt) {
+          var form = evt.target;
+          var field = Array.from(form.elements);
+          var select = Array.from(document.querySelectorAll('.js-select-native'));
+          field.forEach(function (i) {
+            i.setCustomValidity('');
+            i.parentElement.classList.remove('invalid');
+          });
+          select.forEach(function (i) {
+            i.setCustomValidity('');
+            i.parentElement.parentElement.classList.remove('invalid');
+          });
+          select.forEach(function (el) {
+            if (el.options[el.selectedIndex].value === 'select') {
+              evt.preventDefault();
+              evt.stopImmediatePropagation();
+              el.parentElement.parentElement.classList.add('invalid');
+            }
+          });
+
+          if (!form.checkValidity()) {
+            evt.preventDefault();
+            evt.stopImmediatePropagation();
+            field.forEach(function (i) {
+              if (!i.checkValidity()) {
+                i.parentElement.classList.add('invalid');
+              }
+            });
+          }
+        };
+
+        popupForm.addEventListener('submit', validateForm);
       };
 
-      var _iterator2 = _createForOfIteratorHelper(buttons),
-          _step2;
+      var _iterator3 = _createForOfIteratorHelper(buttons),
+          _step3;
 
       try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var button = _step2.value;
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var button = _step3.value;
           button.addEventListener('click', function (evt) {
             evt.preventDefault();
             appendElement();
           });
         }
       } catch (err) {
-        _iterator2.e(err);
+        _iterator3.e(err);
       } finally {
-        _iterator2.f();
+        _iterator3.f();
       }
     })();
   }
