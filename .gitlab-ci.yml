@@ -3,12 +3,11 @@ stages:
 variables:
     NAME: $CI_PROJECT_NAME
     PATH_PROJ: /vault/www/dev/auto
-    POSTFIX_DIR: htdocs
 promodev:
   stage: deploydev
   tags: [dinamic php7.4 bitrix]
   script:
-    - rsync -azvh ./htdocs $PATH_PROJ/$NAME/$POSTFIX_DIR
+    - rsync -azvh ./htdocs $PATH_PROJ/$NAME
   only:
     - master
 
