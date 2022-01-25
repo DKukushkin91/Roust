@@ -393,7 +393,14 @@
 		position: absolute
 		top: 0
 		right: 0
-		max-width 226px
+		width 100%
+		display flex
+		justify-content: center
+
+		& picture
+			width 100%
+			max-width: 226px
+			transition: all 1s cubic-bezier(.55,.06,.68,.19) 0s
 
 	&__scroll-btn
 		position fixed
@@ -437,12 +444,8 @@
 		z-index 0
 		top: 0
 		right: 0
-		transition: all 0.6s linear 0s
-		position: relative
-		max-width 226px
-
-		@media (min-width: 1280px) and (max-width: 1680px)
-			max-width: get-vw(226, 1680)
+		width 50%
+		position: absolute
 
 		@media (max-width: 640px)
 			position relative
@@ -452,11 +455,9 @@
 	&__picture--animate.swiper
 		max-width 50%
 		position: absolute
-		// max-width: 14.33333333%
-		// top: -17.33333333%
-
-		// @media (max-width: 1460px)
-		// 	right 7vw
+		right 0
+		top: 0
+		bottom 0
 
 	&__picture--animate > &__img-wrapper.swiper-wrapper
 		align-items flex-end
@@ -466,8 +467,8 @@
 		max-width: 100%
 
 		& picture
-			width 166px
-			margin 0 auto
+			width 16%
+			transition: all 1s ease 0s
 
 	&__img-wrapper.swiper-wrapper
 		align-items: flex-start

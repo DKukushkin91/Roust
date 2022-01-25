@@ -247,11 +247,13 @@ var getScrollItem = function getScrollItem() {
         return e.classList.remove('brands-item__wrap--active');
       });
       header.classList.remove('header__active');
-      imgSize.classList.remove('top__picture--animate');
       scrollBtn.classList.remove('top__scroll-btn--animate');
       animText.forEach(function (e) {
         return e.classList.remove('brands-item__text-block--animate');
       });
+      setTimeout(function () {
+        return imgSize.classList.remove('top__picture--animate');
+      }, 100);
     };
 
     var addClass = function addClass() {
