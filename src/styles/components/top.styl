@@ -322,7 +322,7 @@
 		padding: 28px 53px
 		text-align: center
 
-		@media $xl
+		@media $xl and (max-width: 1680px)
 			padding get-vw(28, 1680) get-vw(53, 1680)
 
 		@media $lg
@@ -337,8 +337,8 @@
 		&:not(:last-child)
 			margin-bottom 57px
 
-			@media $xl
-				margin-bottom get-vw(57, 1680)
+			@media $xl and (max-width: 1920px)
+				margin-bottom 3.3333vh
 
 			@media $lg
 				margin-bottom 0
