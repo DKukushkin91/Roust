@@ -98,8 +98,8 @@
 		display: block
 		position absolute
 		left: 90px
-		top: 50%
-		transform: translate(0, -50%)
+		top: calc(50% - 6px)
+
 		z-index 99999
 		opacity: 0.5
 
@@ -113,7 +113,7 @@
 			opacity: 1
 
 		&--next
-			transform: translate(0, -50%) rotate(-180deg)
+			transform: rotate(-180deg)
 			left: unset
 			right: 90px
 
