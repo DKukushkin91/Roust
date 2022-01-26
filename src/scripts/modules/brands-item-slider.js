@@ -111,40 +111,49 @@ export const getSliders = () => {
 		if(document.querySelector('.js-scroll') && window.innerWidth >= 575) {
 			const scrollItems = document.querySelectorAll('.js-scroll-item');
 			const scroll = document.querySelector('.js-scroll');
-			const rectPoitn = document.querySelector('.js-rect-point');
+			const rectPoint = document.querySelector('.js-rect-point');
+			const configObserver = {attributes: true};
 
-			scroll.style.width = `${scrollItems[0].offsetWidth}px`
+			scroll.style.width = `${scrollItems[0].offsetWidth}px`;
 
-			let observer = new MutationObserver ((mutations) => {
-				for (let mutation of mutations){
+			const observer = new MutationObserver ((mutations) => {
+				for (const mutation of mutations){
 					if (mutation.type === 'attributes'){
 						scrollItems.forEach(el => {
+							let coordinate = window.innerWidth - el.getBoundingClientRect().right;
+
 							if (window.innerWidth < 1280 && el.classList.contains('swiper-slide-thumb-active')) {
 								scroll.style.left = `${el.getBoundingClientRect().x}px`;
 							} else if (window.innerWidth >= 1280 && el.classList.contains('swiper-slide-thumb-active')) {
 								scroll.style.left = `${el.getBoundingClientRect().x - el.parentNode.getBoundingClientRect().left}px`;
+								// if(window.innerWidth <= el.getBoundingClientRect().right){
+								// 	el.parentNode.style = `transform: translate3d(${coordinate}px, 0px, 0px)`;
+								// } else if (rectPoint.getBoundingClientRect().right <= el.getBoundingClientRect().left) {
+								// 	coordinate = rectPoint.getBoundingClientRect().right - el.getBoundingClientRect().left;
+								// 	el.parentNode.style = `transform: translate3d(${coordinate}px, 0px, 0px)`;
+								// }
 							}
 						})
 					}
 				}
 			});
 
-			let transformObserver = new MutationObserver ((mutations) => {
+			const transformObserver = new MutationObserver ((mutations) => {
 				for (const mutation of mutations) {
 					if (mutation.type === 'attributes'){
 						scrollItems.forEach(el => {
 							if (window.innerWidth < 1280 && el.classList.contains('swiper-slide-thumb-active')) {
 								scroll.style.left = `${el.getBoundingClientRect().x}px`;
 							} else if (window.innerWidth >= 1280 && el.classList.contains('swiper-slide-thumb-active')) {
-								scroll.style.left = `${el.getBoundingClientRect().x - rectPoitn.getBoundingClientRect().right}px`;
+								scroll.style.left = `${el.getBoundingClientRect().x - rectPoint.getBoundingClientRect().right}px`;
 							}
 						})
 					}
 				}
 			})
 
-			transformObserver.observe(thumbsWrapper, {attributes: true});
-			observer.observe(document.querySelector('.js-scroll-item'), {attributes: true});
+			transformObserver.observe(thumbsWrapper, configObserver);
+			observer.observe(document.querySelector('.js-scroll-item'), configObserver);
 		}
 	}
 }
