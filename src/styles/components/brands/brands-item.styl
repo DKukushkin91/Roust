@@ -4,7 +4,6 @@
 
 	&--color
 		background $white
-		height: 100%
 
 		@media $sm
 			max-width: 100vw
@@ -51,7 +50,9 @@
 		padding-bottom 0
 
 	&__wrap
-		width: 50%
+		width: 100%
+		display flex
+		flex-direction: row
 		transform: translate(0px, 120%);
 		opacity: 0
 		transition: all 0.8s ease 0s;
@@ -73,13 +74,12 @@
 		margin-top: 0
 
 	&__content
-		width: 100%
+		width: 50%
 		display: grid
 
 		@media $lg
 			display: block
 			height: auto
-			width 50%
 
 		@media (max-width: 640px)
 			order: 1
@@ -88,10 +88,14 @@
 				height: auto
 
 	&__content--mobile
-		display: none
+		display block
+		position absolute
+		top 0
+		right 0
+		bottom 0
 
 		@media $lg
-			display block
+			position relative
 
 		@media (max-width: 640px)
 			order 0
@@ -395,10 +399,10 @@
 			height 100%
 			object-fit: cover
 
-	&__mob-slider
+	&__prod-slider
 		height 100%
 
-	&__mob-img
+	&__prod-img
 		width 100%
 		margin 0 auto
 		display flex

@@ -1,12 +1,11 @@
 export const getSliders = () => {
 	if(document.querySelector('.brands-item__wrap')) {
-		const imgItemSlider = document.querySelector('.js-top-slider');
 		const thumbSlider = document.querySelector('.js-thumbs-slider');
 		const thumbsWrapper = document.querySelector('.js-thumbs-wrapper');
-		const mobileSlider = document.querySelector('.js-mob-slider');
 		const contentSliderMob = document.querySelector('.js-content-slider');
 		const contentSliderWrap = contentSliderMob.querySelector('.js-content-wrap');
 		const contentSlides = contentSliderMob.querySelectorAll('.js-content-slide');
+		const productSlider = document.querySelector('.js-product-slider');
 
 		const onSlideChange = (onElement, moveElement) => {
 			onElement.on('slideChange', () => {
@@ -50,41 +49,21 @@ export const getSliders = () => {
 			}
 		})
 
-		const sliders = new Swiper('.js-b-item-slider', {
+		const getSlider = new Swiper(productSlider, {
 			slidesPerView: 1,
-			allowTouchMove: false,
 			slideToClickedSlide: false,
 			breakpoints: {
-				768: {
+				961: {
+					allowTouchMove:false
+				},
+				960: {
 					allowTouchMove: true
 				},
-
-				769: {
-					navigation: {
-						nextEl: document.querySelector('.js-item-next'),
-						prevEl: document.querySelector('.js-item-prev'),
-					},
-				},
 			},
-		});
 
-		const mobBottleSlider = new Swiper (mobileSlider, {
-			slidesPerView: 1,
-			allowTouchMove: true,
-			slideToClickedSlide: false,
-		})
-
-		const sliderBottle = new Swiper(imgItemSlider, {
-			slidesPerView: 1,
-			allowTouchMove: false,
-			slideToClickedSlide: false,
-			breakpoints: {
-				768: {
-					navigation: {
-						nextEl: document.querySelector('.js-item-next'),
-						prevEl: document.querySelector('.js-item-prev'),
-					},
-				},
+			navigation: {
+				nextEl: document.querySelector('.js-item-next'),
+				prevEl: document.querySelector('.js-item-prev'),
 			},
 
 			thumbs: {
@@ -93,20 +72,15 @@ export const getSliders = () => {
 			},
 		})
 
-		if(window.innerWidth <= 1279) {
-			onSlideChange(mobBottleSlider, sliderBottle);
-			onSlideChange(sliderBottle, mobBottleSlider);
-		}
-
-		sliders.forEach(element => {
-			onSlideChange(sliderBottle, element)
+		const sliders = new Swiper('.js-b-item-slider', {
+			slidesPerView: 1,
+			allowTouchMove: false,
+			slideToClickedSlide: false,
 		});
 
-		if(window.innerWidth <= 768) {
-			sliders.forEach(el => {
-				onSlideChange(mobBottleSlider, el);
-			})
-		}
+		sliders.forEach(element => {
+			onSlideChange(getSlider, element)
+		});
 
 		if(document.querySelector('.js-scroll') && window.innerWidth >= 575) {
 			const scrollItems = document.querySelectorAll('.js-scroll-item');
@@ -120,18 +94,10 @@ export const getSliders = () => {
 				for (const mutation of mutations){
 					if (mutation.type === 'attributes'){
 						scrollItems.forEach(el => {
-							let coordinate = window.innerWidth - el.getBoundingClientRect().right;
-
 							if (window.innerWidth < 1280 && el.classList.contains('swiper-slide-thumb-active')) {
 								scroll.style.left = `${el.getBoundingClientRect().x}px`;
 							} else if (window.innerWidth >= 1280 && el.classList.contains('swiper-slide-thumb-active')) {
 								scroll.style.left = `${el.getBoundingClientRect().x - el.parentNode.getBoundingClientRect().left}px`;
-								// if(window.innerWidth <= el.getBoundingClientRect().right){
-								// 	el.parentNode.style = `transform: translate3d(${coordinate}px, 0px, 0px)`;
-								// } else if (rectPoint.getBoundingClientRect().right <= el.getBoundingClientRect().left) {
-								// 	coordinate = rectPoint.getBoundingClientRect().right - el.getBoundingClientRect().left;
-								// 	el.parentNode.style = `transform: translate3d(${coordinate}px, 0px, 0px)`;
-								// }
 							}
 						})
 					}

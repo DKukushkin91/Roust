@@ -233,6 +233,7 @@ var getScrollItem = function getScrollItem() {
     var main = document.querySelector('.main');
     var animText = document.querySelectorAll('.js-anim-text');
     var itemContainer = document.querySelector('.top__content--brands-item');
+    var productSlider = document.querySelector('.js-product-slider');
 
     var isSeen = function isSeen() {
       return itemContainer.getBoundingClientRect().bottom + 45 <= window.innerHeight;
@@ -251,9 +252,7 @@ var getScrollItem = function getScrollItem() {
       animText.forEach(function (e) {
         return e.classList.remove('brands-item__text-block--animate');
       });
-      setTimeout(function () {
-        return imgSize.classList.remove('top__picture--animate');
-      }, 100);
+      imgSize.classList.remove('top__picture--animate');
     };
 
     var addClass = function addClass() {
@@ -294,13 +293,12 @@ var getScrollItem = function getScrollItem() {
 
 var getSliders = function getSliders() {
   if (document.querySelector('.brands-item__wrap')) {
-    var imgItemSlider = document.querySelector('.js-top-slider');
     var thumbSlider = document.querySelector('.js-thumbs-slider');
     var thumbsWrapper = document.querySelector('.js-thumbs-wrapper');
-    var mobileSlider = document.querySelector('.js-mob-slider');
     var contentSliderMob = document.querySelector('.js-content-slider');
     var contentSliderWrap = contentSliderMob.querySelector('.js-content-wrap');
     var contentSlides = contentSliderMob.querySelectorAll('.js-content-slide');
+    var productSlider = document.querySelector('.js-product-slider');
 
     var onSlideChange = function onSlideChange(onElement, moveElement) {
       onElement.on('slideChange', function () {
@@ -348,59 +346,34 @@ var getSliders = function getSliders() {
         });
       }
     });
-    var sliders = new Swiper('.js-b-item-slider', {
+    var getSlider = new Swiper(productSlider, {
       slidesPerView: 1,
-      allowTouchMove: false,
       slideToClickedSlide: false,
       breakpoints: {
-        768: {
-          allowTouchMove: true
+        961: {
+          allowTouchMove: false
         },
-        769: {
-          navigation: {
-            nextEl: document.querySelector('.js-item-next'),
-            prevEl: document.querySelector('.js-item-prev')
-          }
+        960: {
+          allowTouchMove: true
         }
-      }
-    });
-    var mobBottleSlider = new Swiper(mobileSlider, {
-      slidesPerView: 1,
-      allowTouchMove: true,
-      slideToClickedSlide: false
-    });
-    var sliderBottle = new Swiper(imgItemSlider, {
-      slidesPerView: 1,
-      allowTouchMove: false,
-      slideToClickedSlide: false,
-      breakpoints: {
-        768: {
-          navigation: {
-            nextEl: document.querySelector('.js-item-next'),
-            prevEl: document.querySelector('.js-item-prev')
-          }
-        }
+      },
+      navigation: {
+        nextEl: document.querySelector('.js-item-next'),
+        prevEl: document.querySelector('.js-item-prev')
       },
       thumbs: {
         swiper: gThumbSlider,
         watchSlidesProgress: true
       }
     });
-
-    if (window.innerWidth <= 1279) {
-      onSlideChange(mobBottleSlider, sliderBottle);
-      onSlideChange(sliderBottle, mobBottleSlider);
-    }
-
-    sliders.forEach(function (element) {
-      onSlideChange(sliderBottle, element);
+    var sliders = new Swiper('.js-b-item-slider', {
+      slidesPerView: 1,
+      allowTouchMove: false,
+      slideToClickedSlide: false
     });
-
-    if (window.innerWidth <= 768) {
-      sliders.forEach(function (el) {
-        onSlideChange(mobBottleSlider, el);
-      });
-    }
+    sliders.forEach(function (element) {
+      onSlideChange(getSlider, element);
+    });
 
     if (document.querySelector('.js-scroll') && window.innerWidth >= 575) {
       var scrollItems = document.querySelectorAll('.js-scroll-item');
@@ -420,17 +393,10 @@ var getSliders = function getSliders() {
 
             if (mutation.type === 'attributes') {
               scrollItems.forEach(function (el) {
-                var coordinate = window.innerWidth - el.getBoundingClientRect().right;
-
                 if (window.innerWidth < 1280 && el.classList.contains('swiper-slide-thumb-active')) {
                   scroll.style.left = "".concat(el.getBoundingClientRect().x, "px");
                 } else if (window.innerWidth >= 1280 && el.classList.contains('swiper-slide-thumb-active')) {
-                  scroll.style.left = "".concat(el.getBoundingClientRect().x - el.parentNode.getBoundingClientRect().left, "px"); // if(window.innerWidth <= el.getBoundingClientRect().right){
-                  // 	el.parentNode.style = `transform: translate3d(${coordinate}px, 0px, 0px)`;
-                  // } else if (rectPoint.getBoundingClientRect().right <= el.getBoundingClientRect().left) {
-                  // 	coordinate = rectPoint.getBoundingClientRect().right - el.getBoundingClientRect().left;
-                  // 	el.parentNode.style = `transform: translate3d(${coordinate}px, 0px, 0px)`;
-                  // }
+                  scroll.style.left = "".concat(el.getBoundingClientRect().x - el.parentNode.getBoundingClientRect().left, "px");
                 }
               });
             }

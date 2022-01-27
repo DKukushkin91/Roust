@@ -20,6 +20,9 @@
 			@media $lg
 				flex-direction: column
 
+			@media (max-width: 640px)
+				align-items: center
+
 		&--partnership
 			@media $md
 				width 50%
@@ -391,9 +394,6 @@
 			line-height 12px
 
 	&__picture
-		position: absolute
-		top: 0
-		right: 0
 		width 100%
 		display flex
 		justify-content: center
@@ -441,7 +441,7 @@
 	&__scroll-btn--animate
 		opacity 0
 
-	&__img-slider.swiper
+	&__img-item
 		z-index 0
 		top: 0
 		right: 0
@@ -453,25 +453,23 @@
 			max-width: 164px
 			margin-bottom -30%
 
-	&__picture--animate.swiper
-		max-width 50%
-		position: absolute
-		right 0
-		top: 0
-		bottom 0
+	&__picture--animate
+		opacity 0
+		transition: all 1s ease 0s
 
-	&__picture--animate > &__img-wrapper.swiper-wrapper
+	&__picture--animate > &__img-wrapper
 		align-items flex-end
 
 	&__picture--animate .top__picture
 		width 100%
-		max-width: 100%
+		max-width: 50%
+		margin: 0 auto
 
 		& picture
 			width 16%
 			transition: all 1s ease 0s
 
-	&__img-wrapper.swiper-wrapper
+	&__img-wrapper
 		align-items: flex-start
 
 	&__sub-content
