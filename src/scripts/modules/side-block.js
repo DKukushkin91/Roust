@@ -4,6 +4,7 @@ import {cardsMocks, productionMocks} from './mocks';
 export const getSideBlock = () => {
 	if(document.querySelector('.js-side-block')){
 		const buttons = document.querySelectorAll('.js-side-block');
+		const cardsTitle = document.querySelectorAll('.js-card-title');
 		const body = document.querySelector('body');
 		const template = document.querySelector('.js-about-template')
 			.content
@@ -29,6 +30,10 @@ export const getSideBlock = () => {
 			}
 		};
 
+		cardsTitle.forEach(el => {
+			el.setAttribute('data-name', `${el.textContent}`);
+		});
+
 		const getElement = (cardTitle, cardSubtitle, cardImage, evt) => {
 			const templateClone = template.cloneNode(true);
 			const backBtn = templateClone.querySelector('.js-back-btn');
@@ -38,12 +43,12 @@ export const getSideBlock = () => {
 			const text = templateClone.querySelector('.js-side-text');
 
 			image.src = cardImage.src;
-			title.textContent = cardTitle.textContent;
+			title.textContent = cardTitle;
 			subTitle.textContent = cardSubtitle.textContent;
 
 			cardsMocks.map(e => e.name === title.textContent ? text.textContent = e.text : '');
 
-			if(evt.target.closest('.js-about-card')){
+			if(evt.currentTarget.closest('.js-about-card')){
 				title.classList.add('side__title--order');
 				title.parentNode.classList.add('side__texts-wrap--order');
 				subTitle.classList.add('side__sub-title--order');
@@ -69,9 +74,9 @@ export const getSideBlock = () => {
 		buttons.forEach(el => {
 			el.addEventListener('click', (evt) => {
 				evt.preventDefault();
-				const title = evt.target.parentNode.querySelector('.js-card-title');
-				const subTitle = evt.target.parentNode.querySelector('.js-card-text');
-				const cardImage = evt.target.parentNode.parentNode.querySelector('.js-card-img');
+				const title = evt.currentTarget.parentNode.querySelector('.js-card-title').getAttribute("data-name");
+				const subTitle = evt.currentTarget.parentNode.querySelector('.js-card-text');
+				const cardImage = evt.currentTarget.parentNode.parentNode.querySelector('.js-card-img');
 
 				appendElement(title, subTitle, cardImage, evt);
 

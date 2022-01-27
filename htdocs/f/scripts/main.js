@@ -891,6 +891,7 @@ var productionMocks = [{
 var getSideBlock = function getSideBlock() {
   if (document.querySelector('.js-side-block')) {
     var buttons = document.querySelectorAll('.js-side-block');
+    var cardsTitle = document.querySelectorAll('.js-card-title');
     var body = document.querySelector('body');
     var template = document.querySelector('.js-about-template').content.querySelector('.side');
 
@@ -914,6 +915,10 @@ var getSideBlock = function getSideBlock() {
       }
     };
 
+    cardsTitle.forEach(function (el) {
+      el.setAttribute('data-name', "".concat(el.textContent));
+    });
+
     var getElement = function getElement(cardTitle, cardSubtitle, cardImage, evt) {
       var templateClone = template.cloneNode(true);
       var backBtn = templateClone.querySelector('.js-back-btn');
@@ -922,13 +927,13 @@ var getSideBlock = function getSideBlock() {
       var image = templateClone.querySelector('.js-side-img');
       var text = templateClone.querySelector('.js-side-text');
       image.src = cardImage.src;
-      title.textContent = cardTitle.textContent;
+      title.textContent = cardTitle;
       subTitle.textContent = cardSubtitle.textContent;
       cardsMocks.map(function (e) {
         return e.name === title.textContent ? text.textContent = e.text : '';
       });
 
-      if (evt.target.closest('.js-about-card')) {
+      if (evt.currentTarget.closest('.js-about-card')) {
         title.classList.add('side__title--order');
         title.parentNode.classList.add('side__texts-wrap--order');
         subTitle.classList.add('side__sub-title--order');
@@ -954,9 +959,9 @@ var getSideBlock = function getSideBlock() {
     buttons.forEach(function (el) {
       el.addEventListener('click', function (evt) {
         evt.preventDefault();
-        var title = evt.target.parentNode.querySelector('.js-card-title');
-        var subTitle = evt.target.parentNode.querySelector('.js-card-text');
-        var cardImage = evt.target.parentNode.parentNode.querySelector('.js-card-img');
+        var title = evt.currentTarget.parentNode.querySelector('.js-card-title').getAttribute("data-name");
+        var subTitle = evt.currentTarget.parentNode.querySelector('.js-card-text');
+        var cardImage = evt.currentTarget.parentNode.parentNode.querySelector('.js-card-img');
         appendElement(title, subTitle, cardImage, evt);
         var contentWrap = document.querySelector('.js-side-wrap');
         setTimeout(function () {
