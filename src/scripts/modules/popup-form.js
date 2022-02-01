@@ -7,7 +7,10 @@ export const getPopup = () => {
 		const buttons = document.querySelectorAll('.js-btn-form');
 		const popupTemplate = document.querySelector('.js-popup-form-template')
 			.content
-			.querySelector('.js-popup-wrap')
+			.querySelector('.js-popup-wrap');
+		const subscribePopupTemplate = document.querySelector('.js-popup-form-template')
+			.content
+			.querySelector('.js-subscribe-popup');
 
 		const escPressHandler = (evt) => {
 			if (evt.key === 'Escape') {
@@ -17,7 +20,7 @@ export const getPopup = () => {
 		};
 
 		const elementRemoveHandler = () => {
-			const wrap = document.querySelector('.js-popup-wrap');
+			const wrap = document.querySelector('.js-popup-wrap') || document.querySelector('.js-subscribe-popup');
 
 			if (wrap) {
 				wrap.remove();
@@ -27,8 +30,8 @@ export const getPopup = () => {
 			body.classList.remove('lock-scroll');
 		};
 
-		const getElement = () => {
-			const template = popupTemplate.cloneNode(true);
+		const getElement = (contentTemp) => {
+			const template = contentTemp.cloneNode(true);
 			const closeBtn = template.querySelector('.js-close-btn');
 
 			closeBtn.addEventListener('click', elementRemoveHandler);
@@ -36,9 +39,9 @@ export const getPopup = () => {
 			return template
 		}
 
-		const appendElement = () => {
+		const appendElement = (contentTemp) => {
 			const fragment = document.createDocumentFragment();
-			const element = getElement();
+			const element = getElement(contentTemp);
 
 			fragment.appendChild(element);
 			document.addEventListener('keydown', escPressHandler);
@@ -54,19 +57,19 @@ export const getPopup = () => {
 			const validateForm = (evt) => {
 				const form = evt.target;
 				const field = Array.from(form.elements);
-				
+
 				field.forEach(i => {
 					i.setCustomValidity('');
 					i.parentElement.classList.remove('invalid');
 				});
-				
-				if (document.querySelectorAll('.js-select-native')) {
+
+				if(document.querySelector('.js-select-native')){
 					const select = Array.from(document.querySelectorAll('.js-select-native'));
 					select.forEach(i => {
 						i.setCustomValidity('');
 						i.parentElement.parentElement.classList.remove('invalid')
 					});
-	
+
 					select.forEach(el => {
 						if(el.options[el.selectedIndex].value === 'select') {
 							evt.preventDefault();
@@ -94,7 +97,15 @@ export const getPopup = () => {
 		for(let button of buttons){
 			button.addEventListener('click', (evt) => {
 				evt.preventDefault();
-				appendElement();
+				appendElement(popupTemplate);
+			})
+		}
+
+		if(document.querySelector('.js-subscribe-btn')){
+			const subscribeBtn = document.querySelector('.js-subscribe-btn');
+			subscribeBtn.addEventListener('click', (evt) => {
+				evt.preventDefault();
+				appendElement(subscribePopupTemplate);
 			})
 		}
 	}
