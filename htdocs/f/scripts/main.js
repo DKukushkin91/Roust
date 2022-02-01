@@ -751,7 +751,7 @@ var selectHandler = function selectHandler(template) {
 };
 
 var getPopup = function getPopup() {
-  if (document.querySelector('.js-btn-form')) {
+  if (document.querySelector('.js-btn-form') || document.querySelector('.js-subscribe-btn')) {
     (function () {
       var body = document.querySelector('body');
       var buttons = document.querySelectorAll('.js-btn-form');
@@ -799,22 +799,25 @@ var getPopup = function getPopup() {
         var validateForm = function validateForm(evt) {
           var form = evt.target;
           var field = Array.from(form.elements);
-          var select = Array.from(document.querySelectorAll('.js-select-native'));
           field.forEach(function (i) {
             i.setCustomValidity('');
             i.parentElement.classList.remove('invalid');
           });
-          select.forEach(function (i) {
-            i.setCustomValidity('');
-            i.parentElement.parentElement.classList.remove('invalid');
-          });
-          select.forEach(function (el) {
-            if (el.options[el.selectedIndex].value === 'select') {
-              evt.preventDefault();
-              evt.stopImmediatePropagation();
-              el.parentElement.parentElement.classList.add('invalid');
-            }
-          });
+
+          if (document.querySelectorAll('.js-select-native')) {
+            var select = Array.from(document.querySelectorAll('.js-select-native'));
+            select.forEach(function (i) {
+              i.setCustomValidity('');
+              i.parentElement.parentElement.classList.remove('invalid');
+            });
+            select.forEach(function (el) {
+              if (el.options[el.selectedIndex].value === 'select') {
+                evt.preventDefault();
+                evt.stopImmediatePropagation();
+                el.parentElement.parentElement.classList.add('invalid');
+              }
+            });
+          }
 
           if (!form.checkValidity()) {
             evt.preventDefault();

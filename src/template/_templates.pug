@@ -226,6 +226,24 @@ block templates
 						button.popup-form__btn(type="submit") Submit
 						p.popup-form__error-text Please upload your CV.
 
+		.popup-form__wrap.js-popup-wrap
+			form(action="", method="post").popup-form__form.js-popup-form
+				button.popup-form__close-btn.js-close-btn
+					svg(width="22" height="22").popup-form__icon
+						use(href=`${baseDir}/img/sprite.svg#cross`)
+				fieldset.popup-form__fieldset
+					h2.popup-form__title Please complete the form
+					.popup-form__input-group
+						input#your-name.popup-form__input(type="text", name="your-name" required)
+						label.popup-form__label(for="your-name") Your name
+						p.popup-form__error-text Please enter your First name.
+					.popup-form__input-group
+						input#email.popup-form__input(type="email", name="email" required)
+						label.popup-form__label(for="email") Email
+						p.popup-form__error-text Please enter your email.
+
+					p.popup-form__text <span class='popup-form__text popup-form__text--color'>*</span> All fields are required
+
 	template.js-about-template
 		.side
 			.side__wrap.js-side-wrap

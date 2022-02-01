@@ -61,6 +61,9 @@
         <main class="main main--media">
           <section class="media">
             <div class="container">
+              <div class="media__subscription js-subscribe-btn">
+                <button class="media__btn btn">Subscribe to our newsletters</button>
+              </div>
               <div class="media__banner"><img class="media__banner-img" src="/f/img/media-banner.jpg" alt="">
                 <div class="media__banner-date media__date">3 september 2020</div>
                 <h2 class="media__banner-title">25th Anniversary of Roust's Largest Vodka Distillery in Russia</h2>
@@ -73,23 +76,23 @@
                     </div></a></li>
                 <li class="media__item"><a class="media__item-link" href="#"><img class="media__item-img" src="/f/img/media-item-2.png" alt="">
                     <div class="media__item-content">
-                      <div class="media__item-date media__date">11 august 2020</div>
-                      <p class="media__item-text">Outstanding Gold Medal Wins at The Vodka Masters</p>
+                      <div class="media__item-date media__date">23 july 2020</div>
+                      <p class="media__item-text">Roust Maintains Unrivalled Status at The International Spirits Challenge</p>
                     </div></a></li>
                 <li class="media__item"><a class="media__item-link" href="#"><img class="media__item-img" src="/f/img/media-item-3.png" alt="">
                     <div class="media__item-content">
-                      <div class="media__item-date media__date">11 august 2020</div>
-                      <p class="media__item-text">Outstanding Gold Medal Wins at The Vodka Masters</p>
+                      <div class="media__item-date media__date">04 june 2020</div>
+                      <p class="media__item-text">8 Roust Vodkas Amongst the Best-Selling Spirits Brands</p>
                     </div></a></li>
                 <li class="media__item"><a class="media__item-link" href="#"><img class="media__item-img" src="/f/img/media-item-4.png" alt="">
-                    <div class="media__item-content">
-                      <div class="media__item-date media__date">11 august 2020</div>
-                      <p class="media__item-text">Outstanding Gold Medal Wins at The Vodka Masters</p>
+                    <div class="media__item-content media__item-content--big">
+                      <div class="media__item-date media__date"></div>
+                      <p class="media__item-text">Roust 2019 Gala Night</p>
                     </div></a></li>
                 <li class="media__item"><a class="media__item-link" href="#"><img class="media__item-img" src="/f/img/media-item-5.png" alt="">
                     <div class="media__item-content">
-                      <div class="media__item-date media__date">11 august 2020</div>
-                      <p class="media__item-text">Outstanding Gold Medal Wins at The Vodka Masters</p>
+                      <div class="media__item-date media__date">11 may 2020</div>
+                      <p class="media__item-text">Global Relaunch of the World’s #1 Premium Russian Vodka</p>
                     </div></a></li>
               </ul>
               <div class="media__more">
@@ -501,6 +504,29 @@
             <button class="popup-form__btn" type="submit">Submit</button>
             <p class="popup-form__error-text">Please upload your CV.</p>
           </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="popup-form__wrap js-popup-wrap">
+      <form class="popup-form__form js-popup-form" action="" method="post">
+        <button class="popup-form__close-btn js-close-btn">
+          <svg class="popup-form__icon" width="22" height="22">
+            <use href="/f/img/sprite.svg#cross"></use>
+          </svg>
+        </button>
+        <fieldset class="popup-form__fieldset">
+          <h2 class="popup-form__title">Please complete the form</h2>
+          <div class="popup-form__input-group">
+            <input class="popup-form__input" id="your-name" type="text" name="your-name" required>
+            <label class="popup-form__label" for="your-name">Your name</label>
+            <p class="popup-form__error-text">Please enter your First name.</p>
+          </div>
+          <div class="popup-form__input-group">
+            <input class="popup-form__input" id="email" type="email" name="email" required>
+            <label class="popup-form__label" for="email">Email</label>
+            <p class="popup-form__error-text">Please enter your email.</p>
+          </div>
+          <p class="popup-form__text"><span class='popup-form__text popup-form__text--color'>*</span> All fields are required</p>
         </fieldset>
       </form>
     </div>
