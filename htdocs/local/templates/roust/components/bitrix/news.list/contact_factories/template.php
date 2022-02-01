@@ -2,7 +2,6 @@
 
 <ul class="contacts__list contacts__list-multi">
 	<?foreach ($arResult["ITEMS"] as $key => $value) {?>
-	<!-- <pre><?print_r($value['PROPERTIES']['FACTORY']['VALUE']);?></pre> -->
 	<li class="contacts__li">
 		<?if ($value['PROPERTIES']['COUNTRY']['VALUE'] != $oldcountru && !empty($value['PROPERTIES']['COUNTRY']['VALUE'])){?>
 			<h2 class="contacts__title"><?=$value['PROPERTIES']['COUNTRY']['VALUE']?></h2>
