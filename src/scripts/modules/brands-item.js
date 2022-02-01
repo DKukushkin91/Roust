@@ -1,5 +1,3 @@
-import {getScrollTo} from '../utils/utils';
-
 export const getScrollItem = () => {
 	if(document.querySelector('.js-anim-items')){
 		const animItems = document.querySelectorAll('.js-anim-items');
@@ -10,6 +8,7 @@ export const getScrollItem = () => {
 		const main = document.querySelector('.main');
 		const animText = document.querySelectorAll('.js-anim-text');
 		const itemContainer = document.querySelector('.top__content--brands-item');
+		const productSlider = document.querySelector('.js-product-slider');
 
 		const isSeen = () => itemContainer.getBoundingClientRect().bottom + 45 <= window.innerHeight
 
@@ -18,9 +17,9 @@ export const getScrollItem = () => {
 			opacityItems.forEach(e => e.classList.remove('animate__opacity'))
 			animItems.forEach(e => e.classList.remove('brands-item__wrap--active'))
 			header.classList.remove('header__active');
-			imgSize.classList.remove('top__picture--animate');
 			scrollBtn.classList.remove('top__scroll-btn--animate');
 			animText.forEach(e => e.classList.remove('brands-item__text-block--animate'));
+			imgSize.classList.remove('top__picture--animate');
 		}
 
 		const addClass = () => {

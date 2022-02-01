@@ -4,7 +4,6 @@
 
 	&--color
 		background $white
-		height: 100%
 
 		@media $sm
 			max-width: 100vw
@@ -18,12 +17,6 @@
 	&__top-container
 		@media $md
 			padding-top 20px
-	// 	transition: all 0.3s ease 0s
-
-	// &__top-container--animate
-	// 	padding 0 120px
-	// 	margin: 0
-	// 	margin-left auto
 
 	&__news-section
 		@media $sm
@@ -57,7 +50,9 @@
 		padding-bottom 0
 
 	&__wrap
-		width: 50%
+		width: 100%
+		display flex
+		flex-direction: row
 		transform: translate(0px, 120%);
 		opacity: 0
 		transition: all 0.8s ease 0s;
@@ -79,13 +74,12 @@
 		margin-top: 0
 
 	&__content
-		width: 100%
+		width: 50%
 		display: grid
 
 		@media $lg
 			display: block
 			height: auto
-			width 50%
 
 		@media (max-width: 640px)
 			order: 1
@@ -94,10 +88,14 @@
 				height: auto
 
 	&__content--mobile
-		display: none
+		display block
+		position absolute
+		top 0
+		right 0
+		bottom 0
 
 		@media $lg
-			display block
+			position relative
 
 		@media (max-width: 640px)
 			order 0
@@ -299,7 +297,6 @@
 		margin 0
 
 	&__item
-		// flex: 1
 		max-width: 360px
 		border-left: 1px solid #e6e8ea
 
@@ -318,22 +315,6 @@
 
 		@media $xs
 			max-width: 100%
-
-		// &:before
-		// 	content: ''
-		// 	transform: translateX(100%)
-		// 	width 0
-		// 	background-color $orange
-		// 	height 2px
-		// 	position: absolute
-		// 	bottom 0
-		// 	display block
-		// 	z-index 1
-		// 	transition: all 1s ease 0s
-
-		// &.swiper-slide-thumb-active:before
-		// 	width 100%
-		// 	transform: translateX(0)
 
 	&__btn
 		background: 0
@@ -391,11 +372,8 @@
 		width: 100%
 		position relative
 
-		@media $xl
+		@media (min-width 768px)
 			overflow hidden
-
-		// @media (max-width: 640px)
-		// 	overflow: hidden
 
 	&__scroll
 		position: absolute
@@ -421,10 +399,10 @@
 			height 100%
 			object-fit: cover
 
-	&__mob-slider
+	&__prod-slider
 		height 100%
 
-	&__mob-img
+	&__prod-img
 		width 100%
 		margin 0 auto
 		display flex

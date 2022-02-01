@@ -8,7 +8,7 @@
 
 	&__wrap
 		width: 100%
-		position relative
+		// position relative
 
 		&--brands-item
 			display: flex
@@ -19,6 +19,9 @@
 
 			@media $lg
 				flex-direction: column
+
+			@media (max-width: 640px)
+				align-items: center
 
 		&--partnership
 			@media $md
@@ -69,6 +72,13 @@
 			@media $md
 				padding-bottom 10px
 
+		&--investors
+			padding-bottom 45px
+			letter-spacing: -1px
+
+			@media $md
+				padding-bottom 30px
+
 	&__text
 		fz-21()
 		line-height 29px
@@ -112,6 +122,7 @@
 
 		&--investors
 			width 50%
+			max-width 443px
 
 			@media $sm
 				width 100%
@@ -119,7 +130,7 @@
 			&:not(:last-child)
 				padding-bottom 30px
 
-				@media $sm
+				@media $md
 					padding-bottom 10px
 
 	&__text--fz
@@ -129,6 +140,7 @@
 		font-weight 500
 		color $white
 		width 50%
+		max-width: 443px
 
 		@media $sm
 			width 100%
@@ -288,6 +300,7 @@
 		list-style: none
 		padding 0
 		margin 0
+		z-index: 1
 		position relative
 		transition: all 1s ease 0s
 		transform: translate(0px, 0px)
@@ -390,14 +403,17 @@
 			line-height 12px
 
 	&__picture
-		position: absolute
-		top: 0
-		right: 0
-		max-width 226px
+		width 100%
+		display flex
+		justify-content: center
 
-		// &--animate
-		// 	max-width: 176px
-		// 	top: -20%
+		& picture
+			width 100%
+			max-width: 226px
+			transition: all 1s cubic-bezier(.55,.06,.68,.19) 0s
+
+			@media (max-width: 1920px)
+				max-width: get-vw(226, 1680)
 
 	&__scroll-btn
 		position fixed
@@ -437,33 +453,35 @@
 	&__scroll-btn--animate
 		opacity 0
 
-	&__img-slider.swiper
+	&__img-item
 		z-index 0
 		top: 0
 		right: 0
-		transition: all 0.6s linear 0s
+		width 50%
 		position: absolute
-		max-width 226px
-
-		@media (min-width: 1280px) and (max-width: 1680px)
-			max-width: get-vw(226, 1680)
 
 		@media (max-width: 640px)
 			position relative
 			max-width: 164px
 			margin-bottom -30%
 
-	&__picture--animate.swiper
-		max-width: 14.33333333%
-		top: -20.33333333%
+	&__picture--animate
+		opacity 0
+		transition: all 1s ease 0s
 
-		@media (max-width: 1460px)
-			right 7vw
-
-	&__picture--animate > &__img-wrapper.swiper-wrapper
+	&__picture--animate > &__img-wrapper
 		align-items flex-end
 
-	&__img-wrapper.swiper-wrapper
+	&__picture--animate .top__picture
+		width 100%
+		max-width: 50%
+		margin: 0 auto
+
+		& picture
+			width 16%
+			transition: all 1s ease 0s
+
+	&__img-wrapper
 		align-items: flex-start
 
 	&__sub-content

@@ -1,13 +1,5 @@
 "use strict";
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -233,6 +225,7 @@ var getScrollItem = function getScrollItem() {
     var main = document.querySelector('.main');
     var animText = document.querySelectorAll('.js-anim-text');
     var itemContainer = document.querySelector('.top__content--brands-item');
+    var productSlider = document.querySelector('.js-product-slider');
 
     var isSeen = function isSeen() {
       return itemContainer.getBoundingClientRect().bottom + 45 <= window.innerHeight;
@@ -247,11 +240,11 @@ var getScrollItem = function getScrollItem() {
         return e.classList.remove('brands-item__wrap--active');
       });
       header.classList.remove('header__active');
-      imgSize.classList.remove('top__picture--animate');
       scrollBtn.classList.remove('top__scroll-btn--animate');
       animText.forEach(function (e) {
         return e.classList.remove('brands-item__text-block--animate');
       });
+      imgSize.classList.remove('top__picture--animate');
     };
 
     var addClass = function addClass() {
@@ -292,13 +285,12 @@ var getScrollItem = function getScrollItem() {
 
 var getSliders = function getSliders() {
   if (document.querySelector('.brands-item__wrap')) {
-    var imgItemSlider = document.querySelector('.js-top-slider');
     var thumbSlider = document.querySelector('.js-thumbs-slider');
     var thumbsWrapper = document.querySelector('.js-thumbs-wrapper');
-    var mobileSlider = document.querySelector('.js-mob-slider');
     var contentSliderMob = document.querySelector('.js-content-slider');
     var contentSliderWrap = contentSliderMob.querySelector('.js-content-wrap');
     var contentSlides = contentSliderMob.querySelectorAll('.js-content-slide');
+    var productSlider = document.querySelector('.js-product-slider');
 
     var onSlideChange = function onSlideChange(onElement, moveElement) {
       onElement.on('slideChange', function () {
@@ -346,64 +338,42 @@ var getSliders = function getSliders() {
         });
       }
     });
-    var sliders = new Swiper('.js-b-item-slider', {
+    var getSlider = new Swiper(productSlider, {
       slidesPerView: 1,
-      allowTouchMove: false,
       slideToClickedSlide: false,
       breakpoints: {
-        768: {
-          allowTouchMove: true
+        961: {
+          allowTouchMove: false
         },
-        769: {
-          navigation: {
-            nextEl: document.querySelector('.js-item-next'),
-            prevEl: document.querySelector('.js-item-prev')
-          }
+        960: {
+          allowTouchMove: true
         }
-      }
-    });
-    var mobBottleSlider = new Swiper(mobileSlider, {
-      slidesPerView: 1,
-      allowTouchMove: true,
-      slideToClickedSlide: false
-    });
-    var sliderBottle = new Swiper(imgItemSlider, {
-      slidesPerView: 1,
-      allowTouchMove: false,
-      slideToClickedSlide: false,
-      breakpoints: {
-        768: {
-          navigation: {
-            nextEl: document.querySelector('.js-item-next'),
-            prevEl: document.querySelector('.js-item-prev')
-          }
-        }
+      },
+      navigation: {
+        nextEl: document.querySelector('.js-item-next'),
+        prevEl: document.querySelector('.js-item-prev')
       },
       thumbs: {
         swiper: gThumbSlider,
         watchSlidesProgress: true
       }
     });
-
-    if (window.innerWidth <= 1279) {
-      onSlideChange(mobBottleSlider, sliderBottle);
-      onSlideChange(sliderBottle, mobBottleSlider);
-    }
-
-    sliders.forEach(function (element) {
-      onSlideChange(sliderBottle, element);
+    var sliders = new Swiper('.js-b-item-slider', {
+      slidesPerView: 1,
+      allowTouchMove: false,
+      slideToClickedSlide: false
     });
-
-    if (window.innerWidth <= 768) {
-      sliders.forEach(function (el) {
-        onSlideChange(mobBottleSlider, el);
-      });
-    }
+    sliders.forEach(function (element) {
+      onSlideChange(getSlider, element);
+    });
 
     if (document.querySelector('.js-scroll') && window.innerWidth >= 575) {
       var scrollItems = document.querySelectorAll('.js-scroll-item');
       var scroll = document.querySelector('.js-scroll');
-      var rectPoitn = document.querySelector('.js-rect-point');
+      var rectPoint = document.querySelector('.js-rect-point');
+      var configObserver = {
+        attributes: true
+      };
       scroll.style.width = "".concat(scrollItems[0].offsetWidth, "px");
       var observer = new MutationObserver(function (mutations) {
         var _iterator = _createForOfIteratorHelper(mutations),
@@ -442,7 +412,7 @@ var getSliders = function getSliders() {
                 if (window.innerWidth < 1280 && el.classList.contains('swiper-slide-thumb-active')) {
                   scroll.style.left = "".concat(el.getBoundingClientRect().x, "px");
                 } else if (window.innerWidth >= 1280 && el.classList.contains('swiper-slide-thumb-active')) {
-                  scroll.style.left = "".concat(el.getBoundingClientRect().x - rectPoitn.getBoundingClientRect().right, "px");
+                  scroll.style.left = "".concat(el.getBoundingClientRect().x - rectPoint.getBoundingClientRect().right, "px");
                 }
               });
             }
@@ -453,12 +423,8 @@ var getSliders = function getSliders() {
           _iterator2.f();
         }
       });
-      transformObserver.observe(thumbsWrapper, {
-        attributes: true
-      });
-      observer.observe(document.querySelector('.js-scroll-item'), {
-        attributes: true
-      });
+      transformObserver.observe(thumbsWrapper, configObserver);
+      observer.observe(document.querySelector('.js-scroll-item'), configObserver);
     }
   }
 };
@@ -568,6 +534,7 @@ var getGallery = function getGallery() {
   }
 };
 
+<<<<<<< HEAD
 var selectHandler = function selectHandler(template) {
   var elSelectNative = template.querySelectorAll('.js-select-native');
   var elSelectCustom = template.querySelectorAll('.js-select-custom');
@@ -853,6 +820,8 @@ var getPopup = function getPopup() {
   }
 };
 
+=======
+>>>>>>> 376f864cc4897c1f4d30b0b67437ac4a98d71571
 var burgerMenuHandler = function burgerMenuHandler() {
   if (document.querySelector('.js-burger-btn')) {
     var button = document.querySelector('.js-burger-btn');
@@ -920,6 +889,7 @@ var productionMocks = [{
 var getSideBlock = function getSideBlock() {
   if (document.querySelector('.js-side-block')) {
     var buttons = document.querySelectorAll('.js-side-block');
+    var cardsTitle = document.querySelectorAll('.js-card-title');
     var body = document.querySelector('body');
     var template = document.querySelector('.js-about-template').content.querySelector('.side');
 
@@ -943,6 +913,10 @@ var getSideBlock = function getSideBlock() {
       }
     };
 
+    cardsTitle.forEach(function (el) {
+      el.setAttribute('data-name', "".concat(el.textContent));
+    });
+
     var getElement = function getElement(cardTitle, cardSubtitle, cardImage, evt) {
       var templateClone = template.cloneNode(true);
       var backBtn = templateClone.querySelector('.js-back-btn');
@@ -951,13 +925,13 @@ var getSideBlock = function getSideBlock() {
       var image = templateClone.querySelector('.js-side-img');
       var text = templateClone.querySelector('.js-side-text');
       image.src = cardImage.src;
-      title.textContent = cardTitle.textContent;
+      title.textContent = cardTitle;
       subTitle.textContent = cardSubtitle.textContent;
       cardsMocks.map(function (e) {
         return e.name === title.textContent ? text.textContent = e.text : '';
       });
 
-      if (evt.target.closest('.js-about-card')) {
+      if (evt.currentTarget.closest('.js-about-card')) {
         title.classList.add('side__title--order');
         title.parentNode.classList.add('side__texts-wrap--order');
         subTitle.classList.add('side__sub-title--order');
@@ -983,9 +957,9 @@ var getSideBlock = function getSideBlock() {
     buttons.forEach(function (el) {
       el.addEventListener('click', function (evt) {
         evt.preventDefault();
-        var title = evt.target.parentNode.querySelector('.js-card-title');
-        var subTitle = evt.target.parentNode.querySelector('.js-card-text');
-        var cardImage = evt.target.parentNode.parentNode.querySelector('.js-card-img');
+        var title = evt.currentTarget.parentNode.querySelector('.js-card-title').getAttribute("data-name");
+        var subTitle = evt.currentTarget.parentNode.querySelector('.js-card-text');
+        var cardImage = evt.currentTarget.parentNode.parentNode.querySelector('.js-card-img');
         appendElement(title, subTitle, cardImage, evt);
         var contentWrap = document.querySelector('.js-side-wrap');
         setTimeout(function () {
@@ -1190,8 +1164,8 @@ document.addEventListener('DOMContentLoaded', function () {
   getCatalogList();
   getScrollItem();
   getSliders();
-  getGallery();
-  getPopup();
+  getGallery(); // getPopup(); WIP
+
   getAboutUsSlider();
   getSideBlock();
   getItemAnimation();
