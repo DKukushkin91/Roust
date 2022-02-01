@@ -1,5 +1,5 @@
 // Функция прокрутки с контролем скорости
-export const scrollTo = (to, duration = 700) => {
+export const getScrollTo = (to, duration = 700) => {
 	const
 			element = document.scrollingElement || document.documentElement,
 			start = element.scrollTop,
@@ -44,8 +44,16 @@ export const getOffset = (el) => {
 	const rect = el.getBoundingClientRect();
 	const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
 	const scrollTop = window.scrollY || document.documentElement.scrollTop;
+
 	return {
 		top: rect.top + scrollTop,
-		left: rect.left + scrollLeft
+		left: rect.left + scrollLeft,
+		bottom: rect.bottom + window.scrollY
 	}
 }
+
+export const render = (container, template, place) => {
+  container.insertAdjacentHTML(place, template);
+};
+
+export const changeActiveClass = (element, mainClass) => element ? element.classList.add(`${mainClass}__wrap--active`) : '';

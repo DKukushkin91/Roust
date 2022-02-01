@@ -33,7 +33,7 @@
         @media $md
             margin-bottom 70px
     &__item:last-child
-        margin-bottom 0 
+        margin-bottom 0
     &__block
         display flex
         justify-content space-between
@@ -83,10 +83,16 @@
         max-width 216px
     &__img-several
         display grid
-        grid-template-columns repeat(2,271px)
+        grid-template-columns repeat(2,1fr)
         grid-template-rows repeat(2,minmax(180px,auto))
         column-gap 5px
         row-gap 6px
+        @media $md
+            grid-template-columns repeat(3,1fr)
+            grid-template-rows repeat(1,minmax(180px,auto))
+        @media $xs
+            grid-template-columns repeat(2,1fr)
+            grid-template-rows repeat(1,minmax(180px,auto))
     &__img-link
         position relative
         display flex
@@ -114,6 +120,15 @@
     &__img-desc
         @media $md
             display none
+    &__img img:nth-child(n + 3)
+        @media $md
+            display none
+    &__img img:nth-child(n + 2)
+        @media $xs
+            display none
+    &__img .project__img-link img:nth-child(n + 2)
+        @media $xs
+            display block
     &__img-mob
         display none
         @media $md
@@ -133,3 +148,6 @@
         @media $xs
             grid-template-columns repeat(2,162px)
             grid-template-rows repeat(1,minmax(132px,auto))
+    &__link-text
+      position relative
+      z-index 1

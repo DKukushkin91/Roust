@@ -102,6 +102,7 @@ input::placeholder
 			transform: none
 			display grid
 			grid-area: unset
+			margin-top: -2px
 
 	&--animate
 		transform: translate(0, 0)
@@ -141,3 +142,27 @@ input::placeholder
 		top 0
 		left 0
 		z-index 1
+
+.animate-button
+	position relative
+
+	&::before
+		content: ''
+		position: absolute
+		width: calc(100% + 4px)
+		height: 0%
+		bottom: -1px
+		left: -1px
+		background: $orange
+		transition: all 0.3s ease 0s
+
+	&:hover,
+	&:hover .screen__link-text--color,
+	&:hover .filter__search-btn-text,
+	&:hover .career-contacts__btn-text
+		background-clip: text
+		color: $white
+
+	&:hover::before
+		height: calc(100% + 4px)
+		margin: -1px

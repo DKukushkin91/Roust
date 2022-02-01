@@ -2,8 +2,11 @@ export const getNewsSlider = () => {
 	const slider = document.querySelector('.js-news-slider');
 
 	if(slider){
-		const newsSlider = new Swiper(slider, {
+		new Swiper(slider, {
 			slidesPerView: 3,
+			pagination: {
+				el: ".swiper-pagination",
+			},
 			spaceBetween: 40,
 			navigation: {
 				nextEl: '.js-news-slider-next',
@@ -12,13 +15,13 @@ export const getNewsSlider = () => {
 			breakpoints: {
 				320: {
 					slidesPerView: 'auto',
-					pagination: {
-						el: ".swiper-pagination",
-					},
 				},
 				960: {
-					pagination: false,
+					slidesPerView: 'auto',
 					watchSlidesProgress: true,
+				},
+				1280: {
+					pagination: false,
 				}
 			}
 		})

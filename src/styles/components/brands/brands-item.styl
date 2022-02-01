@@ -4,7 +4,6 @@
 
 	&--color
 		background $white
-		height: 100%
 
 		@media $sm
 			max-width: 100vw
@@ -18,18 +17,17 @@
 	&__top-container
 		@media $md
 			padding-top 20px
-	// 	transition: all 0.3s ease 0s
-
-	// &__top-container--animate
-	// 	padding 0 120px
-	// 	margin: 0
-	// 	margin-left auto
 
 	&__news-section
 		@media $sm
 			width 100vw
 
 	&__breadcrumbs
+		@media (min-width: 1681px)
+			padding-bottom 56px
+
+		@media (min-width: 1280px) and (max-width: 1680px)
+			padding-bottom 3.333333vh
 		@media $md
 			display: none
 
@@ -45,11 +43,16 @@
 			margin-bottom 1px
 			border-bottom: 1px solid #e6e8ea
 
+			@media $xl
+				overflow hidden
+
 	&__header-wrap
 		padding-bottom 0
 
 	&__wrap
-		width: 50%
+		width: 100%
+		display flex
+		flex-direction: row
 		transform: translate(0px, 120%);
 		opacity: 0
 		transition: all 0.8s ease 0s;
@@ -71,13 +74,12 @@
 		margin-top: 0
 
 	&__content
-		width: 100%
+		width: 50%
 		display: grid
 
 		@media $lg
 			display: block
 			height: auto
-			width 50%
 
 		@media (max-width: 640px)
 			order: 1
@@ -86,10 +88,14 @@
 				height: auto
 
 	&__content--mobile
-		display: none
+		display block
+		position absolute
+		top 0
+		right 0
+		bottom 0
 
 		@media $lg
-			display block
+			position relative
 
 		@media (max-width: 640px)
 			order 0
@@ -125,7 +131,7 @@
 		border-radius: 50%
 		background: $m-grey
 		position: absolute
-		top: 50%
+		top: calc(50% - 65px / 2)
 		z-index 99
 		transform: rotate(90deg)
 		width: 65px
@@ -135,15 +141,26 @@
 		&:disabled
 			opacity: 0.5
 
-		@media (max-width: 1365px)
+		@media $lg
+			width 45px
+			height 45px
+			top: calc(50% - 45px / 2)
+
+		@media (max-width: 768px)
 			display none
 
 	&__nav-btn--next
 		right: 40px
 		transform: rotate(-90deg)
 
+		@media $md
+			right 5px
+
 	&__nav-btn--prev
 		left: 40px
+
+		@media $md
+			left 5px
 
 	&__icon
 		fill: $white
@@ -235,6 +252,7 @@
 		max-width: 360px
 		text-align: left
 		flex: 1 0 360px
+		border-right: 1px solid #e6e8ea
 
 		@media $lg
 			width 100%
@@ -263,6 +281,7 @@
 
 	&__slide
 		flex: 1
+		overflow hidden
 
 		&.swiper
 			width 100%
@@ -278,9 +297,12 @@
 		margin 0
 
 	&__item
-		// flex: 1
 		max-width: 360px
 		border-left: 1px solid #e6e8ea
+
+		@media $xl
+			&:first-child
+				border-left: 0
 
 		@media $lg
 			border-left: 0
@@ -350,8 +372,8 @@
 		width: 100%
 		position relative
 
-		// @media (max-width: 640px)
-		// 	overflow: hidden
+		@media (min-width 768px)
+			overflow hidden
 
 	&__scroll
 		position: absolute
@@ -377,10 +399,10 @@
 			height 100%
 			object-fit: cover
 
-	&__mob-slider
+	&__prod-slider
 		height 100%
 
-	&__mob-img
+	&__prod-img
 		width 100%
 		margin 0 auto
 		display flex

@@ -8,7 +8,7 @@
 
 	&__wrap
 		width: 100%
-		position relative
+		// position relative
 
 		&--brands-item
 			display: flex
@@ -19,6 +19,9 @@
 
 			@media $lg
 				flex-direction: column
+
+			@media (max-width: 640px)
+				align-items: center
 
 		&--partnership
 			@media $md
@@ -56,13 +59,25 @@
 				font-size: 45px
 
 		&--brands-item
-			padding-bottom 30px
+			padding-bottom get-vw(30, 1680)
+			font-size: get-vw(75, 1680)
+
+			@media $lg
+				fz-75()
+				padding-bottom 30px
 
 		&--about-us
 			padding-bottom 45px
 
 			@media $md
 				padding-bottom 10px
+
+		&--investors
+			padding-bottom 45px
+			letter-spacing: -1px
+
+			@media $md
+				padding-bottom 30px
 
 	&__text
 		fz-21()
@@ -85,9 +100,16 @@
 				padding-bottom 40px
 
 		&--brands-item
-			fz-15()
-			padding-bottom 60px
 			width: 100%
+			padding-bottom 60px
+
+			@media (min-width 1280px) and (max-width 1680px)
+				font-size get-vw(15, 1680)
+				padding-bottom 3.3333vh
+
+			@media $lg
+				fz-15()
+				padding-bottom 60px
 
 		&--career
 			max-width: 443px
@@ -100,6 +122,7 @@
 
 		&--investors
 			width 50%
+			max-width 443px
 
 			@media $sm
 				width 100%
@@ -107,7 +130,7 @@
 			&:not(:last-child)
 				padding-bottom 30px
 
-				@media $sm
+				@media $md
 					padding-bottom 10px
 
 	&__text--fz
@@ -117,6 +140,7 @@
 		font-weight 500
 		color $white
 		width 50%
+		max-width: 443px
 
 		@media $sm
 			width 100%
@@ -227,6 +251,7 @@
 			left: -1px
 			background: $orange
 			transition: all 0.3s ease 0s
+			color: $white
 
 		&:hover
 			background-clip: text
@@ -275,9 +300,13 @@
 		list-style: none
 		padding 0
 		margin 0
+		z-index: 1
 		position relative
 		transition: all 1s ease 0s
 		transform: translate(0px, 0px)
+
+		@media $xl
+			max-width get-vw(213, 1680)
 
 		@media $lg
 			flex-direction: row;
@@ -306,6 +335,9 @@
 		padding: 28px 53px
 		text-align: center
 
+		@media $xl and (max-width: 1680px)
+			padding get-vw(28, 1680) get-vw(53, 1680)
+
 		@media $lg
 			max-width: 211px
 
@@ -317,6 +349,9 @@
 
 		&:not(:last-child)
 			margin-bottom 57px
+
+			@media $xl and (max-width: 1920px)
+				margin-bottom 3.3333vh
 
 			@media $lg
 				margin-bottom 0
@@ -332,12 +367,18 @@
 		font-weight 900
 		line-height 24px
 
+		@media $xl
+			font-size get-vw(15, 1680)
+
 		&:not(:last-child)
 			padding-bottom 4px
 
 	&__text-awards sup
 		fz-13()
 		font-weight normal
+
+		@media $xl
+			font-size get-vw(13, 1680)
 
 		@media $md
 			font-size 9px
@@ -346,24 +387,33 @@
 		fz-33()
 		line-height 100%
 
+		@media $xl
+			font-size get-vw(33, 1680)
+
 	&__text-awards--fw
 		fz-13()
 		line-height 16px
 		font-weight 500
+
+		@media $xl
+			font-size get-vw(13, 1680)
 
 		@media $md
 			font-size 9px
 			line-height 12px
 
 	&__picture
-		position: absolute
-		top: 0
-		right: 0
-		max-width 226px
+		width 100%
+		display flex
+		justify-content: center
 
-		// &--animate
-		// 	max-width: 176px
-		// 	top: -20%
+		& picture
+			width 100%
+			max-width: 226px
+			transition: all 1s cubic-bezier(.55,.06,.68,.19) 0s
+
+			@media (max-width: 1920px)
+				max-width: get-vw(226, 1680)
 
 	&__scroll-btn
 		position fixed
@@ -403,28 +453,36 @@
 	&__scroll-btn--animate
 		opacity 0
 
-	&__img-slider.swiper
+	&__img-item
 		z-index 0
 		top: 0
 		right: 0
-		transition: all 0.6s linear 0s
+		width 50%
 		position: absolute
-		max-width 226px
 
 		@media (max-width: 640px)
 			position relative
 			max-width: 164px
 			margin-bottom -30%
 
-	&__picture--animate.swiper
-		max-width: 14.33333333%
-		top: -20.33333333%
+	&__picture--animate
+		opacity 0
+		transition: all 1s ease 0s
 
-		@media (max-width: 1460px)
-			right 7vw
+	&__picture--animate > &__img-wrapper
+		align-items flex-end
 
-	&__img-wrapper.swiper-wrapper
-		align-items: flex-end
+	&__picture--animate .top__picture
+		width 100%
+		max-width: 50%
+		margin: 0 auto
+
+		& picture
+			width 16%
+			transition: all 1s ease 0s
+
+	&__img-wrapper
+		align-items: flex-start
 
 	&__sub-content
 		display: flex

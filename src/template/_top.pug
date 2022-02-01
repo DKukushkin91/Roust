@@ -53,7 +53,7 @@ section.top(class=`${page}__top-section`)
 					a.top__text(href=`tel:${topTextTelephone}` class=`top__text--${page} top__text--telephone`)=topTextTelephone
 					a.top__text(href=`mailto:${topTextMail}` class=`top__text--${page} top__text--mail`)=topTextMail
 
-					button.top__btn.js-btn-form
+					button.top__btn.js-btn-form.animate-button
 						span.top__btn-text Send message
 
 			if (page == 'brands-item')
@@ -66,12 +66,10 @@ section.top(class=`${page}__top-section`)
 						p.top__text-awards Russia's&nbsp;<sup>2
 						p.top__text-awards.top__text-awards--fz №1
 						p.top__text-awards.top__text-awards--fw Premium<br>vodka&nbsp;<sup>2
-				.top__img-slider.swiper.js-top-slider.js-anim-size
-					.top__img-wrapper.swiper-wrapper
-						.top__picture.swiper-slide
+				.top__img-item.js-anim-size
+					.top__img-wrapper
+						.top__picture
 							+picture('rs-bottle', '', baseDir)
-						.top__picture.swiper-slide
-							+picture('rs-test', '', baseDir)
 
 			if (page == 'about-us')
 				.top__sub-content

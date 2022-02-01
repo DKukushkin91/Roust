@@ -1,11 +1,11 @@
-import {createElement} from '../utils/utils';
+import {changeActiveClass, createElement} from '../utils/utils';
 import {selectHandler} from './select';
 
 export const getPopup = () => {
-	if(document.querySelector('.js-btn-form')){
+	if(document.querySelector('.js-btn-form') || document.querySelector('.js-subscribe-btn')){
 		const body = document.querySelector('body')
 		const buttons = document.querySelectorAll('.js-btn-form');
-		const popupTemplate = document.querySelector('.js-popup-form')
+		const popupTemplate = document.querySelector('.js-popup-form-template')
 			.content
 			.querySelector('.js-popup-wrap')
 
@@ -44,6 +44,51 @@ export const getPopup = () => {
 			document.addEventListener('keydown', escPressHandler);
 			createElement(body, fragment);
 			body.classList.add('lock-scroll');
+
+			const popupForm = document.querySelector('.js-popup-form');
+
+			setTimeout(()=>changeActiveClass(popupForm, 'popup-form'));
+
+			popupForm.noValidate = true;
+
+			const validateForm = (evt) => {
+				const form = evt.target;
+				const field = Array.from(form.elements);
+				
+				field.forEach(i => {
+					i.setCustomValidity('');
+					i.parentElement.classList.remove('invalid');
+				});
+				
+				if (document.querySelectorAll('.js-select-native')) {
+					const select = Array.from(document.querySelectorAll('.js-select-native'));
+					select.forEach(i => {
+						i.setCustomValidity('');
+						i.parentElement.parentElement.classList.remove('invalid')
+					});
+	
+					select.forEach(el => {
+						if(el.options[el.selectedIndex].value === 'select') {
+							evt.preventDefault();
+							evt.stopImmediatePropagation();
+							el.parentElement.parentElement.classList.add('invalid');
+						}
+					})
+				}
+
+				if(!form.checkValidity()){
+					evt.preventDefault();
+					evt.stopImmediatePropagation();
+
+					field.forEach(i => {
+						if(!i.checkValidity()){
+							i.parentElement.classList.add('invalid');
+						}
+					})
+				}
+			}
+
+			popupForm.addEventListener('submit', validateForm);
 		}
 
 		for(let button of buttons){

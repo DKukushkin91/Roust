@@ -21,7 +21,8 @@ block page
 		.container
 			.investors__wrap
 				h2.investors__title Investor News
-				a.investors__news-link(href="#") All news
+				a.investors__news-link.animate-button(href="#")
+					span.investors__news-text All news
 				.investors__slider.js-investors-slider
 					ul.investors__list.js-investors-wrap
 						li.investors__item.js-investors-slide
@@ -48,8 +49,8 @@ block page
 						.investors__icon
 							img(src=`${baseDir}/img/icon-pdf.png`, alt="")
 						.investors__box-content
-							time.investors__box-date 03 Apr 2020
-							p.investors__box-text Roust Corporation Presentation for Q3 2019
+							time.investors__box-date 12 Dec 2019
+							p.investors__box-text Appointment of New Auditor
 					a.investors__redirect(href='#')
 						span.investors__redirect-text All presentations (23)
 						svg(width="9" height="15").investors__redirect-icon
@@ -60,7 +61,7 @@ block page
 						.investors__icon
 							img(src=`${baseDir}/img/icon-pdf.png`, alt="")
 						.investors__box-content
-							time.investors__box-date 03 Apr 2020
+							time.investors__box-date 06 Mar 2020
 							p.investors__box-text IFRS Roust Corporation financial results for Q1 2019
 					a.investors__redirect(href='#')
 						span.investors__redirect-text All presentations (16)
@@ -84,13 +85,13 @@ block page
 						.investors__icon
 							img(src=`${baseDir}/img/icon-pdf.png`, alt="")
 						.investors__box-content
-							time.investors__box-date 03 Apr 2020
+							time.investors__box-date 21 Feb 2020
 							p.investors__box-text IFRS Roust Corporation 2018 annual report
 					a.investors__redirect(href='#')
 						span.investors__redirect-text All presentations (7)
 						svg(width="9" height="15").investors__redirect-icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-g`)
-			.investors__wrap
+			.investors__wrap.investors__wrap--flex
 				.investors__content-box.investors__content-box--width
 					h2.investors__title Board of Directors
 					.about-us__cards-wrap.about-us__cards-wrap--jc

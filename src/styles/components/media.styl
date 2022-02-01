@@ -5,15 +5,28 @@
         @media $xs
             max-width 50%
             padding-bottom 80px
+    & .top__title 
+        margin-top -53px
+        padding-bottom 12px
+        @media $md
+            margin-top 0
+            padding-bottom 0
+    & .box__top--media
+        background-position center
 .media
-    padding 74px 0 47px
+    padding 70px 0 47px
     @media $md
         padding 40px 0
+.media__btn-text
+    position relative
+    z-index 1
 .media__subscription
     padding 0 0 50px
     @media $md
         padding 0 0 40px
 .media__btn
+    height auto
+    padding 12px 58px
     margin-left auto
     @media $xs
         width 100%
@@ -56,9 +69,9 @@
 .media__list
     display grid
     grid-template-columns repeat(3,33%)
-    grid-template-rows repeat(2,minmax(340px,auto))
-    column-gap 5px
-    row-gap 5px
+    grid-template-rows repeat(2,minmax(360px,auto))
+    column-gap 6px
+    row-gap 6px
     list-style none
     padding 0
     margin 0
@@ -100,10 +113,18 @@
     bottom 0
     left 0
     width 100%
-    background #000000
-    opacity 0.66
+    background rgba(0, 0, 0, 0.66)
     padding 20px 30px 24px
+.media__item-content--big
+    padding 31px 30px 36px
+.media__item-content--big .media__item-text
+    max-width 100%
+    font-size 21px
+    line-height 29px
+.media__item-content--big .media__date
+    margin-bottom 0
 .media__item-text
+    max-width 190px
     font-size 15px
     line-height 24px
 .media__more

@@ -19,6 +19,12 @@ block text
 block page
 	section.catalog-brands.brands
 		.container
+			nav.breadcrumbs.js-opacity(class=`${page}__breadcrumbs`)
+				ul.breadcrumbs__list
+					li.breadcrumbs__item
+						a.breadcrumbs__link(href="#") Brands
+					li.breadcrumbs__item
+						span.breadcrumbs__link Russian Vodka
 			.catalog-brands__filter.filter
 				.filter__spirit.spirit
 					.spirit__title.filter-title Spirit
@@ -41,7 +47,8 @@ block page
 				.filter__search
 					.filter__search-title.filter-title Searh for brand
 					input(type="text" placeholder="Brand name").filter__search-input
-					button(type="submit").filter__search-btn Search
+					button(type="submit").filter__search-btn.animate-button
+						span.filter__search-btn-text Search
 			h2.catalog-brands__title Russian Vodka
 			.catalog-brands__wrap.brands__wrap.js-list-wrap
 			p.brands__sub-text *EGAIS, 2019 **IMPACT, 2020

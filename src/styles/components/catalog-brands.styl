@@ -1,7 +1,16 @@
 .catalog-brands
+    & .breadcrumbs__item
+      color: #C4C4C4;
+      &:not(:last-child)::before
+        color inherit
+
+    & .breadcrumbs__item:last-child
+      color $d-grey
+
     &.brands
         @media $md
             padding 31px 0 25px 0
+
     &.brands .container
         padding 0
     & .brands__list
@@ -115,6 +124,9 @@
         line-height 18px
         padding 12px 0
         cursor pointer
-        @media $sm
-            display block
-            margin 0 auto
+      @media $sm
+          display block
+          margin 0 auto
+    &__search-btn-text
+      position relative
+      z-index 1

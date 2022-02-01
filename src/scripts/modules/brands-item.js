@@ -1,5 +1,3 @@
-import {getOffset} from '../utils/utils';
-
 export const getScrollItem = () => {
 	if(document.querySelector('.js-anim-items')){
 		const animItems = document.querySelectorAll('.js-anim-items');
@@ -9,45 +7,46 @@ export const getScrollItem = () => {
 		const scrollBtn = document.querySelector('.js-scroll-btn');
 		const main = document.querySelector('.main');
 		const animText = document.querySelectorAll('.js-anim-text');
+		const itemContainer = document.querySelector('.top__content--brands-item');
+		const productSlider = document.querySelector('.js-product-slider');
 
-		const onScrollAnim = () => {
-			animItems.forEach(i => {
-				const animItem = i;
-				const animItemHeight = animItem.offsetHeight;
-				const animItemOffset = getOffset(animItem).top;
-				const animStart = 4;
+		const isSeen = () => itemContainer.getBoundingClientRect().bottom + 45 <= window.innerHeight
 
-				let animItemPoint = window.innerHeight - animItemHeight / animStart;
-
-				if(animItemHeight > window.innerHeight) {
-					animItemPoint = window.innerHeight - window.innerHeight / animStart;
-				}
-
-				if((scrollY > animItemOffset - animItemPoint) || scrollY < (animItemOffset + animItemHeight)){
-					opacityItems.forEach(e => e.classList.add('animate__opacity'))
-					animItem.classList.add('brands-item__wrap--active');
-					header.classList.add('header__active');
-					imgSize.classList.add('top__picture--animate');
-					scrollBtn.classList.add('top__scroll-btn--animate');
-					main.classList.add('main--animate');
-					animText.forEach(e => e.classList.add('brands-item__text-block--animate'));
-				}
-
-				if(scrollY == 0){
-					main.classList.remove('main--animate');
-					opacityItems.forEach(e => e.classList.remove('animate__opacity'))
-					animItem.classList.remove('brands-item__wrap--active');
-					header.classList.remove('header__active');
-					imgSize.classList.remove('top__picture--animate');
-					scrollBtn.classList.remove('top__scroll-btn--animate');
-					animText.forEach(e => e.classList.remove('brands-item__text-block--animate'));
-				}
-			})
+		const removeClass = () => {
+			main.classList.remove('main--animate');
+			opacityItems.forEach(e => e.classList.remove('animate__opacity'))
+			animItems.forEach(e => e.classList.remove('brands-item__wrap--active'))
+			header.classList.remove('header__active');
+			scrollBtn.classList.remove('top__scroll-btn--animate');
+			animText.forEach(e => e.classList.remove('brands-item__text-block--animate'));
+			imgSize.classList.remove('top__picture--animate');
 		}
 
-		const scrollToMain = () => window.scrollBy(0, 80);
+		const addClass = () => {
+			opacityItems.forEach(e => e.classList.add('animate__opacity'))
+			animItems.forEach(e => e.classList.add('brands-item__wrap--active'))
+			header.classList.add('header__active');
+			imgSize.classList.add('top__picture--animate');
+			scrollBtn.classList.add('top__scroll-btn--animate');
+			animText.forEach(e => e.classList.add('brands-item__text-block--animate'));
+			main.classList.add('main--animate');
+		}
+
+		const onScrollAnim = () => {
+			if(isSeen()){
+				addClass();
+			}
+
+			if(scrollY === 0){
+				removeClass();
+			}
+		}
+
 		if(window.innerWidth >= 1279.9) {
-			scrollBtn.addEventListener('click', scrollToMain);
+			scrollBtn.addEventListener('click', () => {
+				addClass();
+				window.scrollBy(0, window.innerWidth / 13)
+			});
 			window.addEventListener('scroll', onScrollAnim);
 		}
 	}

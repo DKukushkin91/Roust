@@ -19,16 +19,18 @@ block text
 block page
 	section.brands-item.brands-item--width
 		.container.brands-item__container
-			.brands-item__content-slider.swiper.js-content-slider
+			.brands-item__content-slider.js-content-slider
 				.brands-item__wrap.js-anim-items.js-content-wrap
 					.brands-item__content.js-content-slide
-						.brands-item__img-slider.swiper.js-img-slider
+						.brands-item__img-slider.swiper.js-img-slider.js-b-item-slider
 							.brands-item__img-wrapper.swiper-wrapper
 								.brands-item__img.swiper-slide
 									img(src=`${baseDir}/img/bg-slide.jpg`, alt="")
 								.brands-item__img.swiper-slide
 									img(src=`${baseDir}/img/bg-brands.jpg`, alt="")
-						.brands-item__text-slider.swiper.js-text-slider
+								.brands-item__img.swiper-slide
+									img(src=`${baseDir}/img/russkiy-standart-original.jpg`, alt="")
+						.brands-item__text-slider.swiper.js-text-slider.js-b-item-slider
 							.brands-item__text-wrapper.swiper-wrapper
 								.brands-item__text-block.js-anim-text.swiper-slide
 									h2.brands-item__title Russian Standard <span class="brands-item__title--color">Original</span>
@@ -36,16 +38,21 @@ block page
 								.brands-item__text-block.js-anim-text.swiper-slide
 									h2.brands-item__title Russian Standard <span class="brands-item__title--color">Special Edition</span>
 									p.brands-item__text At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.
+								.brands-item__text-block.js-anim-text.swiper-slide
+									h2.brands-item__title Talka <span class="brands-item__title--color">Special Edition</span>
+									p.brands-item__text At our state-of-the-art distillery in St. Petersburg we use only the finest Russian winter wheat and pure glacial water from Lake Ladoga to create this ultra-clean, smooth and delicious vodka.
 						button.brands-item__btn.brands-item__btn--mobile.brands-item__btn--mobile-prev.js-mob-prev-btn
 					.brands-item__content.brands-item__content--mobile.js-content-slide
 						.brands-item__bg-img
 							img(src=`${baseDir}/img/rs-bg.jpg`, alt="")
-						.brands-item__mob-slider.swiper.js-mob-slider
-							.brands-item__mob-wrap.swiper-wrapper
-								.brands-item__mob-img.swiper-slide
+						.brands-item__prod-slider.swiper.js-product-slider
+							.brands-item__prod-wrap.swiper-wrapper
+								.brands-item__prod-img.swiper-slide
 									+picture('rs-bottle', '', baseDir)
-								.brands-item__mob-img.swiper-slide
+								.brands-item__prod-img.swiper-slide
 									+picture('rs-test', '', baseDir)
+								.brands-item__prod-img.swiper-slide
+									+picture('talka-bottle', '', baseDir)
 						button.brands-item__btn.brands-item__btn--mobile.js-mob-next-btn
 		button.brands-item__nav-btn.brands-item__nav-btn--prev.js-item-prev.js-slide-btn
 			svg(width="14" height="9").brands-item__icon
@@ -56,12 +63,12 @@ block page
 	section.brands-item.brands-item--color
 		.container.brands-item__container--padding
 			.brands-item__inner
-				.brands-item__box
+				.brands-item__box.js-rect-point
 					h3.brands-item__s-title Collection
 					span.brands-item__text 2 flavours
 				.brands-item__scroll-wrap
-					.brands-item__slide.swiper.js-thumbs-slider
-						ul.brands-item__list.swiper-wrapper
+					.brands-item__slide.swiper.js-thumbs-slider(thumbsSlider="")
+						ul.brands-item__list.js-thumbs-wrapper.swiper-wrapper
 							li.brands-item__item.swiper-slide.js-scroll-item
 								button.brands-item__btn
 									span.brands-item__text-box
@@ -73,6 +80,13 @@ block page
 								button.brands-item__btn
 									span.brands-item__text-box
 										p.brands-item__text Russian Standart
+										p.brands-item__text.brands-item__text--fz Special Edition
+									span.brands-item__picture
+										+picture('se-b', '', baseDir)
+							li.brands-item__item.swiper-slide.js-scroll-item
+								button.brands-item__btn
+									span.brands-item__text-box
+										p.brands-item__text Talka
 										p.brands-item__text.brands-item__text--fz Special Edition
 									span.brands-item__picture
 										+picture('se-b', '', baseDir)

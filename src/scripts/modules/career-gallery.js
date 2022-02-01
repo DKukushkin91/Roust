@@ -1,7 +1,36 @@
-import {createElement} from '../utils/utils';
+import {changeActiveClass, createElement} from '../utils/utils';
 
 export const getGallery = () => {
 	if(document.querySelector('.js-open-gallery')){
+
+		if(document.querySelector('.js-gallery-counter')) {
+			const calcImg = (i) => {
+				const pictureAll = document.querySelectorAll('.project__img-several img')
+				const pictureLast = pictureAll[i]
+				const pictureOther = `<a class="project__img-link" href="#">
+											<div class="project__img-text">
+												<div class="project__img-number"></div>фотографий
+											</div>
+											${pictureAll[i].outerHTML}
+										</a>`
+				pictureLast.outerHTML = pictureOther
+
+				const pictureNumder = document.querySelector('.project__img-number')
+				pictureNumder.innerHTML = '+' + (pictureAll.length - i)
+
+			}
+			if (document.body.clientWidth > 959.9) {
+				calcImg(3)
+			}
+			else if (document.body.clientWidth <= 574.9) {
+				calcImg(1)
+			}
+			else if (document.body.clientWidth <= 959.9) {
+				calcImg(2)
+			}
+			// window.addEventListener('resize', calcImg())
+		}
+
 		const body = document.querySelector('body')
 		const buttons = document.querySelectorAll('.js-open-gallery');
 		const elementTemplate = document.querySelector('.js-gallery-template')
@@ -74,6 +103,10 @@ export const getGallery = () => {
 			document.addEventListener('keydown', escPressHandler);
 			createElement(body, fragment);
 			body.classList.add('lock-scroll');
+
+			const sliderWrap = document.querySelector('.js-gallery-slider');
+
+			setTimeout(()=>changeActiveClass(sliderWrap, 'g-template'));
 		}
 
 		buttons.forEach((button, index) => {

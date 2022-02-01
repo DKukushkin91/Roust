@@ -83,6 +83,12 @@ block page
 										h3.about-us__slide-title "One of the largest vodka producers in the world"
 										p.about-us__slide-text Through the acquisition of Central European Distribution Corporation, Roust became the largest integrated spirits beverage producer and distributor in Central and Eastern Europe, and one of the largest vodka producers in the world.
 									span.about-us__slide-num.about-us__slide-num--dark 2014
+						button.about-us__nav-btn.about-us__nav-btn--left.js-about-prev
+							svg(width="14" height="9").about-us__nav-icon.about-us__nav-icon--rotate
+								use(href=`${baseDir}/img/sprite.svg#arrow-g`)
+						button.about-us__nav-btn.about-us__nav-btn--right.js-about-next
+							svg(width="14" height="9").about-us__nav-icon
+								use(href=`${baseDir}/img/sprite.svg#arrow-g`)
 						.about-us__slider-pagination.swiper-pagination.js-about-pagination
 				li.about-us__item
 					p.about-us__item-title Our Team

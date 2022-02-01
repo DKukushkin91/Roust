@@ -62,9 +62,14 @@
 				width 100vw
 				max-width: 100%
 
+			& .header
+				@media $xl and (max-width: 1920px)
+					padding: 3vh 0;
+
 		&--investors
 			background-image: url('/f/img/investors-bg.jpg')
 			margin-bottom 75px
+			background-position right
 
 			@media $md
 				margin-bottom 45px

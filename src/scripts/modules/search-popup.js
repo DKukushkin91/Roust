@@ -1,4 +1,4 @@
-import {createElement} from '../utils/utils'
+import {changeActiveClass, createElement} from '../utils/utils'
 
 export const getSearchPopup = () => {
 	if(document.querySelector('.js-search-btn')) {
@@ -42,6 +42,10 @@ export const getSearchPopup = () => {
 			document.addEventListener('keydown', escPressHandler);
 			createElement(body, fragment);
 			body.classList.add('lock-scroll');
+
+			const popupWrap = document.querySelector('.js-search-wrap');
+
+			setTimeout(()=>changeActiveClass(popupWrap, 'search-popup'));
 		}
 
 		createPopupButton.addEventListener('click', appendElement);

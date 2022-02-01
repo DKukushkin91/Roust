@@ -16,6 +16,10 @@ export const getAboutUsSlider = () => {
 				1280: {
 					pagination: false,
 					slidesPerView: 1,
+					navigation: {
+						prevEl: '.js-about-prev',
+						nextEl: '.js-about-next'
+					}
 				}
 			}
 		})
