@@ -1,3 +1,4 @@
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");?>
 <section class="brands">
 	<div class="container brands__container">
 		<div class="brands__btns-wrap js-btns-wrap">
@@ -8,3 +9,4 @@
 		<p class="brands__sub-text">*EGAIS, 2019 **IMPACT, 2020</p>
 	</div>
 </section>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
