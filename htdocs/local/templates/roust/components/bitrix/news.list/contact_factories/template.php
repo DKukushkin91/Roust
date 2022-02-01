@@ -1,6 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
-<ul class="contacts__list contacts__local">
+<ul class="contacts__list contacts__list-multi">
 	<?foreach ($arResult["ITEMS"] as $key => $value) {?>
 	<!-- <pre><?print_r($value['PROPERTIES']['FACTORY']['VALUE']);?></pre> -->
 	<li class="contacts__li">
