@@ -1,5 +1,13 @@
 "use strict";
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -534,7 +542,6 @@ var getGallery = function getGallery() {
   }
 };
 
-<<<<<<< HEAD
 var selectHandler = function selectHandler(template) {
   var elSelectNative = template.querySelectorAll('.js-select-native');
   var elSelectCustom = template.querySelectorAll('.js-select-custom');
@@ -723,6 +730,7 @@ var getPopup = function getPopup() {
       var body = document.querySelector('body');
       var buttons = document.querySelectorAll('.js-btn-form');
       var popupTemplate = document.querySelector('.js-popup-form-template').content.querySelector('.js-popup-wrap');
+      var subscribePopupTemplate = document.querySelector('.js-popup-form-template').content.querySelector('.js-subscribe-popup');
 
       var escPressHandler = function escPressHandler(evt) {
         if (evt.key === 'Escape') {
@@ -732,7 +740,7 @@ var getPopup = function getPopup() {
       };
 
       var elementRemoveHandler = function elementRemoveHandler() {
-        var wrap = document.querySelector('.js-popup-wrap');
+        var wrap = document.querySelector('.js-popup-wrap') || document.querySelector('.js-subscribe-popup');
 
         if (wrap) {
           wrap.remove();
@@ -742,17 +750,17 @@ var getPopup = function getPopup() {
         body.classList.remove('lock-scroll');
       };
 
-      var getElement = function getElement() {
-        var template = popupTemplate.cloneNode(true);
+      var getElement = function getElement(contentTemp) {
+        var template = contentTemp.cloneNode(true);
         var closeBtn = template.querySelector('.js-close-btn');
         closeBtn.addEventListener('click', elementRemoveHandler);
         selectHandler(template);
         return template;
       };
 
-      var appendElement = function appendElement() {
+      var appendElement = function appendElement(contentTemp) {
         var fragment = document.createDocumentFragment();
-        var element = getElement();
+        var element = getElement(contentTemp);
         fragment.appendChild(element);
         document.addEventListener('keydown', escPressHandler);
         createElement(body, fragment);
@@ -771,7 +779,7 @@ var getPopup = function getPopup() {
             i.parentElement.classList.remove('invalid');
           });
 
-          if (document.querySelectorAll('.js-select-native')) {
+          if (document.querySelector('.js-select-native')) {
             var select = Array.from(document.querySelectorAll('.js-select-native'));
             select.forEach(function (i) {
               i.setCustomValidity('');
@@ -808,7 +816,7 @@ var getPopup = function getPopup() {
           var button = _step3.value;
           button.addEventListener('click', function (evt) {
             evt.preventDefault();
-            appendElement();
+            appendElement(popupTemplate);
           });
         }
       } catch (err) {
@@ -816,12 +824,18 @@ var getPopup = function getPopup() {
       } finally {
         _iterator3.f();
       }
+
+      if (document.querySelector('.js-subscribe-btn')) {
+        var subscribeBtn = document.querySelector('.js-subscribe-btn');
+        subscribeBtn.addEventListener('click', function (evt) {
+          evt.preventDefault();
+          appendElement(subscribePopupTemplate);
+        });
+      }
     })();
   }
 };
 
-=======
->>>>>>> 376f864cc4897c1f4d30b0b67437ac4a98d71571
 var burgerMenuHandler = function burgerMenuHandler() {
   if (document.querySelector('.js-burger-btn')) {
     var button = document.querySelector('.js-burger-btn');
@@ -1164,8 +1178,8 @@ document.addEventListener('DOMContentLoaded', function () {
   getCatalogList();
   getScrollItem();
   getSliders();
-  getGallery(); // getPopup(); WIP
-
+  getGallery();
+  getPopup();
   getAboutUsSlider();
   getSideBlock();
   getItemAnimation();

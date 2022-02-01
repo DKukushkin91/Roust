@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	getScrollItem();
 	getSliders();
 	getGallery();
-	// getPopup(); WIP
+	getPopup();
 	getAboutUsSlider();
 	getSideBlock();
 	getItemAnimation();
