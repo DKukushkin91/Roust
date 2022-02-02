@@ -1,4 +1,5 @@
 export const cardsMocks = [
+	// mocks
 	{
 		name: 'Roustam Tariko',
 		text: '"Welcome to Roust. We are a group of consumer-focused companies with market-leading brands in 86 countries markets around the world, including UK, USA, Germany, France, Italy, Russia, Poland and Hungary. It is with great pride that I personally ensure that Roust products are of the highest quality and offer the best possible consumer experience."'
