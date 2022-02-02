@@ -23,6 +23,22 @@
             grid-template-columns repeat(1,100%)
             grid-template-rows repeat(1,minmax(375px,auto))
             column-gap 0
+    & .brands__item
+      padding: 0
+      display: grid
+
+    & .brands__item:first-child
+        grid-row 1
+    & .brands__item:nth-child(4)
+        grid-column 1
+
+    & .brands__img
+      position static
+      grid-area: 1 / -1
+      & img
+        height 100%
+        object-fit: cover
+
     &__filter
         width 100%
         display flex
@@ -42,10 +58,6 @@
             line-height 34px
             text-align center
             padding 53px 0 44px
-    & .brands__item:first-child
-        grid-row 1
-    & .brands__item:nth-child(4)
-        grid-column 1
     &__link
         position absolute
         z-index 2
@@ -54,9 +66,8 @@
         width 100%
         height 100%
         text-decoration none
-    & .brands__item
-        padding 20px 40px 27px
     &__item-content
+        grid-area: 1 / -1
         width 100%
         min-height 316px
         position relative
@@ -69,7 +80,7 @@
         font-size 21px
         line-height 29px
         color #000000
-        margin-bottom 11px
+        padding: 13px
     &__item-text
         font-weight 600
         font-size 14px
