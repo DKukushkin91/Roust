@@ -630,8 +630,8 @@
             <use href="/f/img/sprite.svg#cross"></use>
           </svg>
         </button>
-        <fieldset class="popup-form__fieldset">
-          <h2 class="popup-form__title">Please complete the form</h2>
+        <fieldset class="popup-form__fieldset d-flex">
+          <h2 class="popup-form__title">Subscribe to our newsletters</h2>
           <div class="popup-form__input-group">
             <input class="popup-form__input" id="your-name" type="text" name="your-name" required>
             <label class="popup-form__label" for="your-name">Your name</label>
@@ -641,6 +641,18 @@
             <input class="popup-form__input" id="email" type="email" name="email" required>
             <label class="popup-form__label" for="email">Email</label>
             <p class="popup-form__error-text">Please enter your email.</p>
+          </div>
+          <div class="popup-form__checkbox">
+            <div class="popup-form__input-group popup-form__checkbox-group">
+              <input class="popup-form__checkbox-input" id="checkbox-data" type="checkbox" name="checkbox-data" required>
+              <label class="popup-form__checkbox-label" for="checkbox-data"></label>
+              <p class="popup-form__checkbox-text popup-form__text">Согласие на обработку персональных данных</p>
+            </div>
+            <div class="popup-form__input-group popup-form__checkbox-group">
+              <input class="popup-form__checkbox-input" id="checkbox-info" type="checkbox" name="checkbox-info" required>
+              <label class="popup-form__checkbox-label" for="checkbox-info"></label>
+              <p class="popup-form__checkbox-text popup-form__text">Согласие на подписку на информационные матеарилы</p>
+            </div>
           </div>
           <p class="popup-form__text"><span class='popup-form__text popup-form__text--color'>*</span> All fields are required</p>
           <button class="popup-form__btn" type="submit">Subscribe</button>

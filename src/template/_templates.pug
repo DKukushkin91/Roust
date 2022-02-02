@@ -231,8 +231,8 @@ block templates
 				button.popup-form__close-btn.js-close-btn
 					svg(width="22" height="22").popup-form__icon
 						use(href=`${baseDir}/img/sprite.svg#cross`)
-				fieldset.popup-form__fieldset
-					h2.popup-form__title Please complete the form
+				fieldset.popup-form__fieldset.d-flex
+					h2.popup-form__title Subscribe to our newsletters
 					.popup-form__input-group
 						input#your-name.popup-form__input(type="text", name="your-name" required)
 						label.popup-form__label(for="your-name") Your name
@@ -241,6 +241,16 @@ block templates
 						input#email.popup-form__input(type="email", name="email" required)
 						label.popup-form__label(for="email") Email
 						p.popup-form__error-text Please enter your email.
+
+					.popup-form__checkbox
+						.popup-form__input-group.popup-form__checkbox-group
+							input#checkbox-data.popup-form__checkbox-input(type="checkbox", name="checkbox-data" required)
+							label.popup-form__checkbox-label(for="checkbox-data")
+							p.popup-form__checkbox-text.popup-form__text Согласие на обработку персональных данных
+						.popup-form__input-group.popup-form__checkbox-group
+							input#checkbox-info.popup-form__checkbox-input(type="checkbox", name="checkbox-info" required)
+							label.popup-form__checkbox-label(for="checkbox-info")
+							p.popup-form__checkbox-text.popup-form__text Согласие на подписку на информационные матеарилы
 
 					p.popup-form__text <span class='popup-form__text popup-form__text--color'>*</span> All fields are required
 					button.popup-form__btn(type="submit") Subscribe

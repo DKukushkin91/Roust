@@ -94,6 +94,9 @@
 
 		@media $sm
 			padding: 45px 20px
+	&__fieldset.d-flex
+		display flex
+		flex-direction column
 
 	&__title
 		fz-33()
@@ -217,6 +220,45 @@
 		padding: 14px
 		width 100%
 		max-width: 210px
+	&__checkbox
+		margin 10px 0
+	&__checkbox-group
+		flex-direction row
+		align-items center
+		margin-bottom 25px
+	&__checkbox-group:last-child
+		margin-bottom 0
+	&__checkbox-input
+		visibility hidden
+		width 0
+		height 0
+		margin 0
+	&__checkbox-label
+		position relative
+		width 20px
+		height 20px
+		background-color $white
+		border 1px solid #95A4B1
+		cursor pointer
+	&__checkbox-label:before
+		position absolute
+		display block
+		width 13px
+		height 12px
+		top 3px
+		left 4px
+		background-image url(../img/icons-check.svg)
+		background-repeat no-repeat
+		background-position center
+		background-size auto
+	&__checkbox-input:checked + .popup-form__checkbox-label
+		border none
+		background-color #E33916
+	&__checkbox-input:checked + .popup-form__checkbox-label:before
+		content ''
+	&__checkbox-text
+		padding-left 8px
+	
 
 	&__btn
 		fz-15()
