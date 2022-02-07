@@ -422,7 +422,7 @@
 </template>
 <template class="g-template js-g-list-template">
 	<?$APPLICATION->IncludeComponent(
-		"bitrix:news.list",
+		"bitrix:catalog.section",
 		"career_photo",
 		Array(
 			"CACHE_TYPE" => "Y",
@@ -442,7 +442,7 @@
 		)
 	);?>
 	<?$APPLICATION->IncludeComponent(
-		"bitrix:news.list",
+		"bitrix:catalog.section",
 		"career_photo",
 		Array(
 			"CACHE_TYPE" => "Y",

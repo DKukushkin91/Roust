@@ -48,7 +48,7 @@
 			'include_html_from_iblock',
 			array(
 				'IBLOCK_ID' => CIBlockTools::GetIBlockId('content_page'),
-				'ELEMENT_CODE' => 'page-partnership_price',
+				'ELEMENT_CODE' => 'page-partnership_answer',
 				'CACHE_TIPE' => 'Y',
 				'CACHE_TIME' => 604800,
 				"SET_STATUS_404" => "Y",

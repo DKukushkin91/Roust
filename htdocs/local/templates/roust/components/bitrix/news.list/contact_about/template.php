@@ -1,6 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
-<ul class="contacts__list contacts__list-multi">
+<div class="about-us__card">
 	<?foreach ($arResult["ITEMS"] as $key => $value) {?>
 	<div class="about-us__card">
 		<div class="about-us__card-img about-us__card-img--filter"><img class="js-card-img" src="<?=$value["PREVIEW_PICTURE"]["SRC"]?>"
@@ -14,4 +14,4 @@
 	<?
 	}
 	?>
-</ul>
+</div>

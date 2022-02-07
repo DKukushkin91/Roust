@@ -84,7 +84,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 				<h2 class="investors__title">Board of Directors</h2>
 				<div class="about-us__cards-wrap about-us__cards-wrap--jc">
 					<?$APPLICATION->IncludeComponent(
-						"bitrix:news.list",
+						"bitrix:catalog.section",
 						"our_team",
 						Array(
 							"CACHE_TYPE" => "Y",
@@ -109,7 +109,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 				<h2 class="investors__title">Executive Officers</h2>
 				<div class="about-us__cards-wrap about-us__cards-wrap--jc">
 					<?$APPLICATION->IncludeComponent(
-						"bitrix:news.list",
+						"bitrix:catalog.section",
 						"our_team",
 						Array(
 							"CACHE_TYPE" => "Y",

@@ -89,6 +89,12 @@
 				</div>
 				<div class="about-us__cards-container js-about-mob-slider js-about-card">
 					<div class="about-us__cards-wrap about-us__cards-wrap--width">
+					<?					
+					global $arrFilter;
+					$arrFilter = array(
+						'PROPERTY_FACTORY' => 'Y'
+					);
+					?>
 					<?$APPLICATION->IncludeComponent(
 						"bitrix:news.list",
 						"contact_about",
@@ -106,6 +112,7 @@
 							"SORT_ORDER1" => "ASC",		
 							"SORT_BY2" => "ACTIVE_FROM",
 							"SORT_ORDER2" => "DESC",	
+							"FILTER_NAME" => "arrFilter",
 						)
 					);?>
 					</div>
