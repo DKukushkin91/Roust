@@ -1,7 +1,7 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");?>
 <?$APPLICATION->IncludeComponent(
         "bitrix:catalog", 
-        "", 
+        "brands", 
         array(
                 "IBLOCK_ID" => CIBlockTools::GetIBlockId('brands'),
                 "IBLOCK_TYPE" => "content",
