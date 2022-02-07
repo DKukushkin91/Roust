@@ -422,7 +422,7 @@
 </template>
 <template class="g-template js-g-list-template">
 	<?$APPLICATION->IncludeComponent(
-		"bitrix:news.list",
+		"bitrix:catalog.section",
 		"career_photo",
 		Array(
 			"CACHE_TYPE" => "Y",
@@ -430,7 +430,7 @@
 			"DETAIL_PROPERTY_CODE" => array('*'),
 			"FIELD_CODE" => array('*'),
 			"IBLOCK_ID" => CIBlockTools::GetIBlockId('career_photo'),
-			"SECTION_CODE" => "comfortable_offices",
+			"SECTION_ID" => 26,
 			"PROPERTY_CODE" => array('*'),
 			"SET_STATUS_404" => "Y",
 			"SET_TITLE" => "N",
@@ -442,7 +442,7 @@
 		)
 	);?>
 	<?$APPLICATION->IncludeComponent(
-		"bitrix:news.list",
+		"bitrix:catalog.section",
 		"career_photo",
 		Array(
 			"CACHE_TYPE" => "Y",
@@ -450,7 +450,7 @@
 			"DETAIL_PROPERTY_CODE" => array('*'),
 			"FIELD_CODE" => array('*'),
 			"IBLOCK_ID" => CIBlockTools::GetIBlockId('career_photo'),
-			"SECTION_CODE" => "modern_factories",
+			"SECTION_ID" => 27,
 			"PROPERTY_CODE" => array('*'),
 			"SET_STATUS_404" => "Y",
 			"SET_TITLE" => "N",
