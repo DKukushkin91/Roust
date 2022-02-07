@@ -15,7 +15,6 @@
 $this->setFrameMode(true);
 ?>
 
-<!-- <pre>2<?=print_r($arResult)?></pre> -->
 <?
 $APPLICATION->IncludeComponent(
 	"bitrix:catalog.section.list",
