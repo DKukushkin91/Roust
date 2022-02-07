@@ -1035,12 +1035,37 @@ var getItemAnimation = function getItemAnimation() {
         flag = 1;
         moveElements(itemsArray);
       } else {
-        flag = null;
-        moveElements(itemsArray);
+        window.removeEventListener('scroll', onScrollAnimation);
       }
     };
 
-    window.addEventListener('scroll', onScrollAnimation);
+    function scrollTrigger(selector) {
+      var els = document.querySelectorAll(selector);
+      els = Array.from(els);
+      els.forEach(function (el) {
+        addObserver(el);
+      });
+    }
+
+    function addObserver(el) {
+      // We are creating a new IntersectionObserver instance
+      var observer = new IntersectionObserver(function (entries, observer) {
+        // This takes a callback function that receives two arguments: the elements list and the observer instance.
+        entries.forEach(function (entry) {
+          // `entry.isIntersecting` will be true if the element is visible
+          if (entry.isIntersecting) {
+            window.addEventListener('scroll', onScrollAnimation); // We are removing the observer from the element after adding the active class
+
+            observer.unobserve(entry.target);
+          }
+        });
+      }); // Adding the observer to the element
+
+      observer.observe(el);
+    } // Example usage
+
+
+    scrollTrigger('.js-main-bottle');
   }
 };
 
