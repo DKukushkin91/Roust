@@ -4,6 +4,7 @@ export const getItemAnimation = () => {
 		const mainItem = document.querySelector('.js-main-bottle');
 		const itemsArray = Array.from(items);
 		// const anchor = document.querySelector('.js-anchor-bottle');
+		const test = document.querySelector('.screen__img-wrap--desk');
 		const val = 0.06
 
 		let flag = null;
@@ -17,11 +18,13 @@ export const getItemAnimation = () => {
 				evenIndexs.forEach((el, index) => {
 					const value = window.scrollY * ((index + 1) * val);
 					el.style.left = `${value}px`;
+					el.offsetLeft <= 0 ? window.removeEventListener('scroll', onScrollAnimation) : false;
 				})
 
 				oddIndexs.forEach((el, index) => {
 					const value = window.scrollY * ((index + 1) * val);
 					el.style.right = `${value}px`;
+					el.offsetLeft === 0 ? window.removeEventListener('scroll', onScrollAnimation) : false;
 				})
 			} else {
 				evenIndexs.forEach(el => {
@@ -52,7 +55,7 @@ export const getItemAnimation = () => {
 			}
 		}
 
-		function scrollTrigger(selector){
+		const scrollTrigger = (selector) => {
 			let els = document.querySelectorAll(selector)
 			els = Array.from(els)
 			els.forEach(el => {
@@ -60,22 +63,17 @@ export const getItemAnimation = () => {
 			})
 		}
 
-		function addObserver(el){
-				// We are creating a new IntersectionObserver instance
-				let observer = new IntersectionObserver((entries, observer) => { // This takes a callback function that receives two arguments: the elements list and the observer instance.
+		const addObserver = (el) =>{
+				let observer = new IntersectionObserver((entries, observer) => {
 					entries.forEach(entry => {
-						// `entry.isIntersecting` will be true if the element is visible
 					if(entry.isIntersecting) {
 						window.addEventListener('scroll', onScrollAnimation);
-						// We are removing the observer from the element after adding the active class
 						observer.unobserve(entry.target)
 					}
 				})
 			})
-			// Adding the observer to the element
 			observer.observe(el)
 		}
-		// Example usage
 		scrollTrigger('.js-main-bottle')
 	}
 }

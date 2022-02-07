@@ -991,6 +991,7 @@ var getItemAnimation = function getItemAnimation() {
     var mainItem = document.querySelector('.js-main-bottle');
     var itemsArray = Array.from(items); // const anchor = document.querySelector('.js-anchor-bottle');
 
+    var test = document.querySelector('.screen__img-wrap--desk');
     var val = 0.06;
     var flag = null;
 
@@ -1006,10 +1007,12 @@ var getItemAnimation = function getItemAnimation() {
         evenIndexs.forEach(function (el, index) {
           var value = window.scrollY * ((index + 1) * val);
           el.style.left = "".concat(value, "px");
+          el.offsetLeft <= 0 ? window.removeEventListener('scroll', onScrollAnimation) : false;
         });
         oddIndexs.forEach(function (el, index) {
           var value = window.scrollY * ((index + 1) * val);
           el.style.right = "".concat(value, "px");
+          el.offsetLeft === 0 ? window.removeEventListener('scroll', onScrollAnimation) : false;
         });
       } else {
         evenIndexs.forEach(function (el) {
@@ -1039,31 +1042,25 @@ var getItemAnimation = function getItemAnimation() {
       }
     };
 
-    function scrollTrigger(selector) {
+    var scrollTrigger = function scrollTrigger(selector) {
       var els = document.querySelectorAll(selector);
       els = Array.from(els);
       els.forEach(function (el) {
         addObserver(el);
       });
-    }
+    };
 
-    function addObserver(el) {
-      // We are creating a new IntersectionObserver instance
+    var addObserver = function addObserver(el) {
       var observer = new IntersectionObserver(function (entries, observer) {
-        // This takes a callback function that receives two arguments: the elements list and the observer instance.
         entries.forEach(function (entry) {
-          // `entry.isIntersecting` will be true if the element is visible
           if (entry.isIntersecting) {
-            window.addEventListener('scroll', onScrollAnimation); // We are removing the observer from the element after adding the active class
-
+            window.addEventListener('scroll', onScrollAnimation);
             observer.unobserve(entry.target);
           }
         });
-      }); // Adding the observer to the element
-
+      });
       observer.observe(el);
-    } // Example usage
-
+    };
 
     scrollTrigger('.js-main-bottle');
   }
