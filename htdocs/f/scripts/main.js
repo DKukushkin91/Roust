@@ -989,9 +989,7 @@ var getItemAnimation = function getItemAnimation() {
   if (document.querySelector('.js-anchor-bottle')) {
     var items = document.querySelectorAll('.js-animate-bottle');
     var mainItem = document.querySelector('.js-main-bottle');
-    var itemsArray = Array.from(items); // const anchor = document.querySelector('.js-anchor-bottle');
-
-    var test = document.querySelector('.screen__img-wrap--desk');
+    var itemsArray = Array.from(items);
     var val = 0.06;
     var flag = null;
 

@@ -3,8 +3,7 @@ export const getItemAnimation = () => {
 		const items = document.querySelectorAll('.js-animate-bottle');
 		const mainItem = document.querySelector('.js-main-bottle');
 		const itemsArray = Array.from(items);
-		// const anchor = document.querySelector('.js-anchor-bottle');
-		const test = document.querySelector('.screen__img-wrap--desk');
+
 		const val = 0.06
 
 		let flag = null;
