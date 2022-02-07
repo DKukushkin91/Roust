@@ -1,6 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 
-<div class="about-us__card">
+<div class="about-us__cards-wrap about-us__cards-wrap--width">
 	<?foreach ($arResult["ITEMS"] as $key => $value) {?>
 		<?if($value['PROPERTIES']['FACTORY']['VALUE']=="Y"){?>
 		<div class="about-us__card">

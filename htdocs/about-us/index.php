@@ -88,7 +88,6 @@
 					?>
 				</div>
 				<div class="about-us__cards-container js-about-mob-slider js-about-card">
-					<div class="about-us__cards-wrap about-us__cards-wrap--width">
 					<?$APPLICATION->IncludeComponent(
 						"bitrix:news.list",
 						"contact_about",
@@ -108,7 +107,6 @@
 							"SORT_ORDER2" => "DESC",	
 						)
 					);?>
-					</div>
 				</div>
 			</li>
 		</ol>
