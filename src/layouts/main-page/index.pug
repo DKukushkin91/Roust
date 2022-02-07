@@ -115,7 +115,7 @@ block page
 								li.screen__p-item.swiper-slide
 									button.screen__p-btn
 										+picture('talka-logo', 'Talka', baseDir)
-				.main-page__screen.screen.js-anchor-bottle
+				.main-page__screen.screen.screen--products.js-anchor-bottle
 					.screen__icon-wrap
 						svg(width="14" height="9").screen__icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)
@@ -168,7 +168,7 @@ block page
 
 					include ../../template/_news
 
-				.main-page__screen.screen
+				.main-page__screen.screen.screen--min-height
 					.screen__icon-wrap
 						svg(width="14" height="9").screen__icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-b`)

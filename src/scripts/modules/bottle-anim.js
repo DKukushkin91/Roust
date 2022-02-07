@@ -8,30 +8,21 @@ export const getItemAnimation = () => {
 
 		let flag = null;
 
-		const moveElements = (elements) => {
-			const evenIndexs = elements.filter((x, index) => index % 2 === 0);
-			const oddIndexs = elements.filter((x, index) => index % 2 !== 0 );
-
+		const moveElements = () => {
+			const evenIndexs = itemsArray.filter((x, index) => index % 2 === 0);
+			const oddIndexs = itemsArray.filter((x, index) => index % 2 !== 0 );
 
 			if(flag === 1){
 				evenIndexs.forEach((el, index) => {
-					const value = window.scrollY * ((index + 1) * val);
+					const value = window.scrollY * ((index + 1.12) * val);
 					el.style.left = `${value}px`;
-					el.offsetLeft <= 0 ? window.removeEventListener('scroll', onScrollAnimation) : false;
+					el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
 				})
 
 				oddIndexs.forEach((el, index) => {
-					const value = window.scrollY * ((index + 1) * val);
+					const value = window.scrollY * ((index + 1.12) * val);
 					el.style.right = `${value}px`;
-					el.offsetLeft === 0 ? window.removeEventListener('scroll', onScrollAnimation) : false;
-				})
-			} else {
-				evenIndexs.forEach(el => {
-					el.style.left = 0;
-				})
-
-				oddIndexs.forEach(el => {
-					el.style.right = 0;
+					el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
 				})
 			}
 		}
@@ -48,7 +39,7 @@ export const getItemAnimation = () => {
 
 			if(targetPosition.bottom > windowPosition.top && targetPosition.top < windowPosition.bottom) {
 				flag = 1;
-				moveElements(itemsArray);
+				window.requestAnimationFrame(moveElements);
 			} else {
 				window.removeEventListener('scroll', onScrollAnimation);
 			}
@@ -57,6 +48,7 @@ export const getItemAnimation = () => {
 		const scrollTrigger = (selector) => {
 			let els = document.querySelectorAll(selector)
 			els = Array.from(els)
+
 			els.forEach(el => {
 				addObserver(el)
 			})
@@ -73,6 +65,7 @@ export const getItemAnimation = () => {
 			})
 			observer.observe(el)
 		}
+
 		scrollTrigger('.js-main-bottle')
 	}
 }

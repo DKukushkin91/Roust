@@ -993,31 +993,24 @@ var getItemAnimation = function getItemAnimation() {
     var val = 0.06;
     var flag = null;
 
-    var moveElements = function moveElements(elements) {
-      var evenIndexs = elements.filter(function (x, index) {
+    var moveElements = function moveElements() {
+      var evenIndexs = itemsArray.filter(function (x, index) {
         return index % 2 === 0;
       });
-      var oddIndexs = elements.filter(function (x, index) {
+      var oddIndexs = itemsArray.filter(function (x, index) {
         return index % 2 !== 0;
       });
 
       if (flag === 1) {
         evenIndexs.forEach(function (el, index) {
-          var value = window.scrollY * ((index + 1) * val);
+          var value = window.scrollY * ((index + 1.12) * val);
           el.style.left = "".concat(value, "px");
-          el.offsetLeft <= 0 ? window.removeEventListener('scroll', onScrollAnimation) : false;
+          el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
         });
         oddIndexs.forEach(function (el, index) {
-          var value = window.scrollY * ((index + 1) * val);
+          var value = window.scrollY * ((index + 1.12) * val);
           el.style.right = "".concat(value, "px");
-          el.offsetLeft === 0 ? window.removeEventListener('scroll', onScrollAnimation) : false;
-        });
-      } else {
-        evenIndexs.forEach(function (el) {
-          el.style.left = 0;
-        });
-        oddIndexs.forEach(function (el) {
-          el.style.right = 0;
+          el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
         });
       }
     };
@@ -1034,7 +1027,7 @@ var getItemAnimation = function getItemAnimation() {
 
       if (targetPosition.bottom > windowPosition.top && targetPosition.top < windowPosition.bottom) {
         flag = 1;
-        moveElements(itemsArray);
+        window.requestAnimationFrame(moveElements);
       } else {
         window.removeEventListener('scroll', onScrollAnimation);
       }
