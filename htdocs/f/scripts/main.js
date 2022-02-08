@@ -991,7 +991,7 @@ var getItemAnimation = function getItemAnimation() {
 
     var itemsArray = Array.from(items);
     var anchor = document.querySelector('.js-anchor-bottle');
-    var val = 0.5;
+    var val = 0.4;
     var flag = null;
     history.scrollRestoration = 'manual';
     window.scrollTo(0, 0);
