@@ -12,7 +12,7 @@ class Products
         
         $result = array();
 
-        $iblockId = CIBlockTools::GetIBlockId( Helpers::getLangCodeIblockByCode('products') );
+        $iblockId = CIBlockTools::GetIBlockId( Helpers::getLangCodeIblockByCode('brands') );
         $cacheTime = 604800;
         $cacheID = 'getAllProducts'.$iblockId;
         $cachePath = "/getAllProducts/";
@@ -32,7 +32,7 @@ class Products
                 ),
                 false,
                 false,
-                array( 'ID', 'CODE', 'NAME' )
+                array('*','PROPERTY_*')
             );
             while($arRes = $res->Fetch()){
                 $result[ $arRes['CODE'] ] = array(
@@ -40,6 +40,7 @@ class Products
                     'ID' => $arRes['ID'],
                     'CODE' => $arRes['CODE']
                 );
+                $result[ $arRes['CODE'] ]['PROPERTIES'] = $arRes->GetProperties();
             }
             $obCache->EndDataCache($result);
         }
