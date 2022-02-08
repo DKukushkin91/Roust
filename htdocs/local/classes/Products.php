@@ -34,13 +34,9 @@ class Products
                 false,
                 array('*','PROPERTY_*')
             );
-            while($arRes = $res->Fetch()){
-                $result[ $arRes['CODE'] ] = array(
-                    'NAME' => $arRes['NAME'],
-                    'ID' => $arRes['ID'],
-                    'CODE' => $arRes['CODE']
-                );
-                $result[ $arRes['CODE'] ]['PROPERTIES'] = $arRes->GetProperties();
+            while($arRes = $res->GetNextElement()){
+                $result[ $arRes['CODE'] ] = $arRes->GetFields();
+                //$result[ $arRes['CODE'] ]['PROPERTIES'] = $arRes->GetProperties();
             }
             $obCache->EndDataCache($result);
         }
