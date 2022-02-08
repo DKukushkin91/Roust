@@ -32,11 +32,15 @@ class Products
                 ),
                 false,
                 false,
-                array('*','PROPERTY_*')
+                array( 'ID', 'CODE', 'NAME', 'PROPERTY_*')
             );
-            while($arRes = $res->GetNextElement()){
-                $result[ $arRes['CODE'] ] = $arRes->GetFields();
-                //$result[ $arRes['CODE'] ]['PROPERTIES'] = $arRes->GetProperties();
+            while($arRes = $res->Fetch()){
+                $result[ $arRes['CODE'] ] = array(
+                    'NAME' => $arRes['NAME'],
+                    'ID' => $arRes['ID'],
+                    'CODE' => $arRes['CODE'],
+                    'PROPERTY_COUNTRY' => $arRes['COUNTRY'],
+                );
             }
             $obCache->EndDataCache($result);
         }
