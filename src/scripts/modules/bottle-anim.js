@@ -1,31 +1,34 @@
 export const getItemAnimation = () => {
 	if(document.querySelector('.js-anchor-bottle')) {
 		const items = document.querySelectorAll('.js-animate-bottle');
-		// const mainItem = document.querySelector('.js-main-bottle');
 		const itemsArray = Array.from(items);
 		const anchor = document.querySelector('.js-anchor-bottle')
+		const evenIndexs = itemsArray.filter((x, index) => index % 2 === 0);
+		const oddIndexs = itemsArray.filter((x, index) => index % 2 !== 0 );
 
-		const val = 0.12
+		const scrollSpeed = 0.12
 
-		let flag = null;
+		const getValue = (index) => {
+			return Math.floor((anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index === 0 ? index + 1.111 : index + 1.2) * scrollSpeed));
+		}
+
+		let indexElement;
+		let flag;
 
 		history.scrollRestoration = 'manual';
 		window.scrollTo(0,0);
 
 		const moveElements = () => {
-			const evenIndexs = itemsArray.filter((x, index) => index % 2 === 0);
-			const oddIndexs = itemsArray.filter((x, index) => index % 2 !== 0 );
-
 			if(flag === 1){
 				evenIndexs.forEach((el, index) => {
-					const value = Math.floor((anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index + 1) * val));
-					el.style.right = `${value}px`;
+					indexElement = index;
+					el.style.right = `${getValue(indexElement)}px`;
 					el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
 				})
 
 				oddIndexs.forEach((el, index) => {
-					const value = Math.floor((anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index + 1) * val));
-					el.style.left = `${value}px`;
+					indexElement = index;
+					el.style.left = `${getValue(indexElement)}px`;
 					el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
 				})
 			}
@@ -35,8 +38,6 @@ export const getItemAnimation = () => {
 			flag = 1;
 			window.requestAnimationFrame(moveElements);
 		}
-
-		window.addEventListener('scroll', onScrollAnimation);
 
 		const scrollTrigger = (selector) => {
 			let els = document.querySelectorAll(selector)

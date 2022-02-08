@@ -987,32 +987,36 @@ var getSideBlock = function getSideBlock() {
 
 var getItemAnimation = function getItemAnimation() {
   if (document.querySelector('.js-anchor-bottle')) {
-    var items = document.querySelectorAll('.js-animate-bottle'); // const mainItem = document.querySelector('.js-main-bottle');
-
+    var items = document.querySelectorAll('.js-animate-bottle');
     var itemsArray = Array.from(items);
     var anchor = document.querySelector('.js-anchor-bottle');
-    var val = 0.12;
-    var flag = null;
+    var evenIndexs = itemsArray.filter(function (x, index) {
+      return index % 2 === 0;
+    });
+    var oddIndexs = itemsArray.filter(function (x, index) {
+      return index % 2 !== 0;
+    });
+    var scrollSpeed = 0.12;
+
+    var getValue = function getValue(index) {
+      return Math.floor((anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index === 0 ? index + 1.111 : index + 1.2) * scrollSpeed));
+    };
+
+    var indexElement;
+    var flag;
     history.scrollRestoration = 'manual';
     window.scrollTo(0, 0);
 
     var moveElements = function moveElements() {
-      var evenIndexs = itemsArray.filter(function (x, index) {
-        return index % 2 === 0;
-      });
-      var oddIndexs = itemsArray.filter(function (x, index) {
-        return index % 2 !== 0;
-      });
-
       if (flag === 1) {
         evenIndexs.forEach(function (el, index) {
-          var value = Math.floor((anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index + 1) * val));
-          el.style.right = "".concat(value, "px");
+          indexElement = index;
+          el.style.right = "".concat(getValue(indexElement), "px");
           el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
         });
         oddIndexs.forEach(function (el, index) {
-          var value = Math.floor((anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index + 1) * val));
-          el.style.left = "".concat(value, "px");
+          indexElement = index;
+          el.style.left = "".concat(getValue(indexElement), "px");
           el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
         });
       }
@@ -1022,8 +1026,6 @@ var getItemAnimation = function getItemAnimation() {
       flag = 1;
       window.requestAnimationFrame(moveElements);
     };
-
-    window.addEventListener('scroll', onScrollAnimation);
 
     var scrollTrigger = function scrollTrigger(selector) {
       var els = document.querySelectorAll(selector);
