@@ -987,11 +987,13 @@ var getSideBlock = function getSideBlock() {
 
 var getItemAnimation = function getItemAnimation() {
   if (document.querySelector('.js-anchor-bottle')) {
-    var items = document.querySelectorAll('.js-animate-bottle');
-    var mainItem = document.querySelector('.js-main-bottle');
+    var items = document.querySelectorAll('.js-animate-bottle'); // const mainItem = document.querySelector('.js-main-bottle');
+
     var itemsArray = Array.from(items);
-    var val = 0.06;
+    var anchor = document.querySelector('.js-anchor-bottle');
+    var val = 0.5;
     var flag = null;
+    window.scrollTo(0, 0);
 
     var moveElements = function moveElements() {
       var evenIndexs = itemsArray.filter(function (x, index) {
@@ -1003,35 +1005,32 @@ var getItemAnimation = function getItemAnimation() {
 
       if (flag === 1) {
         evenIndexs.forEach(function (el, index) {
-          var value = window.scrollY * ((index + 1.12) * val);
-          el.style.left = "".concat(value, "px");
+          var value = (anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index + 1.12) * val);
+          el.style.right = "".concat(value, "px");
           el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
         });
         oddIndexs.forEach(function (el, index) {
-          var value = window.scrollY * ((index + 1.12) * val);
-          el.style.right = "".concat(value, "px");
+          var value = (anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index + 1.12) * val);
+          el.style.left = "".concat(value, "px");
           el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
         });
       }
     };
 
     var onScrollAnimation = function onScrollAnimation() {
-      var targetPosition = {
-        top: window.scrollY + mainItem.getBoundingClientRect().top,
-        bottom: window.scrollY + mainItem.getBoundingClientRect().bottom
-      };
-      var windowPosition = {
-        top: window.scrollY,
-        bottom: window.scrollY + document.documentElement.clientHeight
-      };
-
-      if (targetPosition.bottom > windowPosition.top && targetPosition.top < windowPosition.bottom) {
-        flag = 1;
-        window.requestAnimationFrame(moveElements);
-      } else {
-        window.removeEventListener('scroll', onScrollAnimation);
-      }
+      // let targetPosition = {
+      // 	top: window.scrollY + mainItem.getBoundingClientRect().top,
+      // 	bottom: window.scrollY + mainItem.getBoundingClientRect().bottom
+      // };
+      // let windowPosition = {
+      // 	top: window.scrollY,
+      // 	bottom: window.scrollY + document.documentElement.clientHeight
+      // }
+      flag = 1;
+      window.requestAnimationFrame(moveElements);
     };
+
+    window.addEventListener('scroll', onScrollAnimation);
 
     var scrollTrigger = function scrollTrigger(selector) {
       var els = document.querySelectorAll(selector);
@@ -1043,6 +1042,7 @@ var getItemAnimation = function getItemAnimation() {
 
     var addObserver = function addObserver(el) {
       var observer = new IntersectionObserver(function (entries, observer) {
+        console.log(entries);
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             window.addEventListener('scroll', onScrollAnimation);
@@ -1053,7 +1053,7 @@ var getItemAnimation = function getItemAnimation() {
       observer.observe(el);
     };
 
-    scrollTrigger('.js-main-bottle');
+    scrollTrigger('.js-anchor-bottle');
   }
 };
 
