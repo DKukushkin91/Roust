@@ -5,7 +5,7 @@ export const getItemAnimation = () => {
 		const itemsArray = Array.from(items);
 		const anchor = document.querySelector('.js-anchor-bottle')
 
-		const val = 0.4
+		const val = 0.11
 
 		let flag = null;
 
