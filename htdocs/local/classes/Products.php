@@ -12,7 +12,7 @@ class Products
         
         $result = array();
 
-        $iblockId = CIBlockTools::GetIBlockId( Helpers::getLangCodeIblockByCode('brands') );
+        $iblockId = CIBlockTools::GetIBlockId('brands');
         $cacheTime = 604800;
         $cacheID = 'getAllProducts'.$iblockId;
         $cachePath = "/getAllProducts/";
