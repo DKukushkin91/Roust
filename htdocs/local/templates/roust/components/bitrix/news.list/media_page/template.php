@@ -9,7 +9,7 @@
 	<?foreach ($arResult["ITEMS"] as $key => $value) {?>
 	<?if($key>0){?>		
 		<li class="media__item">
-			<a class="media__item-link" href="#">
+			<a class="media__item-link" href="<?=$value["DETAIL_PAGE_URL"];?>">
 			<img class="media__item-img" src="<?=$value["PREVIEW_PICTURE"]["SRC"]?>" alt="<?=$value["PREVIEW_PICTURE"]["ALT"]?>">
 				<div class="media__item-content">
 					<div class="media__item-date media__date"><?echo CIBlockFormatProperties::DateFormat("j F Y", MakeTimeStamp($value["ACTIVE_FROM"], CSite::GetDateFormat()));?></div>
