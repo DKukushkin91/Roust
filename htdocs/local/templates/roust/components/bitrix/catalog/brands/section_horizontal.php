@@ -11,7 +11,6 @@ use Bitrix\Main\ModuleManager;
  * @var array $arCurSection
  */
 ?>
-<!-- <pre>1<?=print_r($arResult)?></pre> -->
 <section class="catalog-brands brands">
 	<div class="container">
 		<nav class="breadcrumbs js-opacity brands__breadcrumbs">
