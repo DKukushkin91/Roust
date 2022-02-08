@@ -993,6 +993,7 @@ var getItemAnimation = function getItemAnimation() {
     var anchor = document.querySelector('.js-anchor-bottle');
     var val = 0.5;
     var flag = null;
+    history.scrollRestoration = 'manual';
     window.scrollTo(0, 0);
 
     var moveElements = function moveElements() {

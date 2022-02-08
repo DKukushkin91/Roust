@@ -9,7 +9,8 @@ export const getItemAnimation = () => {
 
 		let flag = null;
 
-		window.scrollTo(0, 0);
+		history.scrollRestoration = 'manual';
+		window.scrollTo(0,0);
 
 		const moveElements = () => {
 			const evenIndexs = itemsArray.filter((x, index) => index % 2 === 0);
