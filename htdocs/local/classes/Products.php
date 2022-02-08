@@ -32,14 +32,14 @@ class Products
                 ),
                 false,
                 false,
-                array( 'ID', 'CODE', 'NAME', 'PROPERTY_COUNTRY')
+                array( 'ID', 'CODE', 'NAME', 'PROPERTY_*')
             );
             while($arRes = $res->Fetch()){
                 $result[ $arRes['CODE'] ] = array(
                     'NAME' => $arRes['NAME'],
                     'ID' => $arRes['ID'],
                     'CODE' => $arRes['CODE'],
-                    'PROPERTY_COUNTRY' => $arRes['COUNTRY'],
+                    'COUNTRY' => $arRes['PROPERTY_COUNTRY_VALUE'],
                 );
             }
             $obCache->EndDataCache($result);
