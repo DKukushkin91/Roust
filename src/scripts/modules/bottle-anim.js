@@ -5,7 +5,7 @@ export const getItemAnimation = () => {
 		const itemsArray = Array.from(items);
 		const anchor = document.querySelector('.js-anchor-bottle')
 
-		const val = 0.11
+		const val = 0.12
 
 		let flag = null;
 
@@ -18,13 +18,13 @@ export const getItemAnimation = () => {
 
 			if(flag === 1){
 				evenIndexs.forEach((el, index) => {
-					const value = (anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index + 1.12) * val);
+					const value = Math.floor((anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index + 1) * val));
 					el.style.right = `${value}px`;
 					el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
 				})
 
 				oddIndexs.forEach((el, index) => {
-					const value = (anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index + 1.12) * val);
+					const value = Math.floor((anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index + 1) * val));
 					el.style.left = `${value}px`;
 					el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
 				})
@@ -32,15 +32,6 @@ export const getItemAnimation = () => {
 		}
 
 		const onScrollAnimation = () => {
-			// let targetPosition = {
-			// 	top: window.scrollY + mainItem.getBoundingClientRect().top,
-			// 	bottom: window.scrollY + mainItem.getBoundingClientRect().bottom
-			// };
-			// let windowPosition = {
-			// 	top: window.scrollY,
-			// 	bottom: window.scrollY + document.documentElement.clientHeight
-			// }
-
 			flag = 1;
 			window.requestAnimationFrame(moveElements);
 		}
@@ -58,7 +49,6 @@ export const getItemAnimation = () => {
 
 		const addObserver = (el) =>{
 			let observer = new IntersectionObserver((entries, observer) => {
-				console.log(entries);
 				entries.forEach(entry => {
 					if(entry.isIntersecting) {
 						window.addEventListener('scroll', onScrollAnimation);

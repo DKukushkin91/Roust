@@ -991,7 +991,7 @@ var getItemAnimation = function getItemAnimation() {
 
     var itemsArray = Array.from(items);
     var anchor = document.querySelector('.js-anchor-bottle');
-    var val = 0.11;
+    var val = 0.12;
     var flag = null;
     history.scrollRestoration = 'manual';
     window.scrollTo(0, 0);
@@ -1006,12 +1006,12 @@ var getItemAnimation = function getItemAnimation() {
 
       if (flag === 1) {
         evenIndexs.forEach(function (el, index) {
-          var value = (anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index + 1.12) * val);
+          var value = Math.floor((anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index + 1) * val));
           el.style.right = "".concat(value, "px");
           el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
         });
         oddIndexs.forEach(function (el, index) {
-          var value = (anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index + 1.12) * val);
+          var value = Math.floor((anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index + 1) * val));
           el.style.left = "".concat(value, "px");
           el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
         });
@@ -1019,14 +1019,6 @@ var getItemAnimation = function getItemAnimation() {
     };
 
     var onScrollAnimation = function onScrollAnimation() {
-      // let targetPosition = {
-      // 	top: window.scrollY + mainItem.getBoundingClientRect().top,
-      // 	bottom: window.scrollY + mainItem.getBoundingClientRect().bottom
-      // };
-      // let windowPosition = {
-      // 	top: window.scrollY,
-      // 	bottom: window.scrollY + document.documentElement.clientHeight
-      // }
       flag = 1;
       window.requestAnimationFrame(moveElements);
     };
@@ -1043,7 +1035,6 @@ var getItemAnimation = function getItemAnimation() {
 
     var addObserver = function addObserver(el) {
       var observer = new IntersectionObserver(function (entries, observer) {
-        console.log(entries);
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             window.addEventListener('scroll', onScrollAnimation);
