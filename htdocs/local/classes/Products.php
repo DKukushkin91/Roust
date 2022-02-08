@@ -32,7 +32,7 @@ class Products
                 ),
                 false,
                 false,
-                array( 'ID', 'CODE', 'NAME', 'PROPERTY_*')
+                array( 'ID', 'CODE', 'NAME', 'PROPERTY_COUNTRY')
             );
             while($arRes = $res->Fetch()){
                 $result[ $arRes['CODE'] ] = array(
