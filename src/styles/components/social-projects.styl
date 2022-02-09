@@ -1,12 +1,13 @@
 .box__top.box__top--social-projects
     .top
         padding-bottom 102px
+        margin-top -53px
+        @media $md
+            margin-top 35px
+            padding-bottom 142px
         @media $xs
             padding-bottom 49px
-    .header
-        padding 60px 0 77px
-        @media $xs
-            padding 30px 20px
+    
     .header__container
         @media $md
             padding 0 40px
@@ -18,11 +19,17 @@
     .top__title
         max-width 50%
         padding-bottom 45px
+        @media $md
+            max-width 100%
+            letter-spacing: -0.015em;
+            padding-bottom 22px
     .top__text
         max-width 400px
+        @media $md
+            line-height 24px
 .project
     list-style none
-    padding 79px 0 60px
+    padding 79px 0 58px
     margin 0
     @media $md
         padding 52px 0 60px
@@ -38,7 +45,7 @@
         display flex
         justify-content space-between
         @media $md
-            flex-direction column-reverse
+            flex-direction column
     &__content
     &__img
         width 50%
@@ -48,39 +55,63 @@
     &__content
         max-width: 445px;
         @media $md
-            max-width 100%
+            display none
     &__img
+        display block
         max-width: 547px;
         margin-left: 3px;
         @media $md
             max-width 100%
             margin-left 0
             margin-bottom 20px
+    &__img-desc
+        display block
     &__img img
         object-fit cover
         height 100%
+        @media $md
+            max-height 318px
     &__title
         font-weight 900
         font-size 33px
         line-height 40px
         color $d-grey
         margin-bottom 45px
+        @media $md
+            font-size 28px
+            line-height 34px
+            margin-bottom 20px
     &__subtitle
+        display block
         font-weight 500
         font-size 21px
         line-height 29px
         color $d-grey
         margin-bottom 20px
+        @media $md
+            display none
+            font-size 18px
+            line-height 27px
     &__text
+        display block
         font-weight 500
         font-size 15px
         line-height 24px
         color $m-grey
         margin-bottom 50px
         @media $md
+            display none
             margin-bottom 30px
     &__link
         max-width 216px
+        @media $md
+            display none
+    &__subtitle.mob
+    &__text.mob
+    &__link.mob
+        display none
+        @media $md
+            display block
     &__img-several
         display grid
         grid-template-columns repeat(2,1fr)
@@ -117,9 +148,6 @@
         font-weight 900
         font-size 33px
         line-height 40px
-    &__img-desc
-        @media $md
-            display none
     &__img img:nth-child(n + 3)
         @media $md
             display none
