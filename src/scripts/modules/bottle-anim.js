@@ -1,57 +1,65 @@
 export const getItemAnimation = () => {
 	if(document.querySelector('.js-anchor-bottle')) {
 		const items = document.querySelectorAll('.js-animate-bottle');
-		const mainItem = document.querySelector('.js-main-bottle');
 		const itemsArray = Array.from(items);
-		// const anchor = document.querySelector('.js-anchor-bottle');
-		const val = 0.06
+		const anchor = document.querySelector('.js-anchor-bottle')
+		const evenIndexs = itemsArray.filter((x, index) => index % 2 === 0);
+		const oddIndexs = itemsArray.filter((x, index) => index % 2 !== 0 );
 
-		let flag = null;
+		const scrollSpeed = 0.12
 
-		const moveElements = (elements) => {
-			const evenIndexs = elements.filter((x, index) => index % 2 === 0);
-			const oddIndexs = elements.filter((x, index) => index % 2 !== 0 );
+		const getValue = (index) => {
+			return Math.floor((anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index === 0 ? index + 1.111 : index + 1.2) * scrollSpeed));
+		}
 
+		let indexElement;
+		let flag;
+
+		history.scrollRestoration = 'manual';
+		window.scrollTo(0,0);
+
+		const moveElements = () => {
 			if(flag === 1){
 				evenIndexs.forEach((el, index) => {
-					const value = window.scrollY * ((index + 1) * val);
-					el.style.left = `${value}px`;
+					indexElement = index;
+					el.style.right = `${getValue(indexElement)}px`;
+					el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
 				})
 
 				oddIndexs.forEach((el, index) => {
-					const value = window.scrollY * ((index + 1) * val);
-					el.style.right = `${value}px`;
-				})
-			} else {
-				evenIndexs.forEach(el => {
-					el.style.left = 0;
-				})
-
-				oddIndexs.forEach(el => {
-					el.style.right = 0;
+					indexElement = index;
+					el.style.left = `${getValue(indexElement)}px`;
+					el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
 				})
 			}
 		}
 
 		const onScrollAnimation = () => {
-			let targetPosition = {
-				top: window.scrollY + mainItem.getBoundingClientRect().top,
-				bottom: window.scrollY + mainItem.getBoundingClientRect().bottom
-			};
-			let windowPosition = {
-				top: window.scrollY,
-				bottom: window.scrollY + document.documentElement.clientHeight
-			}
-
-			if(targetPosition.bottom > windowPosition.top && targetPosition.top < windowPosition.bottom) {
-				flag = 1;
-				moveElements(itemsArray);
-			} else {
-				flag = null;
-				moveElements(itemsArray);
-			}
+			flag = 1;
+			window.requestAnimationFrame(moveElements);
 		}
 
-		window.addEventListener('scroll', onScrollAnimation);
+		const scrollTrigger = (selector) => {
+			let els = document.querySelectorAll(selector)
+			els = Array.from(els)
+
+			els.forEach(el => {
+				addObserver(el)
+			})
+		}
+
+		const addObserver = (el) =>{
+			let observer = new IntersectionObserver((entries, observer) => {
+				entries.forEach(entry => {
+					if(entry.isIntersecting) {
+						window.addEventListener('scroll', onScrollAnimation);
+						observer.unobserve(entry.target)
+					}
+				})
+			})
+			observer.observe(el)
+		}
+
+		scrollTrigger('.js-anchor-bottle');
 	}
 }

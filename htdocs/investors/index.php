@@ -7,24 +7,25 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 		<div class="investors__wrap">
 			<h2 class="investors__title">Investor News</h2><a class="investors__news-link" href="#">All news</a>
 			<div class="investors__slider js-investors-slider">
-				<ul class="investors__list js-investors-wrap">
-					<li class="investors__item js-investors-slide"><a class="investors__item-link" href="#"></a>
-						<time class="investors__date">22 october 2019</time>
-						<p class="investors__text">Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates</p>
-					</li>
-					<li class="investors__item js-investors-slide"><a class="investors__item-link" href="#"></a>
-						<time class="investors__date">22 october 2019</time>
-						<p class="investors__text">Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates</p>
-					</li>
-					<li class="investors__item js-investors-slide"><a class="investors__item-link" href="#"></a>
-						<time class="investors__date">22 october 2019</time>
-						<p class="investors__text">Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates</p>
-					</li>
-					<li class="investors__item js-investors-slide"><a class="investors__item-link" href="#"></a>
-						<time class="investors__date">22 october 2019</time>
-						<p class="investors__text">Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates</p>
-					</li>
-				</ul>
+				<?$APPLICATION->IncludeComponent(
+					"bitrix:news.list",
+					"investor_news",
+					Array(
+						"CACHE_TYPE" => "Y",
+						"CAHCE_TIME" => 604800,
+						"DETAIL_PROPERTY_CODE" => array('*'),
+						"FIELD_CODE" => array('*'),
+						"IBLOCK_ID" => CIBlockTools::GetIBlockId('investor_news'),
+						"PROPERTY_CODE" => array('*'),
+						"SET_STATUS_404" => "Y",
+						"SET_TITLE" => "N",
+						"SHOW_404" => "Y",
+						"SORT_BY1" => "SORT",
+						"SORT_ORDER1" => "ASC",		
+						"SORT_BY2" => "ACTIVE_FROM",
+						"SORT_ORDER2" => "DESC",	
+					)
+				);?>
 				<div class="investors__pagination swiper-pagination js-investors-pagination"></div>
 			</div>
 		</div>
@@ -82,67 +83,51 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 			<div class="investors__content-box investors__content-box--width">
 				<h2 class="investors__title">Board of Directors</h2>
 				<div class="about-us__cards-wrap about-us__cards-wrap--jc">
-					<div class="about-us__card">
-						<div class="about-us__card-img"><img class="js-card-img" src="/f/img/portrait1.jpg" alt=""></div>
-						<div class="about-us__card-content">
-							<h4 class="about-us__card-title js-card-title">Roustam Tariko</h4>
-							<p class="about-us__card-text js-card-text">Chairman of the Board of Directors</p>
-							<button class="about-us__card-btn js-side-block">More</button>
-						</div>
-					</div>
-					<div class="about-us__card">
-						<div class="about-us__card-img"><img class="js-card-img" src="/f/img/portrait2.jpg" alt=""></div>
-						<div class="about-us__card-content">
-							<h4 class="about-us__card-title js-card-title">Igor Kosarev</h4>
-							<p class="about-us__card-text js-card-text">Vice President</p>
-							<button class="about-us__card-btn js-side-block">More</button>
-						</div>
-					</div>
-					<div class="about-us__card">
-						<div class="about-us__card-img"><img class="js-card-img" src="/f/img/portrait3.jpg" alt=""></div>
-						<div class="about-us__card-content">
-							<h4 class="about-us__card-title js-card-title">Pavel Merkul</h4>
-							<p class="about-us__card-text js-card-text">CEO, Russian Standard Holding Director</p>
-							<button class="about-us__card-btn js-side-block">More</button>
-						</div>
-					</div>
-					<div class="about-us__card">
-						<div class="about-us__card-img"><img class="js-card-img" src="/f/img/portrait4.jpg" alt=""></div>
-						<div class="about-us__card-content">
-							<h4 class="about-us__card-title js-card-title">Alessandro Picchi</h4>
-							<p class="about-us__card-text js-card-text">CEO, Roust Corporation</p>
-							<button class="about-us__card-btn js-side-block">More</button>
-						</div>
-					</div>
-					<div class="about-us__card">
-						<div class="about-us__card-img"><img class="js-card-img" src="/f/img/portrait5.jpg" alt=""></div>
-						<div class="about-us__card-content">
-							<h4 class="about-us__card-title js-card-title">Yaroslav Zakharov</h4>
-							<p class="about-us__card-text js-card-text">CFO</p>
-							<button class="about-us__card-btn js-side-block">More</button>
-						</div>
-					</div>
+					<?$APPLICATION->IncludeComponent(
+						"bitrix:catalog.section",
+						"our_team",
+						Array(
+							"CACHE_TYPE" => "Y",
+							"CAHCE_TIME" => 604800,
+							"DETAIL_PROPERTY_CODE" => array('*'),
+							"FIELD_CODE" => array('*'),
+							"IBLOCK_ID" => CIBlockTools::GetIBlockId('our_team'),
+							"SECTION_ID" => 31,
+							"PROPERTY_CODE" => array('*'),
+							"SET_STATUS_404" => "Y",
+							"SET_TITLE" => "N",
+							"SHOW_404" => "Y",
+							"SORT_BY1" => "SORT",
+							"SORT_ORDER1" => "ASC",		
+							"SORT_BY2" => "ACTIVE_FROM",
+							"SORT_ORDER2" => "DESC",	
+						)
+					);?>	
 				</div>
 			</div>
 			<div class="investors__content-box investors__content-box--max-width">
 				<h2 class="investors__title">Executive Officers</h2>
 				<div class="about-us__cards-wrap about-us__cards-wrap--jc">
-					<div class="about-us__card">
-						<div class="about-us__card-img"><img class="js-card-img" src="/f/img/portrait6.jpg" alt=""></div>
-						<div class="about-us__card-content">
-							<h4 class="about-us__card-title js-card-title">Ilya Blinov</h4>
-							<p class="about-us__card-text js-card-text">Head of Global Operations General Manager Russia</p>
-							<button class="about-us__card-btn js-side-block">More</button>
-						</div>
-					</div>
-					<div class="about-us__card">
-						<div class="about-us__card-img"><img class="js-card-img" src="/f/img/portrait7.jpg" alt=""></div>
-						<div class="about-us__card-content">
-							<h4 class="about-us__card-title js-card-title">Mariusz Chrobot</h4>
-							<p class="about-us__card-text js-card-text">General Manager Poland</p>
-							<button class="about-us__card-btn js-side-block">More</button>
-						</div>
-					</div>
+					<?$APPLICATION->IncludeComponent(
+						"bitrix:catalog.section",
+						"our_team",
+						Array(
+							"CACHE_TYPE" => "Y",
+							"CAHCE_TIME" => 604800,
+							"DETAIL_PROPERTY_CODE" => array('*'),
+							"FIELD_CODE" => array('*'),
+							"IBLOCK_ID" => CIBlockTools::GetIBlockId('our_team'),
+							"SECTION_ID" => 32,
+							"PROPERTY_CODE" => array('*'),
+							"SET_STATUS_404" => "Y",
+							"SET_TITLE" => "N",
+							"SHOW_404" => "Y",
+							"SORT_BY1" => "SORT",
+							"SORT_ORDER1" => "ASC",		
+							"SORT_BY2" => "ACTIVE_FROM",
+							"SORT_ORDER2" => "DESC",	
+						)
+					);?>
 				</div>
 			</div>
 			<div class="investors__content-box investors__content-box--map">

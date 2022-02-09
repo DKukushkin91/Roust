@@ -987,59 +987,66 @@ var getSideBlock = function getSideBlock() {
 var getItemAnimation = function getItemAnimation() {
   if (document.querySelector('.js-anchor-bottle')) {
     var items = document.querySelectorAll('.js-animate-bottle');
-    var mainItem = document.querySelector('.js-main-bottle');
-    var itemsArray = Array.from(items); // const anchor = document.querySelector('.js-anchor-bottle');
+    var itemsArray = Array.from(items);
+    var anchor = document.querySelector('.js-anchor-bottle');
+    var evenIndexs = itemsArray.filter(function (x, index) {
+      return index % 2 === 0;
+    });
+    var oddIndexs = itemsArray.filter(function (x, index) {
+      return index % 2 !== 0;
+    });
+    var scrollSpeed = 0.12;
 
-    var val = 0.06;
-    var flag = null;
+    var getValue = function getValue(index) {
+      return Math.floor((anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index === 0 ? index + 1.111 : index + 1.2) * scrollSpeed));
+    };
 
-    var moveElements = function moveElements(elements) {
-      var evenIndexs = elements.filter(function (x, index) {
-        return index % 2 === 0;
-      });
-      var oddIndexs = elements.filter(function (x, index) {
-        return index % 2 !== 0;
-      });
+    var indexElement;
+    var flag;
+    history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
 
+    var moveElements = function moveElements() {
       if (flag === 1) {
         evenIndexs.forEach(function (el, index) {
-          var value = window.scrollY * ((index + 1) * val);
-          el.style.left = "".concat(value, "px");
+          indexElement = index;
+          el.style.right = "".concat(getValue(indexElement), "px");
+          el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
         });
         oddIndexs.forEach(function (el, index) {
-          var value = window.scrollY * ((index + 1) * val);
-          el.style.right = "".concat(value, "px");
-        });
-      } else {
-        evenIndexs.forEach(function (el) {
-          el.style.left = 0;
-        });
-        oddIndexs.forEach(function (el) {
-          el.style.right = 0;
+          indexElement = index;
+          el.style.left = "".concat(getValue(indexElement), "px");
+          el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
         });
       }
     };
 
     var onScrollAnimation = function onScrollAnimation() {
-      var targetPosition = {
-        top: window.scrollY + mainItem.getBoundingClientRect().top,
-        bottom: window.scrollY + mainItem.getBoundingClientRect().bottom
-      };
-      var windowPosition = {
-        top: window.scrollY,
-        bottom: window.scrollY + document.documentElement.clientHeight
-      };
-
-      if (targetPosition.bottom > windowPosition.top && targetPosition.top < windowPosition.bottom) {
-        flag = 1;
-        moveElements(itemsArray);
-      } else {
-        flag = null;
-        moveElements(itemsArray);
-      }
+      flag = 1;
+      window.requestAnimationFrame(moveElements);
     };
 
-    window.addEventListener('scroll', onScrollAnimation);
+    var scrollTrigger = function scrollTrigger(selector) {
+      var els = document.querySelectorAll(selector);
+      els = Array.from(els);
+      els.forEach(function (el) {
+        addObserver(el);
+      });
+    };
+
+    var addObserver = function addObserver(el) {
+      var observer = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            window.addEventListener('scroll', onScrollAnimation);
+            observer.unobserve(entry.target);
+          }
+        });
+      });
+      observer.observe(el);
+    };
+
+    scrollTrigger('.js-anchor-bottle');
   }
 };
 

@@ -1,14 +1,11 @@
 .screen
-	flex 1 1 100vh
+	// flex 1 1 100vh
 	position: relative
 	overflow: hidden
 	width 100%
 	padding: 149px 0 109px 0
 	min-height 910px
 	margin-bottom -37px
-
-	@media $xl
-		flex 1 1 100%
 
 	@media $lg
 		min-height: 572px
@@ -57,6 +54,12 @@
 				left 0
 				z-index 2
 
+	&--products
+		padding-bottom 44px
+
+	&--min-height
+		min-height: unset
+
 	&.swiper
 		width 100%
 		z-index 0
@@ -72,6 +75,9 @@
 		width: 100%
 		height: 100%
 
+		@media $xs
+			height auto
+
 	&__video-item
 		width: 100%
 		height: 100%
@@ -81,6 +87,9 @@
 		@media $md
 			object-fit: contain
 			object-position: top
+
+		@media $xs
+			object-fit: cover
 
 	&__video-img
 		position absolute
@@ -114,37 +123,44 @@
 	&__content-img
 		position absolute
 		right 0
-		top 9%
+		top 0
+		width 100%
+		height 100%
+		display flex
+		align-items: center
 
 		@media $md
 			position static
+
+		@media $sm
+			align-items: flex-start
 
 		@media $xs
 			margin-bottom 25px
 
 	&__content-img--gancia
-		width 218px
+		max-width 218px
 
 		@media $md
-			width 122px
+			max-width 122px
 
 	&__content-img--gm
-		width 388px
+		max-width: 316px
 
 		@media $md
-			width 162px
+			max-width 162px
 
 	&__content-img--pm
-		width 233px
+		max-width 185px
 
 		@media $md
-			width 93px
+			max-width 93px
 
 	&__content-img--talka
-		width 299px
+		max-width 215px
 
 		@media $md
-			width 113px
+			max-width 113px
 
 	&__slider-wrap
 		min-height: inherit
@@ -157,75 +173,77 @@
 	&__img-animate
 		grid-area: 1/-1
 		position relative
-		transition: ease 3s all 0s
+		transition: ease 0s all 0s
+		width 100%
 
 		&.screen__img-animate--on
-			transition: ease 3s all 0s
+			transition: ease 0s all 0s
 
 		&--rs
-			max-width: 186px
+			max-width: 192.94px
 			z-index 1
-			transform: translate(0%, 7%)
+			transform: translate(0%, 6%)
 
 		&--gancia
-			max-width: 173px
+			max-width: 170.6px
 			z-index -1
-			transform: translate(0%, 18%)
+			transform: translate(0%, 5%)
 
 			&.screen__img-animate--on
-				transform: translate(155%, 18%)
+				transform: translate(155%, 5%)
 
 		&--gancia2
-			max-width: 109px
+			max-width: 134.47px
 			z-index -3
-			transform: translate(0%, 40%)
-
-			&.screen__img-animate--on
-				transform: translate(428%, 40%)
-
-		&--zm
-			max-width: 283px
-			z-index: -4
-			transform: translate(0%, 26%)
-
-			&.screen__img-animate--on
-				transform: translate(-139%, 26%)
-
-		&--gancia3
-			max-width: 321px
-			z-index: -2
-			transform: translate(0%, 36%)
-			&.screen__img-animate--on
-				transform: translate(120%, 36%)
-
-		&--pm
-			max-width: 103px
-			z-index: -5
-			transform: translate(0%, 35%)
-
-			&.screen__img-animate--on
-				transform: translate(-450%, 35%)
-
-		&--talka
-			max-width: 130px
-			z-index: -2
 			transform: translate(0%, 15%)
 
 			&.screen__img-animate--on
-				transform: translate(-200%, 15%)
+				transform: translate(428%, 15%)
+
+		&--zm
+			max-width: 253.32px
+			z-index: -4
+			transform: translate(0%, 15%)
+
+			&.screen__img-animate--on
+				transform: translate(-139%, 15%)
+
+		&--gancia3
+			max-width: 178.23px
+			z-index: -2
+			transform: translate(0%, 12%)
+			&.screen__img-animate--on
+				transform: translate(120%, 12%)
+
+		&--pm
+			max-width: 116px
+			z-index: -5
+			transform: translate(0%, 15%)
+
+			&.screen__img-animate--on
+				transform: translate(-450%, 15%)
+
+		&--talka
+			max-width: 169.97px
+			z-index: -2
+			transform: translate(0%, 6%)
+
+			&.screen__img-animate--on
+				transform: translate(-200%, 6%)
 
 		&--rsplatinum
-			max-width: 147px
-			transform translate(0%, 14%)
+			max-width: 157.87px
+			transform translate(0%, 10.7%)
 
 			&.screen__img-animate--on
-				transform translate(95%, 14%)
+				transform translate(95%, 10.7%)
 
 		&--rsgold
-			transform translate(0%, 16%)
+			max-width: 172.25px
+			transform translate(0%, 8.7%)
 
 			&.screen__img-animate--on
-				transform translate(-30%, 16%)
+				transform translate(-30%, 8.7%)
 
 	&__img-wrap
 		position absolute
@@ -241,7 +259,11 @@
 	&__img-wrap img
 		height: 100%
 		object-fit: cover
-		object-position: top
+		object-position: center
+
+	&__img-wrap img
+		@media $xs
+			object-position: top
 
 	&__img-wrap--o-position
 		@media $sm
@@ -251,7 +273,7 @@
 				object-position: 25%
 
 	&__img-wrap--center
-		max-width: 1087px
+		max-width: 1150px
 		bottom 0
 		left unset
 
@@ -352,7 +374,8 @@
 			align-items center
 
 	&__content--slider
-		padding: 149px 25px 335px 25px
+		padding: 149px 25px 55px 25px
+		height 100%
 
 		@media $lg
 			display: flex
@@ -593,7 +616,7 @@
 
 		@media $sm
 			padding: 0 20px
-			bottom: 60px
+			bottom: 10px
 			margin-bottom 30px
 
 		@media $xs
@@ -603,6 +626,10 @@
 	&__p-container
 		max-width: 655px
 		height: 60px
+
+		@media $md
+			max-width: 100%
+			height: auto
 
 	&__p-list
 		width 100%
@@ -616,7 +643,7 @@
 	&__p-item
 		opacity: 0.5
 
-		@media $sm
+		@media $md
 			max-width: 80px
 
 	&__p-btn
@@ -783,7 +810,7 @@
 		align-items: flex-start
 
 		&:not(:last-child)
-			padding-bottom: 40px
+			padding-bottom: 150px
 
 			@media $md
 				padding-bottom 30px
