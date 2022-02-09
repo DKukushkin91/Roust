@@ -455,8 +455,7 @@ var getGallery = function getGallery() {
         calcImg(1);
       } else if (document.body.clientWidth <= 959.9) {
         calcImg(2);
-      } // window.addEventListener('resize', calcImg())
-
+      }
     }
 
     var body = document.querySelector('body');

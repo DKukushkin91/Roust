@@ -28,7 +28,6 @@ export const getGallery = () => {
 			else if (document.body.clientWidth <= 959.9) {
 				calcImg(2)
 			}
-			// window.addEventListener('resize', calcImg())
 		}
 
 		const body = document.querySelector('body')
