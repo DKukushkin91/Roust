@@ -7,6 +7,7 @@
             padding-bottom 142px
         @media $xs
             padding-bottom 49px
+            margin-top 31px
     
     .header__container
         @media $md
@@ -23,10 +24,14 @@
             max-width 100%
             letter-spacing: -0.015em;
             padding-bottom 22px
+        @media $xs
+            padding-bottom 30px
     .top__text
         max-width 400px
         @media $md
             line-height 24px
+        @media $xs
+            max-width 74%
 .project
     list-style none
     padding 79px 0 58px
@@ -39,6 +44,8 @@
         margin-bottom 100px
         @media $md
             margin-bottom 70px
+        @media $xs
+            margin-bottom 40px
     &__item:last-child
         margin-bottom 0
     &__block
@@ -71,6 +78,8 @@
         height 100%
         @media $md
             max-height 318px
+        @media $xs
+            max-height 155px
     &__title
         font-weight 900
         font-size 33px
@@ -102,6 +111,8 @@
         @media $md
             display none
             margin-bottom 30px
+        @media $xs
+            margin-bottom 20px
     &__link
         max-width 216px
         @media $md
@@ -123,7 +134,8 @@
             grid-template-rows repeat(1,minmax(180px,auto))
         @media $xs
             grid-template-columns repeat(2,1fr)
-            grid-template-rows repeat(1,minmax(180px,auto))
+            grid-template-rows repeat(1,minmax(131px,auto))
+            column-gap 11px
     &__img-link
         position relative
         display flex
@@ -141,6 +153,9 @@
         opacity .6
     &__img-text
         position absolute
+        top: 48%
+        left: 50%
+        transform translate(-50%, -50%)
         font-weight 500
         font-size 15px
         line-height 24px
