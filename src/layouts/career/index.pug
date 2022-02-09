@@ -66,13 +66,13 @@ block page
 				p.career-contacts__sub-title Roust provides its employees with exciting career opportunities.
 				ul.career-contacts__list
 
-					each title in ['Russia', 'Poland', 'Hungary', 'USA', 'United Kingdom']
+					each title in ['Russia', 'Hungary', 'USA', 'United Kingdom']
 						li.career-contacts__item
 							p.career-contacts__item-title=title
-							a.career-contacts__link(href="mailto:info@roust.com" target="_blank")
+							a.career-contacts__link(href="mailto:hr@roust.com" target="_blank")
 								svg(width="20" height="16").career-contacts__icon
 										use(href=`${baseDir}/img/sprite.svg#email`)
-								span.career-contacts__link-text info@roust.com
+								span.career-contacts__link-text hr@roust.com
 				p.career-contacts__text For further information on job vacancies at Roust, please contact our HR team.
 				button.top__btn.career-contacts__btn.animate-button.js-btn-form
 					span.top__btn-text.career-contacts__btn-text Complete the form
