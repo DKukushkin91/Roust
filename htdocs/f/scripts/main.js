@@ -988,6 +988,7 @@ var getSideBlock = function getSideBlock() {
 var getItemAnimation = function getItemAnimation() {
   if (document.querySelector('.js-anchor-bottle')) {
     var items = document.querySelectorAll('.js-animate-bottle');
+    var mainItem = document.querySelector('.js-main-bottle');
     var itemsArray = Array.from(items);
     var anchor = document.querySelector('.js-anchor-bottle');
     var evenIndexs = itemsArray.filter(function (x, index) {
@@ -996,10 +997,10 @@ var getItemAnimation = function getItemAnimation() {
     var oddIndexs = itemsArray.filter(function (x, index) {
       return index % 2 !== 0;
     });
-    var scrollSpeed = 0.12;
+    var scrollSpeed = 0.24;
 
     var getValue = function getValue(index) {
-      return Math.floor((anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index === 0 ? index + 1.111 : index + 1.2) * scrollSpeed));
+      return Math.floor((anchor.getBoundingClientRect().top - anchor.getBoundingClientRect().height / 2) * ((index === 0 ? index + 1.111 : index + 1.2) * scrollSpeed));
     };
 
     var indexElement;
@@ -1011,12 +1012,12 @@ var getItemAnimation = function getItemAnimation() {
       if (flag === 1) {
         evenIndexs.forEach(function (el, index) {
           indexElement = index;
-          el.style.right = "".concat(getValue(indexElement), "px");
+          el.style.right = "".concat(getValue(indexElement) >= 0 ? 0 : getValue(indexElement), "px");
           el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
         });
         oddIndexs.forEach(function (el, index) {
           indexElement = index;
-          el.style.left = "".concat(getValue(indexElement), "px");
+          el.style.left = "".concat(getValue(indexElement) >= 0 ? 0 : getValue(indexElement), "px");
           el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
         });
       }
@@ -1047,7 +1048,7 @@ var getItemAnimation = function getItemAnimation() {
       observer.observe(el);
     };
 
-    scrollTrigger('.js-anchor-bottle');
+    scrollTrigger('.js-main-bottle');
   }
 };
 
