@@ -32,15 +32,12 @@ class Products
                 ),
                 false,
                 false,
-                array( 'ID', 'CODE', 'NAME', 'PROPERTY_COUNTRY', 'PROPERTY_DESCRPTION', 'PROPERTY_*' )
+                array( 'ID', 'CODE', 'PROPERTY_BACKGROUND' )
             );
             while($arRes = $res->Fetch()){
                 $result[ $arRes['CODE'] ] = array(
-                    'NAME' => $arRes['NAME'],
-                    'ID' => $arRes['ID'],
                     'CODE' => $arRes['CODE'],
-                    'COUNTRY' => $arRes['PROPERTY_COUNTRY_VALUE'],
-                    'DESCRPTION' => $arRes['PROPERTY_DESCRPTION_VALUE'],
+                    'ID' => $arRes['ID'],
                     'BACKGROUND' => $arRes['PROPERTY_BACKGROUND_VALUE'],
                 );
             }
@@ -56,8 +53,10 @@ class Products
      * @param string $codeProduct - код продукта
      * @return array
      */
-    public static function getDataProductByCode($codeProduct){        
+    public static function getDataProductByCode($urlProduct){        
         $result = array();
+        $pos = strpos($urlProduct, '/', 14);
+        $codeProduct = substr($urlProduct, $pos+1, -1);
         // получить данные СЕО по всем страницам
         $allDataProducts = self::getAllProducts();
         if(!empty($allDataProducts[$codeProduct])){
