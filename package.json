@@ -2,6 +2,8 @@
   "name": "roust",
   "version": "1.0.0",
   "main": "index.js",
+	"author": "Dmitriy Kukushkin",
+  "license": "MIT",
   "browserslist": [
     "last 2 version",
     "> 1%",
