@@ -1,37 +1,4 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");?>
-
-<?
-$minDataThisProduct = Products::getDataProductByCode('talka');
-?>
-<!-- <pre><?print_r($minDataThisProduct)?></pre> -->
-<? 
-CModule::IncludeModule("iblock");
-$arSelect = Array("*", "PROPERTY_*");     
-$arFilter = Array("ID" =>Array(), "IBLOCK_ID" => CIBlockTools::GetIBlockId('brands'), "ACTIVE" => "Y"); 
-$res = CIBlockElement::GetList(Array(), $arFilter, false, Array("nPageSize" => 5000), $arSelect);
-while ($ob = $res->GetNextElement()) {
-	$arFields = $ob->GetFields(); 
-}
-?>
-
-<!-- <pre><?print_r($arFields)?></pre> -->
-
-<?
-				// Калькулятор
-				$APPLICATION->IncludeComponent(
-					'bitrix:news.detail',
-					'brands_header',
-					array(
-						'IBLOCK_ID' => CIBlockTools::GetIBlockId('brands'),
-						'ELEMENT_ID' => $minDataThisProduct["ID"],
-						'CACHE_TYPE' => 'Y',
-						'CACHE_TIME' => 604800,
-						'FIELD_CODE' => array('*'),
-						'PROPERTY_CODE' => array('*')
-					)
-				);?>
-
-
 <?$APPLICATION->IncludeComponent(
         "bitrix:catalog", 
         "brands", 
