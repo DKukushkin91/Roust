@@ -176,4 +176,12 @@ if(!empty($_REQUEST['PRODUCT_CODE'])){
 
 			</div>
 			<main class="main main--<?=$page_name?>">
-<!-- <pre><?print_r($_REQUEST)?></pre> -->
+		
+			
+			<?
+			if (strpos($_SERVER['REQUEST_URI'], '/brands/') !== false) {
+				$pos = strpos($_SERVER['REQUEST_URI'], '/', 14);
+				$result = substr($_SERVER['REQUEST_URI'], $pos+1, -1);
+				echo $result;
+        } if(!empty($result)){echo "true";}else{echo "false";}
+		?>
