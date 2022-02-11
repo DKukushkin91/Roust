@@ -2,13 +2,16 @@
 use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Application;
 global $APPLICATION;
-global $elementId;
-global $_REQUEST;
-?>
+?>	
 <?
-if(!empty($_REQUEST['PRODUCT_CODE'])){
+	if (strpos($_SERVER['REQUEST_URI'], '/brands/') !== false) {
+		$DataThisProduct = Products::getDataProductByCode($_REQUEST['REQUEST_URI']);
+ } 
+?>
+
+<?
+if(!empty($DataThisProduct)){
 	$page_name ='brands-item';
-	$DataThisProduct = Products::getDataProductByCode($_REQUEST['PRODUCT_CODE']);
 	$DataThisProduct_img = CFile::ResizeImageGet($DataThisProduct["BACKGROUND"], array(), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
 }else{
 	switch ($APPLICATION->GetCurPage(false)) {
@@ -40,7 +43,7 @@ if(!empty($_REQUEST['PRODUCT_CODE'])){
 			$page_name ='social-projects';
 		break;
 		default:   
-			$page_name ='media';                 
+			$page_name ='brands';                 
 		break;
 	}
 }?>
@@ -95,7 +98,7 @@ if(!empty($_REQUEST['PRODUCT_CODE'])){
 <body lang="ru-RU">
 	<div class="box">
 		<div class="box__content box__content--<?=$page_name?>">
-			<?if(!empty($elementId)){?>
+			<?if(!empty($DataThisProduct_img['src'])){?>
         	<div class="box__img"><img src="<?$DataThisProduct_img['src']?>" alt=""></div>
 			<?}?>
 			<div class="box__top box__top--<?=$page_name?>">
@@ -134,25 +137,21 @@ if(!empty($_REQUEST['PRODUCT_CODE'])){
 					</div>
 				</header>
 				<?
-				if(!empty($_REQUEST['PRODUCT_CODE'])){?>
-
-
-<?
-				// Хедер для продукта
+				if(!empty($DataThisProduct)){
+				// Хедер для бренда
 				$APPLICATION->IncludeComponent(
 					'bitrix:news.detail',
 					'brands_header',
 					array(
 						'IBLOCK_ID' => CIBlockTools::GetIBlockId('brands'),
-						'ELEMENT_CODE' => $_REQUEST['PRODUCT_CODE'],
+						'ELEMENT_ID' => $DataThisProduct['ID'],
 						'CACHE_TYPE' => 'Y',
 						'CACHE_TIME' => 604800,
 						'FIELD_CODE' => array('*'),
 						'PROPERTY_CODE' => array('*')
 					)
-				);?>
-
-				<?}
+				);
+				}
 				elseif($page_name=="main-page"){
 				}
 				else{
@@ -171,17 +170,7 @@ if(!empty($_REQUEST['PRODUCT_CODE'])){
 					); 
 				}
                 ?>
-
-
-
 			</div>
 			<main class="main main--<?=$page_name?>">
 		
-			
-			<?
-			if (strpos($_SERVER['REQUEST_URI'], '/brands/') !== false) {
-				$pos = strpos($_SERVER['REQUEST_URI'], '/', 14);
-				$result = substr($_SERVER['REQUEST_URI'], $pos+1, -1);
-				echo $result;
-        } if(!empty($result)){echo "true";}else{echo "false";}
-		?>
+		
