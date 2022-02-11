@@ -3,3 +3,80 @@
 
 	&__header-wrap
 		padding-bottom 15px
+
+	&__prev-link
+		fz-15()
+		line-height 18px
+		color $d-grey
+		font-family $Inter
+		font-weight 700
+		display inline-flex
+		align-items: center
+		text-decoration: none
+		margin-bottom 61px
+
+	&__icon
+		margin-right 13px
+		fill: $orange
+
+	&__prev-text
+		font-size inherit
+		font-family inherit
+		color inherit
+		font-weight inherit
+
+	&__list
+		display grid
+		grid-template-columns: repeat(auto-fill, minmax(24.54%, auto));
+		row-gap: 4px
+		column-gap: 5px
+		padding 0
+		padding-bottom 60px
+		margin 0
+		list-style: none
+		justify-content center
+
+		@media $sm
+			grid-template-columns repeat(auto-fill, minmax(49.5%, auto))
+
+		@media $xs
+			grid-template-columns repeat(auto-fill, 100%)
+
+	&__item
+		background: #EDF3F8
+		padding: 40px 30px 23px
+		display flex
+		flex-direction: column
+		min-height 351px
+
+		@media $sm
+			min-height: 231px
+
+	&__link
+		text-decoration: none
+		flex: 1
+
+	&__date
+		fz-14()
+		line-height 29px
+		font-family $Georgia
+		color $orange
+		font-weight 700
+		padding-bottom 35px
+		display block
+
+	&__text
+		fz-21()
+		line-height 29px
+		font-family $Inter
+		font-weight 400
+		color $black
+		padding-bottom 30px
+
+	&__download-link
+		fz-13()
+		line-height 20px
+		color $orange
+		font-weight 400
+		font-family $Inter
+		text-decoration: none
