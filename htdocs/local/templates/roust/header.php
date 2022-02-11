@@ -3,11 +3,6 @@ use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Application;
 global $APPLICATION;
 ?>	
-<?
-	if (strpos($_SERVER['REQUEST_URI'], '/brands/') !== false) {
-		$DataThisProduct = Products::getDataProductByCode($_REQUEST['REQUEST_URI']);
- } 
-?>
 
 <?
 if(!empty($DataThisProduct)){
@@ -174,4 +169,8 @@ if(!empty($DataThisProduct)){
 			<main class="main main--<?=$page_name?>">
 		
 		
+<?
+		$DataThisProduct = Products::getDataProductByCode($_REQUEST['REQUEST_URI']);
+ 
+?>
 <pre><?print_r($DataThisProduct);?></pre>
