@@ -53,14 +53,10 @@ class Products
      * @param string $codeProduct - код продукта
      * @return array
      */
-    public static function getDataProductByCode($urlProduct){    
-        echo "111";    
-        echo $urlProduct;
+    public static function getDataProductByCode($urlProduct){   
         $result = array();
         $pos = strpos($urlProduct, '/', 14);
-        $codeProduct = substr($urlProduct, $pos+1, -1);    
-        echo "222";
-        echo $codeProduct;
+        $codeProduct = substr($urlProduct, $pos+1, -1);  
         // получить данные СЕО по всем страницам
         $allDataProducts = self::getAllProducts();
         if(!empty($allDataProducts[$codeProduct])){
