@@ -5,7 +5,7 @@ import {getBrandsList} from './modules/brands-list';
 import {getCatalogList} from './modules/catalog-list';
 import {getScrollItem} from './modules/brands-item';
 import {getSliders} from './modules/brands-item-slider';
-import {getGallery} from './modules/career-gallery';
+import {getGallery} from './modules/media-gallery';
 import {getPopup} from './modules/popup-form';
 import {burgerMenuHandler} from './modules/burger-menu';
 import {getAboutUsSlider} from './modules/about-us-slider';
@@ -14,6 +14,7 @@ import {getItemAnimation} from './modules/bottle-anim';
 import {getInvestorsSlider} from './modules/investors-slider';
 import {getSearchPopup} from './modules/search-popup';
 import {getVideoSrc} from './modules/video-src';
+import { getCareerSlider } from './modules/career-slider';
 
 document.addEventListener('DOMContentLoaded', () => {
 	getTop();
@@ -32,4 +33,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	getInvestorsSlider();
 	getSearchPopup();
 	getVideoSrc();
+	getCareerSlider();
 });
