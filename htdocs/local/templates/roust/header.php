@@ -169,7 +169,9 @@ if(!empty($DataThisProduct)){
 			<main class="main main--<?=$page_name?>">
 		
 		
+<pre><?print_r($_REQUEST['REQUEST_URI']);?></pre>
 <?
+
 		$DataThisProduct = Products::getDataProductByCode($_REQUEST['REQUEST_URI']);
  
 ?>
