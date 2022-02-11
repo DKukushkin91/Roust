@@ -169,10 +169,10 @@ if(!empty($DataThisProduct)){
 			<main class="main main--<?=$page_name?>">
 		
 		
-<pre><?print_r($_REQUEST['REQUEST_URI']);?></pre>
+<pre><?print_r($_SERVER['REQUEST_URI']);?></pre>
 <?
 
-		$DataThisProduct = Products::getDataProductByCode($_REQUEST['REQUEST_URI']);
+		$DataThisProduct = Products::getDataProductByCode($_SERVER['REQUEST_URI']);
  
 ?>
 <pre><?print_r($DataThisProduct);?></pre>
