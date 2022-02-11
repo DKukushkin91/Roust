@@ -37,23 +37,23 @@ block page
 							img(src=`${baseDir}/img/pins-icon.png`, alt="")
 						p.career__sub-title Wide business geography
 						p.career__text The breadth of our brand portfolio across multiple diverse markets offers significant opportunities for career growth.
-	section.gallery
-		.container.gallery__container
-			.gallery__wrap
-				.gallery__box
-					.gallery__img
-						img(src=`${baseDir}/img/g-preview2.jpg`, alt="")
-					.gallery__content.gallery__content--margin
-						h2.gallery__title Modern factories
-						button.gallery__btn.animate-button.js-open-gallery
-							span.gallery__btn-text See more
-				.gallery__box
-					.gallery__img
-						img(src=`${baseDir}/img/g-preview.jpg`, alt="")
-					.gallery__content
-						h2.gallery__title Comfortable offices
-						button.gallery__btn.animate-button.js-open-gallery
-							span.gallery__btn-text See more
+	section.offices
+		.container
+			.offices__text-content
+				h2.offices__title Modern factories &amp; Comfortable offices
+				p.offices__text Текст про то, что компания Roust предлагает комфортные условия для работы
+			.offices__slider.swiper.js-career-slider
+				.offices__slider-wrap.swiper-wrapper
+					each val in [1, 2, 3]
+						.offices__slide.swiper-slide
+							img(src=`${baseDir}/img/career-slide${val}.jpg`, alt="")
+				button.offices__nav-btn.offices__nav-btn--prev.js-career-btn-prev
+					svg(width="14" height="9").offices__nav-icon
+						use(href="/f/img/sprite.svg#arrow-g")
+				button.offices__nav-btn.offices__nav-btn--next.js-career-btn-next
+					svg(width="14" height="9").offices__nav-icon
+						use(href="/f/img/sprite.svg#arrow-g")
+
 	section.career-contacts
 		.career-contacts__img
 			picture

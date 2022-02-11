@@ -1177,6 +1177,20 @@ var getVideoSrc = function getVideoSrc() {
   }
 };
 
+var getCareerSlider = function getCareerSlider() {
+  if (document.querySelector('.js-career-slider')) {
+    var slider = document.querySelector('.js-career-slider');
+    new Swiper(slider, {
+      slidesPerView: 'auto',
+      spaceBetween: 35,
+      navigation: {
+        nextEl: '.js-career-btn-next',
+        prevEl: '.js-career-btn-prev'
+      }
+    });
+  }
+};
+
 document.addEventListener('DOMContentLoaded', function () {
   getTop();
   burgerMenuHandler();
@@ -1194,6 +1208,7 @@ document.addEventListener('DOMContentLoaded', function () {
   getInvestorsSlider();
   getSearchPopup();
   getVideoSrc();
+  getCareerSlider();
 });
 "use strict";
 
