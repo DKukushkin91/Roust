@@ -174,3 +174,4 @@ if(!empty($DataThisProduct)){
 			<main class="main main--<?=$page_name?>">
 		
 		
+<pre>3333333<?echo $DataThisProduct;?></pre>
