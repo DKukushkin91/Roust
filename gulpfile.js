@@ -16,6 +16,8 @@ const concat = require('gulp-concat');
 const del = require('del');
 const responsive = require('gulp-responsive');
 const imagemin = require('gulp-imagemin');
+const newer = require('gulp-newer');
+const sourcemaps = require('gulp-sourcemaps');
 
 /* Paths variables */
 let basepath = {
@@ -41,7 +43,7 @@ let path = {
 };
 
 /* Overwrite */
-const clean = () => del([`${basepath.dest}/f/`, `${basepath.dest}/html/`]);
+const clean = () => del([`${basepath.dest}/f/*`, `${basepath.dest}/html/*`, `!${basepath.dest}/f/img`]);
 
 /* Pug templates */
 const pug2html = () => {
@@ -57,28 +59,34 @@ const pug2html = () => {
 const styles = () => {
   return src(path.src.styl)
     .pipe(plumber())
+		.pipe(sourcemaps.init())
 		.pipe(stylus({
 			compress: true
 		}))
 		.pipe(concat('main.css'))
     .pipe(autoprefixer({ overrideBrowserslist: ['last 5 versions'], grid: true }))
     .pipe(cleanCSS({compatibility: 'ie11'}))
+		.pipe(sourcemaps.write('.'))
     .pipe(dest(path.build.css))
 		.pipe(browserSync.stream())
 }
 
 const vendorCss = () => {
 	return src(`${basepath.src}/styles/vendor/*.css`)
+		.pipe(sourcemaps.init())
 		.pipe(cleanCSS({compatibility: 'ie8'}))
 		.pipe(concat('vendor.css'))
+		.pipe(sourcemaps.write('.'))
     .pipe(dest(path.build.css))
 }
 
 /* JS */
 const vendorJs = () => {
 	return src(`${path.src.js}vendor/*.js`)
+		.pipe(sourcemaps.init())
 		.pipe(concat('vendor.js'))
 		.pipe(terser())
+		.pipe(sourcemaps.write('.'))
 		.pipe(dest(`${path.build.js}`))
 };
 
@@ -90,11 +98,13 @@ const userJs = () => {
 	.pipe(source('main.js'))
 	.pipe(buffer())
 	.pipe(src(`${path.src.js}jquery/*.js`))
+	.pipe(sourcemaps.init())
 	.pipe(babel({
 			presets: ['@babel/preset-env']
 	}))
-	// .pipe(terser()) Отключена минификация на момент разработки
+	.pipe(terser())
 	.pipe(concat('main.js'))
+	.pipe(sourcemaps.write('.'))
 	.pipe(dest(`${path.build.js}`))
 	.pipe(browserSync.stream())
 };
@@ -120,6 +130,7 @@ const serv = (cb) => {
 /* optimization images */
 const imgOptimization = () => {
 	return src(`${basepath.src}img/*.*`)
+		.pipe(newer(`${basepath.dest}f/img`))
 		.pipe(imagemin([
 			imagemin.gifsicle({interlaced: true}),
 			imagemin.mozjpeg({quality: 80, progressive: true}),
