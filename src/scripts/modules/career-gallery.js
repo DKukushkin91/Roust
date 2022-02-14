@@ -4,31 +4,36 @@ export const getGallery = () => {
 	if(document.querySelector('.js-open-gallery')){
 
 		if(document.querySelector('.js-gallery-counter')) {
-			const calcImg = (i) => {
-				const pictureAll = document.querySelectorAll('.project__img-several img')
+			const calcImg = () => {
+				let i; 
+				
+				if (document.body.clientWidth > 959.9) {
+					i = 3
+				}
+				else if (document.body.clientWidth <= 574.9) {
+					i = 1
+				}
+				else if (document.body.clientWidth <= 959.9) {
+					i = 2
+				}
+				const pictureAll = document.querySelectorAll('.project__img-wrap')
+				pictureAll.forEach(item => {
+					if (item.classList.contains('hidden')) {
+						item.classList.remove('hidden')
+					}
+				})
+
 				const pictureLast = pictureAll[i]
-				const pictureOther = `<a class="project__img-link" href="#">
-											<div class="project__img-text">
-												<div class="project__img-number"></div>фотографий
-											</div>
-											${pictureAll[i].outerHTML}
-										</a>`
-				pictureLast.outerHTML = pictureOther
+				const pictureNumder = pictureLast.querySelector('.project__img-number')
+				pictureLast.classList.add('hidden')
 
-				const pictureNumder = document.querySelector('.project__img-number')
 				pictureNumder.innerHTML = '+' + (pictureAll.length - i)
+			}
 
-			}
-			if (document.body.clientWidth > 959.9) {
-				calcImg(3)
-			}
-			else if (document.body.clientWidth <= 574.9) {
-				calcImg(1)
-			}
-			else if (document.body.clientWidth <= 959.9) {
-				calcImg(2)
-			}
+			calcImg()
+			window.addEventListener('resize', calcImg)
 		}
+
 
 		const body = document.querySelector('body')
 		const buttons = document.querySelectorAll('.js-open-gallery');

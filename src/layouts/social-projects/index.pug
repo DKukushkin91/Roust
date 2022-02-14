@@ -46,10 +46,26 @@ block page
 								span.project__link-text Visit website
 						h3.project__subtitle.mob Roust supports the restoration of the library of Prof. Dmitriy Mendeleev, founder of the Periodic Table of Elements.
 						.project__img.project__img-several.js-open-gallery.js-gallery-counter
-							img(src=`${baseDir}/img/sp-content-2.jpg`, alt="")
-							img(src=`${baseDir}/img/sp-content-3.jpg`, alt="")
-							img(src=`${baseDir}/img/sp-content-4.jpg`, alt="")
-							img(src=`${baseDir}/img/sp-content-5.jpg`, alt="")
+							.project__img-wrap
+								.project__img-text
+									.project__img-number
+									| фотографий
+								img(src=`${baseDir}/img/sp-content-2.jpg`, alt="")
+							.project__img-wrap
+								.project__img-text
+									.project__img-number
+									| фотографий
+								img(src=`${baseDir}/img/sp-content-3.jpg`, alt="")
+							.project__img-wrap
+								.project__img-text
+									.project__img-number
+									| фотографий
+								img(src=`${baseDir}/img/sp-content-4.jpg`, alt="")
+							.project__img-wrap.hidden
+								.project__img-text
+									.project__img-number
+									| фотографий
+								img(src=`${baseDir}/img/sp-content-5.jpg`, alt="")
 						p.project__text.mob The Mendeleev Museum, located at St. Petersburg State University, houses Prof. Mendeleev’s personal effects, including records of his research into alcoholic spirit equilibrium.
 						a(href="#").project__link.btn.animate-button.mob
 							span.project__link-text Visit website

@@ -440,22 +440,31 @@ var getSliders = function getSliders() {
 var getGallery = function getGallery() {
   if (document.querySelector('.js-open-gallery')) {
     if (document.querySelector('.js-gallery-counter')) {
-      var calcImg = function calcImg(i) {
-        var pictureAll = document.querySelectorAll('.project__img-several img');
+      var calcImg = function calcImg() {
+        var i;
+
+        if (document.body.clientWidth > 959.9) {
+          i = 3;
+        } else if (document.body.clientWidth <= 574.9) {
+          i = 1;
+        } else if (document.body.clientWidth <= 959.9) {
+          i = 2;
+        }
+
+        var pictureAll = document.querySelectorAll('.project__img-wrap');
+        pictureAll.forEach(function (item) {
+          if (item.classList.contains('hidden')) {
+            item.classList.remove('hidden');
+          }
+        });
         var pictureLast = pictureAll[i];
-        var pictureOther = "<a class=\"project__img-link\" href=\"#\">\n\t\t\t\t\t\t\t\t\t\t\t<div class=\"project__img-text\">\n\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"project__img-number\"></div>\u0444\u043E\u0442\u043E\u0433\u0440\u0430\u0444\u0438\u0439\n\t\t\t\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t\t\t\t\t".concat(pictureAll[i].outerHTML, "\n\t\t\t\t\t\t\t\t\t\t</a>");
-        pictureLast.outerHTML = pictureOther;
-        var pictureNumder = document.querySelector('.project__img-number');
+        var pictureNumder = pictureLast.querySelector('.project__img-number');
+        pictureLast.classList.add('hidden');
         pictureNumder.innerHTML = '+' + (pictureAll.length - i);
       };
 
-      if (document.body.clientWidth > 959.9) {
-        calcImg(3);
-      } else if (document.body.clientWidth <= 574.9) {
-        calcImg(1);
-      } else if (document.body.clientWidth <= 959.9) {
-        calcImg(2);
-      }
+      calcImg();
+      window.addEventListener('resize', calcImg);
     }
 
     var body = document.querySelector('body');

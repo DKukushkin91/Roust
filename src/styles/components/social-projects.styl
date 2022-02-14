@@ -126,17 +126,17 @@
     &__img-several
         display grid
         grid-template-columns repeat(2,1fr)
-        grid-template-rows repeat(2,minmax(180px,auto))
+        grid-template-rows repeat(2, 180px)
         column-gap 5px
         row-gap 6px
         @media $md
             grid-template-columns repeat(3,1fr)
-            grid-template-rows repeat(1,minmax(180px,auto))
+            grid-template-rows repeat(1, 180px)
         @media $xs
             grid-template-columns repeat(2,1fr)
-            grid-template-rows repeat(1,minmax(131px,auto))
+            grid-template-rows 131px
             column-gap 11px
-    &__img-link
+    &__img-wrap
         position relative
         display flex
         align-items center
@@ -144,7 +144,7 @@
         text-decoration none
         color $white
         text-align center
-    &__img-link::before
+    &__img-wrap.hidden::before
         content ''
         position absolute
         width 100%
@@ -152,6 +152,7 @@
         background-color $d-grey
         opacity .6
     &__img-text
+        display none
         position absolute
         top: 48%
         left: 50%
@@ -159,17 +160,19 @@
         font-weight 500
         font-size 15px
         line-height 24px
+    &__img-wrap.hidden &__img-text
+        display block
     &__img-number
         font-weight 900
         font-size 33px
         line-height 40px
-    &__img img:nth-child(n + 3)
+    &__img-wrap:nth-child(n + 4)
         @media $md
             display none
-    &__img img:nth-child(n + 2)
+    &__img-wrap:nth-child(n + 3)
         @media $xs
             display none
-    &__img .project__img-link img:nth-child(n + 2)
+    &__img .project__img-wrap img:nth-child(n + 2)
         @media $xs
             display block
     &__img-mob
