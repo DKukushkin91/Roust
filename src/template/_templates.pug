@@ -272,6 +272,45 @@ block templates
 					.side__main
 						p.side__text.js-side-text
 
+	template.js-side-list-template
+		.side
+			.side__wrap.side__wrap--width.js-side-wrap
+				.side__content
+					button.side__back-btn.js-back-btn
+						svg(width="16" height="16").side__icon
+							use(href=`${baseDir}/img/sprite.svg#arrow-back`)
+						span.side__btn-text Go back
+					h2.side__title.js-side-title
+					ul.side__list
+						li.side__item
+							time.side__item-date 12 Dec 2019
+							.side__item-content
+								.side__item-icon
+									img(src=`${baseDir}/img/icon-pdf.png`, alt="")
+								p.side__item-text Appointment of New Auditor
+							a.side__item-link(href="#", download) Download
+						li.side__item
+							time.side__item-date 06 Mar 2020
+							.side__item-content
+								.side__item-icon
+									img(src=`${baseDir}/img/icon-pdf.png`, alt="")
+								p.side__item-text IFRS Roust Corporation financial results for Q1 2019
+							a.side__item-link(href="#", download) Download
+						li.side__item
+							time.side__item-date 03 Apr 2020
+							.side__item-content
+								.side__item-icon
+									img(src=`${baseDir}/img/icon-pdf.png`, alt="")
+								p.side__item-text Roust Corporation Presentation for Q3 2019
+							a.side__item-link(href="#", download) Download
+						li.side__item
+							time.side__item-date 12 Dec 2019
+							.side__item-content
+								.side__item-icon
+									img(src=`${baseDir}/img/icon-pdf.png`, alt="")
+								p.side__item-text IFRS Roust Corporation 2018 annual report
+							a.side__item-link(href="#", download) Download
+
 	template.js-search-template
 		.search-popup.js-search-popup
 			.search-popup__wrap.js-search-wrap

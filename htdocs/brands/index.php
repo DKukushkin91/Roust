@@ -1,9 +1,4 @@
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");?>
-
-<?
-$minDataThisProduct = Products::getDataProductByCode('talka');
-?>
-<!-- <pre><?print_r($minDataThisProduct)?></pre> -->
 <?$APPLICATION->IncludeComponent(
         "bitrix:catalog", 
         "brands", 

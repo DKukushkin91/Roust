@@ -6,12 +6,14 @@ npm-debug.log
 yarn-error.log
 .vscode
 
+
 # Editor directories and files
 .idea
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
+*.map
 
 htdocs/.htaccess
 htdocs/bitrix*

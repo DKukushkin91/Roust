@@ -79,6 +79,9 @@
 			@media $md
 				padding-bottom 30px
 
+		&--career
+			padding-bottom 45px
+
 	&__text
 		fz-21()
 		line-height 29px
@@ -103,7 +106,7 @@
 			width: 100%
 			padding-bottom 60px
 
-			@media (min-width 1280px) and (max-width 1680px)
+			@media (min-width 1280px), (max-width 1680px)
 				font-size get-vw(15, 1680)
 				padding-bottom 3.3333vh
 
@@ -211,6 +214,8 @@
 		border-radius: 0
 		cursor pointer
 		border 0
+		width 100%
+		max-width: 258px
 
 	&__btn-text
 		fz-15()
@@ -354,7 +359,7 @@
 			max-width: 226px
 			transition: all 1s cubic-bezier(.55,.06,.68,.19) 0s
 
-			@media (minw-width: 1280px) and (max-width: 1920px)
+			@media (minw-width: 1280px), (max-width: 1920px)
 				max-width: get-vw(226, 1680)
 
 	&__scroll-btn

@@ -5,7 +5,7 @@ variables:
     PATH_PROJ: /vault/www/dev/auto
 promodev:
   stage: deploydev
-  tags: [dinamic php7.4 bitrix]
+  tags: [1017pve4]
   script:
     - rsync -azvh ./htdocs $PATH_PROJ/$NAME
     - rsync -azvh ./src $PATH_PROJ/$NAME

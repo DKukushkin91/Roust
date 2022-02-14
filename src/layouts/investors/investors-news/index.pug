@@ -1,0 +1,28 @@
+extends ../../../template/_layout
+
+block pageVar
+	-
+		page = 'investors-news';
+
+block path
+	-
+		baseDir = '/f';
+
+block title
+	-
+		title = 'Investor news';
+
+block page
+	section.investors-news
+		.container
+			a.investors-news__prev-link(href="#")
+				svg(width="16" height="16").investors-news__icon
+					use(href=`${baseDir}/img/sprite.svg#arrow-back`)
+				span.investors-news__prev-text Go back
+			ul.investors-news__list
+				each text in [`Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates`, `IFRS Roust Corporation financial results for Q1 2019, Preliminary 2018 Guidance and Other Updates`, `Preliminary Results for 2017`, `Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates`, `Preliminary Results for 2017`, `Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates`, `Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates`, `IFRS Roust Corporation financial results for Q1 2019, Preliminary 2018 Guidance and Other Updates`, `Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates`, `Preliminary Results for 2017`]
+					li.investors-news__item
+						a.investors-news__link(href="#")
+							time.investors-news__date 12 Dec 2019
+							p.investors-news__text=text
+						a.investors-news__download-link(href="#" download) Download

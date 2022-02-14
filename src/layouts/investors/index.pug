@@ -21,73 +21,77 @@ block page
 		.container
 			.investors__wrap
 				h2.investors__title Investor News
-				a.investors__news-link.animate-button(href="#")
+				a.investors__news-link.animate-button(href=`investors-news/index.html`)
 					span.investors__news-text All news
 				.investors__slider.js-investors-slider
 					ul.investors__list.js-investors-wrap
 						li.investors__item.js-investors-slide
 							a.investors__item-link(href="#")
-							time.investors__date 22 october 2019
-							p.investors__text Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates
+								time.investors__date 22 october 2019
+								p.investors__text Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates
+							a.investors__download-link(href="", download) Download
 						li.investors__item.js-investors-slide
 							a.investors__item-link(href="#")
-							time.investors__date 22 october 2019
-							p.investors__text Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates
+								time.investors__date 22 october 2019
+								p.investors__text Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates
+							a.investors__download-link(href="", download) Download
 						li.investors__item.js-investors-slide
 							a.investors__item-link(href="#")
-							time.investors__date 22 october 2019
-							p.investors__text Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates
+								time.investors__date 22 october 2019
+								p.investors__text Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates
+							a.investors__download-link(href="", download) Download
 						li.investors__item.js-investors-slide
 							a.investors__item-link(href="#")
-							time.investors__date 22 october 2019
-							p.investors__text Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates
+								time.investors__date 22 october 2019
+								p.investors__text Preliminary Results for 2017, Preliminary 2018 Guidance and Other Updates
+							a.investors__download-link(href="", download) Download
 					.investors__pagination.swiper-pagination.js-investors-pagination
 			.investors__wrap.investors__wrap--grid
 				.investors__docs-box
-					h2.investors__title Current Reports
+					h2.investors__title.js-card-title Current Reports
 					a.investors__box-link(href='#' download)
 						.investors__icon
 							img(src=`${baseDir}/img/icon-pdf.png`, alt="")
 						.investors__box-content
 							time.investors__box-date 12 Dec 2019
 							p.investors__box-text Appointment of New Auditor
-					a.investors__redirect(href='#')
+					button.investors__redirect.js-side-btn
 						span.investors__redirect-text All presentations (23)
 						svg(width="9" height="15").investors__redirect-icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-g`)
 				.investors__docs-box
-					h2.investors__title Quarterly Reports
+					h2.investors__title.js-card-title Quarterly Reports
 					a.investors__box-link(href='#' download)
 						.investors__icon
 							img(src=`${baseDir}/img/icon-pdf.png`, alt="")
 						.investors__box-content
 							time.investors__box-date 06 Mar 2020
 							p.investors__box-text IFRS Roust Corporation financial results for Q1 2019
-					a.investors__redirect(href='#')
+					button.investors__redirect.js-side-btn
 						span.investors__redirect-text All presentations (16)
 						svg(width="9" height="15").investors__redirect-icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-g`)
 				.investors__docs-box
-					h2.investors__title Presentations
+					h2.investors__title.js-card-title Presentations
 					a.investors__box-link(href='#' download)
 						.investors__icon
 							img(src=`${baseDir}/img/icon-pdf.png`, alt="")
 						.investors__box-content
 							time.investors__box-date 03 Apr 2020
 							p.investors__box-text Roust Corporation Presentation for Q3 2019
-					a.investors__redirect(href='#')
+					button.investors__redirect.js-side-btn
 						span.investors__redirect-text All presentations (12)
 						svg(width="9" height="15").investors__redirect-icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-g`)
 				.investors__docs-box
-					h2.investors__title Annual Reports
+					h2.investors__title.js-card-title Annual Reports
 					a.investors__box-link(href='#' download)
 						.investors__icon
 							img(src=`${baseDir}/img/icon-pdf.png`, alt="")
 						.investors__box-content
 							time.investors__box-date 21 Feb 2020
 							p.investors__box-text IFRS Roust Corporation 2018 annual report
-					a.investors__redirect(href='#')
+					button.investors__redirect.js-side-btn
 						span.investors__redirect-text All presentations (7)
 						svg(width="9" height="15").investors__redirect-icon
 							use(href=`${baseDir}/img/sprite.svg#arrow-g`)
@@ -139,13 +143,6 @@ block page
 							.about-us__card-content
 								h4.about-us__card-title.js-card-title Ilya Blinov
 								p.about-us__card-text.js-card-text Head of Global Operations General Manager Russia
-								button.about-us__card-btn.js-side-block More
-						.about-us__card
-							.about-us__card-img
-								img.js-card-img(src=`${baseDir}/img/portrait7.jpg`, alt="")
-							.about-us__card-content
-								h4.about-us__card-title.js-card-title Mariusz Chrobot
-								p.about-us__card-text.js-card-text General Manager Poland
 								button.about-us__card-btn.js-side-block More
 				.investors__content-box.investors__content-box--map
 					h2.investors__title Investor Relations Contact

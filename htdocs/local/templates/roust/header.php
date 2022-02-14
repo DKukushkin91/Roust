@@ -2,39 +2,50 @@
 use Bitrix\Main\Page\Asset;
 use Bitrix\Main\Application;
 global $APPLICATION;
-?>
+?>	
 <?
-switch ($APPLICATION->GetCurPage(false)) {
-    case '/';
-        $page_name ='main-page';
-    break;
-    case "/about-us/":
-        $page_name ='about-us';
-    break;
-    case "/brands/":
-        $page_name ='brands';
-    break;
-    case "/career/":
-        $page_name ='career';
-    break;
-    case "/contacts/":
-        $page_name ='contacts';
-    break;
-    case "/investors/":
-        $page_name ='investors';
-    break;
-    case "/media/":
-        $page_name ='media';
-    break;
-    case "/partnership/":
-        $page_name ='partnership';
-    break;
-    case "/social-projects/":
-        $page_name ='social-projects';
-    break;
-    default:   
-		$page_name ='media';                 
-    break;
+	if (strpos($_SERVER['REQUEST_URI'], '/brands/') !== false) {
+		$DataThisProduct = Products::getDataProductByCode($_SERVER['REQUEST_URI']);
+ } 
+?>
+
+<?
+if(!empty($DataThisProduct)){
+	$page_name ='brands-item';
+	$DataThisProduct_img = CFile::ResizeImageGet($DataThisProduct["BACKGROUND"], array(), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+}else{
+	switch ($APPLICATION->GetCurPage(false)) {
+		case '/';
+			$page_name ='main-page';
+		break;
+		case "/about-us/":
+			$page_name ='about-us';
+		break;
+		case "/brands/":
+			$page_name ='brands';
+		break;
+		case "/career/":
+			$page_name ='career';
+		break;
+		case "/contacts/":
+			$page_name ='contacts';
+		break;
+		case "/investors/":
+			$page_name ='investors';
+		break;
+		case "/media/":
+			$page_name ='media';
+		break;
+		case "/partnership/":
+			$page_name ='partnership';
+		break;
+		case "/social-projects/":
+			$page_name ='social-projects';
+		break;
+		default:   
+			$page_name ='brands';                 
+		break;
+	}
 }?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -45,11 +56,10 @@ switch ($APPLICATION->GetCurPage(false)) {
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 	<meta property="og:site_name" content="Боль в спине">
 	<meta property="og:url" content="<? echo " https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];?>"> 
-    <link rel="canonical" href="<? echo " https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];?>"> 
+	<link rel="canonical" href="<? echo " https://".$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];?>"> 
 
-    <? // получить СЕО данные текущей страницы 
-    $seoTextThisPage=Helpers::getSeoTextsPageByUrlPage($APPLICATION->GetCurDir());
-
+	<? // получить СЕО данные текущей страницы 
+	$seoTextThisPage=Helpers::getSeoTextsPageByUrlPage($APPLICATION->GetCurDir());
 	if(!empty($seoTextThisPage['title'])){ ?>
 	<title><?=$seoTextThisPage['title']?></title>
 	<meta property="og:title" content="<?=$seoTextThisPage['title']?>">
@@ -75,8 +85,8 @@ switch ($APPLICATION->GetCurPage(false)) {
 	<meta property="og:image" content="<? echo " https://".$_SERVER['SERVER_NAME']."/f/img/snippet-537-240.png";?>" />
 	<?}?>
 
-    <link href="/f/css/main.css" type="text/css" rel="stylesheet">
-    <link href="/f/css/vendor.css" type="text/css" rel="stylesheet">
+	<link href="/f/css/main.css" type="text/css" rel="stylesheet">
+	<link href="/f/css/vendor.css" type="text/css" rel="stylesheet">
 
 	<?      
     $APPLICATION->ShowCSS();
@@ -88,12 +98,14 @@ switch ($APPLICATION->GetCurPage(false)) {
 <body lang="ru-RU">
 	<div class="box">
 		<div class="box__content box__content--<?=$page_name?>">
+			<?if(!empty($DataThisProduct_img['src'])){?>
+        	<div class="box__img"><img src="<?$DataThisProduct_img['src']?>" alt=""></div>
+			<?}?>
 			<div class="box__top box__top--<?=$page_name?>">
 				<header class="header js-animate-header">
 					<div class="container header__container">
 						<div class="header__wrap <?=$page_name?>__header-wrap">
-							<div class="header__logo-wrap"><a class="header__link" href="/"><img
-										src="/f/img/roust-logo.svg"></a>
+							<div class="header__logo-wrap"><a class="header__link" href="/"><img src="/f/img/roust-logo.svg"></a>
 							</div>
 							<button class="header__burger-btn js-burger-btn"><span class="header__burger-menu"></span></button>
 							<div class="header__content-box">
@@ -123,9 +135,26 @@ switch ($APPLICATION->GetCurPage(false)) {
 							</div>
 						</div>
 					</div>
-				</header>                
-                <?
-				if($page_name!="main-page"){
+				</header>
+				<?
+				if(!empty($DataThisProduct)){
+				// Хедер для бренда
+				$APPLICATION->IncludeComponent(
+					'bitrix:news.detail',
+					'brands_header',
+					array(
+						'IBLOCK_ID' => CIBlockTools::GetIBlockId('brands'),
+						'ELEMENT_ID' => $DataThisProduct['ID'],
+						'CACHE_TYPE' => 'Y',
+						'CACHE_TIME' => 604800,
+						'FIELD_CODE' => array('*'),
+						'PROPERTY_CODE' => array('*')
+					)
+				);
+				}
+				elseif($page_name=="main-page"){
+				}
+				else{
 					$page_header = "header_".$page_name;
 					$APPLICATION->IncludeComponent(
 						'bitrix:news.detail',
@@ -143,3 +172,5 @@ switch ($APPLICATION->GetCurPage(false)) {
                 ?>
 			</div>
 			<main class="main main--<?=$page_name?>">
+		
+		

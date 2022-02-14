@@ -84,23 +84,28 @@
               </div>
             </div>
           </section>
-          <section class="gallery">
-            <div class="container gallery__container">
-              <div class="gallery__wrap">
-                <div class="gallery__box">
-                  <div class="gallery__img"><img src="/f/img/g-preview2.jpg" alt=""></div>
-                  <div class="gallery__content gallery__content--margin">
-                    <h2 class="gallery__title">Modern factories</h2>
-                    <button class="gallery__btn animate-button js-open-gallery"><span class="gallery__btn-text">See more</span></button>
-                  </div>
+          <section class="offices">
+            <div class="container">
+              <div class="offices__text-content">
+                <h2 class="offices__title">Modern factories &amp; Comfortable offices</h2>
+                <p class="offices__text">Текст про то, что компания Roust предлагает комфортные условия для работы</p>
+              </div>
+              <div class="offices__slider swiper js-career-slider">
+                <div class="offices__slider-wrap swiper-wrapper">
+                  <div class="offices__slide swiper-slide"><img src="/f/img/career-slide1.jpg" alt=""></div>
+                  <div class="offices__slide swiper-slide"><img src="/f/img/career-slide2.jpg" alt=""></div>
+                  <div class="offices__slide swiper-slide"><img src="/f/img/career-slide3.jpg" alt=""></div>
                 </div>
-                <div class="gallery__box">
-                  <div class="gallery__img"><img src="/f/img/g-preview.jpg" alt=""></div>
-                  <div class="gallery__content">
-                    <h2 class="gallery__title">Comfortable offices</h2>
-                    <button class="gallery__btn animate-button js-open-gallery"><span class="gallery__btn-text">See more</span></button>
-                  </div>
-                </div>
+                <button class="offices__nav-btn offices__nav-btn--prev js-career-btn-prev">
+                  <svg class="offices__nav-icon" width="14" height="9">
+                    <use href="/f/img/sprite.svg#arrow-g"></use>
+                  </svg>
+                </button>
+                <button class="offices__nav-btn offices__nav-btn--next js-career-btn-next">
+                  <svg class="offices__nav-icon" width="14" height="9">
+                    <use href="/f/img/sprite.svg#arrow-g"></use>
+                  </svg>
+                </button>
               </div>
             </div>
           </section>
@@ -117,34 +122,28 @@
                 <p class="career-contacts__sub-title">Roust provides its employees with exciting career opportunities.</p>
                 <ul class="career-contacts__list">
                   <li class="career-contacts__item">
-                    <p class="career-contacts__item-title">Russia</p><a class="career-contacts__link" href="mailto:info@roust.com" target="_blank">
+                    <p class="career-contacts__item-title">Russia</p><a class="career-contacts__link" href="mailto:hr@roust.com" target="_blank">
                       <svg class="career-contacts__icon" width="20" height="16">
                         <use href="/f/img/sprite.svg#email"></use>
-                      </svg><span class="career-contacts__link-text">info@roust.com</span></a>
+                      </svg><span class="career-contacts__link-text">hr@roust.com</span></a>
                   </li>
                   <li class="career-contacts__item">
-                    <p class="career-contacts__item-title">Poland</p><a class="career-contacts__link" href="mailto:info@roust.com" target="_blank">
+                    <p class="career-contacts__item-title">Hungary</p><a class="career-contacts__link" href="mailto:hr@roust.com" target="_blank">
                       <svg class="career-contacts__icon" width="20" height="16">
                         <use href="/f/img/sprite.svg#email"></use>
-                      </svg><span class="career-contacts__link-text">info@roust.com</span></a>
+                      </svg><span class="career-contacts__link-text">hr@roust.com</span></a>
                   </li>
                   <li class="career-contacts__item">
-                    <p class="career-contacts__item-title">Hungary</p><a class="career-contacts__link" href="mailto:info@roust.com" target="_blank">
+                    <p class="career-contacts__item-title">USA</p><a class="career-contacts__link" href="mailto:hr@roust.com" target="_blank">
                       <svg class="career-contacts__icon" width="20" height="16">
                         <use href="/f/img/sprite.svg#email"></use>
-                      </svg><span class="career-contacts__link-text">info@roust.com</span></a>
+                      </svg><span class="career-contacts__link-text">hr@roust.com</span></a>
                   </li>
                   <li class="career-contacts__item">
-                    <p class="career-contacts__item-title">USA</p><a class="career-contacts__link" href="mailto:info@roust.com" target="_blank">
+                    <p class="career-contacts__item-title">United Kingdom</p><a class="career-contacts__link" href="mailto:hr@roust.com" target="_blank">
                       <svg class="career-contacts__icon" width="20" height="16">
                         <use href="/f/img/sprite.svg#email"></use>
-                      </svg><span class="career-contacts__link-text">info@roust.com</span></a>
-                  </li>
-                  <li class="career-contacts__item">
-                    <p class="career-contacts__item-title">United Kingdom</p><a class="career-contacts__link" href="mailto:info@roust.com" target="_blank">
-                      <svg class="career-contacts__icon" width="20" height="16">
-                        <use href="/f/img/sprite.svg#email"></use>
-                      </svg><span class="career-contacts__link-text">info@roust.com</span></a>
+                      </svg><span class="career-contacts__link-text">hr@roust.com</span></a>
                   </li>
                 </ul>
                 <p class="career-contacts__text">For further information on job vacancies at Roust, please contact our HR team.</p>
@@ -614,6 +613,50 @@
           <div class="side__main">
             <p class="side__text js-side-text"></p>
           </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template class="js-side-list-template">
+    <div class="side">
+      <div class="side__wrap side__wrap--width js-side-wrap">
+        <div class="side__content">
+          <button class="side__back-btn js-back-btn">
+            <svg class="side__icon" width="16" height="16">
+              <use href="/f/img/sprite.svg#arrow-back"></use>
+            </svg><span class="side__btn-text">Go back</span>
+          </button>
+          <h2 class="side__title js-side-title"></h2>
+          <ul class="side__list">
+            <li class="side__item">
+              <time class="side__item-date">12 Dec 2019</time>
+              <div class="side__item-content">
+                <div class="side__item-icon"><img src="/f/img/icon-pdf.png" alt=""></div>
+                <p class="side__item-text">Appointment of New Auditor</p>
+              </div><a class="side__item-link" href="#" download>Download</a>
+            </li>
+            <li class="side__item">
+              <time class="side__item-date">06 Mar 2020</time>
+              <div class="side__item-content">
+                <div class="side__item-icon"><img src="/f/img/icon-pdf.png" alt=""></div>
+                <p class="side__item-text">IFRS Roust Corporation financial results for Q1 2019</p>
+              </div><a class="side__item-link" href="#" download>Download</a>
+            </li>
+            <li class="side__item">
+              <time class="side__item-date">03 Apr 2020</time>
+              <div class="side__item-content">
+                <div class="side__item-icon"><img src="/f/img/icon-pdf.png" alt=""></div>
+                <p class="side__item-text">Roust Corporation Presentation for Q3 2019</p>
+              </div><a class="side__item-link" href="#" download>Download</a>
+            </li>
+            <li class="side__item">
+              <time class="side__item-date">12 Dec 2019</time>
+              <div class="side__item-content">
+                <div class="side__item-icon"><img src="/f/img/icon-pdf.png" alt=""></div>
+                <p class="side__item-text">IFRS Roust Corporation 2018 annual report</p>
+              </div><a class="side__item-link" href="#" download>Download</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

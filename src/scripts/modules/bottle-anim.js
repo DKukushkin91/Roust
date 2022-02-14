@@ -1,15 +1,16 @@
 export const getItemAnimation = () => {
 	if(document.querySelector('.js-anchor-bottle')) {
 		const items = document.querySelectorAll('.js-animate-bottle');
+		const mainItem = document.querySelector('.js-main-bottle');
 		const itemsArray = Array.from(items);
-		const anchor = document.querySelector('.js-anchor-bottle')
+		const anchor = document.querySelector('.js-anchor-bottle');
 		const evenIndexs = itemsArray.filter((x, index) => index % 2 === 0);
 		const oddIndexs = itemsArray.filter((x, index) => index % 2 !== 0 );
 
-		const scrollSpeed = 0.12
+		const scrollSpeed = 0.24
 
 		const getValue = (index) => {
-			return Math.floor((anchor.getBoundingClientRect().top <= 0 ? anchor.getBoundingClientRect().top : 0) * ((index === 0 ? index + 1.111 : index + 1.2) * scrollSpeed));
+			return Math.floor((anchor.getBoundingClientRect().top - anchor.getBoundingClientRect().height / 2) * ((index === 0 ? index + 1.111 : index + 1.2) * scrollSpeed));
 		}
 
 		let indexElement;
@@ -22,13 +23,13 @@ export const getItemAnimation = () => {
 			if(flag === 1){
 				evenIndexs.forEach((el, index) => {
 					indexElement = index;
-					el.style.right = `${getValue(indexElement)}px`;
+					el.style.right = `${getValue(indexElement) >= 0 ? 0 : getValue(indexElement)}px`;
 					el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
 				})
 
 				oddIndexs.forEach((el, index) => {
 					indexElement = index;
-					el.style.left = `${getValue(indexElement)}px`;
+					el.style.left = `${getValue(indexElement) >= 0 ? 0 : getValue(indexElement)}px`;
 					el.offsetLeft <= 5 ? window.removeEventListener('scroll', onScrollAnimation) : false;
 				})
 			}
@@ -60,6 +61,6 @@ export const getItemAnimation = () => {
 			observer.observe(el)
 		}
 
-		scrollTrigger('.js-anchor-bottle');
+		scrollTrigger('.js-main-bottle');
 	}
 }
