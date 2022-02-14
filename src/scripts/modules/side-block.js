@@ -86,4 +86,67 @@ export const getSideBlock = () => {
 			})
 		})
 	}
+
+	if(document.querySelector('.js-side-btn')) {
+		const buttons = document.querySelectorAll('.js-side-btn');
+		const body = document.querySelector('body');
+		const template = document.querySelector('.js-side-list-template')
+			.content
+			.querySelector('.side');
+
+		const escPressHandler = (evt) => {
+			if (evt.key === 'Escape') {
+				evt.preventDefault();
+				elementRemoveHandler();
+			}
+		};
+
+		const elementRemoveHandler = () => {
+			const wrap = document.querySelector('.side');
+
+			if(body.classList.contains('lock-scroll')){
+				body.classList.remove('lock-scroll');
+			}
+
+			if (wrap) {
+				wrap.remove();
+				document.removeEventListener('keydown', escPressHandler);
+			}
+		}
+
+		const getElement = (cardTitle, evt) => {
+			const templateClone = template.cloneNode(true);
+			const backBtn = templateClone.querySelector('.js-back-btn');
+			const title = templateClone.querySelector('.js-side-title');
+
+			title.textContent = cardTitle;
+
+			body.classList.add('lock-scroll')
+			backBtn.addEventListener('click', elementRemoveHandler);
+			return templateClone
+		}
+
+		const appendElement = (cardTitle, evt) => {
+			const fragment = document.createDocumentFragment();
+			const element = getElement(cardTitle, evt);
+
+			fragment.appendChild(element);
+			document.addEventListener('keydown', escPressHandler);
+			createElement(body, fragment);
+		}
+
+		buttons.forEach(el => {
+			el.addEventListener('click', (evt) => {
+				evt.preventDefault();
+				const title = evt.currentTarget.parentNode.querySelector('.js-card-title').getAttribute("data-name");
+
+				appendElement(title, evt);
+
+				const contentWrap = document.querySelector('.js-side-wrap');
+
+				setTimeout(()=>changeActiveClass(contentWrap, 'side'));
+			})
+		})
+
+	}
 }

@@ -84,48 +84,56 @@
               </div>
               <div class="investors__wrap investors__wrap--grid">
                 <div class="investors__docs-box">
-                  <h2 class="investors__title">Current Reports</h2><a class="investors__box-link" href="#" download>
+                  <h2 class="investors__title js-card-title">Current Reports</h2><a class="investors__box-link" href="#" download>
                     <div class="investors__icon"><img src="/f/img/icon-pdf.png" alt=""></div>
                     <div class="investors__box-content">
                       <time class="investors__box-date">12 Dec 2019</time>
                       <p class="investors__box-text">Appointment of New Auditor</p>
-                    </div></a><a class="investors__redirect" href="#"><span class="investors__redirect-text">All presentations (23)</span>
+                    </div></a>
+                  <button class="investors__redirect js-side-btn"><span class="investors__redirect-text">All presentations (23)</span>
                     <svg class="investors__redirect-icon" width="9" height="15">
                       <use href="/f/img/sprite.svg#arrow-g"></use>
-                    </svg></a>
+                    </svg>
+                  </button>
                 </div>
                 <div class="investors__docs-box">
-                  <h2 class="investors__title">Quarterly Reports</h2><a class="investors__box-link" href="#" download>
+                  <h2 class="investors__title js-card-title">Quarterly Reports</h2><a class="investors__box-link" href="#" download>
                     <div class="investors__icon"><img src="/f/img/icon-pdf.png" alt=""></div>
                     <div class="investors__box-content">
                       <time class="investors__box-date">06 Mar 2020</time>
                       <p class="investors__box-text">IFRS Roust Corporation financial results for Q1 2019</p>
-                    </div></a><a class="investors__redirect" href="#"><span class="investors__redirect-text">All presentations (16)</span>
+                    </div></a>
+                  <button class="investors__redirect js-side-btn"><span class="investors__redirect-text">All presentations (16)</span>
                     <svg class="investors__redirect-icon" width="9" height="15">
                       <use href="/f/img/sprite.svg#arrow-g"></use>
-                    </svg></a>
+                    </svg>
+                  </button>
                 </div>
                 <div class="investors__docs-box">
-                  <h2 class="investors__title">Presentations</h2><a class="investors__box-link" href="#" download>
+                  <h2 class="investors__title js-card-title">Presentations</h2><a class="investors__box-link" href="#" download>
                     <div class="investors__icon"><img src="/f/img/icon-pdf.png" alt=""></div>
                     <div class="investors__box-content">
                       <time class="investors__box-date">03 Apr 2020</time>
                       <p class="investors__box-text">Roust Corporation Presentation for Q3 2019</p>
-                    </div></a><a class="investors__redirect" href="#"><span class="investors__redirect-text">All presentations (12)</span>
+                    </div></a>
+                  <button class="investors__redirect js-side-btn"><span class="investors__redirect-text">All presentations (12)</span>
                     <svg class="investors__redirect-icon" width="9" height="15">
                       <use href="/f/img/sprite.svg#arrow-g"></use>
-                    </svg></a>
+                    </svg>
+                  </button>
                 </div>
                 <div class="investors__docs-box">
-                  <h2 class="investors__title">Annual Reports</h2><a class="investors__box-link" href="#" download>
+                  <h2 class="investors__title js-card-title">Annual Reports</h2><a class="investors__box-link" href="#" download>
                     <div class="investors__icon"><img src="/f/img/icon-pdf.png" alt=""></div>
                     <div class="investors__box-content">
                       <time class="investors__box-date">21 Feb 2020</time>
                       <p class="investors__box-text">IFRS Roust Corporation 2018 annual report</p>
-                    </div></a><a class="investors__redirect" href="#"><span class="investors__redirect-text">All presentations (7)</span>
+                    </div></a>
+                  <button class="investors__redirect js-side-btn"><span class="investors__redirect-text">All presentations (7)</span>
                     <svg class="investors__redirect-icon" width="9" height="15">
                       <use href="/f/img/sprite.svg#arrow-g"></use>
-                    </svg></a>
+                    </svg>
+                  </button>
                 </div>
               </div>
               <div class="investors__wrap investors__wrap--flex">
@@ -666,6 +674,50 @@
           <div class="side__main">
             <p class="side__text js-side-text"></p>
           </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  <template class="js-side-list-template">
+    <div class="side">
+      <div class="side__wrap side__wrap--width js-side-wrap">
+        <div class="side__content">
+          <button class="side__back-btn js-back-btn">
+            <svg class="side__icon" width="16" height="16">
+              <use href="/f/img/sprite.svg#arrow-back"></use>
+            </svg><span class="side__btn-text">Go back</span>
+          </button>
+          <h2 class="side__title js-side-title"></h2>
+          <ul class="side__list">
+            <li class="side__item">
+              <time class="side__item-date">12 Dec 2019</time>
+              <div class="side__item-content">
+                <div class="side__item-icon"><img src="/f/img/icon-pdf.png" alt=""></div>
+                <p class="side__item-text">Appointment of New Auditor</p>
+              </div><a class="side__item-link" href="#" download>Download</a>
+            </li>
+            <li class="side__item">
+              <time class="side__item-date">06 Mar 2020</time>
+              <div class="side__item-content">
+                <div class="side__item-icon"><img src="/f/img/icon-pdf.png" alt=""></div>
+                <p class="side__item-text">IFRS Roust Corporation financial results for Q1 2019</p>
+              </div><a class="side__item-link" href="#" download>Download</a>
+            </li>
+            <li class="side__item">
+              <time class="side__item-date">03 Apr 2020</time>
+              <div class="side__item-content">
+                <div class="side__item-icon"><img src="/f/img/icon-pdf.png" alt=""></div>
+                <p class="side__item-text">Roust Corporation Presentation for Q3 2019</p>
+              </div><a class="side__item-link" href="#" download>Download</a>
+            </li>
+            <li class="side__item">
+              <time class="side__item-date">12 Dec 2019</time>
+              <div class="side__item-content">
+                <div class="side__item-icon"><img src="/f/img/icon-pdf.png" alt=""></div>
+                <p class="side__item-text">IFRS Roust Corporation 2018 annual report</p>
+              </div><a class="side__item-link" href="#" download>Download</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
