@@ -21,8 +21,5 @@ foreach ($arResult as $key => $arItem) {
 }
 
 $strReturn .= '</ul>';
-$strReturn .= '<pre>';
-$strReturn .= print_r($arResult);
-$strReturn .= '</pre>';
 
 return $strReturn;

@@ -1,11 +1,14 @@
 .career
 	width: 100%
 
+	&__top-section
+		padding-bottom 82px
+
 	&__header-wrap
-		padding-bottom 24px
+		padding-bottom 17px
 
 	&__wrap
-		padding 79px 0 124px 0
+		padding 79px 0 94px 0
 
 		@media $md
 			padding-top 40px
@@ -17,7 +20,7 @@
 		font-weight 900
 		font-family $Inter
 		color: $d-grey
-		padding-bottom 59px
+		padding-bottom 47px
 
 		@media $md
 			padding-bottom 40px
@@ -27,7 +30,7 @@
 		display flex
 		flex-direction row
 		flex-wrap: wrap
-		justify-content: space-between
+		justify-content: flex-start
 		align-items flex-start
 		margin 0
 		padding 0
@@ -48,7 +51,7 @@
 		padding-top 104px
 
 		&:not(:last-child)
-			margin-right: 100px
+			margin-right: 88px
 
 			@media $md
 				margin-right 0
@@ -66,10 +69,10 @@
 		&--width
 			max-width: 86px
 			top: 0
+			margin-left -10px
 
 		&--m-width
 			max-width 75px
-			top 0
 
 	&__sub-title
 		fz-21()
@@ -78,6 +81,8 @@
 		font-family $Inter
 		font-weight 500
 		padding-bottom 15px
+		display block
+		max-width: 190px
 
 	&__text
 		fz-15()

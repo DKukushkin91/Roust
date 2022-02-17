@@ -99,8 +99,8 @@ use \Bitrix\Main\Web\Json;
 						<li class="brands-item__item swiper-slide js-scroll-item">
 							<button class="brands-item__btn">
 								<span class="brands-item__text-box">
-									<p class="brands-item__text">Russian Standart</p>
-									<p class="brands-item__text brands-item__text--fz">Original</p>
+									<p class="brands-item__text"><?=$arResult['PROPERTIES']['COLLECTION_BASE']['VALUE'][$key]['SUB_VALUES']['COLLECTION_NAME']['VALUE']?></p>
+									<p class="brands-item__text brands-item__text--fz"><?=$arResult['PROPERTIES']['COLLECTION_BASE']['VALUE'][$key]['SUB_VALUES']['COLLECTION_SUB_NAME']['VALUE']?></p>
 								</span>
 								<span class="brands-item__picture">
 									<picture>
