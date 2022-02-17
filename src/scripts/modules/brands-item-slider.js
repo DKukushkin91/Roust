@@ -19,7 +19,7 @@ export const getSliders = () => {
 			slideToClickedSlide: true,
 		})
 
-		const getMobSlider = new Swiper(contentSliderMob, {
+		const gMobSlider = new Swiper(contentSliderMob, {
 			init: false,
 			slidesPerView: 'auto',
 			allowTouchMove: false,
@@ -33,7 +33,7 @@ export const getSliders = () => {
 			contentSliderMob.classList.add('swiper');
 			contentSliderWrap.classList.add('swiper-wrapper');
 			contentSlides.forEach(e => e.classList.add('swiper-slide'));
-			getMobSlider.init();
+			gMobSlider.init();
 		}
 
 		window.addEventListener('resize', () => {
@@ -41,7 +41,7 @@ export const getSliders = () => {
 				contentSliderMob.classList.add('swiper');
 				contentSliderWrap.classList.add('swiper-wrapper');
 				contentSlides.forEach(e => e.classList.add('swiper-slide'));
-				getMobSlider.init();
+				gMobSlider.init();
 			}else{
 				contentSliderMob.classList.remove('swiper');
 				contentSliderWrap.classList.remove('swiper-wrapper');

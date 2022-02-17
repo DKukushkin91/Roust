@@ -1,6 +1,7 @@
 export const selectHandler = (template) => {
 	const elSelectNative = template.querySelectorAll('.js-select-native');
 	const elSelectCustom = template.querySelectorAll('.js-select-custom');
+	const configObserver = {attributes: true};
 
 	let optionChecked = '';
 	let optionHoveredIndex = -1;
@@ -168,22 +169,24 @@ export const selectHandler = (template) => {
 		el.addEventListener('click', (evt) => {
 			const customOptsList = Array.from(evt.currentTarget.querySelectorAll('.js-custom-option'));
 
+			const onChangeOptions = (evt) => {
+				const value = evt.currentTarget.getAttribute('data-value');
+
+				evt.stopPropagation();
+
+				//Sync native select to have the same value
+				elSelectNative.forEach((element, index) => {
+					if(index === i) {
+						element.value = value;
+						updateCustomSelectChecked(value, evt.currentTarget.textContent);
+						closeSelectCustom();
+					}
+				})
+			}
+
+			customOptsList.forEach(el => el.addEventListener('click', onChangeOptions));
+
 			customOptsList.forEach((elOption, indexList) => {
-				elOption.addEventListener('click', (evt) => {
-					const value = evt.currentTarget.getAttribute('data-value');
-
-					evt.stopPropagation();
-
-					//Sync native select to have the same value
-					elSelectNative.forEach((element, index) => {
-						if(index === i) {
-							element.value = value;
-							updateCustomSelectChecked(value, evt.currentTarget.textContent);
-							closeSelectCustom();
-						}
-					})
-				});
-
 				if(el.classList.contains('m-select__custom-wrap--active')) {
 					elOption.addEventListener('mouseenter', (evt) => {
 						updateCustomSelectHovered(indexList);
