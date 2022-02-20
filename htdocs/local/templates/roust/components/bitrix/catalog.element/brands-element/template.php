@@ -14,7 +14,7 @@ use \Bitrix\Main\Web\Json;
  * @var string $templateFolder
  */
 ?>
-
+<!-- <pre><?print_r($arResult);?></pre> -->
 <section class="brands-item brands-item--width">
 	<div class="container brands-item__container">
 		<div class="brands-item__content-slider js-content-slider">
@@ -32,7 +32,10 @@ use \Bitrix\Main\Web\Json;
 						<div class="brands-item__text-wrapper swiper-wrapper">
                 			<? foreach ($arResult['PROPERTIES']['COLLECTION_BASE']['VALUE'] as $key => $value ) {?>
 							<div class="brands-item__text-block js-anim-text swiper-slide">
-								<h2 class="brands-item__title"><?$value['SUB_VALUES']['COLLECTION_NAME']['VALUE'];?></h2>
+								<h2 class="brands-item__title">
+									<?$value['SUB_VALUES']['COLLECTION_NAME']['VALUE'];?>
+									<span class="brands-item__title--color"><?$value['SUB_VALUES']['COLLECTION_SUB_NAME']['VALUE'];?></span>
+								</h2>
 								<p class="brands-item__text"><?$value['SUB_VALUES']['COLLECTION_DESCRPTION']['VALUE'];?></p>
 							</div>	
                 			<?}?>
@@ -41,8 +44,11 @@ use \Bitrix\Main\Web\Json;
 					<button class="brands-item__btn brands-item__btn--mobile brands-item__btn--mobile-prev js-mob-prev-btn"></button>
 				</div>
 				<div class="brands-item__content brands-item__content--mobile js-content-slide">
-					<?if(!empty($arResult['PROPERTIES']['BACKGROUND']['VALUE'])){?>
-					<div class="brands-item__bg-img"><img src="<?$arResult['PROPERTIES']['BACKGROUND']['VALUE']?>" alt=""></div>
+					<?
+					if(!empty($arResult['PROPERTIES']['BACKGROUND']['VALUE'])){
+					$background_bottle = CFile::ResizeImageGet($arResult['PROPERTIES']['BACKGROUND']['VALUE'], array(), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+					?>
+					<div class="brands-item__bg-img"><img src="<?$background_bottle['src']?>" alt=""></div>
 					<?}?>
 					<div class="brands-item__prod-slider swiper js-product-slider">
 						<div class="brands-item__prod-wrap swiper-wrapper">
@@ -105,14 +111,14 @@ use \Bitrix\Main\Web\Json;
 								<span class="brands-item__picture">
 									<picture>
 										<?
-										$picture_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_png']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-										$picture_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_png']['VALUE'], array('width'=> 332,'height' => 286), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-										$picture_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_webp']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-										$picture_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_webp']['VALUE'], array('width'=> 332,'height' => 286), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-										$picture_m_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_png']['VALUE'], array('width'=> 83,'height' => 72), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-										$picture_m_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_png']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-										$picture_m_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_webp']['VALUE'], array('width'=> 83,'height' => 72), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-										$picture_m_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_webp']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+										$picture_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_png']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+										$picture_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_png']['VALUE'], array('width'=> 332,'height' => 286), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+										$picture_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_webp']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+										$picture_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_webp']['VALUE'], array('width'=> 332,'height' => 286), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+										$picture_m_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_m_png']['VALUE'], array('width'=> 83,'height' => 72), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+										$picture_m_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_m_png']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+										$picture_m_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_m_webp']['VALUE'], array('width'=> 83,'height' => 72), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+										$picture_m_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_m_webp']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
 										?>
 										<source srcset="<?=$picture_png_1x['src']?> 1x, <?=$picture_png_2x['src']?> 2x" type="image/png" />
 										<source srcset="<?=$picture_webp_1x['src']?> 1x, <?=$picture_webp_2x['src']?> 2x" type="image/webp" />
@@ -131,10 +137,9 @@ use \Bitrix\Main\Web\Json;
 		</div>
 	</div>
 </section>
-<section class="b-product-other" id="incart-catalog">
-	<div class="content-wrapper">
-		<div class="b-product-other__wrapper">
-			<h2 class="b-product-other__title">Вам может понравиться</h2>
+<section class="news brands-item__news-section">
+	<div class="container container--brands-item">
+		<div class="news__list-wrap js-news-slider">
 			<?$APPLICATION->IncludeComponent(
 				"bitrix:news.list",
 				"media_main",

@@ -13,7 +13,6 @@ use Bitrix\Main\ModuleManager;
 ?>
 <section class="catalog-brands brands">
 	<div class="container">
-		<?/*
 		<nav class="breadcrumbs js-opacity brands__breadcrumbs">
 			<? 
 			$APPLICATION->IncludeComponent("bitrix:breadcrumb","",Array(
@@ -23,7 +22,6 @@ use Bitrix\Main\ModuleManager;
 				)
 			); ?>
 		</nav>
-		*/?>
         <h2 class="catalog-brands__title"><?=$arResult["NAME"];?></h2>
         <div class="catalog-brands__wrap brands__wrap">
 			<?
