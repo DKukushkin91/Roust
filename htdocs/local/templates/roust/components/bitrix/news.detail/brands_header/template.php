@@ -3,15 +3,6 @@
 <section class="top brands-item__top-section">
 	<div class="container brands-item__top-container js-brands-item-container">
 		<div class="top__wrap top__wrap--brands-item">
-			<nav class="breadcrumbs js-opacity brands-item__breadcrumbs">
-				<? 
-                $APPLICATION->IncludeComponent("bitrix:breadcrumb","",Array(
-                    "START_FROM" => "1",
-                    "PATH" => "",
-                    "SITE_ID" => "s1"
-                    )
-                ); ?>
-			</nav>
 			<div class="top__content top__content--brands-item js-opacity">
 				<h1 class="top__title top__title--brands-item">
 					<?$arResult["NAME"];?>

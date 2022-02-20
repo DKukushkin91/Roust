@@ -15,10 +15,10 @@
                         "element" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
                         "smart_filter" => "#SECTION_CODE_PATH#/#SMART_FILTER_PATH#/"
                 ),
-                "AJAX_MODE" => "Y",
+                "AJAX_MODE" => "N",
                 "INSTANT_RELOAD" => "Y",
                 "AJAX_OPTION_JUMP" => "N",
-                "AJAX_OPTION_HISTORY" => "Y",
+                "AJAX_OPTION_HISTORY" => "N",
                 "SET_STATUS_404" => "Y",
                 "SET_TITLE" => "Y",
                 "SHOW_404" => "Y",
