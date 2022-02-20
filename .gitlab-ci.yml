@@ -2,10 +2,10 @@ stages:
     - deploydev
 variables:
     NAME: $CI_PROJECT_NAME
-    PATH_PROJ: /vault/www/dev/auto
+    PATH_PROJ: /vault/www/dev
 promodev:
   stage: deploydev
-  tags: [1017pve4]
+  tags: [1027pve10]
   script:
     - rsync -azvh ./htdocs $PATH_PROJ/$NAME
     - rsync -azvh ./src $PATH_PROJ/$NAME
