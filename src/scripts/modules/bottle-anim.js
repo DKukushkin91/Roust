@@ -7,7 +7,7 @@ export const getItemAnimation = () => {
 		const evenIndexs = itemsArray.filter((x, index) => index % 2 === 0);
 		const oddIndexs = itemsArray.filter((x, index) => index % 2 !== 0 );
 
-		const scrollSpeed = 0.24
+		const scrollSpeed = 0.19
 
 		const getValue = (index) => {
 			return Math.floor((anchor.getBoundingClientRect().top - anchor.getBoundingClientRect().height / 2) * ((index === 0 ? index + 1.111 : index + 1.2) * scrollSpeed));
