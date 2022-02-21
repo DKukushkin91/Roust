@@ -2,7 +2,7 @@ import {changeActiveClass, createElement} from '../utils/utils';
 import {selectHandler} from './select';
 
 export const getPopup = () => {
-	if(document.querySelector('.js-btn-form') || document.querySelector('.js-subscribe-btn')){
+	if(document.querySelector('.js-btn-form') || document.querySelector('.js-subscribe-btn') || document.querySelector('.js-questionnaire-btn')){
 		const body = document.querySelector('body')
 		const buttons = document.querySelectorAll('.js-btn-form');
 		const popupTemplate = document.querySelector('.js-popup-form-template')
@@ -11,6 +11,9 @@ export const getPopup = () => {
 		const subscribePopupTemplate = document.querySelector('.js-popup-form-template')
 			.content
 			.querySelector('.js-subscribe-popup');
+		const questionnairePopupTemplate = document.querySelector('.js-popup-form-template')
+			.content
+			.querySelector('.js-questionnaire-popup');
 
 		const escPressHandler = (evt) => {
 			if (evt.key === 'Escape') {
@@ -20,7 +23,7 @@ export const getPopup = () => {
 		};
 
 		const elementRemoveHandler = () => {
-			const wrap = document.querySelector('.js-popup-wrap') || document.querySelector('.js-subscribe-popup');
+			const wrap = document.querySelector('.js-popup-wrap') || document.querySelector('.js-subscribe-popup') || document.querySelector('.js-questionnaire-popup');
 
 			if (wrap) {
 				wrap.remove();
@@ -91,6 +94,18 @@ export const getPopup = () => {
 				}
 			}
 
+			// if(element.querySelector('.js-tel-input')){
+			// 	const telInput = element.querySelector('.js-tel-input');
+
+			// 	const onChangeInput = (evt) => {
+			// 		telInput.value = `+7 ()`;
+			// 		evt.target.value.concat()
+			// 	}
+
+			// 	telInput.addEventListener('input', onChangeInput)
+
+			// }
+
 			popupForm.addEventListener('submit', validateForm);
 		}
 
@@ -107,6 +122,15 @@ export const getPopup = () => {
 				evt.preventDefault();
 				appendElement(subscribePopupTemplate);
 			})
+		}
+
+		if(document.querySelector('.js-questionnaire-btn')){
+			const openFormBtn = document.querySelectorAll('.js-questionnaire-btn');
+
+			openFormBtn.forEach(el => el.addEventListener('click', (evt) => {
+				evt.preventDefault();
+				appendElement(questionnairePopupTemplate);
+			}))
 		}
 	}
 }

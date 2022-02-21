@@ -526,17 +526,82 @@
           <div class="popup-form__checkbox">
             <div class="popup-form__input-group popup-form__checkbox-group">
               <input class="popup-form__checkbox-input" id="checkbox-data" type="checkbox" name="checkbox-data" required>
-              <label class="popup-form__checkbox-label" for="checkbox-data"></label>
-              <p class="popup-form__checkbox-text popup-form__text">Согласие на обработку персональных данных</p>
+              <label class="popup-form__checkbox-label" for="checkbox-data">
+                <p class="popup-form__checkbox-text popup-form__text">Согласие на обработку персональных данных</p>
+              </label>
             </div>
             <div class="popup-form__input-group popup-form__checkbox-group">
               <input class="popup-form__checkbox-input" id="checkbox-info" type="checkbox" name="checkbox-info" required>
-              <label class="popup-form__checkbox-label" for="checkbox-info"></label>
-              <p class="popup-form__checkbox-text popup-form__text">Согласие на подписку на информационные матеарилы</p>
+              <label class="popup-form__checkbox-label" for="checkbox-info">
+                <p class="popup-form__checkbox-text popup-form__text">Согласие на подписку на информационные матеарилы</p>
+              </label>
             </div>
           </div>
           <p class="popup-form__text"><span class='popup-form__text popup-form__text--color'>*</span> All fields are required</p>
           <button class="popup-form__btn" type="submit">Subscribe</button>
+        </fieldset>
+      </form>
+    </div>
+    <div class="popup-form__wrap js-questionnaire-popup">
+      <form class="popup-form__form js-popup-form" action="" method="post">
+        <button class="popup-form__close-btn js-close-btn">
+          <svg class="popup-form__icon" width="22" height="22">
+            <use href="/f/img/sprite.svg#cross"></use>
+          </svg>
+        </button>
+        <fieldset class="popup-form__fieldset">
+          <h2 class="popup-form__title">Анкета</h2>
+          <div class="popup-form__input-group">
+            <input class="popup-form__input" id="first-name" type="text" name="first-name" required>
+            <label class="popup-form__label" for="first-name">Ваше имя</label>
+            <p class="popup-form__error-text">Пожалуйста введите Ваше имя.</p>
+          </div>
+          <div class="popup-form__input-group">
+            <input class="popup-form__input" id="company" type="text" name="company">
+            <label class="popup-form__label" for="company">Название компании</label>
+          </div>
+          <div class="popup-form__input-group">
+            <input class="popup-form__input js-tel-input" id="tel" type="tel" name="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+            <label class="popup-form__label" for="tel">Телефон</label>
+            <p class="popup-form__error-text">Пожалуйста введите ваш номер телефона.</p>
+          </div>
+          <div class="popup-form__input-group">
+            <input class="popup-form__input" id="email" type="email" name="email" required>
+            <label class="popup-form__label" for="email">Email</label>
+            <p class="popup-form__error-text">Пожалуйста введите ваш Email.</p>
+          </div>
+          <div class="popup-form__input-group">
+            <input class="popup-form__input" id="country" type="text" name="country" required>
+            <label class="popup-form__label" for="country">Страна</label>
+            <p class="popup-form__error-text">Пожалуйста введите вашу страну.</p>
+          </div>
+          <div class="popup-form__input-group">
+            <input class="popup-form__input" id="city" type="text" name="city" required>
+            <label class="popup-form__label" for="city">Город</label>
+            <p class="popup-form__error-text">Пожалуйста введите ваш город.</p>
+          </div>
+          <div class="popup-form__input-group popup-form__input-group--textarea">
+            <textarea class="popup-form__textarea" id="textarea" name="cover" required></textarea>
+            <label class="popup-form__label" for="textarea">Опишите род вашей деятельности</label>
+            <p class="popup-form__error-text">Пожалуйста опишите род вашей деятельности.</p>
+          </div>
+          <div class="popup-form__input-group popup-form__input-group--textarea">
+            <textarea class="popup-form__textarea" id="textarea-partner" name="partner" required></textarea>
+            <label class="popup-form__label" for="#textarea-partner">Какие виды партнёрства вас интересуют?</label>
+            <p class="popup-form__error-text">Пожалуйста опишите какие виды партнёрства вас интересуют.</p>
+          </div>
+          <p class="popup-form__text"><span class='popup-form__text popup-form__text--color'>*</span> Поля, отмеченные звёздочкой, обязательны для заполнения</p>
+          <div class="popup-form__inner popup-form__inner--column">
+            <input class="popup-form__upload-input" id="upload" type="file" name="upload-file">
+            <div class="popup-form__upload-content"><span class="popup-form__upload-text">Вы можите</span>
+              <label class="popup-form__upload-label popup-form__upload-label--inline" for="upload">приложить к анкете</label><span class="popup-form__upload-text">презентацию компании, услуг и т.п</span>
+            </div>
+            <div class="popup-form__input-group popup-form__checkbox-group">
+              <input class="popup-form__checkbox-input" id="checkbox-info" type="checkbox" name="checkbox-info" value="yes" required>
+              <label class="popup-form__checkbox-label" for="checkbox-info"><span>I agree to</span> <a href="#" class="popup-form__checkbox-link" download>the processing of personal data</a></label>
+            </div>
+            <button class="popup-form__btn">Отправить</button>
+          </div>
         </fieldset>
       </form>
     </div>

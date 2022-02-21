@@ -246,14 +246,67 @@ block templates
 						.popup-form__input-group.popup-form__checkbox-group
 							input#checkbox-data.popup-form__checkbox-input(type="checkbox", name="checkbox-data" required)
 							label.popup-form__checkbox-label(for="checkbox-data")
-							p.popup-form__checkbox-text.popup-form__text Согласие на обработку персональных данных
+								p.popup-form__checkbox-text.popup-form__text Согласие на обработку персональных данных
 						.popup-form__input-group.popup-form__checkbox-group
 							input#checkbox-info.popup-form__checkbox-input(type="checkbox", name="checkbox-info" required)
 							label.popup-form__checkbox-label(for="checkbox-info")
-							p.popup-form__checkbox-text.popup-form__text Согласие на подписку на информационные матеарилы
+								p.popup-form__checkbox-text.popup-form__text Согласие на подписку на информационные матеарилы
 
 					p.popup-form__text <span class='popup-form__text popup-form__text--color'>*</span> All fields are required
 					button.popup-form__btn(type="submit") Subscribe
+
+		.popup-form__wrap.js-questionnaire-popup
+			form(action="", method="post").popup-form__form.js-popup-form
+				button.popup-form__close-btn.js-close-btn
+					svg(width="22" height="22").popup-form__icon
+						use(href=`${baseDir}/img/sprite.svg#cross`)
+				fieldset.popup-form__fieldset
+					h2.popup-form__title Анкета
+					.popup-form__input-group
+						input#first-name.popup-form__input(type="text", name="first-name" required)
+						label.popup-form__label(for="first-name") Ваше имя
+						p.popup-form__error-text Пожалуйста введите Ваше имя.
+					.popup-form__input-group
+						input#company.popup-form__input(type="text", name="company")
+						label.popup-form__label(for="company") Название компании
+					.popup-form__input-group
+						input#tel.popup-form__input.js-tel-input(type="tel", name="tel", pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}", required)
+						label.popup-form__label(for="tel") Телефон
+						p.popup-form__error-text Пожалуйста введите ваш номер телефона.
+					.popup-form__input-group
+						input#email.popup-form__input(type="email", name="email" required)
+						label.popup-form__label(for="email") Email
+						p.popup-form__error-text Пожалуйста введите ваш Email.
+					.popup-form__input-group
+						input#country.popup-form__input(type="text", name="country" required)
+						label.popup-form__label(for="country") Страна
+						p.popup-form__error-text Пожалуйста введите вашу страну.
+					.popup-form__input-group
+						input#city.popup-form__input(type="text", name="city" required)
+						label.popup-form__label(for="city") Город
+						p.popup-form__error-text Пожалуйста введите ваш город.
+
+					.popup-form__input-group.popup-form__input-group--textarea
+						textarea#textarea.popup-form__textarea(name="cover", required)
+						label.popup-form__label(for="textarea") Опишите род вашей деятельности
+						p.popup-form__error-text Пожалуйста опишите род вашей деятельности.
+					.popup-form__input-group.popup-form__input-group--textarea
+						textarea#textarea-partner.popup-form__textarea(name="partner", required)
+						label.popup-form__label(for="#textarea-partner") Какие виды партнёрства вас интересуют?
+						p.popup-form__error-text Пожалуйста опишите какие виды партнёрства вас интересуют.
+
+					p.popup-form__text <span class='popup-form__text popup-form__text--color'>*</span> Поля, отмеченные звёздочкой, обязательны для заполнения
+
+					.popup-form__inner.popup-form__inner--column
+						input#upload.popup-form__upload-input(type="file", name="upload-file")
+						.popup-form__upload-content
+							span.popup-form__upload-text Вы можите
+							label.popup-form__upload-label.popup-form__upload-label--inline(for="upload") приложить к анкете
+							span.popup-form__upload-text презентацию компании, услуг и т.п
+						.popup-form__input-group.popup-form__checkbox-group
+							input#checkbox-info.popup-form__checkbox-input(type="checkbox", name="checkbox-info", value="yes" required)
+							label.popup-form__checkbox-label(for="checkbox-info") <span>I agree to</span> <a href="#" class="popup-form__checkbox-link" download>the processing of personal data</a>
+						button.popup-form__btn Отправить
 
 	template.js-about-template
 		.side

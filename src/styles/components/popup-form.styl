@@ -198,6 +198,9 @@
 		justify-content space-between
 		position relative
 
+	&__inner--column
+		flex-direction: column
+
 	&__upload-input
 			width: 0.1px
 			height: 0.1px
@@ -220,45 +223,78 @@
 		padding: 14px
 		width 100%
 		max-width: 210px
-	&__checkbox
-		margin 10px 0
-	&__checkbox-group
-		flex-direction row
-		align-items center
-		margin-bottom 25px
-	&__checkbox-group:last-child
-		margin-bottom 0
-	&__checkbox-input
-		visibility hidden
-		width 0
-		height 0
-		margin 0
-	&__checkbox-label
-		position relative
-		width 20px
-		height 20px
-		background-color $white
-		border 1px solid #95A4B1
+
+	&__upload-label--inline
+		display inline-block
+		margin-right 5px
+		color: $orange
 		cursor pointer
-	&__checkbox-label:before
-		position absolute
-		display block
-		width 13px
-		height 12px
-		top 3px
-		left 4px
-		background-image url(../img/icons-check.svg)
-		background-repeat no-repeat
-		background-position center
-		background-size auto
-	&__checkbox-input:checked + .popup-form__checkbox-label
-		border none
-		background-color #E33916
-	&__checkbox-input:checked + .popup-form__checkbox-label:before
-		content ''
-	&__checkbox-text
-		padding-left 8px
-	
+
+	&__upload-content
+		fz-15()
+		line-height 24px
+		font-family $Inter
+		font-weight 500
+		color $d-grey
+		text-align: left
+		padding-bottom 40px
+
+	&__checkbox-group
+		display flex
+		flex-direction: row
+		padding-bottom 40px
+
+	&__checkbox-group:last-child
+		padding-bottom 0
+
+	&__checkbox-input
+		position: absolute
+		z-index -1
+		opacity: 0
+
+		& + label
+			display inline-flex
+			align-items: center
+			user-select: none
+			cursor pointer
+
+		& + label::before
+			content: ''
+			display: inline-block
+			width: 20px
+			height: 20px
+			flex-shrink: 0
+			flex-grow: 0
+			border: 1px solid #95A4B1
+			background-repeat: no-repeat
+			background-position: center center
+			background-size: 50% 50%
+			margin-right: 8px
+
+		&:checked + label::before
+			background-color: $orange
+			background-image url(../img/icons-check.svg)
+			background-repeat no-repeat
+			background-position center
+			background-size auto
+			border 1px solid transparent
+
+	&__checkbox-label
+		fz-13()
+		line-height 20px
+		font-weight 400
+		font-family $Inter
+		color $d-grey
+
+	&__checkbox-link
+		fz-13()
+		text-decoration: none
+		line-height 20px
+		font-weight 400
+		font-family $Inter
+		color $orange
+		margin-left 5px
+		display: inline-block
 
 	&__btn
 		fz-15()
