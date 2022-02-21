@@ -35,7 +35,7 @@ use \Bitrix\Main\Web\Json;
 									<?$value['SUB_VALUES']['COLLECTION_NAME']['VALUE'];?>
 									<span class="brands-item__title--color"><?$value['SUB_VALUES']['COLLECTION_SUB_NAME']['VALUE'];?></span>
 								</h2>
-								<p class="brands-item__text"><?$value['SUB_VALUES']['COLLECTION_DESCRPTION']['VALUE'];?></p>
+								<p class="brands-item__text"><?$value['SUB_VALUES']['COLLECTION_DESCRPTION']['VALUE']['TEXT'];?></p>
 							</div>	
                 			<?}?>
 						</div>
