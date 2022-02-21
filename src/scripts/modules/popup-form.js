@@ -1,5 +1,6 @@
 import {changeActiveClass, createElement} from '../utils/utils';
 import {selectHandler} from './select';
+import { telInputMask } from './tel-input-mask';
 
 export const getPopup = () => {
 	if(document.querySelector('.js-btn-form') || document.querySelector('.js-subscribe-btn') || document.querySelector('.js-questionnaire-btn')){
@@ -94,17 +95,7 @@ export const getPopup = () => {
 				}
 			}
 
-			// if(element.querySelector('.js-tel-input')){
-			// 	const telInput = element.querySelector('.js-tel-input');
-
-			// 	const onChangeInput = (evt) => {
-			// 		telInput.value = `+7 ()`;
-			// 		evt.target.value.concat()
-			// 	}
-
-			// 	telInput.addEventListener('input', onChangeInput)
-
-			// }
+			telInputMask(element.querySelector('.js-tel-input'));
 
 			popupForm.addEventListener('submit', validateForm);
 		}
