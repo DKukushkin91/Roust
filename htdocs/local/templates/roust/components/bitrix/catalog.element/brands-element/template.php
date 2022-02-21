@@ -22,8 +22,8 @@ use \Bitrix\Main\Web\Json;
 					<div class="brands-item__img-slider swiper js-img-slider js-b-item-slider">
 						<div class="brands-item__img-wrapper swiper-wrapper">
                 			<? foreach ($arResult['PROPERTIES']['COLLECTION_BASE']['VALUE'] as $key => $value ) {?>
-								<?$background = CFile::ResizeImageGet($value['SUB_VALUES']['COLLECTION_BACKGROUND']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_EXACT, false);?>
-								<div class="brands-item__img swiper-slide"><img src="<?$background['src']?>" alt=""></div>
+								<?$background = CFile::ResizeImageGet($value['SUB_VALUES']['COLLECTION_BACKGROUND']['VALUE'], array(), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);?>
+								<div class="brands-item__img swiper-slide"><img src="<?=$background['src']?>" alt=""></div>
                 			<?}?>
 						</div>
 					</div>
@@ -32,10 +32,10 @@ use \Bitrix\Main\Web\Json;
                 			<? foreach ($arResult['PROPERTIES']['COLLECTION_BASE']['VALUE'] as $key => $value ) {?>
 							<div class="brands-item__text-block js-anim-text swiper-slide">
 								<h2 class="brands-item__title">
-									<?$value['SUB_VALUES']['COLLECTION_NAME']['VALUE'];?>
-									<span class="brands-item__title--color"><?$value['SUB_VALUES']['COLLECTION_SUB_NAME']['VALUE'];?></span>
+									<?=$value['SUB_VALUES']['COLLECTION_NAME']['VALUE'];?>
+									<span class="brands-item__title--color"><?=$value['SUB_VALUES']['COLLECTION_SUB_NAME']['VALUE'];?></span>
 								</h2>
-								<p class="brands-item__text"><?$value['SUB_VALUES']['COLLECTION_DESCRPTION']['VALUE']['TEXT'];?></p>
+								<p class="brands-item__text"><?=$value['SUB_VALUES']['COLLECTION_DESCRPTION']['VALUE']['TEXT'];?></p>
 							</div>	
                 			<?}?>
 						</div>
@@ -45,9 +45,9 @@ use \Bitrix\Main\Web\Json;
 				<div class="brands-item__content brands-item__content--mobile js-content-slide">
 					<?
 					if(!empty($arResult['PROPERTIES']['BACKGROUND']['VALUE'])){
-					$background_bottle = CFile::ResizeImageGet($arResult['PROPERTIES']['BACKGROUND']['VALUE'], array(), BX_RESIZE_IMAGE_EXACT, false);
+					$background_bottle = CFile::ResizeImageGet($arResult['PROPERTIES']['BACKGROUND']['VALUE'], array(), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
 					?>
-					<div class="brands-item__bg-img"><img src="<?$background_bottle['src']?>" alt=""></div>
+					<div class="brands-item__bg-img"><img src="<?=$background_bottle['src']?>" alt=""></div>
 					<?}?>
 					<div class="brands-item__prod-slider swiper js-product-slider">
 						<div class="brands-item__prod-wrap swiper-wrapper">

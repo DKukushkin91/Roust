@@ -25,7 +25,7 @@
 				</a>
 			</div>
 			<ul class="top__list-awards js-opacity">
-                <? foreach ($arResult['PROPERTIES']['COLLECTION_BOOTLE']['VALUE'] as $key => $value ) {?>
+                <? foreach ($arResult['PROPERTIES']['AWARDS']['VALUE'] as $key => $value ) {?>
 				<li class="top__item-awards">
 					<picture>
                             <?
