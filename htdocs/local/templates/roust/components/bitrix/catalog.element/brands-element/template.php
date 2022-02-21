@@ -14,7 +14,6 @@ use \Bitrix\Main\Web\Json;
  * @var string $templateFolder
  */
 ?>
-<!-- <pre><?print_r($arResult);?></pre> -->
 <section class="brands-item brands-item--width">
 	<div class="container brands-item__container">
 		<div class="brands-item__content-slider js-content-slider">
@@ -23,7 +22,7 @@ use \Bitrix\Main\Web\Json;
 					<div class="brands-item__img-slider swiper js-img-slider js-b-item-slider">
 						<div class="brands-item__img-wrapper swiper-wrapper">
                 			<? foreach ($arResult['PROPERTIES']['COLLECTION_BASE']['VALUE'] as $key => $value ) {?>
-								<?$background = CFile::ResizeImageGet($value['SUB_VALUES']['COLLECTION_BACKGROUND']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);?>
+								<?$background = CFile::ResizeImageGet($value['SUB_VALUES']['COLLECTION_BACKGROUND']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_EXACT, false);?>
 								<div class="brands-item__img swiper-slide"><img src="<?$background['src']?>" alt=""></div>
                 			<?}?>
 						</div>
@@ -46,7 +45,7 @@ use \Bitrix\Main\Web\Json;
 				<div class="brands-item__content brands-item__content--mobile js-content-slide">
 					<?
 					if(!empty($arResult['PROPERTIES']['BACKGROUND']['VALUE'])){
-					$background_bottle = CFile::ResizeImageGet($arResult['PROPERTIES']['BACKGROUND']['VALUE'], array(), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+					$background_bottle = CFile::ResizeImageGet($arResult['PROPERTIES']['BACKGROUND']['VALUE'], array(), BX_RESIZE_IMAGE_EXACT, false);
 					?>
 					<div class="brands-item__bg-img"><img src="<?$background_bottle['src']?>" alt=""></div>
 					<?}?>
@@ -54,14 +53,14 @@ use \Bitrix\Main\Web\Json;
 						<div class="brands-item__prod-wrap swiper-wrapper">
                 			<? foreach ($arResult['PROPERTIES']['COLLECTION_BOOTLE']['VALUE'] as $key => $value ) {?>
                             <?
-                            $bottle_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_png']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $bottle_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_png']['VALUE'], array('width'=> 453,'height' => 1600), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $bottle_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_webp']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $bottle_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_webp']['VALUE'], array('width'=> 453,'height' => 1600), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $bottle_m_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_png']['VALUE'], array('width'=> 113,'height' => 339), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $bottle_m_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_png']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $bottle_m_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_webp']['VALUE'], array('width'=> 113,'height' => 339), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $bottle_m_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_webp']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+                            $bottle_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_png']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_EXACT, false);
+                            $bottle_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_png']['VALUE'], array('width'=> 453,'height' => 1600), BX_RESIZE_IMAGE_EXACT, false);
+                            $bottle_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_webp']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_EXACT, false);
+                            $bottle_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_webp']['VALUE'], array('width'=> 453,'height' => 1600), BX_RESIZE_IMAGE_EXACT, false);
+                            $bottle_m_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_png']['VALUE'], array('width'=> 113,'height' => 339), BX_RESIZE_IMAGE_EXACT, false);
+                            $bottle_m_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_png']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_EXACT, false);
+                            $bottle_m_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_webp']['VALUE'], array('width'=> 113,'height' => 339), BX_RESIZE_IMAGE_EXACT, false);
+                            $bottle_m_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_webp']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_EXACT, false);
                             ?>
 							<div class="brands-item__prod-img swiper-slide">
 								<picture>
@@ -111,14 +110,14 @@ use \Bitrix\Main\Web\Json;
 								<span class="brands-item__picture">
 									<picture>
 										<?
-										$picture_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_png']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-										$picture_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_png']['VALUE'], array('width'=> 332,'height' => 286), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-										$picture_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_webp']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-										$picture_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_webp']['VALUE'], array('width'=> 332,'height' => 286), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-										$picture_m_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_m_png']['VALUE'], array('width'=> 83,'height' => 72), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-										$picture_m_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_m_png']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-										$picture_m_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_m_webp']['VALUE'], array('width'=> 83,'height' => 72), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-										$picture_m_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_m_webp']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+										$picture_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_png']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_EXACT, false);
+										$picture_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_png']['VALUE'], array('width'=> 332,'height' => 286), BX_RESIZE_IMAGE_EXACT, false);
+										$picture_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_webp']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_EXACT, false);
+										$picture_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_webp']['VALUE'], array('width'=> 332,'height' => 286), BX_RESIZE_IMAGE_EXACT, false);
+										$picture_m_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_m_png']['VALUE'], array('width'=> 83,'height' => 72), BX_RESIZE_IMAGE_EXACT, false);
+										$picture_m_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_m_png']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_EXACT, false);
+										$picture_m_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_m_webp']['VALUE'], array('width'=> 83,'height' => 72), BX_RESIZE_IMAGE_EXACT, false);
+										$picture_m_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['PICTURE_m_webp']['VALUE'], array('width'=> 166,'height' => 143), BX_RESIZE_IMAGE_EXACT, false);
 										?>
 										<source srcset="<?=$picture_png_1x['src']?> 1x, <?=$picture_png_2x['src']?> 2x" type="image/png" />
 										<source srcset="<?=$picture_webp_1x['src']?> 1x, <?=$picture_webp_2x['src']?> 2x" type="image/webp" />
@@ -166,7 +165,7 @@ use \Bitrix\Main\Web\Json;
 	<div class="brands-item__sub-container">
 		<?foreach ($arResult['PROPERTIES']['LINKS_TEXT']['VALUE'] as $key => $value){?>
 			<?$num=$key+1;?>
-			<p class="brands-item__sub-text"><sup><?=$num?></sup><?$value;?></p>
+			<p class="brands-item__sub-text"><sup><?=$num?></sup><?=$value;?></p>
 		<?}?>
 	</div>
 </div>

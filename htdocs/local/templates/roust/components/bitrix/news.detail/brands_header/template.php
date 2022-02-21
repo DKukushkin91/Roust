@@ -15,13 +15,12 @@
 			</nav> */?>
 			<div class="top__content top__content--brands-item js-opacity">
 				<h1 class="top__title top__title--brands-item">
-					<?$arResult['NAME'];?>
+					<?=$arResult['NAME'];?>
 				</h1>
-				<!-- <pre><?print_r($arResult)?></pre> -->
 				<p class="top__text top__text--brands-item">
-					<?$arResult['PROPERTIES']["DESCRPTION"]['VALUE'];?>
+					<?=$arResult['PROPERTIES']['DESCRPTION']['VALUE']['TEXT'];?>
 				</p>
-				<a class="top__link" href="<?$arResult['PROPERTIES']["LINK"]['VALUE'];?>">
+				<a class="top__link" href="<?=$arResult['PROPERTIES']['LINK']['VALUE'];?>">
 					<span class="top__link-text">Visit brand site</span>
 				</a>
 			</div>
@@ -30,14 +29,14 @@
 				<li class="top__item-awards">
 					<picture>
                             <?
-                            $awards_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_png']['VALUE'], array('width'=> 214,'height' => 165), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $awards_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_png']['VALUE'], array('width'=> 427,'height' => 330), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $awards_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_webp']['VALUE'], array('width'=> 214,'height' => 165), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $awards_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_webp']['VALUE'], array('width'=> 427,'height' => 330), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $awards_m_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_m_png']['VALUE'], array('width'=> 107,'height' => 83), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $awards_m_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_m_png']['VALUE'], array('width'=> 214,'height' => 165), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $awards_m_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_m_webp']['VALUE'], array('width'=> 107,'height' => 83), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $awards_m_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_m_webp']['VALUE'], array('width'=> 214,'height' => 165), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+                            $awards_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_png']['VALUE'], array('width'=> 214,'height' => 165), BX_RESIZE_IMAGE_EXACT, false);
+                            $awards_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_png']['VALUE'], array('width'=> 427,'height' => 330), BX_RESIZE_IMAGE_EXACT, false);
+                            $awards_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_webp']['VALUE'], array('width'=> 214,'height' => 165), BX_RESIZE_IMAGE_EXACT, false);
+                            $awards_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_webp']['VALUE'], array('width'=> 427,'height' => 330), BX_RESIZE_IMAGE_EXACT, false);
+                            $awards_m_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_m_png']['VALUE'], array('width'=> 107,'height' => 83), BX_RESIZE_IMAGE_EXACT, false);
+                            $awards_m_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_m_png']['VALUE'], array('width'=> 214,'height' => 165), BX_RESIZE_IMAGE_EXACT, false);
+                            $awards_m_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_m_webp']['VALUE'], array('width'=> 107,'height' => 83), BX_RESIZE_IMAGE_EXACT, false);
+                            $awards_m_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['AWARDS_m_webp']['VALUE'], array('width'=> 214,'height' => 165), BX_RESIZE_IMAGE_EXACT, false);
                             ?>
 							<source srcset="<?=$awards_png_1x['src']?> 1x, <?=$awards_png_2x['src']?> 2x" type="image/png" />
 							<source srcset="<?=$awards_webp_1x['src']?> 1x, <?=$awards_webp_2x['src']?> 2x" type="image/webp" />
@@ -55,14 +54,14 @@
                         if ($key==0){?>
 						<picture>
                             <?
-                            $bottle_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_png']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $bottle_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_png']['VALUE'], array('width'=> 453,'height' => 1600), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $bottle_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_webp']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $bottle_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_webp']['VALUE'], array('width'=> 453,'height' => 1600), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $bottle_m_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_png']['VALUE'], array('width'=> 113,'height' => 339), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $bottle_m_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_png']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $bottle_m_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_webp']['VALUE'], array('width'=> 113,'height' => 339), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
-                            $bottle_m_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_webp']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_PROPORTIONAL_ALT, false);
+                            $bottle_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_png']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_EXACT, false);
+                            $bottle_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_png']['VALUE'], array('width'=> 453,'height' => 1600), BX_RESIZE_IMAGE_EXACT, false);
+                            $bottle_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_webp']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_EXACT, false);
+                            $bottle_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_webp']['VALUE'], array('width'=> 453,'height' => 1600), BX_RESIZE_IMAGE_EXACT, false);
+                            $bottle_m_png_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_png']['VALUE'], array('width'=> 113,'height' => 339), BX_RESIZE_IMAGE_EXACT, false);
+                            $bottle_m_png_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_png']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_EXACT, false);
+                            $bottle_m_webp_1x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_webp']['VALUE'], array('width'=> 113,'height' => 339), BX_RESIZE_IMAGE_EXACT, false);
+                            $bottle_m_webp_2x = CFile::ResizeImageGet($value['SUB_VALUES']['BOTTLE_m_webp']['VALUE'], array('width'=> 227,'height' => 802), BX_RESIZE_IMAGE_EXACT, false);
                             ?>
 							<source srcset="<?=$bottle_png_1x['src']?> 1x, <?=$bottle_png_2x['src']?> 2x" type="image/png" />
 							<source srcset="<?=$bottle_webp_1x['src']?> 1x, <?=$bottle_webp_2x['src']?> 2x" type="image/webp" />

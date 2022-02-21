@@ -96,10 +96,11 @@ if(!empty($DataThisProduct)){
 </head>
 
 <body lang="ru-RU">
+	<!-- <pre><?print_r($DataThisProduct);?></pre> -->
 	<div class="box">
 		<div class="box__content box__content--<?=$page_name?>">
 			<?if(!empty($DataThisProduct_img['src'])){?>
-        	<div class="box__img"><img src="/f/img/rs-bg.jpg" alt=""></div>
+        	<div class="box__img"><img src="<?=$DataThisProduct_img['src']?>" alt=""></div>
 			<?}?>
 			<div class="box__top box__top--<?=$page_name?>">
 				<header class="header js-animate-header">
